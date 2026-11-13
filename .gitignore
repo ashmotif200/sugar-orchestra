@@ -4,3 +4,5 @@ dist/
 assets/originals/
 # artefacts de diagnostic
 *.log
+# références musicales fournies (multipistes lourds, hors dépôt)
+assets/references/

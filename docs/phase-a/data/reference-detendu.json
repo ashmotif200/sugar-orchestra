@@ -1,0 +1,1127 @@
+{
+  "generated_at": "2026-11-13T10:05:56Z",
+  "tool": {
+    "librosa": "1.0.1",
+    "numpy": "2.5.4"
+  },
+  "files": {
+    "mix": {
+      "file": "zistoire mix v0.wav",
+      "duration_s": 54.4681,
+      "sample_rate": 48000,
+      "channels": 2,
+      "peak_db": -1.42,
+      "rms_db": -16.93,
+      "lufs_integrated": -14.5
+    },
+    "drums": {
+      "file": "zistoire_Detendue_Stems 7-Zistwar-drums.wav",
+      "duration_s": 54.4681,
+      "sample_rate": 48000,
+      "channels": 2,
+      "peak_db": -1.85,
+      "rms_db": -24.6,
+      "lufs_integrated": -23.0
+    },
+    "bass": {
+      "file": "zistoire_Detendue_Stems 8-Zistwar-bass.wav",
+      "duration_s": 54.4681,
+      "sample_rate": 48000,
+      "channels": 2,
+      "peak_db": -6.26,
+      "rms_db": -20.7,
+      "lufs_integrated": -19.2
+    },
+    "other": {
+      "file": "zistoire_Detendue_Stems 6- Zistwar-other.wav",
+      "duration_s": 54.4681,
+      "sample_rate": 48000,
+      "channels": 2,
+      "peak_db": -3.59,
+      "rms_db": -21.19,
+      "lufs_integrated": -17.0
+    }
+  },
+  "technical": {
+    "stem_alignment_and_reconstruction": {
+      "drums_offset_ms": 0.0,
+      "drums_sample_count_delta": 0,
+      "bass_offset_ms": 0.0,
+      "bass_sample_count_delta": 0,
+      "other_offset_ms": 0.0,
+      "other_sample_count_delta": 0,
+      "sum_vs_mix_correlation": 1.0,
+      "mix_over_sum_gain": 1.0,
+      "reconstructs": true,
+      "note": "offset search limited to +/-0.5 s; a non-zero offset means the stems are not sample-aligned. Gain is mix/sum level ratio: any constant value means the mix is the sum, scaled."
+    }
+  },
+  "rhythm": {
+    "mix": {
+      "tempogram_candidates": [
+        {
+          "bpm": 135.54,
+          "support": 1.0
+        },
+        {
+          "bpm": 142.41,
+          "support": 0.964
+        },
+        {
+          "bpm": 216.35,
+          "support": 0.956
+        },
+        {
+          "bpm": 150.0,
+          "support": 0.92
+        }
+      ],
+      "librosa_global_bpm": 133.93,
+      "note": "candidates within 4% are merged; the strongest candidate is not automatically the musical tempo"
+    },
+    "beat": {
+      "bpm": 133.93,
+      "beat_count": 125,
+      "beat_times_s": [
+        0.155,
+        0.571,
+        1.003,
+        1.472,
+        1.936,
+        2.309,
+        2.789,
+        3.253,
+        3.664,
+        4.123,
+        4.576,
+        4.96,
+        5.227,
+        5.621,
+        6.069,
+        6.533,
+        6.955,
+        7.381,
+        7.744,
+        8.123,
+        8.485,
+        8.923,
+        9.376,
+        9.824,
+        10.245,
+        10.688,
+        11.152,
+        11.584,
+        12.048,
+        12.512,
+        12.949,
+        13.397,
+        13.861,
+        14.261,
+        14.704,
+        15.168,
+        15.6,
+        16.064,
+        16.528,
+        16.933,
+        17.387,
+        17.819,
+        18.245,
+        18.709,
+        19.2,
+        19.6,
+        20.069,
+        20.512,
+        20.96,
+        21.387,
+        21.84,
+        22.256,
+        22.72,
+        23.168,
+        23.584,
+        24.027,
+        24.491,
+        24.901,
+        25.355,
+        25.803,
+        26.235,
+        26.688,
+        27.12,
+        27.531
+      ],
+      "interbeat_interval_ms": {
+        "mean": 437.8,
+        "std": 37.2
+      },
+      "microtiming_note": "std above is beat-tracker regularity, not performed microtiming"
+    },
+    "swing_syncopation": {
+      "first_offbeat_position": 0.475,
+      "straight_would_be": 0.5,
+      "swing_reading": "straight",
+      "beats_with_onsets_between": "115/124",
+      "note": "ratio is measured against a tracker's grid, so it inherits grid error"
+    },
+    "drums_only": {
+      "tempogram_candidates": [
+        {
+          "bpm": 133.93,
+          "support": 1.0
+        },
+        {
+          "bpm": 140.62,
+          "support": 0.906
+        },
+        {
+          "bpm": 148.03,
+          "support": 0.86
+        },
+        {
+          "bpm": 127.84,
+          "support": 0.853
+        }
+      ],
+      "librosa_global_bpm": 132.35,
+      "note": "candidates within 4% are merged; the strongest candidate is not automatically the musical tempo"
+    }
+  },
+  "bass": {
+    "stem": {
+      "onset_count": 207,
+      "notes": [
+        {
+          "time_s": 0.112,
+          "pitch_hz": 52.6,
+          "midi": 32
+        },
+        {
+          "time_s": 0.32,
+          "pitch_hz": 55.7,
+          "midi": 33
+        },
+        {
+          "time_s": 0.443,
+          "pitch_hz": 55.4,
+          "midi": 33
+        },
+        {
+          "time_s": 0.779,
+          "pitch_hz": 55.4,
+          "midi": 33
+        },
+        {
+          "time_s": 0.981,
+          "pitch_hz": 55.7,
+          "midi": 33
+        },
+        {
+          "time_s": 1.333,
+          "pitch_hz": 42.5,
+          "midi": 29
+        },
+        {
+          "time_s": 1.472,
+          "pitch_hz": null,
+          "midi": null
+        },
+        {
+          "time_s": 1.653,
+          "pitch_hz": 32.0,
+          "midi": 24
+        },
+        {
+          "time_s": 1.872,
+          "pitch_hz": 108.3,
+          "midi": 45
+        },
+        {
+          "time_s": 1.904,
+          "pitch_hz": 108.9,
+          "midi": 45
+        },
+        {
+          "time_s": 2.075,
+          "pitch_hz": 109.5,
+          "midi": 45
+        },
+        {
+          "time_s": 2.304,
+          "pitch_hz": 55.4,
+          "midi": 33
+        },
+        {
+          "time_s": 2.555,
+          "pitch_hz": 109.5,
+          "midi": 45
+        },
+        {
+          "time_s": 2.773,
+          "pitch_hz": 55.7,
+          "midi": 33
+        },
+        {
+          "time_s": 2.987,
+          "pitch_hz": 52.6,
+          "midi": 32
+        },
+        {
+          "time_s": 3.435,
+          "pitch_hz": 52.6,
+          "midi": 32
+        },
+        {
+          "time_s": 3.659,
+          "pitch_hz": 52.3,
+          "midi": 32
+        },
+        {
+          "time_s": 4.293,
+          "pitch_hz": 74.8,
+          "midi": 38
+        },
+        {
+          "time_s": 4.571,
+          "pitch_hz": 75.5,
+          "midi": 38
+        },
+        {
+          "time_s": 4.757,
+          "pitch_hz": 38.5,
+          "midi": 27
+        },
+        {
+          "time_s": 4.971,
+          "pitch_hz": 38.9,
+          "midi": 27
+        },
+        {
+          "time_s": 5.216,
+          "pitch_hz": 52.6,
+          "midi": 32
+        },
+        {
+          "time_s": 5.408,
+          "pitch_hz": 52.6,
+          "midi": 32
+        },
+        {
+          "time_s": 5.643,
+          "pitch_hz": 49.4,
+          "midi": 31
+        },
+        {
+          "time_s": 6.069,
+          "pitch_hz": 49.4,
+          "midi": 31
+        },
+        {
+          "time_s": 6.272,
+          "pitch_hz": 49.4,
+          "midi": 31
+        },
+        {
+          "time_s": 6.539,
+          "pitch_hz": 43.5,
+          "midi": 29
+        },
+        {
+          "time_s": 6.923,
+          "pitch_hz": 42.0,
+          "midi": 28
+        },
+        {
+          "time_s": 7.195,
+          "pitch_hz": 41.0,
+          "midi": 28
+        },
+        {
+          "time_s": 7.365,
+          "pitch_hz": 41.0,
+          "midi": 28
+        },
+        {
+          "time_s": 7.573,
+          "pitch_hz": 36.8,
+          "midi": 26
+        },
+        {
+          "time_s": 7.84,
+          "pitch_hz": 49.4,
+          "midi": 31
+        },
+        {
+          "time_s": 7.936,
+          "pitch_hz": 49.4,
+          "midi": 31
+        },
+        {
+          "time_s": 8.245,
+          "pitch_hz": 43.7,
+          "midi": 29
+        },
+        {
+          "time_s": 8.699,
+          "pitch_hz": 44.2,
+          "midi": 29
+        },
+        {
+          "time_s": 8.917,
+          "pitch_hz": 44.2,
+          "midi": 29
+        },
+        {
+          "time_s": 9.381,
+          "pitch_hz": 84.9,
+          "midi": 41
+        },
+        {
+          "time_s": 9.568,
+          "pitch_hz": 87.9,
+          "midi": 41
+        },
+        {
+          "time_s": 9.845,
+          "pitch_hz": 78.3,
+          "midi": 39
+        },
+        {
+          "time_s": 10.016,
+          "pitch_hz": 44.2,
+          "midi": 29
+        },
+        {
+          "time_s": 10.24,
+          "pitch_hz": 49.4,
+          "midi": 31
+        },
+        {
+          "time_s": 10.491,
+          "pitch_hz": 55.4,
+          "midi": 33
+        },
+        {
+          "time_s": 10.72,
+          "pitch_hz": 66.3,
+          "midi": 36
+        },
+        {
+          "time_s": 10.896,
+          "pitch_hz": 73.9,
+          "midi": 38
+        },
+        {
+          "time_s": 10.928,
+          "pitch_hz": 73.9,
+          "midi": 38
+        },
+        {
+          "time_s": 11.184,
+          "pitch_hz": 74.8,
+          "midi": 38
+        },
+        {
+          "time_s": 11.36,
+          "pitch_hz": 73.9,
+          "midi": 38
+        },
+        {
+          "time_s": 11.573,
+          "pitch_hz": 73.9,
+          "midi": 38
+        }
+      ],
+      "notes_pitched": 201,
+      "interval_sequence_semitones": [
+        1,
+        0,
+        0,
+        0,
+        -4,
+        -5,
+        21,
+        0,
+        0,
+        -12,
+        12,
+        -12,
+        -1,
+        0,
+        0,
+        6,
+        0,
+        -11,
+        0,
+        5,
+        0,
+        -1,
+        0,
+        0,
+        -2,
+        -1,
+        0,
+        0,
+        -2,
+        5,
+        0,
+        -2,
+        0,
+        0,
+        12,
+        0,
+        -2,
+        -10,
+        2,
+        2,
+        3,
+        2,
+        0,
+        0,
+        0,
+        0,
+        0,
+        -1
+      ],
+      "motif_note": "repeated interval subsequences would indicate a motif; this list is the raw material, not a transcription",
+      "voiced_prevalence": 0.775,
+      "limitation": "pyin on a bass stem is reliable when the line is monophonic; with octave doubling or distortion read the cents spread before trusting midi"
+    }
+  },
+  "harmony": {
+    "other_stem": {
+      "top_key_candidates": [
+        {
+          "key": "B minor",
+          "correlation": 0.762
+        },
+        {
+          "key": "B major",
+          "correlation": 0.564
+        },
+        {
+          "key": "E minor",
+          "correlation": 0.562
+        }
+      ],
+      "chroma_profile": [
+        0.253,
+        0.18,
+        0.313,
+        0.165,
+        0.353,
+        0.209,
+        0.232,
+        0.22,
+        0.174,
+        0.258,
+        0.114,
+        0.626
+      ],
+      "chroma_novelty_times_s": [
+        0.03,
+        0.16,
+        0.35,
+        1.37,
+        1.7,
+        1.94,
+        2.3,
+        2.56,
+        2.98,
+        3.88,
+        4.13,
+        4.25,
+        4.96,
+        5.16,
+        5.22,
+        5.6,
+        6.95,
+        7.62,
+        8.27,
+        9.17,
+        9.8,
+        10.05,
+        10.24,
+        10.9,
+        11.37,
+        12.27,
+        12.51,
+        12.95,
+        13.58,
+        14.01,
+        15.17,
+        15.25,
+        15.88,
+        16.29,
+        17.56,
+        17.59,
+        18.23,
+        18.92,
+        20.28,
+        21.17
+      ],
+      "limitation": "key correlation on a drone or a single chord is not a key; read the top-3 with their correlations, not just the winner"
+    }
+  },
+  "arrangement": {
+    "mix_timeline": {
+      "bar_seconds": 1.792,
+      "bars": [
+        {
+          "bar": 1,
+          "t_s": 0.0,
+          "rms_db": -16.5,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 2,
+          "t_s": 1.79,
+          "rms_db": -17.0,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 3,
+          "t_s": 3.58,
+          "rms_db": -18.5,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 4,
+          "t_s": 5.38,
+          "rms_db": -16.0,
+          "onset_rate_per_s": 3.35
+        },
+        {
+          "bar": 5,
+          "t_s": 7.17,
+          "rms_db": -16.8,
+          "onset_rate_per_s": 6.14
+        },
+        {
+          "bar": 6,
+          "t_s": 8.96,
+          "rms_db": -19.9,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 7,
+          "t_s": 10.75,
+          "rms_db": -18.9,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 8,
+          "t_s": 12.54,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 6.14
+        },
+        {
+          "bar": 9,
+          "t_s": 14.34,
+          "rms_db": -21.9,
+          "onset_rate_per_s": 3.35
+        },
+        {
+          "bar": 10,
+          "t_s": 16.13,
+          "rms_db": -18.3,
+          "onset_rate_per_s": 5.58
+        },
+        {
+          "bar": 11,
+          "t_s": 17.92,
+          "rms_db": -19.2,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 12,
+          "t_s": 19.71,
+          "rms_db": -17.5,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 13,
+          "t_s": 21.5,
+          "rms_db": -19.4,
+          "onset_rate_per_s": 3.35
+        },
+        {
+          "bar": 14,
+          "t_s": 23.3,
+          "rms_db": -18.1,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 15,
+          "t_s": 25.09,
+          "rms_db": -18.4,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 16,
+          "t_s": 26.88,
+          "rms_db": -17.1,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 17,
+          "t_s": 28.67,
+          "rms_db": -15.8,
+          "onset_rate_per_s": 5.58
+        },
+        {
+          "bar": 18,
+          "t_s": 30.46,
+          "rms_db": -17.6,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 19,
+          "t_s": 32.26,
+          "rms_db": -16.5,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 20,
+          "t_s": 34.05,
+          "rms_db": -17.2,
+          "onset_rate_per_s": 7.25
+        },
+        {
+          "bar": 21,
+          "t_s": 35.84,
+          "rms_db": -19.7,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 22,
+          "t_s": 37.63,
+          "rms_db": -20.1,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 23,
+          "t_s": 39.42,
+          "rms_db": -17.4,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 24,
+          "t_s": 41.22,
+          "rms_db": -17.5,
+          "onset_rate_per_s": 5.58
+        },
+        {
+          "bar": 25,
+          "t_s": 43.01,
+          "rms_db": -14.8,
+          "onset_rate_per_s": 6.14
+        },
+        {
+          "bar": 26,
+          "t_s": 44.8,
+          "rms_db": -14.4,
+          "onset_rate_per_s": 3.35
+        },
+        {
+          "bar": 27,
+          "t_s": 46.59,
+          "rms_db": -14.0,
+          "onset_rate_per_s": 5.58
+        },
+        {
+          "bar": 28,
+          "t_s": 48.38,
+          "rms_db": -14.7,
+          "onset_rate_per_s": 6.14
+        },
+        {
+          "bar": 29,
+          "t_s": 50.18,
+          "rms_db": -15.8,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 30,
+          "t_s": 51.97,
+          "rms_db": -13.6,
+          "onset_rate_per_s": 6.14
+        }
+      ]
+    },
+    "drums_timeline": {
+      "bar_seconds": 1.792,
+      "bars": [
+        {
+          "bar": 1,
+          "t_s": 0.0,
+          "rms_db": -25.9,
+          "onset_rate_per_s": 3.35
+        },
+        {
+          "bar": 2,
+          "t_s": 1.79,
+          "rms_db": -28.9,
+          "onset_rate_per_s": 5.58
+        },
+        {
+          "bar": 3,
+          "t_s": 3.58,
+          "rms_db": -29.6,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 4,
+          "t_s": 5.38,
+          "rms_db": -27.7,
+          "onset_rate_per_s": 3.91
+        },
+        {
+          "bar": 5,
+          "t_s": 7.17,
+          "rms_db": -26.0,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 6,
+          "t_s": 8.96,
+          "rms_db": -30.6,
+          "onset_rate_per_s": 3.91
+        },
+        {
+          "bar": 7,
+          "t_s": 10.75,
+          "rms_db": -27.2,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 8,
+          "t_s": 12.54,
+          "rms_db": -25.7,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 9,
+          "t_s": 14.34,
+          "rms_db": -28.1,
+          "onset_rate_per_s": 3.35
+        },
+        {
+          "bar": 10,
+          "t_s": 16.13,
+          "rms_db": -26.8,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 11,
+          "t_s": 17.92,
+          "rms_db": -25.3,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 12,
+          "t_s": 19.71,
+          "rms_db": -29.7,
+          "onset_rate_per_s": 3.91
+        },
+        {
+          "bar": 13,
+          "t_s": 21.5,
+          "rms_db": -26.6,
+          "onset_rate_per_s": 3.91
+        },
+        {
+          "bar": 14,
+          "t_s": 23.3,
+          "rms_db": -23.6,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 15,
+          "t_s": 25.09,
+          "rms_db": -27.2,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 16,
+          "t_s": 26.88,
+          "rms_db": -28.6,
+          "onset_rate_per_s": 3.91
+        },
+        {
+          "bar": 17,
+          "t_s": 28.67,
+          "rms_db": -24.5,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 18,
+          "t_s": 30.46,
+          "rms_db": -27.8,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 19,
+          "t_s": 32.26,
+          "rms_db": -27.8,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 20,
+          "t_s": 34.05,
+          "rms_db": -25.7,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 21,
+          "t_s": 35.84,
+          "rms_db": -25.1,
+          "onset_rate_per_s": 3.91
+        },
+        {
+          "bar": 22,
+          "t_s": 37.63,
+          "rms_db": -26.0,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 23,
+          "t_s": 39.42,
+          "rms_db": -23.8,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 24,
+          "t_s": 41.22,
+          "rms_db": -23.6,
+          "onset_rate_per_s": 3.91
+        },
+        {
+          "bar": 25,
+          "t_s": 43.01,
+          "rms_db": -22.3,
+          "onset_rate_per_s": 3.91
+        },
+        {
+          "bar": 26,
+          "t_s": 44.8,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 3.35
+        },
+        {
+          "bar": 27,
+          "t_s": 46.59,
+          "rms_db": -24.6,
+          "onset_rate_per_s": 6.7
+        },
+        {
+          "bar": 28,
+          "t_s": 48.38,
+          "rms_db": -21.0,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 29,
+          "t_s": 50.18,
+          "rms_db": -20.8,
+          "onset_rate_per_s": 3.35
+        },
+        {
+          "bar": 30,
+          "t_s": 51.97,
+          "rms_db": -20.2,
+          "onset_rate_per_s": 5.02
+        }
+      ]
+    },
+    "bass_timeline": {
+      "bar_seconds": 1.792,
+      "bars": [
+        {
+          "bar": 1,
+          "t_s": 0.0,
+          "rms_db": -21.6,
+          "onset_rate_per_s": 6.7
+        },
+        {
+          "bar": 2,
+          "t_s": 1.79,
+          "rms_db": -20.4,
+          "onset_rate_per_s": 5.58
+        },
+        {
+          "bar": 3,
+          "t_s": 3.58,
+          "rms_db": -21.6,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 4,
+          "t_s": 5.38,
+          "rms_db": -20.4,
+          "onset_rate_per_s": 8.37
+        },
+        {
+          "bar": 5,
+          "t_s": 7.17,
+          "rms_db": -19.2,
+          "onset_rate_per_s": 7.25
+        },
+        {
+          "bar": 6,
+          "t_s": 8.96,
+          "rms_db": -22.4,
+          "onset_rate_per_s": 6.7
+        },
+        {
+          "bar": 7,
+          "t_s": 10.75,
+          "rms_db": -21.4,
+          "onset_rate_per_s": 5.58
+        },
+        {
+          "bar": 8,
+          "t_s": 12.54,
+          "rms_db": -21.5,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 9,
+          "t_s": 14.34,
+          "rms_db": -24.7,
+          "onset_rate_per_s": 7.25
+        },
+        {
+          "bar": 10,
+          "t_s": 16.13,
+          "rms_db": -19.7,
+          "onset_rate_per_s": 3.91
+        },
+        {
+          "bar": 11,
+          "t_s": 17.92,
+          "rms_db": -21.7,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 12,
+          "t_s": 19.71,
+          "rms_db": -21.1,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 13,
+          "t_s": 21.5,
+          "rms_db": -22.3,
+          "onset_rate_per_s": 8.37
+        },
+        {
+          "bar": 14,
+          "t_s": 23.3,
+          "rms_db": -20.0,
+          "onset_rate_per_s": 4.46
+        },
+        {
+          "bar": 15,
+          "t_s": 25.09,
+          "rms_db": -23.2,
+          "onset_rate_per_s": 6.14
+        },
+        {
+          "bar": 16,
+          "t_s": 26.88,
+          "rms_db": -23.0,
+          "onset_rate_per_s": 7.25
+        },
+        {
+          "bar": 17,
+          "t_s": 28.67,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 6.7
+        },
+        {
+          "bar": 18,
+          "t_s": 30.46,
+          "rms_db": -21.5,
+          "onset_rate_per_s": 3.91
+        },
+        {
+          "bar": 19,
+          "t_s": 32.26,
+          "rms_db": -21.6,
+          "onset_rate_per_s": 6.14
+        },
+        {
+          "bar": 20,
+          "t_s": 34.05,
+          "rms_db": -19.3,
+          "onset_rate_per_s": 6.7
+        },
+        {
+          "bar": 21,
+          "t_s": 35.84,
+          "rms_db": -22.5,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 22,
+          "t_s": 37.63,
+          "rms_db": -23.3,
+          "onset_rate_per_s": 5.58
+        },
+        {
+          "bar": 23,
+          "t_s": 39.42,
+          "rms_db": -20.3,
+          "onset_rate_per_s": 2.79
+        },
+        {
+          "bar": 24,
+          "t_s": 41.22,
+          "rms_db": -22.8,
+          "onset_rate_per_s": 5.02
+        },
+        {
+          "bar": 25,
+          "t_s": 43.01,
+          "rms_db": -17.5,
+          "onset_rate_per_s": 5.58
+        },
+        {
+          "bar": 26,
+          "t_s": 44.8,
+          "rms_db": -17.7,
+          "onset_rate_per_s": 6.14
+        },
+        {
+          "bar": 27,
+          "t_s": 46.59,
+          "rms_db": -20.3,
+          "onset_rate_per_s": 6.14
+        },
+        {
+          "bar": 28,
+          "t_s": 48.38,
+          "rms_db": -19.9,
+          "onset_rate_per_s": 5.58
+        },
+        {
+          "bar": 29,
+          "t_s": 50.18,
+          "rms_db": -20.5,
+          "onset_rate_per_s": 7.81
+        },
+        {
+          "bar": 30,
+          "t_s": 51.97,
+          "rms_db": -19.5,
+          "onset_rate_per_s": 7.25
+        }
+      ]
+    }
+  },
+  "limits": [
+    "tempo is a set of hypotheses, not a verdict",
+    "key correlation is meaningless on unpitched/drone material",
+    "beat grid is an estimate; swing and syncopation inherit its error",
+    "no transcription is produced: pitch lists are measurements"
+  ],
+  "elapsed_s": 33.1
+}

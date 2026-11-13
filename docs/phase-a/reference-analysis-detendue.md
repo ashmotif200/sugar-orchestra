@@ -1,99 +1,81 @@
-# Phase A3 — « Détendue » (Sega Jazz / Segazz) : analyse
+# Référence Détendu — « Zistoire » (mix + 3 stems)
 
-> **STATUT : BLOQUÉ — aucun résultat.**
-> Les quatre fichiers de cette référence ne sont pas présents sur Hermes
-> (`Zistwar-drums.wav`, `Zistwar-bass.wav`, `Zistwar-other.wav`,
-> `zistoire mix v0.wav`). Recherche exhaustive et journal détaillé :
-> voir `reference-analysis-summary.md`, §2.
->
-> Ce document n'est **pas** une analyse. C'est le cadre pré-enregistré dans
-> lequel l'analyse sera écrite, avec ses critères d'acceptation fixés **avant**
-> de voir les données — pour éviter d'ajuster l'interprétation aux résultats.
+> Ce document remplace l'analyse bloquée du 13/11 09:38 (0/4 fichier présent).
+> Les quatre fichiers ont été fournis et mesurés.
 
-## 1. Ce que dira ce document quand les fichiers arriveront
+**Fichiers :** `zistoire mix v0.wav` (48 kHz / 24 bits / stéréo, 54,47 s) et trois
+stems WAV 48 kHz (`drums`, `bass`, `other`).
+**Analyse :** mêmes scripts, données dans `data/reference-detendu.json`,
+`data/arrangement-detendu.json`, `data/harmony-detendu.json`.
 
-Chaque section ci-dessous est vide pour une raison précise, indiquée entre
-parenthèses : la mesure correspondante n'a pas d'entrée.
+## Ce qui est mesuré
 
-### 1.1 Vérification technique
-*(vide : aucun fichier)*
+| Élément | Mix | drums | bass | other |
+|---|---|---|---|---|
+| Durée | 54,47 s | 54,47 s | 54,47 s | 54,47 s |
+| LUFS intégré | **−14,5** | −23,0 | **−19,2** | **−17,0** |
+| Crête | −1,42 dBFS | −1,85 | −6,26 | −3,59 |
+| Centroïde | — | 3 348 Hz | 236 Hz | 1 238 Hz |
+| Attaques / min | — | 218 | **210** | 150 |
+| Présence | — | 100 % | 100 % | 87 % |
 
-Doit contenir : durée, taux d'échantillonnage, canaux, crête, RMS, LUFS intégré
-des quatre fichiers ; décalage mesuré de chaque stem par rapport au mix ;
-`sample_count_delta` ; corrélation somme-des-stems contre mix ; conclusion
-« le mix est / n'est pas reconstructible ».
+Reconstruction : **corrélation 1,0000**, gain 1,0000, écarts d'échantillons nuls,
+décalages 0,0 ms sur les trois stems. Multipiste exact, sample-aligned.
 
-### 1.2 Rythme
-*(vide : aucun fichier)*
+## Tempo et mètre
 
-Doit contenir : les 4 candidats de tempo du tempogram avec leur support relatif,
-le BPM global librosa, le BPM du stem batterie seul, la grille de temps, l'IBI
-moyen et son écart-type, la position médiane du contretemps (0,5 = binaire,
-> 0,56 = swingué), la proportion de temps contenant un onset intermédiaire.
+drums : **133,93 BPM** (support 1,00 ; candidats 140,6 / 148,0 / 127,8).
+mix : 135,54 (1,00) / 142,41 (0,96) / 216,35 (0,96).
+Suivi de pulsation : 133,93 BPM, 125 battements, mesure de **1,792 s** (4/4),
+**30 mesures**. Micro-timing du tracker : écart-type 37 ms (régularité, pas le jeu).
+Swing mesuré : première contretemps à 0,475 (0,5 = binaire) → **binaire**, pas ternaire.
 
-**Interdit par construction** : présenter le candidat le plus fort comme « le »
-BPM. Si deux candidats sont à moins de 10 % de support, les deux sont retenus.
+## Forme mesurée
 
-### 1.3 Basse
-*(vide : aucun fichier)*
+| Mesures | Durée | Couches | other (LUFS) | drums (LUFS) |
+|---|---|---|---|---|
+| 1–8 | 14,3 s | drums, bass, other | −22,5 | −27,7 |
+| 9–10 | 3,6 s | drums, bass | **−28,9** | −27,5 |
+| 11–13 | 5,4 s | + other | −24,5 | −27,2 |
+| 14 | 1,8 s | drums, bass | **−32,3** | −23,7 |
+| 15–20 | 10,8 s | + other | −20,9 | −26,9 |
+| 21 | 1,8 s | drums, bass | −27,9 | −25,1 |
+| 22–30 | 16,1 s | toutes, drums plus fort | −20,9 | **−22,4** |
 
-Doit contenir : onsets, hauteur estimée par onset, MIDI, séquence d'intervalles,
-prévalence voisée, et la liste brute des intervalles — présentée comme matériau,
-jamais comme transcription. Si la prévalence voisée est faible, le document dira
-« l'estimateur n'est pas fiable ici » au lieu de proposer des notes.
+Forme : **A (8) · creux (2) · A' (3) · stop (1) · B (6) · stop (1) · outro (9)**.
+Les creux ne sont pas des silences : la couche harmonique tombe d'environ 6 dB et
+laisse basse + batterie. Ce sont des **stop-time d'une ou deux mesures**, pas des
+breaks de 8.
 
-### 1.4 Harmonie et mélodie
-*(vide : aucun fichier)*
+## Harmonie
 
-Doit contenir : profil de chroma, trois candidats de tonalité avec corrélations
-Krumhansl, instants de nouveauté harmonique.
-**Le stem « other » ne sera pas traité comme un instrument unique** : le brief le
-prescrit, et la mesure le confirmera ou non (largeur spectrale, nombre de
-composantes harmoniques simultanées).
+Tonalité : **si mineur** (corrélation 0,762 ; si majeur 0,564 ; mi mineur 0,562).
+Le matcher de triades par mesure produit une suite bruitée — aucune période stable
+n'est détectée — mais tous les accords récurrents (Bm, Em, G, D, A, F#m) appartiennent
+au jeu diatonique de **si mineur**. Les valeurs aberrantes (B, G#m, Dm, C) sont des
+erreurs de gabarit sur une texture dense, pas des modulations.
 
-### 1.5 Arrangement
-*(vide : aucun fichier)*
+## Basse
 
-Doit contenir : timeline par mesure (RMS, densité d'onsets) pour le mix, la
-batterie et la basse ; entrées/sorties de couches ; candidats de frontières de
-section ; structure de fin.
-Chaque frontière sera étiquetée **mesurée** ou **à confirmer à l'écoute**.
+La1 (~55 Hz, médiane MIDI 32–33), 207 attaques dont 201 avec hauteur, prévalence
+voisée 0,775. Densité **210 attaques/min ≈ 3,5/s** : la basse est **motrice**, elle
+porte le morceau (contrairement à Énergétique).
 
-### 1.6 Comparaison avec les autres univers
-*(vide : les trois autres univers n'ont pas non plus de référence)*
+## Équilibre des couches
 
-Rappel : Détendue ne définit pas Énergétique, Dansant ni Rêveur.
+`other` −17,0 et `bass` −19,2 sont **au-dessus** de `drums` −23,0 : la batterie est
+**5,8 dB sous la basse**. C'est la signature du « détendu » : ce n'est pas un tempo
+lent (134 BPM), c'est une **batterie discrète et une basse chantante**. Le centroïde
+de la batterie à 3 348 Hz indique des charleys fins, très aigus, qui occupent l'air
+sans occuper le grave.
 
-## 2. Critères d'acceptation fixés d'avance
+## Ce que cette référence dit pour Phase B
 
-L'analyse de Détendue sera considérée comme exploitable si et seulement si :
-
-1. les quatre fichiers proviennent du même export et l'alignement est prouvé
-   (`sample_count_delta == 0` pour les trois stems, |décalage| ≤ 12 ms sur la
-   batterie) ;
-2. la reconstruction du mix depuis les stems donne une corrélation ≥ 0,98 ;
-3. le tempo retenu est corroboré par **au moins deux** méthodes indépendantes
-   (tempogram sur le mix et tempogram sur la batterie seule), à ±2 % ;
-4. toute affirmation harmonique cite au moins deux candidats avec leurs
-   corrélations, et la corrélation du premier dépasse 0,7 ;
-5. toute affirmation rythmique fine (swing, microtiming) est étiquetée comme
-   dépendante de la grille du tracker.
-
-Si le point 1 ou 2 échoue, l'analyse sera publiée **avec** sa réserve, pas
-corrigée par un recalage manuel silencieux.
-
-## 3. Preuve que la méthode fonctionne
-
-Le pipeline a été exécuté sur des stems synthétiques de vérité connue et a
-retrouvé : 88,34 BPM (vrai : 88), swing 0,61 (vrai : 0,62), 8 mesures (vrai : 8),
-notes de basse MIDI 38/50 (vraies : 38/50), tonalité ré mineur correcte,
-reconstruction à 0,9999. Détail et limites mesurées :
-`reference-analysis-summary.md` §3.
-
-Ce qui est bloqué n'est donc pas la capacité de mesurer, c'est **l'entrée**.
-
-## 4. Prochaine action
-
-Déposer les quatre fichiers, puis exécuter la commande du §4 de
-`reference-analysis-summary.md`. Le présent document sera alors réécrit avec les
-mesures réelles — et non complété à partir d'hypothèses.
+1. **134 BPM binaire** — le moteur « Segazz » n'existe pas ; s'il est construit, c'est
+   ce tempo-là, pas un slow.
+2. **Basse devant, batterie derrière.** L'inverse du moteur actuel, où la batterie
+   domine de plusieurs dB.
+3. **Forme avec stop-time** de 1–2 mesures : un accord qui tombe, pas un filtre.
+4. **Harmonie diatonique réelle** (si mineur) : la couche `other` bouge, contrairement
+   à Énergétique qui tient une pédale.
+5. **Durée 54 s, 30 mesures** : nos 36 s sont courtes pour installer une forme.

@@ -286,20 +286,28 @@ def main():
     ap.add_argument("--drums")
     ap.add_argument("--bass")
     ap.add_argument("--other")
+    ap.add_argument("--stem", action="append", default=[],
+                    help="NAME=PATH, répétable : n'importe quel jeu de stems (vocals, percs_and_synths…)")
     ap.add_argument("--out", required=True)
     a = ap.parse_args()
 
     t0 = time.time()
-    for p in [a.mix, a.drums, a.bass, a.other]:
-        if p and not Path(p).exists():
-            sys.exit(f"missing file: {p}")
-
-    files = {"mix": basic(a.mix)}
-    stems = {}
+    paths = {"mix": a.mix}
     for name in ("drums", "bass", "other"):
         p = getattr(a, name)
         if p:
-            stems[name] = basic(p)
+            paths[name] = p
+    for item in a.stem:
+        if "=" not in item:
+            sys.exit(f"--stem attend NAME=PATH, reçu : {item}")
+        name, p = item.split("=", 1)
+        paths[name.strip()] = p.strip()
+    for name, p in paths.items():
+        if not Path(p).exists():
+            sys.exit(f"missing file ({name}): {p}")
+
+    files = {"mix": basic(paths["mix"])}
+    stems = {name: basic(p) for name, p in paths.items() if name != "mix"}
 
     sr = files["mix"]["_sr"]
     result = {
@@ -328,16 +336,25 @@ def main():
     if "drums" in stems:
         result["rhythm"]["drums_only"] = tempo_hypotheses(stems["drums"]["_y"], stems["drums"]["_sr"])
     if "bass" in stems:
-        result["bass"]["stem"] = bass_analysis(a.bass, sr)
-    if "other" in stems:
-        result["harmony"]["other_stem"] = harmony_analysis(a.other, sr)
+        result["bass"]["stem"] = bass_analysis(paths["bass"], sr)
+    # harmonie : le stem « other » s'il existe, sinon percussions+synthés, sinon
+    # le premier stem qui n'est ni batterie ni basse ni voix
+    harm_name = next((n for n in ("other", "percs_and_synths", "keys", "synths") if n in paths), None)
+    if harm_name is None:
+        harm_name = next((n for n in paths if n not in ("mix", "drums", "bass", "vocals")), None)
+    if harm_name:
+        result["harmony"][f"{harm_name}_stem"] = harmony_analysis(paths[harm_name], sr)
 
     bpm = result["rhythm"]["beat"]["bpm"]
     result["arrangement"]["mix_timeline"] = arrangement_timeline(a.mix, sr, bpm)
     if "drums" in stems:
-        result["arrangement"]["drums_timeline"] = arrangement_timeline(a.drums, sr, bpm)
+        result["arrangement"]["drums_timeline"] = arrangement_timeline(paths["drums"], sr, bpm)
     if "bass" in stems:
-        result["arrangement"]["bass_timeline"] = arrangement_timeline(a.bass, sr, bpm)
+        result["arrangement"]["bass_timeline"] = arrangement_timeline(paths["bass"], sr, bpm)
+    for extra in paths:
+        if extra in ("mix", "drums", "bass", "other"):
+            continue
+        result["arrangement"][f"{extra}_timeline"] = arrangement_timeline(paths[extra], sr, bpm)
 
     result["elapsed_s"] = round(time.time() - t0, 1)
     out = Path(a.out)

@@ -1,0 +1,219 @@
+{
+  "version": 2,
+  "supersedes": 1,
+  "generatedBy": "scripts/phase-a/build-selection-v2.py",
+  "source": "Museomix_Sugar Orchestra_ Les Sons Choisis.pdf",
+  "sourceDate": "2026-11-13",
+  "status": "ready-for-phase-b",
+  "notes": [
+    "Les 7 étapes et leurs titres sont ceux du PDF : il n'y a pas de 8e étape.",
+    "Les sons de l'étape 6 proviennent des séquences 4 (coupe, cristallisation), 6 (transport, moulin) et 8 (jus, chaudière) de l'Inventaire : le découpage du PDF est narratif, pas séquentiel.",
+    "Les restrictions éditoriales du catalogue sont recopiées telles quelles et ne peuvent pas être levées ici.",
+    "Activation dans l'application : Phase B, après validation de l'équipe."
+  ],
+  "limits": {
+    "minSelected": 1,
+    "maxSelected": 8
+  },
+  "steps": [
+    {
+      "id": 1,
+      "title": "Les origines : quand Maurice surgit de l'océan",
+      "short": "Origines",
+      "page": 2,
+      "restricted": false,
+      "sounds": [
+        {
+          "code": "01_01",
+          "label": "Volcan",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        },
+        {
+          "code": "01_02",
+          "label": "Flora et Fauna",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        },
+        {
+          "code": "01_03",
+          "label": "L’arrivée des premiers hommes",
+          "confidence": "medium",
+          "alternative": "01_04",
+          "availability": "available",
+          "sensitive": false
+        }
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Le sucre traverse les âges : du commerce à la dégustation",
+      "short": "Âges du sucre",
+      "page": 3,
+      "restricted": false,
+      "sounds": [
+        {
+          "code": "02_04",
+          "label": "les étales, les marchés",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        },
+        {
+          "code": "02_01",
+          "label": "Cuillères qui remuent le sucre dans le thé",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        }
+      ]
+    },
+    {
+      "id": 3,
+      "title": "Les métiers du sucre : les artisans qui construisent l’industrie",
+      "short": "Métiers",
+      "page": 4,
+      "restricted": false,
+      "sounds": [
+        {
+          "code": "03_04",
+          "label": "Charpentier",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        }
+      ]
+    },
+    {
+      "id": 4,
+      "title": "La mémoire des plantations : esclavage, engagisme et travail agricole",
+      "short": "Mémoire",
+      "page": 5,
+      "restricted": true,
+      "sounds": [
+        {
+          "code": "04_02",
+          "label": "Sons de chaînes",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "not_musical",
+          "sensitive": true
+        },
+        {
+          "code": "04_09",
+          "label": "Lota et cuillère",
+          "confidence": "low",
+          "alternative": "04_08",
+          "availability": "available",
+          "sensitive": false
+        }
+      ]
+    },
+    {
+      "id": 5,
+      "title": "La canne à sucre : une plante qui transforme le paysage",
+      "short": "Canne",
+      "page": 6,
+      "restricted": false,
+      "sounds": [
+        {
+          "code": "05_01",
+          "label": "Sons qui évoluent progressivement",
+          "confidence": "medium",
+          "alternative": "05_02",
+          "availability": "available",
+          "sensitive": false
+        }
+      ]
+    },
+    {
+      "id": 6,
+      "title": "De la canne au sucre : le travail de transformation",
+      "short": "Canne → sucre",
+      "page": 7,
+      "restricted": false,
+      "sounds": [
+        {
+          "code": "04_03",
+          "label": "1. La coupe : machettes et cannes qui tombent",
+          "confidence": "medium",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        },
+        {
+          "code": "06_04",
+          "label": "2. Le transport : bœufs, charrettes",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        },
+        {
+          "code": "06_06",
+          "label": "3. Le moulin : engrenages et broyage",
+          "confidence": "high",
+          "alternative": "06_01",
+          "availability": "available",
+          "sensitive": false
+        },
+        {
+          "code": "08_02",
+          "label": "4. L’extraction : écoulement du jus",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        },
+        {
+          "code": "08_03",
+          "label": "5. La cuisson : feu, bulles, vapeur",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        },
+        {
+          "code": "04_07",
+          "label": "6. La cristallisation : sucre qui se forme",
+          "confidence": "medium",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        }
+      ]
+    },
+    {
+      "id": 7,
+      "title": "De la bagasse à l’électricité : une nouvelle énergie pour l’île",
+      "short": "Bagasse",
+      "page": 8,
+      "restricted": false,
+      "sounds": [
+        {
+          "code": "07_01",
+          "label": "Bagasse sèche manipulée et déposée",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        },
+        {
+          "code": "07_02",
+          "label": "Alternateur et vibrations électriques",
+          "confidence": "high",
+          "alternative": null,
+          "availability": "available",
+          "sensitive": false
+        }
+      ]
+    }
+  ]
+}

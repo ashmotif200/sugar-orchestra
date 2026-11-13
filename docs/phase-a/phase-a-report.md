@@ -7,6 +7,14 @@
 
 ---
 
+> **Mise à jour 13/11 (2ᵉ passe)** : les trois blocages d'entrée sont levés.
+> Les analyses des deux références, la correspondance PDF ↔ catalogue, les fiches
+> d'arrangement et la configuration v2 sont dans `phase-a2-report.md`. Les sections
+> « REMAINING » et « BLOCKERS » ci-dessous décrivent l'état **avant** réception des
+> fichiers et sont conservées comme historique.
+
+
+
 ## COMPLETED
 
 ### A1 — Synchronisation du catalogue sonore
@@ -56,12 +64,27 @@ d'acceptation. Diagnostic chiffré de deux défauts prouvés. **Aucune modificat
 du moteur.** Livrable : `phase-b-engine-proposal.md`.
 
 ### Validation de l'existant
-- `npx tsc -b --noEmit` → **0 erreur**
-- `npm run build` → **49 modules, 995 ms, `dist/` 11 Mo**
+- `npm run typecheck` → **0 erreur**
+- `npm run build` → **49 modules, 949 ms, `dist/` 11 Mo**
 - Auto-test de l'application (`?selftest=1`) → **8 / 8 cas OK**, `allOk: true`,
   déterminisme 4,17 × 10⁻⁷, reconnaissabilité 0,68–0,98
 - Parcours rendu avec **7 étapes**, 4 univers (2 actifs, 2 « Bientôt »)
 - 40 masters intacts (sha256 inchangé)
+
+### Validation des scripts de la Phase A
+`scripts/phase-a/verify.py` → **17 / 17 contrôles**, lancé avec l'interpréteur
+du toolchain (`renv/analysis/bin/python`) :
+
+| Contrôle | Résultat |
+|---|---|
+| compilation des 5 scripts | OK |
+| logique de classification sur 4 cas construits | 4 / 4 (dont « un grondement n'est pas une basse ») |
+| générateurs **idempotents** (octets identiques après ré-exécution) | OK |
+| pipeline de référence sur stems synthétiques | tempo 88,34 vs 88 · reconstruction 0,9999 · alignement 0,0 ms · 8 mesures · ré mineur · notes 38/38/38/38 · swing 0,61 |
+
+Les deux commandes du projet (`typecheck`, `build`) ne couvrent pas des scripts
+Python : ce harnais existe pour que la vérification des livrables A1/A3/A4 soit
+reproductible, pas seulement déclarée.
 
 ---
 
