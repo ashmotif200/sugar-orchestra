@@ -62,7 +62,8 @@
     "hint": "Tout se passe dans votre navigateur : rien n'est envoyé, aucun autre son n'est ajouté.",
     "error": "La pièce n'a pas pu être créée.",
     "errorHint": "Vos sons sont conservés. Vous pouvez réessayer.",
-    "retry": "Réessayer"
+    "retry": "Réessayer",
+    "chooseUniverse": "Choisissez votre univers pour composer"
   },
   "result": {
     "title": "Votre création",
@@ -77,13 +78,17 @@
     "adaptation": "Adaptation",
     "limit": "Limite",
     "signature": "reconnaissable",
-    "duration": "{time} · {bpm} BPM"
+    "duration": "{time} · {bpm} BPM",
+    "gone": "Votre pièce n'est plus en mémoire : elle est calculée à chaque fois, rien n'est stocké. Recomposez-la avec les mêmes sons.",
+    "recompose": "Recomposer ma pièce"
   },
   "audio": {
     "loading": "Chargement des sons…",
     "failed": "Les sons de cette étape n'ont pas pu être chargés.",
     "retry": "Réessayer",
-    "tapToPlay": "Aucune lecture automatique : appuyez sur écouter."
+    "tapToPlay": "Aucune lecture automatique : appuyez sur écouter.",
+    "blockedTitle": "Le son n'a pas démarré.",
+    "blockedHint": "Appuie à nouveau sur ▶ (le navigateur exige un geste). Si rien ne joue, vérifie le volume du système et que l'onglet n'est pas en sourdine."
   },
   "offline": {
     "banner": "Connexion perdue — les sons déjà chargés restent disponibles."

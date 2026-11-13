@@ -1,0 +1,339 @@
+{
+  "universe": "detendu",
+  "beat_range_bpm": [
+    55.0,
+    190.0
+  ],
+  "targets": [
+    {
+      "source": "drums",
+      "beat_bpm": 91.46,
+      "tempo_candidates": [
+        {
+          "bpm": 91.46,
+          "ac": 0.3515
+        },
+        {
+          "bpm": 132.35,
+          "ac": 0.2719
+        },
+        {
+          "bpm": 69.02,
+          "ac": 0.1797
+        }
+      ],
+      "beat_count": 86,
+      "beat_interval_ms": {
+        "mean": 637.0,
+        "std": 61.5
+      },
+      "onset_phase_histogram_pct": [
+        1.0,
+        0.5,
+        0.5,
+        26.2,
+        1.5,
+        2.5,
+        1.5,
+        23.3,
+        5.4,
+        0.5,
+        0.0,
+        37.1
+      ],
+      "onsets_in_histogram": 202,
+      "on_beat_pct": 38.1,
+      "binary_subdivision_pct": 1.5,
+      "ternary_subdivision_pct": 6.9,
+      "ternary_over_binary": 4.6,
+      "ac_3_beats": 0.202,
+      "ac_4_beats": 0.203,
+      "ac_6_beats": 0.094,
+      "ac_8_beats": 0.137,
+      "bar_hypothesis": "4 beats per bar (ac 4 >= ac 3)",
+      "verdict": "ambiguous",
+      "rule": "ternary if onsets at 1/3 and 2/3 of the beat >= 8% AND >= 1.3x those at 1/2; binary if the 1/2 share >= 8% AND <= 0.77x; else ambiguous",
+      "phase_bin_meaning": "12 bins per beat: 0=downbeat, 4=1/3, 6=1/2, 8=2/3",
+      "folded_bar_pattern": {
+        "bar_period_s": 2.64,
+        "pattern_24ths_pct": [
+          3.4,
+          3.9,
+          3.4,
+          5.3,
+          3.4,
+          3.4,
+          5.8,
+          4.9,
+          4.9,
+          4.9,
+          2.9,
+          5.3,
+          5.3,
+          5.3,
+          2.9,
+          1.9,
+          1.0,
+          6.3,
+          3.4,
+          6.3,
+          2.9,
+          4.9,
+          3.4,
+          4.9
+        ],
+        "strongest_24ths": [
+          3,
+          6,
+          7,
+          11,
+          12,
+          13,
+          17,
+          19
+        ],
+        "strongest_24ths_pct": [
+          5.3,
+          5.8,
+          4.9,
+          5.3,
+          5.3,
+          5.3,
+          6.3,
+          6.3
+        ]
+      },
+      "bpm_grid_search": {
+        "candidates": [
+          {
+            "bpm": 60.97,
+            "ibi_std_ms": 95.1,
+            "phase_concentration_pct": 26.5,
+            "onsets_at_downbeat_pct": 0.0
+          },
+          {
+            "bpm": 66.17,
+            "ibi_std_ms": 105.2,
+            "phase_concentration_pct": 27.4,
+            "onsets_at_downbeat_pct": 0.0
+          },
+          {
+            "bpm": 69.02,
+            "ibi_std_ms": 110.2,
+            "phase_concentration_pct": 28.0,
+            "onsets_at_downbeat_pct": 0.0
+          },
+          {
+            "bpm": 88.23,
+            "ibi_std_ms": 57.3,
+            "phase_concentration_pct": 36.8,
+            "onsets_at_downbeat_pct": 0.5
+          },
+          {
+            "bpm": 91.46,
+            "ibi_std_ms": 61.5,
+            "phase_concentration_pct": 37.1,
+            "onsets_at_downbeat_pct": 1.0
+          },
+          {
+            "bpm": 103.53,
+            "ibi_std_ms": 97.4,
+            "phase_concentration_pct": 43.6,
+            "onsets_at_downbeat_pct": 1.0
+          },
+          {
+            "bpm": 132.35,
+            "ibi_std_ms": 29.6,
+            "phase_concentration_pct": 49.7,
+            "onsets_at_downbeat_pct": 0.0
+          },
+          {
+            "bpm": 137.19,
+            "ibi_std_ms": 21.4,
+            "phase_concentration_pct": 50.5,
+            "onsets_at_downbeat_pct": 0.0
+          },
+          {
+            "bpm": 138.04,
+            "ibi_std_ms": 21.5,
+            "phase_concentration_pct": 50.5,
+            "onsets_at_downbeat_pct": 0.0
+          },
+          {
+            "bpm": 182.92,
+            "ibi_std_ms": 46.1,
+            "phase_concentration_pct": 49.8,
+            "onsets_at_downbeat_pct": 0.5
+          }
+        ],
+        "steadiest": 137.19,
+        "rule": "steadiest grid = lowest inter-beat-interval standard deviation"
+      }
+    },
+    {
+      "source": "mix",
+      "beat_bpm": 91.46,
+      "tempo_candidates": [
+        {
+          "bpm": 91.46,
+          "ac": 0.3163
+        },
+        {
+          "bpm": 133.93,
+          "ac": 0.2345
+        },
+        {
+          "bpm": 69.02,
+          "ac": 0.1741
+        }
+      ],
+      "beat_count": 86,
+      "beat_interval_ms": {
+        "mean": 638.7,
+        "std": 55.2
+      },
+      "onset_phase_histogram_pct": [
+        1.1,
+        0.5,
+        1.6,
+        20.1,
+        3.7,
+        1.1,
+        3.7,
+        27.0,
+        2.6,
+        1.1,
+        0.0,
+        37.6
+      ],
+      "onsets_in_histogram": 189,
+      "on_beat_pct": 38.7,
+      "binary_subdivision_pct": 3.7,
+      "ternary_subdivision_pct": 6.3,
+      "ternary_over_binary": 1.7,
+      "ac_3_beats": 0.188,
+      "ac_4_beats": 0.191,
+      "ac_6_beats": 0.076,
+      "ac_8_beats": 0.095,
+      "bar_hypothesis": "4 beats per bar (ac 4 >= ac 3)",
+      "verdict": "ambiguous",
+      "rule": "ternary if onsets at 1/3 and 2/3 of the beat >= 8% AND >= 1.3x those at 1/2; binary if the 1/2 share >= 8% AND <= 0.77x; else ambiguous",
+      "phase_bin_meaning": "12 bins per beat: 0=downbeat, 4=1/3, 6=1/2, 8=2/3",
+      "folded_bar_pattern": {
+        "bar_period_s": 2.64,
+        "pattern_24ths_pct": [
+          3.6,
+          1.5,
+          2.6,
+          6.2,
+          2.6,
+          3.6,
+          5.6,
+          3.6,
+          1.0,
+          7.2,
+          3.1,
+          5.6,
+          5.6,
+          4.6,
+          5.6,
+          2.6,
+          2.1,
+          5.6,
+          5.1,
+          6.2,
+          3.6,
+          5.1,
+          4.1,
+          3.6
+        ],
+        "strongest_24ths": [
+          3,
+          6,
+          9,
+          11,
+          12,
+          14,
+          17,
+          19
+        ],
+        "strongest_24ths_pct": [
+          6.2,
+          5.6,
+          7.2,
+          5.6,
+          5.6,
+          5.6,
+          5.6,
+          6.2
+        ]
+      },
+      "bpm_grid_search": {
+        "candidates": [
+          {
+            "bpm": 60.97,
+            "ibi_std_ms": 103.2,
+            "phase_concentration_pct": 26.5,
+            "onsets_at_downbeat_pct": 3.2
+          },
+          {
+            "bpm": 66.97,
+            "ibi_std_ms": 106.7,
+            "phase_concentration_pct": 28.4,
+            "onsets_at_downbeat_pct": 2.6
+          },
+          {
+            "bpm": 69.02,
+            "ibi_std_ms": 101.6,
+            "phase_concentration_pct": 30.9,
+            "onsets_at_downbeat_pct": 2.1
+          },
+          {
+            "bpm": 89.29,
+            "ibi_std_ms": 54.0,
+            "phase_concentration_pct": 37.6,
+            "onsets_at_downbeat_pct": 0.5
+          },
+          {
+            "bpm": 91.46,
+            "ibi_std_ms": 55.2,
+            "phase_concentration_pct": 37.6,
+            "onsets_at_downbeat_pct": 1.1
+          },
+          {
+            "bpm": 103.53,
+            "ibi_std_ms": 93.1,
+            "phase_concentration_pct": 41.8,
+            "onsets_at_downbeat_pct": 0.5
+          },
+          {
+            "bpm": 133.93,
+            "ibi_std_ms": 37.2,
+            "phase_concentration_pct": 50.3,
+            "onsets_at_downbeat_pct": 3.2
+          },
+          {
+            "bpm": 137.19,
+            "ibi_std_ms": 34.6,
+            "phase_concentration_pct": 50.8,
+            "onsets_at_downbeat_pct": 2.7
+          },
+          {
+            "bpm": 138.04,
+            "ibi_std_ms": 34.7,
+            "phase_concentration_pct": 50.8,
+            "onsets_at_downbeat_pct": 2.7
+          },
+          {
+            "bpm": 182.92,
+            "ibi_std_ms": 38.8,
+            "phase_concentration_pct": 48.4,
+            "onsets_at_downbeat_pct": 0.5
+          }
+        ],
+        "steadiest": 137.19,
+        "rule": "steadiest grid = lowest inter-beat-interval standard deviation"
+      }
+    }
+  ]
+}

@@ -1,0 +1,327 @@
+{
+  "universe": "dansant",
+  "beat_range_bpm": [
+    55.0,
+    190.0
+  ],
+  "targets": [
+    {
+      "source": "drums",
+      "beat_bpm": 103.36,
+      "tempo_candidates": [
+        {
+          "bpm": 103.36,
+          "ac": 0.3116
+        },
+        {
+          "bpm": 156.61,
+          "ac": 0.2
+        },
+        {
+          "bpm": 149.8,
+          "ac": 0.188
+        }
+      ],
+      "beat_count": 336,
+      "beat_interval_ms": {
+        "mean": 580.6,
+        "std": 60.7
+      },
+      "onset_phase_histogram_pct": [
+        2.0,
+        0.0,
+        0.1,
+        21.3,
+        10.3,
+        1.6,
+        8.8,
+        21.3,
+        1.1,
+        1.3,
+        0.4,
+        31.9
+      ],
+      "onsets_in_histogram": 1007,
+      "on_beat_pct": 33.9,
+      "binary_subdivision_pct": 8.8,
+      "ternary_subdivision_pct": 11.4,
+      "ternary_over_binary": 1.3,
+      "ac_3_beats": 0.182,
+      "ac_4_beats": 0.058,
+      "ac_6_beats": 0.059,
+      "ac_8_beats": 0.134,
+      "bar_hypothesis": "3 beats per bar (ac 3 > ac 4)",
+      "verdict": "ternary",
+      "rule": "ternary if onsets at 1/3 and 2/3 of the beat >= 8% AND >= 1.3x those at 1/2; binary if the 1/2 share >= 8% AND <= 0.77x; else ambiguous",
+      "phase_bin_meaning": "12 bins per beat: 0=downbeat, 4=1/3, 6=1/2, 8=2/3",
+      "folded_bar_pattern": {
+        "bar_period_s": 1.3293,
+        "pattern_24ths_pct": [
+          4.5,
+          6.0,
+          3.3,
+          4.0,
+          4.9,
+          5.7,
+          2.7,
+          3.4,
+          4.0,
+          5.3,
+          3.4,
+          3.8,
+          4.4,
+          4.5,
+          4.5,
+          3.4,
+          5.3,
+          3.6,
+          4.5,
+          2.0,
+          4.4,
+          5.2,
+          3.8,
+          2.9
+        ],
+        "strongest_24ths": [
+          0,
+          1,
+          4,
+          5,
+          9,
+          13,
+          16,
+          21
+        ],
+        "strongest_24ths_pct": [
+          4.5,
+          6.0,
+          4.9,
+          5.7,
+          5.3,
+          4.5,
+          5.3,
+          5.2
+        ]
+      },
+      "bpm_grid_search": {
+        "candidates": [
+          {
+            "bpm": 68.91,
+            "ibi_std_ms": 113.8,
+            "phase_concentration_pct": 23.3,
+            "onsets_at_downbeat_pct": 1.9
+          },
+          {
+            "bpm": 74.9,
+            "ibi_std_ms": 94.1,
+            "phase_concentration_pct": 27.5,
+            "onsets_at_downbeat_pct": 1.6
+          },
+          {
+            "bpm": 78.31,
+            "ibi_std_ms": 65.0,
+            "phase_concentration_pct": 29.5,
+            "onsets_at_downbeat_pct": 1.8
+          },
+          {
+            "bpm": 99.87,
+            "ibi_std_ms": 48.0,
+            "phase_concentration_pct": 31.0,
+            "onsets_at_downbeat_pct": 2.2
+          },
+          {
+            "bpm": 103.36,
+            "ibi_std_ms": 60.7,
+            "phase_concentration_pct": 31.9,
+            "onsets_at_downbeat_pct": 2.0
+          },
+          {
+            "bpm": 104.41,
+            "ibi_std_ms": 63.3,
+            "phase_concentration_pct": 32.1,
+            "onsets_at_downbeat_pct": 2.0
+          },
+          {
+            "bpm": 149.8,
+            "ibi_std_ms": 36.8,
+            "phase_concentration_pct": 44.7,
+            "onsets_at_downbeat_pct": 1.1
+          },
+          {
+            "bpm": 155.04,
+            "ibi_std_ms": 38.7,
+            "phase_concentration_pct": 44.6,
+            "onsets_at_downbeat_pct": 1.0
+          },
+          {
+            "bpm": 156.61,
+            "ibi_std_ms": 41.9,
+            "phase_concentration_pct": 44.6,
+            "onsets_at_downbeat_pct": 1.0
+          }
+        ],
+        "steadiest": 149.8,
+        "rule": "steadiest grid = lowest inter-beat-interval standard deviation"
+      }
+    },
+    {
+      "source": "mix",
+      "beat_bpm": 103.36,
+      "tempo_candidates": [
+        {
+          "bpm": 103.36,
+          "ac": 0.2627
+        },
+        {
+          "bpm": 152.0,
+          "ac": 0.1729
+        },
+        {
+          "bpm": 159.01,
+          "ac": 0.1533
+        }
+      ],
+      "beat_count": 353,
+      "beat_interval_ms": {
+        "mean": 573.2,
+        "std": 57.4
+      },
+      "onset_phase_histogram_pct": [
+        2.9,
+        0.6,
+        1.0,
+        18.6,
+        9.7,
+        3.1,
+        4.6,
+        22.0,
+        2.6,
+        3.5,
+        1.7,
+        29.6
+      ],
+      "onsets_in_histogram": 1110,
+      "on_beat_pct": 32.5,
+      "binary_subdivision_pct": 4.6,
+      "ternary_subdivision_pct": 12.3,
+      "ternary_over_binary": 2.67,
+      "ac_3_beats": 0.131,
+      "ac_4_beats": 0.031,
+      "ac_6_beats": 0.031,
+      "ac_8_beats": 0.062,
+      "bar_hypothesis": "3 beats per bar (ac 3 > ac 4)",
+      "verdict": "ternary",
+      "rule": "ternary if onsets at 1/3 and 2/3 of the beat >= 8% AND >= 1.3x those at 1/2; binary if the 1/2 share >= 8% AND <= 0.77x; else ambiguous",
+      "phase_bin_meaning": "12 bins per beat: 0=downbeat, 4=1/3, 6=1/2, 8=2/3",
+      "folded_bar_pattern": {
+        "bar_period_s": 2.6587,
+        "pattern_24ths_pct": [
+          5.1,
+          3.5,
+          4.6,
+          3.7,
+          4.5,
+          3.9,
+          4.2,
+          4.2,
+          4.5,
+          3.7,
+          4.2,
+          3.3,
+          4.9,
+          3.6,
+          5.0,
+          2.9,
+          5.6,
+          3.8,
+          4.5,
+          3.5,
+          4.8,
+          3.8,
+          4.3,
+          3.7
+        ],
+        "strongest_24ths": [
+          0,
+          2,
+          4,
+          8,
+          12,
+          14,
+          16,
+          20
+        ],
+        "strongest_24ths_pct": [
+          5.1,
+          4.6,
+          4.5,
+          4.5,
+          4.9,
+          5.0,
+          5.6,
+          4.8
+        ]
+      },
+      "bpm_grid_search": {
+        "candidates": [
+          {
+            "bpm": 68.91,
+            "ibi_std_ms": 96.2,
+            "phase_concentration_pct": 21.5,
+            "onsets_at_downbeat_pct": 2.5
+          },
+          {
+            "bpm": 76.0,
+            "ibi_std_ms": 85.0,
+            "phase_concentration_pct": 24.7,
+            "onsets_at_downbeat_pct": 2.5
+          },
+          {
+            "bpm": 79.5,
+            "ibi_std_ms": 75.3,
+            "phase_concentration_pct": 25.8,
+            "onsets_at_downbeat_pct": 2.7
+          },
+          {
+            "bpm": 101.33,
+            "ibi_std_ms": 53.1,
+            "phase_concentration_pct": 29.2,
+            "onsets_at_downbeat_pct": 2.8
+          },
+          {
+            "bpm": 103.36,
+            "ibi_std_ms": 57.4,
+            "phase_concentration_pct": 29.6,
+            "onsets_at_downbeat_pct": 2.9
+          },
+          {
+            "bpm": 106.01,
+            "ibi_std_ms": 61.6,
+            "phase_concentration_pct": 30.2,
+            "onsets_at_downbeat_pct": 2.7
+          },
+          {
+            "bpm": 152.0,
+            "ibi_std_ms": 37.2,
+            "phase_concentration_pct": 40.0,
+            "onsets_at_downbeat_pct": 1.0
+          },
+          {
+            "bpm": 155.04,
+            "ibi_std_ms": 39.7,
+            "phase_concentration_pct": 39.8,
+            "onsets_at_downbeat_pct": 1.1
+          },
+          {
+            "bpm": 159.01,
+            "ibi_std_ms": 39.5,
+            "phase_concentration_pct": 39.5,
+            "onsets_at_downbeat_pct": 1.2
+          }
+        ],
+        "steadiest": 152.0,
+        "rule": "steadiest grid = lowest inter-beat-interval standard deviation"
+      }
+    }
+  ]
+}

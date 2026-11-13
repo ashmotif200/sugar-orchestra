@@ -320,3 +320,5 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .row-actions .btn { flex: 1 1 100%; }
   .proof pre { max-height: 200px; }
 }
+.hint-loud { border: 1.5px solid var(--coral); background: #fdf1ee; color: #8c2a18; border-radius: var(--r-sm); padding: 10px 12px; font-size: .82rem; }
+.hint-loud b { display: block; margin-bottom: 2px; }

@@ -35,7 +35,16 @@ export default function Result({
       setPlaying(true)
       setBlocked(false)
       raf.current = requestAnimationFrame(tick)
+      // filet de sécurité : si rien n'avance après 400 ms, on le dit au lieu de
+      // laisser un lecteur muet sans explication
+      window.setTimeout(() => {
+        if (!audio.isPlaying() || audio.position() < 0.05) {
+          setPlaying(false)
+          setBlocked(true)
+        }
+      }, 400)
     } catch {
+      setPlaying(false)
       setBlocked(true)
     }
   }, [buffer, tick])
@@ -88,7 +97,11 @@ export default function Result({
             <span className="muted">{fmtTime(buffer.duration)}</span>
           </div>
         </div>
-        {blocked && <p className="hint">{t('audio.tapToPlay')}</p>}
+        {blocked && (
+          <div className="hint hint-loud" role="status">
+            <b>{t('audio.blockedTitle')}</b> {t('audio.blockedHint')}
+          </div>
+        )}
       </div>
 
       <section className="used">

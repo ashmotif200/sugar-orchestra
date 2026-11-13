@@ -149,6 +149,12 @@ class AudioService {
     gain.connect(ctx.destination)
     const startedAt = ctx.currentTime
     src.start()
+    // Si le navigateur refuse de démarrer, il ne faut pas laisser croire que la
+    // lecture a commencé : on arrête et on lève une erreur explicite.
+    if (ctx.state !== 'running') {
+      try { src.stop() } catch { /* déjà arrêté */ }
+      throw new Error('autoplay-bloque')
+    }
     this.playing = { src, startedAt, buffer }
     this.emit()
     src.onended = () => {

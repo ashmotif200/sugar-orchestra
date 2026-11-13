@@ -3,35 +3,69 @@ export interface Session {
   discovered: string[]
   selected: string[]
   createdAt: number
-  version: 1
+  version: 2
 }
 
-const KEY = 'sugar-orchestra.session.v1'
+const KEY = 'sugar-orchestra.session.v2'
+const LEGACY_KEY = 'sugar-orchestra.session.v1'
 
-export const emptySession = (): Session => ({ discovered: [], selected: [], createdAt: Date.now(), version: 1 })
+/** Identifiants d'univers de la première version, avant le renommage. */
+const LEGACY_UNIVERSES: Record<string, string> = {
+  energetique: 'electro-sega',
+  dansant: 'sega-trad',
+  reveur: 'ambient-creole',
+  detendu: 'segazz',
+}
 
-export function loadSession(): Session {
-  try {
-    const raw = localStorage.getItem(KEY)
-    if (!raw) return emptySession()
-    const p = JSON.parse(raw) as Partial<Session>
-    if (!p || p.version !== 1 || !Array.isArray(p.discovered) || !Array.isArray(p.selected)) return emptySession()
-    return {
-      universeId: typeof p.universeId === 'string' ? p.universeId : undefined,
-      discovered: p.discovered.filter((x): x is string => typeof x === 'string'),
-      selected: p.selected.filter((x): x is string => typeof x === 'string'),
-      createdAt: typeof p.createdAt === 'number' ? p.createdAt : Date.now(),
-      version: 1,
+export const emptySession = (): Session => ({ discovered: [], selected: [], createdAt: Date.now(), version: 2 })
+
+/**
+ * Charge la session en la confrontant au catalogue courant. Une session peut
+ * survivre à un redéploiement : les identifiants d'univers et de sons qui
+ * n'existent plus sont écartés au lieu de bloquer la composition (c'est
+ * exactement ce qui rendait « Réessayer » sans fin après le renommage des
+ * univers).
+ */
+export function loadSession(knownUniverses: string[], knownSounds: string[]): Session {
+  const read = (key: string) => {
+    try {
+      const raw = localStorage.getItem(key)
+      return raw ? (JSON.parse(raw) as Partial<Session>) : null
+    } catch {
+      return null
     }
-  } catch {
-    return emptySession()
   }
+  const stored = read(KEY) ?? read(LEGACY_KEY)
+  if (!stored) return emptySession()
+
+  const universes = new Set(knownUniverses)
+  let universeId = typeof stored.universeId === 'string' ? stored.universeId : undefined
+  if (universeId && !universes.has(universeId)) universeId = LEGACY_UNIVERSES[universeId]
+  if (universeId && !universes.has(universeId)) universeId = undefined
+
+  const sounds = new Set(knownSounds)
+  const keep = (list: unknown) => (Array.isArray(list) ? list.filter((x): x is string => typeof x === 'string' && sounds.has(x)) : [])
+
+  const session: Session = {
+    universeId,
+    discovered: keep(stored.discovered),
+    selected: keep(stored.selected),
+    createdAt: typeof stored.createdAt === 'number' ? stored.createdAt : Date.now(),
+    version: 2,
+  }
+  if (localStorage.getItem(LEGACY_KEY)) {
+    try { localStorage.removeItem(LEGACY_KEY) } catch { /* ignore */ }
+  }
+  return session
 }
 
 export function saveSession(s: Session) {
-  try { localStorage.setItem(KEY, JSON.stringify(s)) } catch { /* quota / private mode */ }
+  try { localStorage.setItem(KEY, JSON.stringify(s)) } catch { /* quota / navigation privée */ }
 }
 
 export function clearSession() {
-  try { localStorage.removeItem(KEY) } catch { /* ignore */ }
+  try {
+    localStorage.removeItem(KEY)
+    localStorage.removeItem(LEGACY_KEY)
+  } catch { /* ignore */ }
 }

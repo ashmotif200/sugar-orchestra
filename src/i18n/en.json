@@ -62,7 +62,8 @@
     "hint": "Everything happens in your browser: nothing is uploaded, no other sound is added.",
     "error": "The piece could not be created.",
     "errorHint": "Your sounds are kept. You can try again.",
-    "retry": "Try again"
+    "retry": "Try again",
+    "chooseUniverse": "Choose your universe to compose"
   },
   "result": {
     "title": "Your creation",
@@ -77,13 +78,17 @@
     "adaptation": "Adaptation",
     "limit": "Limit",
     "signature": "recognisable",
-    "duration": "{time} · {bpm} BPM"
+    "duration": "{time} · {bpm} BPM",
+    "gone": "Your piece is no longer in memory: it is rendered on the fly, nothing is stored. Compose it again with the same sounds.",
+    "recompose": "Compose again"
   },
   "audio": {
     "loading": "Loading sounds…",
     "failed": "This step's sounds could not be loaded.",
     "retry": "Retry",
-    "tapToPlay": "No autoplay: tap listen."
+    "tapToPlay": "No autoplay: tap listen.",
+    "blockedTitle": "Sound did not start.",
+    "blockedHint": "Press ▶ again (the browser requires a gesture). If nothing plays, check the system volume and that the tab is not muted."
   },
   "offline": {
     "banner": "Connection lost — already loaded sounds remain available."

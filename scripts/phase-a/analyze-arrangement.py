@@ -58,11 +58,15 @@ def main():
     ap.add_argument('--json', required=True, help='sortie de analyze-reference.py')
     ap.add_argument('--stems', action='append', default=[], help='NAME=PATH')
     ap.add_argument('--out', required=True)
+    ap.add_argument('--bpm', type=float, default=None,
+                    help='force le tempo (quand le picker a choisi un relatif 3:2)')
+    ap.add_argument('--beats-per-bar', type=int, default=4,
+                    help='pulsations par mesure (4 = 4/4, 2 = 6/8 à la blanche pointée)')
     a = ap.parse_args()
 
     ref = json.loads(Path(a.json).read_text())
-    bpm = ref['rhythm']['beat']['bpm']
-    bar_s = ref['arrangement']['mix_timeline']['bar_seconds']
+    bpm = a.bpm or ref['rhythm']['beat']['bpm']
+    bar_s = (60.0 / bpm) * a.beats_per_bar
     duration = ref['files']['mix']['duration_s']
     n_bars = int(duration / bar_s)
 

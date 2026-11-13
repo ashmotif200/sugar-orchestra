@@ -1,0 +1,1871 @@
+{
+  "generated_at": "2026-11-13T10:27:49Z",
+  "tool": {
+    "librosa": "0.11.0",
+    "numpy": "2.2.6"
+  },
+  "files": {
+    "mix": {
+      "file": "tififi_Dansant_mix.wav",
+      "duration_s": 205.5895,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_db": -0.32,
+      "rms_db": -15.59,
+      "lufs_integrated": -10.1
+    },
+    "drums": {
+      "file": "tififi_Dansant_drums.mp3",
+      "duration_s": 205.5895,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_db": -2.37,
+      "rms_db": -20.96,
+      "lufs_integrated": -14.1
+    },
+    "vocals": {
+      "file": "tififi_Dansant_vocals.mp3",
+      "duration_s": 205.5895,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_db": -0.88,
+      "rms_db": -18.77,
+      "lufs_integrated": -14.3
+    },
+    "other": {
+      "file": "tififi_Dansant_other.mp3",
+      "duration_s": 205.5895,
+      "sample_rate": 44100,
+      "channels": 2,
+      "peak_db": -10.13,
+      "rms_db": -36.09,
+      "lufs_integrated": -30.5
+    }
+  },
+  "technical": {
+    "stem_alignment_and_reconstruction": {
+      "drums_offset_ms": 0.0,
+      "drums_sample_count_delta": 0,
+      "vocals_offset_ms": 0.0,
+      "vocals_sample_count_delta": 0,
+      "other_offset_ms": 0.0,
+      "other_sample_count_delta": 0,
+      "sum_vs_mix_correlation": 0.9969,
+      "mix_over_sum_gain": 1.0758,
+      "reconstructs": true,
+      "note": "offset search limited to +/-0.5 s; a non-zero offset means the stems are not sample-aligned. Gain is mix/sum level ratio: any constant value means the mix is the sum, scaled."
+    }
+  },
+  "rhythm": {
+    "mix": {
+      "tempogram_candidates": [
+        {
+          "bpm": 159.01,
+          "support": 1.0
+        },
+        {
+          "bpm": 152.0,
+          "support": 0.994
+        },
+        {
+          "bpm": 166.71,
+          "support": 0.992
+        },
+        {
+          "bpm": 219.91,
+          "support": 0.964
+        }
+      ],
+      "librosa_global_bpm": 103.36,
+      "note": "candidates within 4% are merged; the strongest candidate is not automatically the musical tempo"
+    },
+    "beat": {
+      "bpm": 103.36,
+      "beat_count": 353,
+      "beat_times_s": [
+        0.209,
+        0.755,
+        1.353,
+        1.8,
+        2.276,
+        2.966,
+        3.541,
+        3.965,
+        4.394,
+        4.911,
+        5.364,
+        5.788,
+        6.333,
+        7.012,
+        7.564,
+        7.947,
+        8.649,
+        9.183,
+        9.66,
+        10.06,
+        10.588,
+        11.047,
+        11.68,
+        12.324,
+        12.783,
+        13.247,
+        13.909,
+        14.547,
+        15.186,
+        15.859,
+        16.527,
+        17.183,
+        17.618,
+        18.216,
+        18.715,
+        19.331,
+        19.801,
+        20.434,
+        21.119,
+        21.699,
+        22.187,
+        22.651,
+        23.104,
+        23.702,
+        24.201,
+        24.822,
+        25.321,
+        25.942,
+        26.424,
+        27.092,
+        27.597,
+        28.23,
+        28.81,
+        29.286,
+        29.948,
+        30.401,
+        31.057,
+        31.614,
+        32.142,
+        32.612,
+        33.071,
+        33.704,
+        34.151,
+        34.633
+      ],
+      "interbeat_interval_ms": {
+        "mean": 573.2,
+        "std": 57.4
+      },
+      "microtiming_note": "std above is beat-tracker regularity, not performed microtiming"
+    },
+    "swing_syncopation": {
+      "first_offbeat_position": 0.314,
+      "straight_would_be": 0.5,
+      "swing_reading": "slightly early/late",
+      "beats_with_onsets_between": "348/352",
+      "note": "ratio is measured against a tracker's grid, so it inherits grid error"
+    },
+    "drums_only": {
+      "tempogram_candidates": [
+        {
+          "bpm": 159.01,
+          "support": 1.0
+        },
+        {
+          "bpm": 152.0,
+          "support": 0.981
+        },
+        {
+          "bpm": 166.71,
+          "support": 0.974
+        },
+        {
+          "bpm": 145.58,
+          "support": 0.915
+        }
+      ],
+      "librosa_global_bpm": 103.36,
+      "note": "candidates within 4% are merged; the strongest candidate is not automatically the musical tempo"
+    }
+  },
+  "bass": {},
+  "harmony": {
+    "other_stem": {
+      "top_key_candidates": [
+        {
+          "key": "G minor",
+          "correlation": 0.368
+        },
+        {
+          "key": "F# minor",
+          "correlation": 0.204
+        },
+        {
+          "key": "G major",
+          "correlation": 0.178
+        }
+      ],
+      "chroma_profile": [
+        0.351,
+        0.292,
+        0.296,
+        0.295,
+        0.31,
+        0.371,
+        0.623,
+        0.731,
+        0.639,
+        0.529,
+        0.469,
+        0.333
+      ],
+      "chroma_novelty_times_s": [
+        14.09,
+        15.41,
+        15.59,
+        16.27,
+        16.71,
+        16.9,
+        17.18,
+        17.41,
+        17.57,
+        18.02,
+        18.22,
+        18.48,
+        18.88,
+        19.35,
+        19.55,
+        19.82,
+        20.03,
+        20.06,
+        20.19,
+        20.67,
+        20.87,
+        21.13,
+        21.37,
+        27.99,
+        33.98,
+        35.29,
+        37.96,
+        38.66,
+        39.35,
+        43.33,
+        44.01,
+        47.32,
+        47.36,
+        56.63,
+        56.83,
+        59.28,
+        59.49,
+        60.15,
+        60.62,
+        60.81
+      ],
+      "limitation": "key correlation on a drone or a single chord is not a key; read the top-3 with their correlations, not just the winner"
+    }
+  },
+  "arrangement": {
+    "mix_timeline": {
+      "bar_seconds": 2.322,
+      "bars": [
+        {
+          "bar": 1,
+          "t_s": 0.0,
+          "rms_db": -17.2,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 2,
+          "t_s": 2.32,
+          "rms_db": -17.8,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 3,
+          "t_s": 4.64,
+          "rms_db": -19.2,
+          "onset_rate_per_s": 3.88
+        },
+        {
+          "bar": 4,
+          "t_s": 6.97,
+          "rms_db": -16.8,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 5,
+          "t_s": 9.29,
+          "rms_db": -17.0,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 6,
+          "t_s": 11.61,
+          "rms_db": -21.4,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 7,
+          "t_s": 13.93,
+          "rms_db": -16.7,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 8,
+          "t_s": 16.25,
+          "rms_db": -16.4,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 9,
+          "t_s": 18.58,
+          "rms_db": -17.2,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 10,
+          "t_s": 20.9,
+          "rms_db": -15.8,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 11,
+          "t_s": 23.22,
+          "rms_db": -16.8,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 12,
+          "t_s": 25.54,
+          "rms_db": -18.5,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 13,
+          "t_s": 27.86,
+          "rms_db": -15.9,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 14,
+          "t_s": 30.19,
+          "rms_db": -16.5,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 15,
+          "t_s": 32.51,
+          "rms_db": -15.8,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 16,
+          "t_s": 34.83,
+          "rms_db": -16.9,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 17,
+          "t_s": 37.15,
+          "rms_db": -17.5,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 18,
+          "t_s": 39.47,
+          "rms_db": -16.7,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 19,
+          "t_s": 41.8,
+          "rms_db": -16.1,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 20,
+          "t_s": 44.12,
+          "rms_db": -16.7,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 21,
+          "t_s": 46.44,
+          "rms_db": -15.2,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 22,
+          "t_s": 48.76,
+          "rms_db": -14.7,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 23,
+          "t_s": 51.08,
+          "rms_db": -18.6,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 24,
+          "t_s": 53.41,
+          "rms_db": -14.3,
+          "onset_rate_per_s": 9.91
+        },
+        {
+          "bar": 25,
+          "t_s": 55.73,
+          "rms_db": -16.5,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 26,
+          "t_s": 58.05,
+          "rms_db": -14.4,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 27,
+          "t_s": 60.37,
+          "rms_db": -13.8,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 28,
+          "t_s": 62.69,
+          "rms_db": -15.2,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 29,
+          "t_s": 65.02,
+          "rms_db": -14.4,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 30,
+          "t_s": 67.34,
+          "rms_db": -16.4,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 31,
+          "t_s": 69.66,
+          "rms_db": -14.3,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 32,
+          "t_s": 71.98,
+          "rms_db": -14.5,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 33,
+          "t_s": 74.3,
+          "rms_db": -14.9,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 34,
+          "t_s": 76.63,
+          "rms_db": -15.6,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 35,
+          "t_s": 78.95,
+          "rms_db": -15.2,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 36,
+          "t_s": 81.27,
+          "rms_db": -14.9,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 37,
+          "t_s": 83.59,
+          "rms_db": -15.3,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 38,
+          "t_s": 85.91,
+          "rms_db": -15.4,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 39,
+          "t_s": 88.24,
+          "rms_db": -15.6,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 40,
+          "t_s": 90.56,
+          "rms_db": -14.8,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 41,
+          "t_s": 92.88,
+          "rms_db": -16.3,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 42,
+          "t_s": 95.2,
+          "rms_db": -14.8,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 43,
+          "t_s": 97.52,
+          "rms_db": -15.2,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 44,
+          "t_s": 99.85,
+          "rms_db": -15.1,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 45,
+          "t_s": 102.17,
+          "rms_db": -14.8,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 46,
+          "t_s": 104.49,
+          "rms_db": -15.2,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 47,
+          "t_s": 106.81,
+          "rms_db": -15.3,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 48,
+          "t_s": 109.13,
+          "rms_db": -14.9,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 49,
+          "t_s": 111.46,
+          "rms_db": -14.4,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 50,
+          "t_s": 113.78,
+          "rms_db": -14.1,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 51,
+          "t_s": 116.1,
+          "rms_db": -13.9,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 52,
+          "t_s": 118.42,
+          "rms_db": -14.5,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 53,
+          "t_s": 120.74,
+          "rms_db": -13.3,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 54,
+          "t_s": 123.07,
+          "rms_db": -12.7,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 55,
+          "t_s": 125.39,
+          "rms_db": -13.4,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 56,
+          "t_s": 127.71,
+          "rms_db": -14.6,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 57,
+          "t_s": 130.03,
+          "rms_db": -13.6,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 58,
+          "t_s": 132.35,
+          "rms_db": -14.1,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 59,
+          "t_s": 134.67,
+          "rms_db": -15.1,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 60,
+          "t_s": 137.0,
+          "rms_db": -15.5,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 61,
+          "t_s": 139.32,
+          "rms_db": -14.8,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 62,
+          "t_s": 141.64,
+          "rms_db": -14.3,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 63,
+          "t_s": 143.96,
+          "rms_db": -15.1,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 64,
+          "t_s": 146.28,
+          "rms_db": -15.4,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 65,
+          "t_s": 148.61,
+          "rms_db": -13.6,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 66,
+          "t_s": 150.93,
+          "rms_db": -16.0,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 67,
+          "t_s": 153.25,
+          "rms_db": -15.0,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 68,
+          "t_s": 155.57,
+          "rms_db": -15.2,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 69,
+          "t_s": 157.89,
+          "rms_db": -14.6,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 70,
+          "t_s": 160.22,
+          "rms_db": -14.6,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 71,
+          "t_s": 162.54,
+          "rms_db": -15.3,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 72,
+          "t_s": 164.86,
+          "rms_db": -15.3,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 73,
+          "t_s": 167.18,
+          "rms_db": -14.7,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 74,
+          "t_s": 169.5,
+          "rms_db": -14.1,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 75,
+          "t_s": 171.83,
+          "rms_db": -13.9,
+          "onset_rate_per_s": 9.04
+        },
+        {
+          "bar": 76,
+          "t_s": 174.15,
+          "rms_db": -13.9,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 77,
+          "t_s": 176.47,
+          "rms_db": -13.8,
+          "onset_rate_per_s": 9.04
+        },
+        {
+          "bar": 78,
+          "t_s": 178.79,
+          "rms_db": -13.1,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 79,
+          "t_s": 181.11,
+          "rms_db": -15.8,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 80,
+          "t_s": 183.44,
+          "rms_db": -17.4,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 81,
+          "t_s": 185.76,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 82,
+          "t_s": 188.08,
+          "rms_db": -20.7,
+          "onset_rate_per_s": 8.61
+        },
+        {
+          "bar": 83,
+          "t_s": 190.4,
+          "rms_db": -24.8,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 84,
+          "t_s": 192.72,
+          "rms_db": -31.3,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 85,
+          "t_s": 195.05,
+          "rms_db": -40.9,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 86,
+          "t_s": 197.37,
+          "rms_db": -51.0,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 87,
+          "t_s": 199.69,
+          "rms_db": -64.8,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 88,
+          "t_s": 202.01,
+          "rms_db": -93.7,
+          "onset_rate_per_s": 2.15
+        }
+      ]
+    },
+    "drums_timeline": {
+      "bar_seconds": 2.322,
+      "bars": [
+        {
+          "bar": 1,
+          "t_s": 0.0,
+          "rms_db": -78.8,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 2,
+          "t_s": 2.32,
+          "rms_db": -82.9,
+          "onset_rate_per_s": 10.77
+        },
+        {
+          "bar": 3,
+          "t_s": 4.64,
+          "rms_db": -84.1,
+          "onset_rate_per_s": 12.49
+        },
+        {
+          "bar": 4,
+          "t_s": 6.97,
+          "rms_db": -79.0,
+          "onset_rate_per_s": 10.34
+        },
+        {
+          "bar": 5,
+          "t_s": 9.29,
+          "rms_db": -35.7,
+          "onset_rate_per_s": 3.01
+        },
+        {
+          "bar": 6,
+          "t_s": 11.61,
+          "rms_db": -28.1,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 7,
+          "t_s": 13.93,
+          "rms_db": -29.3,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 8,
+          "t_s": 16.25,
+          "rms_db": -28.9,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 9,
+          "t_s": 18.58,
+          "rms_db": -25.5,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 10,
+          "t_s": 20.9,
+          "rms_db": -23.4,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 11,
+          "t_s": 23.22,
+          "rms_db": -20.7,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 12,
+          "t_s": 25.54,
+          "rms_db": -22.3,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 13,
+          "t_s": 27.86,
+          "rms_db": -21.3,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 14,
+          "t_s": 30.19,
+          "rms_db": -22.4,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 15,
+          "t_s": 32.51,
+          "rms_db": -22.3,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 16,
+          "t_s": 34.83,
+          "rms_db": -21.8,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 17,
+          "t_s": 37.15,
+          "rms_db": -22.4,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 18,
+          "t_s": 39.47,
+          "rms_db": -20.7,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 19,
+          "t_s": 41.8,
+          "rms_db": -21.6,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 20,
+          "t_s": 44.12,
+          "rms_db": -22.6,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 21,
+          "t_s": 46.44,
+          "rms_db": -21.7,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 22,
+          "t_s": 48.76,
+          "rms_db": -20.8,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 23,
+          "t_s": 51.08,
+          "rms_db": -23.1,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 24,
+          "t_s": 53.41,
+          "rms_db": -22.5,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 25,
+          "t_s": 55.73,
+          "rms_db": -23.1,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 26,
+          "t_s": 58.05,
+          "rms_db": -22.2,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 27,
+          "t_s": 60.37,
+          "rms_db": -23.2,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 28,
+          "t_s": 62.69,
+          "rms_db": -21.9,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 29,
+          "t_s": 65.02,
+          "rms_db": -21.5,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 30,
+          "t_s": 67.34,
+          "rms_db": -20.6,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 31,
+          "t_s": 69.66,
+          "rms_db": -22.7,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 32,
+          "t_s": 71.98,
+          "rms_db": -20.1,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 33,
+          "t_s": 74.3,
+          "rms_db": -20.0,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 34,
+          "t_s": 76.63,
+          "rms_db": -20.0,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 35,
+          "t_s": 78.95,
+          "rms_db": -19.6,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 36,
+          "t_s": 81.27,
+          "rms_db": -20.2,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 37,
+          "t_s": 83.59,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 38,
+          "t_s": 85.91,
+          "rms_db": -19.6,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 39,
+          "t_s": 88.24,
+          "rms_db": -19.7,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 40,
+          "t_s": 90.56,
+          "rms_db": -19.5,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 41,
+          "t_s": 92.88,
+          "rms_db": -19.9,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 42,
+          "t_s": 95.2,
+          "rms_db": -18.6,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 43,
+          "t_s": 97.52,
+          "rms_db": -20.1,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 44,
+          "t_s": 99.85,
+          "rms_db": -20.3,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 45,
+          "t_s": 102.17,
+          "rms_db": -19.8,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 46,
+          "t_s": 104.49,
+          "rms_db": -18.9,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 47,
+          "t_s": 106.81,
+          "rms_db": -19.4,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 48,
+          "t_s": 109.13,
+          "rms_db": -18.8,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 49,
+          "t_s": 111.46,
+          "rms_db": -19.6,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 50,
+          "t_s": 113.78,
+          "rms_db": -18.5,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 51,
+          "t_s": 116.1,
+          "rms_db": -19.2,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 52,
+          "t_s": 118.42,
+          "rms_db": -18.9,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 53,
+          "t_s": 120.74,
+          "rms_db": -20.3,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 54,
+          "t_s": 123.07,
+          "rms_db": -19.2,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 55,
+          "t_s": 125.39,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 56,
+          "t_s": 127.71,
+          "rms_db": -19.3,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 57,
+          "t_s": 130.03,
+          "rms_db": -19.2,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 58,
+          "t_s": 132.35,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 59,
+          "t_s": 134.67,
+          "rms_db": -20.0,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 60,
+          "t_s": 137.0,
+          "rms_db": -20.5,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 61,
+          "t_s": 139.32,
+          "rms_db": -18.4,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 62,
+          "t_s": 141.64,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 63,
+          "t_s": 143.96,
+          "rms_db": -19.1,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 64,
+          "t_s": 146.28,
+          "rms_db": -19.4,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 65,
+          "t_s": 148.61,
+          "rms_db": -18.3,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 66,
+          "t_s": 150.93,
+          "rms_db": -19.5,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 67,
+          "t_s": 153.25,
+          "rms_db": -18.9,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 68,
+          "t_s": 155.57,
+          "rms_db": -20.4,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 69,
+          "t_s": 157.89,
+          "rms_db": -18.9,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 70,
+          "t_s": 160.22,
+          "rms_db": -19.8,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 71,
+          "t_s": 162.54,
+          "rms_db": -19.4,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 72,
+          "t_s": 164.86,
+          "rms_db": -19.7,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 73,
+          "t_s": 167.18,
+          "rms_db": -18.8,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 74,
+          "t_s": 169.5,
+          "rms_db": -18.9,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 75,
+          "t_s": 171.83,
+          "rms_db": -19.1,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 76,
+          "t_s": 174.15,
+          "rms_db": -18.7,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 77,
+          "t_s": 176.47,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 78,
+          "t_s": 178.79,
+          "rms_db": -20.1,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 79,
+          "t_s": 181.11,
+          "rms_db": -21.3,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 80,
+          "t_s": 183.44,
+          "rms_db": -22.9,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 81,
+          "t_s": 185.76,
+          "rms_db": -24.6,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 82,
+          "t_s": 188.08,
+          "rms_db": -27.2,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 83,
+          "t_s": 190.4,
+          "rms_db": -31.8,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 84,
+          "t_s": 192.72,
+          "rms_db": -37.3,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 85,
+          "t_s": 195.05,
+          "rms_db": -48.0,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 86,
+          "t_s": 197.37,
+          "rms_db": -58.3,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 87,
+          "t_s": 199.69,
+          "rms_db": -72.3,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 88,
+          "t_s": 202.01,
+          "rms_db": -105.6,
+          "onset_rate_per_s": 4.74
+        }
+      ]
+    },
+    "vocals_timeline": {
+      "bar_seconds": 2.322,
+      "bars": [
+        {
+          "bar": 1,
+          "t_s": 0.0,
+          "rms_db": -17.3,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 2,
+          "t_s": 2.32,
+          "rms_db": -17.8,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 3,
+          "t_s": 4.64,
+          "rms_db": -19.2,
+          "onset_rate_per_s": 3.88
+        },
+        {
+          "bar": 4,
+          "t_s": 6.97,
+          "rms_db": -16.8,
+          "onset_rate_per_s": 5.17
+        },
+        {
+          "bar": 5,
+          "t_s": 9.29,
+          "rms_db": -17.1,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 6,
+          "t_s": 11.61,
+          "rms_db": -23.3,
+          "onset_rate_per_s": 11.63
+        },
+        {
+          "bar": 7,
+          "t_s": 13.93,
+          "rms_db": -17.2,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 8,
+          "t_s": 16.25,
+          "rms_db": -17.8,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 9,
+          "t_s": 18.58,
+          "rms_db": -19.1,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 10,
+          "t_s": 20.9,
+          "rms_db": -17.3,
+          "onset_rate_per_s": 9.91
+        },
+        {
+          "bar": 11,
+          "t_s": 23.22,
+          "rms_db": -20.9,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 12,
+          "t_s": 25.54,
+          "rms_db": -22.9,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 13,
+          "t_s": 27.86,
+          "rms_db": -18.5,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 14,
+          "t_s": 30.19,
+          "rms_db": -18.9,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 15,
+          "t_s": 32.51,
+          "rms_db": -17.9,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 16,
+          "t_s": 34.83,
+          "rms_db": -20.1,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 17,
+          "t_s": 37.15,
+          "rms_db": -20.8,
+          "onset_rate_per_s": 11.2
+        },
+        {
+          "bar": 18,
+          "t_s": 39.47,
+          "rms_db": -20.8,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 19,
+          "t_s": 41.8,
+          "rms_db": -18.7,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 20,
+          "t_s": 44.12,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 4.74
+        },
+        {
+          "bar": 21,
+          "t_s": 46.44,
+          "rms_db": -17.2,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 22,
+          "t_s": 48.76,
+          "rms_db": -16.8,
+          "onset_rate_per_s": 6.03
+        },
+        {
+          "bar": 23,
+          "t_s": 51.08,
+          "rms_db": -22.2,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 24,
+          "t_s": 53.41,
+          "rms_db": -15.5,
+          "onset_rate_per_s": 8.61
+        },
+        {
+          "bar": 25,
+          "t_s": 55.73,
+          "rms_db": -19.1,
+          "onset_rate_per_s": 9.04
+        },
+        {
+          "bar": 26,
+          "t_s": 58.05,
+          "rms_db": -16.1,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 27,
+          "t_s": 60.37,
+          "rms_db": -14.8,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 28,
+          "t_s": 62.69,
+          "rms_db": -17.2,
+          "onset_rate_per_s": 10.34
+        },
+        {
+          "bar": 29,
+          "t_s": 65.02,
+          "rms_db": -16.2,
+          "onset_rate_per_s": 8.61
+        },
+        {
+          "bar": 30,
+          "t_s": 67.34,
+          "rms_db": -20.6,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 31,
+          "t_s": 69.66,
+          "rms_db": -15.8,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 32,
+          "t_s": 71.98,
+          "rms_db": -17.7,
+          "onset_rate_per_s": 9.04
+        },
+        {
+          "bar": 33,
+          "t_s": 74.3,
+          "rms_db": -18.7,
+          "onset_rate_per_s": 9.91
+        },
+        {
+          "bar": 34,
+          "t_s": 76.63,
+          "rms_db": -19.9,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 35,
+          "t_s": 78.95,
+          "rms_db": -19.3,
+          "onset_rate_per_s": 5.6
+        },
+        {
+          "bar": 36,
+          "t_s": 81.27,
+          "rms_db": -17.9,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 37,
+          "t_s": 83.59,
+          "rms_db": -20.3,
+          "onset_rate_per_s": 9.47
+        },
+        {
+          "bar": 38,
+          "t_s": 85.91,
+          "rms_db": -19.5,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 39,
+          "t_s": 88.24,
+          "rms_db": -20.1,
+          "onset_rate_per_s": 9.04
+        },
+        {
+          "bar": 40,
+          "t_s": 90.56,
+          "rms_db": -18.5,
+          "onset_rate_per_s": 9.47
+        },
+        {
+          "bar": 41,
+          "t_s": 92.88,
+          "rms_db": -21.9,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 42,
+          "t_s": 95.2,
+          "rms_db": -20.1,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 43,
+          "t_s": 97.52,
+          "rms_db": -19.9,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 44,
+          "t_s": 99.85,
+          "rms_db": -19.2,
+          "onset_rate_per_s": 10.34
+        },
+        {
+          "bar": 45,
+          "t_s": 102.17,
+          "rms_db": -18.6,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 46,
+          "t_s": 104.49,
+          "rms_db": -21.6,
+          "onset_rate_per_s": 8.61
+        },
+        {
+          "bar": 47,
+          "t_s": 106.81,
+          "rms_db": -20.2,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 48,
+          "t_s": 109.13,
+          "rms_db": -20.3,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 49,
+          "t_s": 111.46,
+          "rms_db": -17.7,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 50,
+          "t_s": 113.78,
+          "rms_db": -18.4,
+          "onset_rate_per_s": 10.77
+        },
+        {
+          "bar": 51,
+          "t_s": 116.1,
+          "rms_db": -17.5,
+          "onset_rate_per_s": 11.2
+        },
+        {
+          "bar": 52,
+          "t_s": 118.42,
+          "rms_db": -18.7,
+          "onset_rate_per_s": 9.47
+        },
+        {
+          "bar": 53,
+          "t_s": 120.74,
+          "rms_db": -15.2,
+          "onset_rate_per_s": 9.91
+        },
+        {
+          "bar": 54,
+          "t_s": 123.07,
+          "rms_db": -15.0,
+          "onset_rate_per_s": 9.47
+        },
+        {
+          "bar": 55,
+          "t_s": 125.39,
+          "rms_db": -16.6,
+          "onset_rate_per_s": 12.06
+        },
+        {
+          "bar": 56,
+          "t_s": 127.71,
+          "rms_db": -18.8,
+          "onset_rate_per_s": 9.04
+        },
+        {
+          "bar": 57,
+          "t_s": 130.03,
+          "rms_db": -16.5,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 58,
+          "t_s": 132.35,
+          "rms_db": -17.9,
+          "onset_rate_per_s": 11.63
+        },
+        {
+          "bar": 59,
+          "t_s": 134.67,
+          "rms_db": -19.4,
+          "onset_rate_per_s": 8.61
+        },
+        {
+          "bar": 60,
+          "t_s": 137.0,
+          "rms_db": -19.5,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 61,
+          "t_s": 139.32,
+          "rms_db": -20.8,
+          "onset_rate_per_s": 9.91
+        },
+        {
+          "bar": 62,
+          "t_s": 141.64,
+          "rms_db": -17.9,
+          "onset_rate_per_s": 9.91
+        },
+        {
+          "bar": 63,
+          "t_s": 143.96,
+          "rms_db": -20.3,
+          "onset_rate_per_s": 9.47
+        },
+        {
+          "bar": 64,
+          "t_s": 146.28,
+          "rms_db": -21.2,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 65,
+          "t_s": 148.61,
+          "rms_db": -17.3,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 66,
+          "t_s": 150.93,
+          "rms_db": -22.0,
+          "onset_rate_per_s": 9.04
+        },
+        {
+          "bar": 67,
+          "t_s": 153.25,
+          "rms_db": -20.5,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 68,
+          "t_s": 155.57,
+          "rms_db": -19.0,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 69,
+          "t_s": 157.89,
+          "rms_db": -19.2,
+          "onset_rate_per_s": 10.34
+        },
+        {
+          "bar": 70,
+          "t_s": 160.22,
+          "rms_db": -18.4,
+          "onset_rate_per_s": 8.61
+        },
+        {
+          "bar": 71,
+          "t_s": 162.54,
+          "rms_db": -20.8,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 72,
+          "t_s": 164.86,
+          "rms_db": -19.9,
+          "onset_rate_per_s": 6.89
+        },
+        {
+          "bar": 73,
+          "t_s": 167.18,
+          "rms_db": -19.8,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 74,
+          "t_s": 169.5,
+          "rms_db": -17.8,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 75,
+          "t_s": 171.83,
+          "rms_db": -17.7,
+          "onset_rate_per_s": 9.04
+        },
+        {
+          "bar": 76,
+          "t_s": 174.15,
+          "rms_db": -18.2,
+          "onset_rate_per_s": 8.61
+        },
+        {
+          "bar": 77,
+          "t_s": 176.47,
+          "rms_db": -17.4,
+          "onset_rate_per_s": 7.75
+        },
+        {
+          "bar": 78,
+          "t_s": 178.79,
+          "rms_db": -15.1,
+          "onset_rate_per_s": 9.91
+        },
+        {
+          "bar": 79,
+          "t_s": 181.11,
+          "rms_db": -19.1,
+          "onset_rate_per_s": 9.91
+        },
+        {
+          "bar": 80,
+          "t_s": 183.44,
+          "rms_db": -21.1,
+          "onset_rate_per_s": 9.04
+        },
+        {
+          "bar": 81,
+          "t_s": 185.76,
+          "rms_db": -22.5,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 82,
+          "t_s": 188.08,
+          "rms_db": -23.5,
+          "onset_rate_per_s": 8.18
+        },
+        {
+          "bar": 83,
+          "t_s": 190.4,
+          "rms_db": -27.6,
+          "onset_rate_per_s": 9.47
+        },
+        {
+          "bar": 84,
+          "t_s": 192.72,
+          "rms_db": -34.3,
+          "onset_rate_per_s": 8.61
+        },
+        {
+          "bar": 85,
+          "t_s": 195.05,
+          "rms_db": -43.3,
+          "onset_rate_per_s": 7.32
+        },
+        {
+          "bar": 86,
+          "t_s": 197.37,
+          "rms_db": -53.0,
+          "onset_rate_per_s": 6.46
+        },
+        {
+          "bar": 87,
+          "t_s": 199.69,
+          "rms_db": -67.2,
+          "onset_rate_per_s": 8.61
+        },
+        {
+          "bar": 88,
+          "t_s": 202.01,
+          "rms_db": -90.4,
+          "onset_rate_per_s": 10.77
+        }
+      ]
+    }
+  },
+  "limits": [
+    "tempo is a set of hypotheses, not a verdict",
+    "key correlation is meaningless on unpitched/drone material",
+    "beat grid is an estimate; swing and syncopation inherit its error",
+    "no transcription is produced: pitch lists are measurements"
+  ],
+  "elapsed_s": 38.8
+}

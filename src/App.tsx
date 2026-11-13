@@ -16,7 +16,14 @@ import SelfTest from './ui/SelfTest'
 export default function App() {
   const selftest = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('selftest')
   const [route, navigate] = useRoute()
-  const [session, setSession] = useState<Session>(loadSession)
+  const [session, setSession] = useState<Session>(() =>
+    loadSession(
+      // seuls les univers réellement implémentés peuvent survivre à un
+      // rechargement : un univers « Bientôt » ne doit pas bloquer la composition
+      UNIVERSES.filter((u) => u.available).map((u) => u.id),
+      catalog.sounds.map((s) => s.id),
+    ),
+  )
   const [piece, setPiece] = useState<Piece | null>(null)
   const [offline, setOffline] = useState(typeof navigator !== 'undefined' ? !navigator.onLine : false)
 
@@ -209,13 +216,36 @@ export default function App() {
           )}
 
           {route.name === 'composer' && (
-            session.selected.length === 0 || !session.universeId ? (
+            session.selected.length === 0 ? (
               <div className="screen">
                 <h1 className="h1">{t('carnet.composeEmpty')}</h1>
+                <p className="sub">{t('carnet.emptySelectedHint')}</p>
                 <div className="row-actions">
-                  <Button onClick={() => navigate({ name: session.universeId ? 'carnet' : 'home' })}>
-                    {session.universeId ? t('carnet.title') : t('home.cta', { universe: UNIVERSES[0].name })}
-                  </Button>
+                  <Button onClick={() => navigate({ name: 'carnet' })}>{t('carnet.title')}</Button>
+                  <Button variant="secondary" onClick={() => navigate({ name: 'parcours' })}>{t('carnet.goParcours')}</Button>
+                </div>
+              </div>
+            ) : !session.universeId || !getUniverse(session.universeId)?.available ? (
+              <div className="screen">
+                <h1 className="h1">{t('composer.chooseUniverse')}</h1>
+                <p className="sub">
+                  {session.selected.length} son{session.selected.length > 1 ? 's' : ''} dans ma musique.
+                </p>
+                <div className="uni-grid">
+                  {UNIVERSES.filter((u) => u.available).map((u) => (
+                    <button
+                      key={u.id}
+                      className="uni-card"
+                      style={{ background: u.fill ?? u.accent, color: u.id === 'sega-trad' ? 'var(--ink)' : '#fffaf0' }}
+                      onClick={() => pickUniverse(u.id)}
+                    >
+                      <span className="uni-name">{u.name}</span>
+                      <span className="uni-emotion">{u.emotion}</span>
+                    </button>
+                  ))}
+                </div>
+                <div className="row-actions">
+                  <Button variant="ghost" onClick={() => navigate({ name: 'carnet' })}>{t('result.back')}</Button>
                 </div>
               </div>
             ) : (
@@ -233,9 +263,10 @@ export default function App() {
             ) : (
               <div className="screen">
                 <h1 className="h1">{t('result.title')}</h1>
-                <p className="sub">{t('carnet.emptySelectedHint')}</p>
+                <p className="sub">{t('result.gone')}</p>
                 <div className="row-actions">
-                  <Button onClick={() => navigate({ name: 'carnet' })}>{t('result.back')}</Button>
+                  <Button onClick={() => navigate({ name: 'composer' })}>{t('result.recompose')}</Button>
+                  <Button variant="secondary" onClick={() => navigate({ name: 'carnet' })}>{t('result.back')}</Button>
                 </div>
               </div>
             )
