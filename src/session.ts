@@ -46,17 +46,25 @@ export function loadSession(knownUniverses: string[], knownSounds: string[]): Se
   const sounds = new Set(knownSounds)
   const keep = (list: unknown) => (Array.isArray(list) ? list.filter((x): x is string => typeof x === 'string' && sounds.has(x)) : [])
 
-  const session: Session = {
+  return {
     universeId,
     discovered: keep(stored.discovered),
     selected: keep(stored.selected),
     createdAt: typeof stored.createdAt === 'number' ? stored.createdAt : Date.now(),
     version: 2,
   }
-  if (localStorage.getItem(LEGACY_KEY)) {
-    try { localStorage.removeItem(LEGACY_KEY) } catch { /* ignore */ }
-  }
-  return session
+}
+
+/**
+ * Supprime la clé de la première version, une fois que la version courante a
+ * bien été écrite. Volontairement hors de `loadSession` : cette fonction est
+ * appelée deux fois par React en mode strict, et y supprimer la clé faisait
+ * que le second appel repartait d'une session vide.
+ */
+export function purgeLegacyKey() {
+  try {
+    if (localStorage.getItem(LEGACY_KEY)) localStorage.removeItem(LEGACY_KEY)
+  } catch { /* ignore */ }
 }
 
 export function saveSession(s: Session) {

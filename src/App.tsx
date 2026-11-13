@@ -2,7 +2,7 @@ import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } fro
 import { audio, catalog, soundById, stepSounds, titleOf } from './audio/service'
 import { t } from './i18n'
 import { useRoute } from './router'
-import { clearSession, emptySession, loadSession, saveSession, type Session } from './session'
+import { clearSession, emptySession, loadSession, purgeLegacyKey, saveSession, type Session } from './session'
 import { getUniverse, UNIVERSES } from './engine/universes'
 import { encodeWav, type RenderReport } from './engine/render'
 import type { Score } from './engine/plan'
@@ -35,7 +35,7 @@ export default function App() {
   const [piece, setPiece] = useState<Piece | null>(null)
   const [offline, setOffline] = useState(typeof navigator !== 'undefined' ? !navigator.onLine : false)
 
-  useEffect(() => { saveSession(session) }, [session])
+  useEffect(() => { saveSession(session); purgeLegacyKey() }, [session])
   useEffect(() => {
     const on = () => setOffline(false)
     const off = () => setOffline(true)
