@@ -1,191 +1,210 @@
-# Sugar Orchestra
+# Sugar Orchestra — prototype Muséomix
 
-Prototype Muséomix pour **L'Aventure du Sucre** (Maurice). Le visiteur écoute les sons
-du musée, en garde quelques-uns, choisit un univers musical, et reçoit à la fin une
-pièce composée **exclusivement à partir de ses propres sons**.
+L'Aventure du Sucre (Maurice). Le visiteur écoute les sons du musée, les collecte,
+choisit ceux qu'il garde, puis génère une pièce composée **uniquement** de ces sons.
 
-Démo prévue : samedi 14 novembre 2026, 10–15 min de présentation.
+Ce dépôt implémente le dossier de transmission du 13 novembre 2026 (direction C
+« Tronçons ») : six écrans routés, sept étapes, deux univers réellement fonctionnels.
 
 ---
 
-## 1. Démarrage
+## 1. Lancer
 
 ```bash
 cd /workspace/sugar-orchestra
-npm install          # déjà fait
-npm run dev          # http://127.0.0.1:5180
+npm install            # déjà fait
+npm run dev            # http://127.0.0.1:5180
 ```
 
-Pour la présentation, préférer le build statique (plus rapide, aucun HMR) :
+Pour la présentation (plus rapide, sans HMR) :
 
 ```bash
 npm run build
-npm run preview      # http://127.0.0.1:5181
+npm run preview        # http://127.0.0.1:5181
 ```
 
-Les 12 sons de la démo sont préchargés au démarrage (~15 Mo). Une fois la page
-ouverte, **plus aucun accès réseau n'est nécessaire** : la composition se fait dans
-le navigateur. Vérifié serveur coupé : la pièce se rend toujours.
+Les sons sont décodés **à la demande, par étape** : ouvrir l'étape 6 ne télécharge
+que ses six fichiers. Une fois une étape chargée, plus aucun accès réseau n'est
+nécessaire pour l'écouter ou composer. Un bandeau signale la perte de connexion.
 
-## 2. Scénario de présentation (2–3 minutes)
+## 2. Routes (hash router, cibles de QR codes)
 
-1. **Accueil** — « Les sons du musée deviennent ta musique. » Choisir ⚡ Énergétique.
-   Les deux autres univers sont affichés désactivés : ils ne sont pas implémentés, on
-   ne prétend pas le contraire.
-2. **Écoute** — descendre dans 2–3 salles, appuyer sur ▶ pour écouter (le son
-   s'arrête tout seul au bout de 4,5 s), garder 4 à 6 sons avec « + garder ».
-   Insister : *il y a 12 sons pour 6 places*.
-3. **Révélation** — « Créer ma pièce ». Le rendu prend ~6 s (écran « on assemble tes
-   sons »). La pièce n'a jamais été préécoutée : c'est la surprise.
-4. **Écoute de la pièce** (35 s) — puis montrer la liste « Les sons que tu as gardés »
-   avec l'instant où chacun apparaît à l'état brut.
-5. **La preuve** — ouvrir « Preuve technique » : aucune source étrangère, chaque son
-   reconnaissable, aucun sample externe.
-6. **La démonstration qui convainc** — revenir, changer d'univers (🌊 Rêveur), refaire
-   une pièce avec les **mêmes** sons : même matière, résultat radicalement différent
-   (pas de batterie, nappes granulaires, 72 BPM).
-7. Si on vous demande « et si je choisis d'autres sons ? » — changer un son et
-   recomposer : la pièce change, l'ossature reste cohérente.
+| Route | Écran |
+|---|---|
+| `#/` | Accueil + choix d'univers |
+| `#/parcours` | Les sept étapes |
+| `#/etape/:id` | Étape et fiche son (1 à 7) |
+| `#/carnet` | Carnet : découverts / dans ma musique |
+| `#/composer` | Génération |
+| `#/resultat` | Résultat |
 
-**Plan B** : `assets/backup/demo-electro-sega.wav` et `demo-ambient-creole.wav` sont
-deux pièces déjà rendues avec les vrais sons. Si le navigateur ou le son lâche, on les
-lit dans n'importe quel lecteur. Ce sont des pièces réelles du moteur, pas des maquettes.
+Arriver par `#/etape/6` sans univers choisi n'empêche pas d'écouter ; il faut choisir
+un univers avant de composer.
 
-```bash
-# lecture du plan B
-ffplay -autoexit assets/backup/demo-electro-sega.wav
-```
+## 3. Scénario de présentation (2–3 min)
 
-**Réinitialisation** entre deux passants : bouton « Recommencer » sur l'écran final, ou
-« réinitialiser » dans la barre de collection, ou vider le stockage local.
+1. **Accueil** — « Collectez les sons. Créez votre musique. » Deux univers sont actifs,
+   deux annoncent « Bientôt » (jamais présentés comme disponibles).
+2. **Parcours** — les sept tronçons de canne. Étape 4 « La mémoire des plantations »
+   porte le badge *Écoute contextualisée* ; étape 5 « La canne » le badge *À confirmer*.
+3. **Fiche son** — écouter (jamais automatique), le son passe à « Son découvert »,
+   puis « + Ajouter à ma musique ». Découvrir ≠ inclure : c'est le cœur du geste.
+4. **Carnet** — deux onglets, retrait possible, compteur dans la barre du haut.
+5. **Composer** — trois phases réelles (décodage, écriture, rendu), annulables.
+6. **Résultat** — lecture, forme d'onde colorée par son d'origine, « Les sons utilisés »
+   avec l'instant de chacun, téléchargement WAV. Pas de bouton de partage : il n'existe
+   pas, il n'est pas affiché.
 
-## 3. Le moteur de composition
+**La démonstration qui convainc** : refaire une pièce avec **les mêmes sons** dans
+l'autre univers. Electro Sega (112 BPM, 4/4, tambour filtré) et Sega traditionnel
+(126, 6/8, ravanne/triangle, appel-réponse) donnent deux morceaux franchement
+différents avec la même matière.
 
-Tout se passe dans le navigateur, sans serveur.
+**Plan B** : `assets/backup/demo-electro-sega.wav` et `demo-sega-traditionnel.wav`
+sont deux pièces déjà rendues par le moteur avec les vrais sons (35,9 s, crête −1 dB).
+Si le navigateur lâche, on les lit dans n'importe quel lecteur.
 
-- **Analyse** (`scripts/lib/analyze.mjs`) : à l'import, chaque WAV est mesuré — FFT,
-  centroïde spectral, aplaticité, taux de passages par zéro, hauteur fondamentale par
-  NSDF/McLeod, attaques par flux d'énergie robuste (médiane + MAD). Ces mesures
-  proposent des rôles ; **ce ne sont pas des verdicts artistiques**.
+**Réinitialisation** entre deux passants : « Nouvelle visite » sur le résultat, ou
+vider `localStorage` (clé `sugar-orchestra.session.v1`).
+
+## 4. Contenu : 7 étapes, 40 sons
+
+`config/steps.json` rattache les séquences de l'inventaire aux sept étapes :
+1 Origines · 2 Âges du sucre · 3 Métiers · 4 Mémoire · 5 Canne · 6 Canne → sucre ·
+7 Bagasse. Les séquences 7 et 8 de l'inventaire sont réunies dans « Bagasse » : le
+dossier décrit sept étapes pour huit séquences. **C'est une proposition à valider**
+(le dossier liste d'ailleurs « la liste finale des sons, étape 5 notamment » comme
+point ouvert).
+
+Répartition importée : 5 / 5 / 4 / 13 / 2 / 6 / 5 sons. L'étape 5 ne contient que
+deux sons : elle est affichée « À confirmer », sans prétendre à une étape complète.
+
+**Sons sensibles** — `04_01_Fouet`, `04_02_Fers_chaines`, `04_05_Ayo_MAQUETTE_A_VALIDER`
+sont marqués `sensitive` / `not_musical` dans le catalogue. Ils restent écoutables
+dans l'étape 4 (écoute contextualisée) mais :
+- le bouton d'ajout n'existe pas, remplacé par « Histoire seulement » ;
+- le moteur les refuse explicitement (`buildScore` filtre `sensitive` et
+  `not_musical`), même si l'état de session était modifié à la main.
+
+**Anecdotes** : aucun texte historique validé n'a été fourni. La fiche affiche la
+`note` de l'inventaire, libellée « Note d'enregistrement » — jamais une histoire
+inventée. Le champ `history` existe pour recevoir les textes du musée.
+
+## 5. Moteur de composition
+
+Tout dans le navigateur (`OfflineAudioContext`), aucun serveur.
+
+- **Analyse** (`scripts/lib/analyze.mjs`) : FFT, centroïde, aplaticité, passages par
+  zéro, hauteur par NSDF/McLeod, attaques par flux d'énergie robuste, et **énergie de
+  chaque attaque** (sert à choisir le passage le plus représentatif).
 - **Rôles** (`src/engine/roles.ts`) : Basse, Mélodie, Rythmique, Ear candy, Texture.
-  Les rôles validés priment ; sinon le moteur promeut un son par mesure (le plus grave
-  devient la basse, etc.) et **l'affiche comme adaptation** sur l'écran final.
-- **Deux univers réels** (`src/engine/plan.ts`) :
-  - **Electro Sega**, 112 BPM, 16 mesures, 35,9 s : grosse caisse / caisse claire /
-    shaker taillés dans les sons du visiteur, basse en croches, motif pentatonique,
-    éclats filtrés.
-  - **Ambient créole**, 72 BPM, 12 mesures, 41,6 s : deux nappes granulaires, bourdon
-    de basse, cloches espacées, grains inversés, aucun tambour.
-- **Rendu** (`src/engine/render.ts`) : `OfflineAudioContext`, graphe construit
-  événement par événement (découpe, transposition, filtres balayés, granulation,
-  inversion, envoi d'écho procédural), bus par rôle, compresseur, puis normalisation
-  loudness (≈ −16 dBFS RMS, crête plafonnée à −1 dBFS).
-- **Déterminisme** : la graine dérive de l'univers + des identifiants triés. Une même
-  collection donne toujours la même pièce, quel que soit l'ordre des clics
-  (écart mesuré entre deux rendus : 7 × 10⁻⁷, donc du bruit de virgule flottante).
+  Les rôles validés priment ; sinon le moteur promeut un son par mesure et l'affiche
+  comme **adaptation** sur le résultat.
+- **Univers** (`src/engine/plan.ts`) : Electro Sega (112 BPM, 16 mesures) et Sega
+  traditionnel (126 à la noire, 6/8, 24 mesures). Chacun découpe, transpose, filtre,
+  granule et boucle **uniquement** les sons retenus.
+- **Rendu** (`src/engine/render.ts`) : graphe par événement, bus par rôle, écho
+  procédural, compresseur, normalisation loudness (≈ −17 dBFS RMS, crête ≤ −1 dBFS).
+- **Déterminisme** : graine = univers + identifiants triés. Même collection = même
+  pièce, quel que soit l'ordre des clics (écart mesuré entre deux rendus : 5 × 10⁻⁷).
 
-### Les trois invariants, et comment ils sont tenus
+### Les trois invariants
 
-1. `usedSourceIds ⊆ selectedSourceIds` — le rendu ne reçoit que les buffers de la
-   sélection ; le rapport liste les identifiants utilisés et vérifie l'inclusion.
+1. `usedSourceIds ⊆ selectedSourceIds` — le rendu ne reçoit que les buffers retenus.
 2. `selectedSourceIds ⊆ recognizableSourceIds` — **passe de signature** : chaque son
-   gardé reçoit exactement un passage *brut* (rate 1,0, aucun filtre, aucune inversion,
-   aucune granulation), placé sur une attaque réelle de l'enregistrement, réparti dans
-   la pièce, et **toute la musique est duckée à 0,38 sous ce passage** pour qu'il soit
-   réellement audible. Sans ce ducking, la mesure a montré que les sons du visiteur
-   étaient noyés sous le groove — c'était un vrai défaut, corrigé.
-3. Aucun sample externe — aucun buffer n'existe en dehors des fichiers du catalogue.
+   gardé reçoit un passage brut (rate 1,0, sans filtre, sans inversion, sans
+   granulation), posé sur **son attaque la plus énergique**, et toute la musique est
+   duckée à 0,18 sous ce passage. Sans ce ducking, la mesure a montré que les sons
+   étaient noyés sous le groove.
+3. Aucun sample externe — aucun buffer hors catalogue.
 
-### Vérifier soi-même
+### Vérifier
 
 ```
-http://127.0.0.1:5180/?selftest=1
+http://127.0.0.1:5180/?selftest=1&batch=1
+http://127.0.0.1:5180/?selftest=1&batch=2
 ```
 
-Rend 8 pièces (deux univers, sélections tonales, tout-texture, 4 et 6 sons, sans basse)
-et vérifie : sources étrangères, signatures, durée 30–45 s, aucune saturation,
-déterminisme, **et la reconnaissabilité mesurée** par corrélation croisée entre chaque
-passage brut et son enregistrement source (maximum sur ±60 ms). Compte ~90 s.
+Huit cas (deux univers, sélections riches, tout-texture, 2 sons, 1 son). Chaque lot
+rend quatre pièces et vérifie sources étrangères, signature de chaque son, durée,
+saturation, déterminisme et **reconnaissabilité mesurée** (corrélation croisée du
+passage brut avec l'enregistrement source, ±50 ms). Deux lots parce qu'un seul onglet
+sature en mémoire sur huit rendus.
 
-Dernier passage sur les vrais sons : **8/8 cas OK**, corrélations 0,71 → 0,99,
-crête −1,0 dBFS, durées 35,9 s et 41,6 s.
+Dernier passage sur les vrais sons : **8/8 cas OK**, corrélations **0,68 → 0,98**,
+crête −1,0 dBFS, 35,9 s par pièce, déterminisme 5,5 × 10⁻⁷.
 
-## 4. Les assets
+## 6. Assets et crédits
 
 | Élément | État |
 |---|---|
-| `Inventaire.csv` | reçu, 40 lignes, 40 correspondances code → fichier, 0 manquant, 0 doublon |
-| `Sons_sucre_40_pistes_20s.zip` | reçu, 40 WAV 20 s |
-| WAV originaux | conservés dans `assets/originals/` (hors build, 49 Mo) |
+| `Inventaire.csv` (40 lignes) | 40/40 correspondances code → fichier, 0 manquant, 0 doublon |
+| `Sons_sucre_40_pistes_20s.zip` | 40 WAV 20 s |
+| Originaux | `assets/originals/` (49 Mo, hors dépôt git) |
 | Copies web | `public/audio/*.m4a` (AAC mono 112 kbit/s, 25 Mo) |
-| Catalogue | `src/data/catalog.json` — codes, noms, sections, crédits, licences, mesures |
+| Catalogue | `src/data/catalog.json` — codes, titres, étape, crédits, licences, mesures |
 | Rapport d'import | `assets/import-report.json` |
-| Crédits | repris tels quels de l'inventaire (CC0, domaine public, BigSoundBank, Freesound) |
 
-**Sélection de démonstration : 12 sons sur 40** (`config/demo-set.json`). Les 40 restent
-au catalogue avec leurs crédits ; seuls les 12 sont proposés au visiteur. Curation :
-un représentant par rôle, réparti sur 7 sections, choisi sur les mesures (le forgeron
-pour la mélodie, la bagasse pour la basse, la charrette pour le rythme…).
+Crédits repris tels quels (CC0, domaine public, BigSoundBank, Freesound). Les titres
+affichés sont dérivés des noms de fichiers, avec des libellés relus pour douze sons
+dans `config/demo-set.json` — à confirmer par l'équipe.
 
-**Séquence 4 « Une histoire façonnée par le sucre » écartée** : elle contient le fouet,
-les fers, les chaînes et la maquette vocale « Ayo » signalée *à valider*. Ces trois sons
-sont marqués `sensitive` et exclus automatiquement de toute sélection ; ils exigent une
-contextualisation et une validation muséales avant tout usage musical. Le reste de la
-séquence est simplement absent de la démo.
-
-Les anecdotes historiques ne sont **pas** inventées : le champ existe dans le modèle et
-dans l'import, mais aucun texte validé n'a été fourni, donc aucun n'est affiché.
-
-### Réimporter quand l'inventaire change
+Réimporter après correction de l'inventaire :
 
 ```bash
 npm run import-assets -- --zip /workspace/Sons_sucre_40_pistes_20s.zip \
                          --inventory /workspace/Inventaire.csv
-npm run import-assets -- ... --dry-run    # vérifie sans rien écrire
+npm run import-assets -- ... --dry-run   # contrôle sans écrire
 ```
 
-Le script lit le ZIP sans dépendance externe, convertit, mesure, réécrit le catalogue,
-et **n'écrase rien** si trop de fichiers manquent. Il signale les doublons, les
-fichiers non référencés et les sections inconnues.
+Le script lit le ZIP sans dépendance, convertit, mesure, réécrit le catalogue et
+**n'écrase rien** si trop de fichiers manquent. Il signale doublons, fichiers non
+référencés et séquences sans étape.
 
-## 5. État de la publication
+## 7. Traductions
 
-**Non publié.** `gh auth status` : aucun compte GitHub authentifié sur cette machine, et
-aucune variable `GITHUB_TOKEN`. Les droits de diffusion des sons n'ont pas non plus été
-confirmés pour un hébergement public (les licences du catalogue sont CC0 / domaine
-public / BigSoundBank, ce qui est favorable, mais la validation muséale reste à faire).
+`src/i18n/fr.json` (par défaut) et `en.json`, mirroir complet. Aucun texte d'interface
+n'est écrit en dur dans les écrans. Ajouter une langue = un fichier + une entrée dans
+`src/i18n/index.ts`.
 
-Le build est prêt pour Pages (`base: './'`, sortie statique) :
+## 8. Publication
+
+**Non publiée.** `gh auth status` ne renvoie aucun compte GitHub authentifié sur cette
+machine ; aucun `GITHUB_TOKEN` n'est disponible. Les droits de diffusion publique des
+sons restent à confirmer par le musée.
+
+Le build est prêt (`base: './'`, hash router, tout en relatif) :
 
 ```bash
-npm run build                     # -> dist/ (15 Mo, tout relatif)
-npx gh-pages -d dist              # une fois `gh auth login` fait
+npm run build          # -> dist/ (≈ 11 Mo)
+npx gh-pages -d dist   # après `gh auth login`
 ```
 
-Le QR code n'a pas été généré : il n'a de sens qu'une fois l'URL publique vérifiée.
+Le QR code n'a pas été généré : il n'a de sens qu'avec une URL publique vérifiée.
 
-## 6. Ce qui n'est pas fait
+## 9. Ce qui n'est pas fait
 
-- Les deux autres univers (Sega traditionnel, Segazz) : affichés « bientôt », non
-  implémentés.
-- L'audition par station NFC/QR physique : hors périmètre, aucune simulation trompeuse.
-- Les anecdotes et crédits à l'écran : le modèle les porte, l'inventaire ne fournit pas
-  de texte historique validé.
-- L'écoute critique par un musicien : la grille technique est vérifiée, le goût reste à
-  valider à l'oreille — c'est le seul vrai risque pour samedi.
+- Ambient créole et Segazz : affichés « Bientôt », non implémentés.
+- Partage par lien, comptes, NFC/bracelet : hors périmètre, non affichés.
+- Textes historiques validés : non fournis, donc non affichés.
+- Écoute critique par un musicien : la grille technique est vérifiée, le goût reste à
+  valider à l'oreille — c'est le principal risque pour la démonstration.
 
-## 7. Carte du dépôt
+## 10. Carte du dépôt
 
 ```
-config/demo-set.json        curation des 12 sons (+ rôles et libellés)
-src/audio/                  types, service audio (décodage, audition, export)
-src/engine/                 plan.ts (compositeurs), render.ts (graphe + invariants)
-                            roles.ts, universes.ts, rng.ts
-src/ui/SelfTest.tsx         vérification des invariants (?selftest=1)
-scripts/import-assets.mjs   import Inventaire + ZIP -> catalogue
-scripts/gen-placeholders.mjs  jeu de substitution (si les assets manquent)
-scripts/lib/                analyse acoustique, lecture WAV, lecture ZIP
-assets/originals/           WAV du musée, intacts
-assets/backup/              deux pièces de secours déjà rendues
-DESIGN.md                   tokens et intentions visuelles
+config/steps.json          7 étapes + rattachement des séquences
+config/demo-set.json       libellés et rôles relus pour 12 sons
+src/router.ts              routeur par hash (6 routes)
+src/session.ts             session localStorage versionnée (découverts / sélection)
+src/i18n/                  fr.json, en.json, t()
+src/audio/service.ts       décodage à la demande, écoute, rendu, export
+src/engine/plan.ts         compositeurs Electro Sega et Sega traditionnel
+src/engine/render.ts       graphe audio + rapport d'invariants
+src/engine/roles.ts        affectation des rôles et adaptations
+src/ui/screens/            Accueil, Parcours, Étape, Carnet, Génération, Résultat
+src/ui/SelfTest.tsx        vérification des invariants (?selftest=1&batch=1|2)
+scripts/import-assets.mjs  Inventaire + ZIP -> catalogue
+assets/backup/             deux pièces de secours déjà rendues
+DESIGN.md                  tokens de la direction C
 ```

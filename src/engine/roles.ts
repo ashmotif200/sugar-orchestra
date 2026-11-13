@@ -47,7 +47,7 @@ export function assignRoles(sounds: Sound[]): RoleAssignment {
       adaptations.push({
         role: 'bass',
         sourceId: low.id,
-        reason: `aucun son marqué « basse » : ${low.name} est descendu d'octave pour tenir la basse`,
+        reason: `aucun son marqué « basse » : ${low.title ?? low.name} est descendu d'octave pour tenir la basse`,
       })
       used.add(low.id)
     } else {
@@ -62,7 +62,7 @@ export function assignRoles(sounds: Sound[]): RoleAssignment {
       adaptations.push({
         role: 'melody',
         sourceId: cand.id,
-        reason: `aucun son marqué « mélodie » : ${cand.name} est transposé pour porter le motif`,
+        reason: `aucun son marqué « mélodie » : ${cand.title ?? cand.name} est transposé pour porter le motif`,
       })
       used.add(cand.id)
     } else {
@@ -77,7 +77,7 @@ export function assignRoles(sounds: Sound[]): RoleAssignment {
       adaptations.push({
         role: 'rhythm',
         sourceId: cand.id,
-        reason: `aucun son marqué « rythmique » : les attaques de ${cand.name} servent de frappe`,
+        reason: `aucun son marqué « rythmique » : les attaques de ${cand.title ?? cand.name} servent de frappe`,
       })
       used.add(cand.id)
     } else {
@@ -92,7 +92,7 @@ export function assignRoles(sounds: Sound[]): RoleAssignment {
       adaptations.push({
         role: 'earcandy',
         sourceId: cand.id,
-        reason: `aucun son marqué « ear candy » : ${cand.name} fournit les éclats aigus`,
+        reason: `aucun son marqué « ear candy » : ${cand.title ?? cand.name} fournit les éclats aigus`,
       })
     }
   }
@@ -104,7 +104,7 @@ export function assignRoles(sounds: Sound[]): RoleAssignment {
       adaptations.push({
         role: 'texture',
         sourceId: cand.id,
-        reason: `aucun son marqué « texture » : ${cand.name} est étiré en nappe granulaire`,
+        reason: `aucun son marqué « texture » : ${cand.title ?? cand.name} est étiré en nappe granulaire`,
       })
     }
   }

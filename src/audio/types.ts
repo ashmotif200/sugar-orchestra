@@ -23,8 +23,21 @@ export interface SoundAnalysis {
   tonalScore: number
   onsetRate: number
   onsets: number[]
+  onsetEnergy?: number[]
   sustainRatio: number
   attackSharpness: number
+}
+
+export type Availability = 'available' | 'tbc' | 'not_musical'
+
+export interface Step {
+  id: number
+  title: string
+  short: string
+  sequences: number[]
+  summary: string
+  badge?: string
+  sensitive?: boolean
 }
 
 export interface Sound {
@@ -43,6 +56,10 @@ export interface Sound {
   sensitive?: boolean
   needsValidation?: boolean
   inDemoSet?: boolean
+  stepId?: number
+  title?: string
+  history?: string
+  availability?: Availability
   anecdote: { text: string; status: 'placeholder' | 'validated' }
   analysis: SoundAnalysis
 }
@@ -57,6 +74,7 @@ export interface Section {
 
 export interface Catalog {
   version: number
+  steps?: Step[]
   generatedAt: string
   source: 'placeholder-synth' | 'imported'
   disclaimer?: string
@@ -67,15 +85,18 @@ export interface Catalog {
 }
 
 export interface Universe {
-  id: 'energetique' | 'reveur' | 'dansant' | 'detendu'
+  id: 'electro-sega' | 'sega-trad' | 'ambient-creole' | 'segazz'
+  icon?: string
+  description?: string
   name: string
   emotion: string
   style: string
   glyph: string
   available: boolean
   accent: string
+  fill?: string
   bpm: number
   bars: number
   tempoLabel: string
-  blurb: string
+  blurb?: string
 }

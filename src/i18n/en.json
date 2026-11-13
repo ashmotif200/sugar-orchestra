@@ -1,0 +1,94 @@
+{
+  "app": {
+    "museum": "L'Aventure du Sucre · Mauritius",
+    "title": "Sugar Orchestra"
+  },
+  "home": {
+    "h1": "Collect sounds. Create your music.",
+    "lead": "Which mood for your piece?",
+    "cta": "Start with {universe}",
+    "soon": "Coming soon",
+    "future": "You can change universe later on.",
+    "resume": "Resume my visit ({n} sounds in my music)"
+  },
+  "parcours": {
+    "title": "Your journey",
+    "progress": "{n} steps discovered out of {total} · in any order",
+    "toDiscover": "To discover",
+    "inProgress": "In progress",
+    "discovered": "Discovered",
+    "open": "Open step",
+    "sounds": "{n} sound{s}",
+    "progressZero": "Seven steps · in any order"
+  },
+  "step": {
+    "label": "Step {id}",
+    "listen": "Listen",
+    "stop": "Stop",
+    "discovered": "Sound discovered",
+    "add": "Add to my music",
+    "added": "In my music",
+    "remove": "Remove",
+    "historyOnly": "Story only — not used in music",
+    "tbc": "To be confirmed",
+    "sensitive": "Contextual listening: this sound documents a painful history. It is never used in your music.",
+    "noteLabel": "Recording note",
+    "credits": "Credit",
+    "empty": "No sound in this step yet.",
+    "next": "Next step",
+    "back": "All steps",
+    "notYet": "Not listened yet"
+  },
+  "carnet": {
+    "title": "My notebook",
+    "discovered": "Discovered",
+    "selected": "In my music",
+    "emptyDiscovered": "No sound discovered yet.",
+    "emptyDiscoveredHint": "Open a step and listen to a sound: it will appear here.",
+    "emptySelected": "No sound in your music yet.",
+    "emptySelectedHint": "Add sounds from a step, or from the Discovered tab.",
+    "compose": "Compose with {n} sound{s}",
+    "composeEmpty": "Add at least one sound to compose.",
+    "goParcours": "Browse the steps",
+    "hintFew": "With {n} sound{s} the piece will be very sparse. Three or four sounds work better.",
+    "composeZero": "Compose"
+  },
+  "composer": {
+    "title": "Your music is taking shape",
+    "phase1": "Listening to your sounds",
+    "phase2": "Setting the rhythm",
+    "phase3": "Assembling the piece",
+    "cancel": "Cancel",
+    "hint": "Everything happens in your browser: nothing is uploaded, no other sound is added.",
+    "error": "The piece could not be created.",
+    "errorHint": "Your sounds are kept. You can try again.",
+    "retry": "Try again"
+  },
+  "result": {
+    "title": "Your creation",
+    "play": "Listen",
+    "stop": "Stop",
+    "used": "Sounds used",
+    "at": "at {time}",
+    "download": "Download audio file",
+    "restart": "New visit",
+    "back": "Back to my notebook",
+    "proof": "Check: only your sounds, each one recognisable",
+    "adaptation": "Adaptation",
+    "limit": "Limit",
+    "signature": "recognisable",
+    "duration": "{time} · {bpm} BPM"
+  },
+  "audio": {
+    "loading": "Loading sounds…",
+    "failed": "This step's sounds could not be loaded.",
+    "retry": "Retry",
+    "tapToPlay": "No autoplay: tap listen."
+  },
+  "offline": {
+    "banner": "Connection lost — already loaded sounds remain available."
+  },
+  "a11y": {
+    "skip": "Skip to content"
+  }
+}

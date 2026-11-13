@@ -201,6 +201,12 @@ if (rolesPath && existsSync(rolesPath)) {
   }
 }
 
+const stepsCfgPath = join(ROOT, 'config', 'steps.json')
+const stepsCfg = existsSync(stepsCfgPath) ? JSON.parse(readFileSync(stepsCfgPath, 'utf8')).steps : null
+if (!stepsCfg) { console.error('config/steps.json manquant : impossible de rattacher les sons aux 7 étapes.'); process.exit(1) }
+const stepOfSequence = new Map()
+for (const st of stepsCfg) for (const seq of st.sequences) stepOfSequence.set(String(seq), st.id)
+
 const outAudio = join(ROOT, 'public', 'audio')
 const outOriginals = join(ROOT, 'assets', 'originals')
 const outCatalog = join(ROOT, 'src', 'data', 'catalog.json')
@@ -273,6 +279,9 @@ for (const row of rows.slice(1)) {
 
   const insensitive = /fouet|cha[iî]ne|fers?_|esclav|ayo/.test(normKey(`${idx(row, 'name')} ${idx(row, 'nature')} ${fileField}`))
   const validateFlag = /valider|maquette/i.test(normKey(idx(row, 'nature')))
+  const sequence = idx(row, 'section').trim()
+  const stepId = stepOfSequence.get(String(parseInt(sequence, 10))) ?? null
+  if (!stepId) report.warnings.push(`${code}: séquence « ${sequence} » sans étape correspondante dans config/steps.json`)
   const anecdoteText = idx(row, 'anecdote').trim()
   sounds.push({
     id: safeCode.toLowerCase(),
@@ -289,10 +298,13 @@ for (const row of rows.slice(1)) {
       ? { text: anecdoteText, status: 'placeholder' }
       : { text: 'Texte en attente de validation par l’équipe du musée.', status: 'placeholder' },
     notes: idx(row, 'notes').trim(),
-    nature: idx(row, 'nature').trim(),
+    stepId,
+    title: idx(row, 'name').trim() || basename(fileField, extname(fileField)).replace(/^\d+_\d+_/, '').replace(/_/g, ' '),
+    history: idx(row, 'notes').trim(),
+    availability: insensitive ? 'not_musical' : validateFlag ? 'tbc' : 'available',
     sensitive: insensitive,
     needsValidation: validateFlag,
-    inDemoSet: false,
+    nature: idx(row, 'nature').trim(),
     analysis,
   })
   report.counts.matched++
@@ -308,61 +320,30 @@ const blocking = report.counts.matched === 0 || report.counts.missingFiles > rep
 if (blocking) report.errors.push('Trop de fichiers manquants pour construire un catalogue fiable.')
 if (sounds.length < 4) report.errors.push(`Seulement ${sounds.length} son(s) exploitable(s) : la démo demande au moins 4 sons.`)
 
-/* ---- sélection de démonstration (8 à 12 sons, cf. brief §5) ---------------
-   Si config/demo-set.json existe, il fait foi : la curation est explicite,
-   auditable et éditable à la main. Sinon, sélection automatique de secours.
-   Les 40 sons restent au catalogue ; seuls les retenus sont collectables. */
-const MAX_DEMO = 12
+/* ---- curation (libellés et rôles proposés) -------------------------------
+   config/demo-set.json ne restreint plus la collecte : il fournit des libellés
+   lisibles et des rôles relus à la main pour les sons qui en ont besoin. */
 const curatedPath = join(ROOT, 'config', 'demo-set.json')
-let demo = []
 if (existsSync(curatedPath)) {
   const curated = JSON.parse(readFileSync(curatedPath, 'utf8'))
   for (const entry of curated.codes || []) {
-    const s = sounds.find((x) => x.code === entry.code)
-    if (!s) { report.warnings.push(`demo-set: code inconnu ${entry.code}`); continue }
-    if (s.sensitive || s.needsValidation) { report.warnings.push(`demo-set: ${entry.code} écarté (sensible ou à valider)`); continue }
-    if (Array.isArray(entry.roles) && entry.roles.length) s.curatedRoles = entry.roles
-    if (entry.name) s.curatedName = entry.name
-    demo.push(s)
+    const snd = sounds.find((x) => x.code === entry.code)
+    if (!snd) continue
+    if (entry.name) snd.title = entry.name
+    if (Array.isArray(entry.roles) && entry.roles.length) snd.roles = entry.roles
   }
-  report.demoSource = 'config/demo-set.json'
-} else {
-  const roleOrder = ['bass', 'melody', 'rhythm', 'earcandy', 'texture']
-  const usedSections = new Map()
-  const candidates = sounds
-    .filter((s) => !s.sensitive && !s.needsValidation)
-    .sort((a, b) => b.analysis.onsetRate - a.analysis.onsetRate)
-  for (const role of roleOrder) {
-    const pick = candidates.find((s) => !demo.includes(s) && s.roles.includes(role) && !usedSections.has(s.section))
-    if (pick) { demo.push(pick); usedSections.set(pick.section, 1) }
-  }
-  for (const s of candidates) {
-    if (demo.length >= MAX_DEMO) break
-    if (demo.includes(s)) continue
-    if ((usedSections.get(s.section) ?? 0) >= 3) continue
-    demo.push(s)
-    usedSections.set(s.section, (usedSections.get(s.section) ?? 0) + 1)
-  }
-  report.demoSource = 'auto'
 }
-for (const s of demo) {
-  s.inDemoSet = true
-  if (s.curatedRoles) s.roles = s.curatedRoles
-  if (s.curatedName) s.name = s.curatedName
-}
-report.demoSet = demo.map((s) => ({ code: s.code, name: s.name, section: s.section, roles: s.roles, f0: s.analysis.f0Hz }))
-report.counts.demoSet = demo.length
-report.counts.sensitive = sounds.filter((s) => s.sensitive).length
-report.counts.needsValidation = sounds.filter((s) => s.needsValidation).length
-report.sensitiveCodes = sounds.filter((s) => s.sensitive).map((s) => ({ code: s.code, name: s.name }))
+report.counts.sensitive = sounds.filter((x) => x.sensitive).length
+report.counts.needsValidation = sounds.filter((x) => x.needsValidation).length
+report.sensitiveCodes = sounds.filter((x) => x.sensitive).map((x) => ({ code: x.code, name: x.title }))
+report.counts.byStep = Object.fromEntries(stepsCfg.map((st) => [st.id, sounds.filter((x) => x.stepId === st.id).length]))
 
 const catalog = {
   version: 1,
   generatedAt: new Date().toISOString(),
   source: 'imported',
-  limits: { minSelected: 4, maxSelected: 6 },
-  sections: CULTURE_SECTIONS,
-  demoSet: demo.map((s) => s.id),
+  limits: { minSelected: 1, maxSelected: 8 },
+  steps: stepsCfg,
   sounds,
 }
 

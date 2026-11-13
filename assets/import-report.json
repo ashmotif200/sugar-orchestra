@@ -1,5 +1,5 @@
 {
-  "generatedAt": "2026-11-13T06:38:57.489Z",
+  "generatedAt": "2026-11-13T09:39:54.067Z",
   "zip": "Sons_sucre_40_pistes_20s.zip",
   "inventory": "Inventaire.csv",
   "counts": {
@@ -8,9 +8,17 @@
     "missingFiles": 0,
     "duplicates": 0,
     "unmappedColumns": 1,
-    "demoSet": 12,
     "sensitive": 3,
-    "needsValidation": 1
+    "needsValidation": 1,
+    "byStep": {
+      "1": 5,
+      "2": 5,
+      "3": 4,
+      "4": 13,
+      "5": 2,
+      "6": 6,
+      "7": 5
+    }
   },
   "missingFiles": [],
   "duplicateCodes": [],
@@ -503,138 +511,18 @@
   ],
   "warnings": [],
   "errors": [],
-  "demoSource": "config/demo-set.json",
-  "demoSet": [
-    {
-      "code": "07_01",
-      "name": "Bagasse écrasée",
-      "section": "energie",
-      "roles": [
-        "bass",
-        "texture"
-      ],
-      "f0": 51.2
-    },
-    {
-      "code": "06_03",
-      "name": "Moulin à vapeur",
-      "section": "canne-au-sucre",
-      "roles": [
-        "bass",
-        "texture"
-      ],
-      "f0": 45
-    },
-    {
-      "code": "06_04",
-      "name": "Charrette à bœufs",
-      "section": "canne-au-sucre",
-      "roles": [
-        "rhythm"
-      ],
-      "f0": 110.3
-    },
-    {
-      "code": "03_02",
-      "name": "Forgeron",
-      "section": "cheminee",
-      "roles": [
-        "melody",
-        "earcandy"
-      ],
-      "f0": 363
-    },
-    {
-      "code": "02_03",
-      "name": "Couvercle de boîte à sucre",
-      "section": "ages",
-      "roles": [
-        "melody",
-        "earcandy"
-      ],
-      "f0": 250.9
-    },
-    {
-      "code": "08_01",
-      "name": "Mélasse",
-      "section": "jus-au-sucre",
-      "roles": [
-        "rhythm",
-        "bass"
-      ],
-      "f0": 188.4
-    },
-    {
-      "code": "08_03",
-      "name": "Chaudière",
-      "section": "jus-au-sucre",
-      "roles": [
-        "earcandy",
-        "texture"
-      ],
-      "f0": null
-    },
-    {
-      "code": "01_03",
-      "name": "Bateau fendant l’eau",
-      "section": "origines",
-      "roles": [
-        "texture",
-        "rhythm"
-      ],
-      "f0": 489.8
-    },
-    {
-      "code": "01_04",
-      "name": "Voiles qui claquent",
-      "section": "origines",
-      "roles": [
-        "texture"
-      ],
-      "f0": null
-    },
-    {
-      "code": "07_02",
-      "name": "Électricité",
-      "section": "energie",
-      "roles": [
-        "texture",
-        "earcandy"
-      ],
-      "f0": null
-    },
-    {
-      "code": "05_02",
-      "name": "Éprouvette remuée",
-      "section": "canne",
-      "roles": [
-        "earcandy",
-        "rhythm"
-      ],
-      "f0": 344.5
-    },
-    {
-      "code": "03_01",
-      "name": "Cordonnier",
-      "section": "cheminee",
-      "roles": [
-        "earcandy"
-      ],
-      "f0": 715.4
-    }
-  ],
   "sensitiveCodes": [
     {
       "code": "04_01",
-      "name": "04_01_Fouet"
+      "name": "Fouet"
     },
     {
       "code": "04_02",
-      "name": "04_02_Fers_chaines"
+      "name": "Fers chaines"
     },
     {
       "code": "04_05",
-      "name": "04_05_Ayo_MAQUETTE_A_VALIDER"
+      "name": "Ayo MAQUETTE A VALIDER"
     }
   ]
 }

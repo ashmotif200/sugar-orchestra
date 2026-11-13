@@ -187,6 +187,15 @@ export function analyzeSamples(samples, sampleRate, opts = {}) {
   let peak = 0
   for (let i = 0; i < n; i++) peak = Math.max(peak, Math.abs(samples[i]))
 
+  // énergie locale après chaque attaque : sert à choisir le passage le plus
+  // représentatif quand on doit citer le son à l'état brut
+  const onsetEnergy = onsets.map((t) => {
+    const i0 = Math.floor(t * sr)
+    let sum = 0, n = 0
+    for (let i = i0; i < Math.min(samples.length, i0 + Math.floor(0.3 * sr)); i += 2) { sum += samples[i] * samples[i]; n++ }
+    return round(Math.sqrt(sum / Math.max(1, n)), 4)
+  })
+
   const sustainRatio = frames ? active.length / frames : 0
   const onsetRate = durationS > 0 ? onsets.length / durationS : 0
 
@@ -211,6 +220,7 @@ export function analyzeSamples(samples, sampleRate, opts = {}) {
     tonalScore: round(tonalScore, 2),
     onsetRate: round(onsetRate, 2),
     onsets: onsets.map((t) => round(t, 2)),
+    onsetEnergy,
     sustainRatio: round(sustainRatio, 2),
     attackSharpness: onsets.length ? round(sharp / onsets.length, 2) : 0,
   }

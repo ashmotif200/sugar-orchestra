@@ -72,8 +72,8 @@ export async function renderScore(
   for (const w of score.duckWindows) {
     const s = Math.max(0, w.start - 0.06)
     music.gain.setValueAtTime(1, s)
-    music.gain.linearRampToValueAtTime(0.38, w.start + 0.05)
-    music.gain.setValueAtTime(0.38, w.end)
+    music.gain.linearRampToValueAtTime(0.18, w.start + 0.05)
+    music.gain.setValueAtTime(0.18, w.end)
     music.gain.linearRampToValueAtTime(1, w.end + 0.35)
   }
 

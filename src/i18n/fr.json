@@ -1,0 +1,94 @@
+{
+  "app": {
+    "museum": "L'Aventure du Sucre · Maurice",
+    "title": "Sugar Orchestra"
+  },
+  "home": {
+    "h1": "Collectez les sons. Créez votre musique.",
+    "lead": "Quelle ambiance pour votre création ?",
+    "cta": "Commencer avec {universe}",
+    "soon": "Bientôt",
+    "future": "Vous pourrez changer d'univers en cours de route.",
+    "resume": "Reprendre ma visite ({n} sons dans ma musique)"
+  },
+  "parcours": {
+    "title": "Votre parcours",
+    "progress": "{n} étapes découvertes sur {total} · dans l’ordre que vous voulez",
+    "toDiscover": "À découvrir",
+    "inProgress": "En cours",
+    "discovered": "Découvert",
+    "open": "Ouvrir l'étape",
+    "sounds": "{n} son{s}",
+    "progressZero": "Sept étapes · dans l’ordre que vous voulez"
+  },
+  "step": {
+    "label": "Étape {id}",
+    "listen": "Écouter",
+    "stop": "Arrêter",
+    "discovered": "Son découvert",
+    "add": "Ajouter à ma musique",
+    "added": "Dans ma musique",
+    "remove": "Retirer",
+    "historyOnly": "Histoire seulement — non utilisé en musique",
+    "tbc": "À confirmer",
+    "sensitive": "Écoute contextualisée : ce son documente une histoire douloureuse. Il n'est jamais utilisé dans votre musique.",
+    "noteLabel": "Note d'enregistrement",
+    "credits": "Crédit",
+    "empty": "Aucun son dans cette étape pour le moment.",
+    "next": "Étape suivante",
+    "back": "Toutes les étapes",
+    "notYet": "Pas encore écouté"
+  },
+  "carnet": {
+    "title": "Mon carnet",
+    "discovered": "Découverts",
+    "selected": "Dans ma musique",
+    "emptyDiscovered": "Aucun son découvert pour l'instant.",
+    "emptyDiscoveredHint": "Ouvrez une étape du parcours et écoutez un son : il apparaîtra ici.",
+    "emptySelected": "Aucun son dans votre musique.",
+    "emptySelectedHint": "Ajoutez des sons depuis une étape, ou depuis l'onglet Découverts.",
+    "compose": "Composer avec {n} son{s}",
+    "composeEmpty": "Ajoutez au moins un son pour composer.",
+    "goParcours": "Parcourir les étapes",
+    "hintFew": "Avec {n} son{s}, la pièce sera très dépouillée. Trois ou quatre sons donnent un meilleur résultat.",
+    "composeZero": "Composer"
+  },
+  "composer": {
+    "title": "Votre musique prend forme",
+    "phase1": "Écoute de vos sons",
+    "phase2": "Mise en rythme",
+    "phase3": "Assemblage de la pièce",
+    "cancel": "Annuler",
+    "hint": "Tout se passe dans votre navigateur : rien n'est envoyé, aucun autre son n'est ajouté.",
+    "error": "La pièce n'a pas pu être créée.",
+    "errorHint": "Vos sons sont conservés. Vous pouvez réessayer.",
+    "retry": "Réessayer"
+  },
+  "result": {
+    "title": "Votre création",
+    "play": "Écouter",
+    "stop": "Arrêter",
+    "used": "Les sons utilisés",
+    "at": "à {time}",
+    "download": "Télécharger le fichier audio",
+    "restart": "Nouvelle visite",
+    "back": "Revenir à mon carnet",
+    "proof": "Vérifier : uniquement vos sons, chacun reconnaissable",
+    "adaptation": "Adaptation",
+    "limit": "Limite",
+    "signature": "reconnaissable",
+    "duration": "{time} · {bpm} BPM"
+  },
+  "audio": {
+    "loading": "Chargement des sons…",
+    "failed": "Les sons de cette étape n'ont pas pu être chargés.",
+    "retry": "Réessayer",
+    "tapToPlay": "Aucune lecture automatique : appuyez sur écouter."
+  },
+  "offline": {
+    "banner": "Connexion perdue — les sons déjà chargés restent disponibles."
+  },
+  "a11y": {
+    "skip": "Aller au contenu"
+  }
+}

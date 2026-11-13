@@ -1,7 +1,7 @@
 import type { Role, Sound, Universe } from '../audio/types'
 import { assignRoles, uncoveredSources, type Adaptation } from './roles'
 import { mulberry32, hashString, type Rng, pick, jitter, chance } from './rng'
-import { SCALE, ROOT_HZ, ELECTRO_ROOTS, AMBIENT_ROOTS, semisToRate } from './universes'
+import { SCALE, ROOT_HZ, ELECTRO_ROOTS, AMBIENT_ROOTS, SEGA_ROOTS, semisToRate } from './universes'
 
 export interface FilterSpec {
   type: BiquadFilterType
@@ -74,10 +74,17 @@ const at = (bpm: number, bar: number, beats: number) => bar * 4 * BEAT(bpm) + be
  */
 function sliceOffset(s: Sound, rng: Rng, signature = false): number {
   const dur = s.analysis.durationS
-  const usable = s.analysis.onsets.filter((t) => t < Math.max(0.3, dur - 2.5))
+  const usable = s.analysis.onsets
+    .map((t, i) => ({ t, e: s.analysis.onsetEnergy?.[i] ?? 0 }))
+    .filter((x) => x.t < Math.max(0.3, dur - 2.5))
   if (!usable.length) return 0
-  if (signature) return Math.max(0, usable[0] - 0.02)
-  return pick(rng, usable)
+  if (signature) {
+    // le passage cité doit être le geste le plus caractéristique du son, pas
+    // la première attaque venue (souvent faible ou isolée)
+    const best = usable.reduce((a, b) => (b.e > a.e ? b : a), usable[0])
+    return Math.max(0, best.t - 0.02)
+  }
+  return pick(rng, usable.map((x) => x.t))
 }
 
 /** Transpose a pitched source onto a target frequency, keeping the rate sane. */
@@ -106,9 +113,9 @@ const degToSemis = (scale: number[], deg: number) => {
 function addSignatures(
   score: Score,
   selection: Sound[],
-  slots: { bar: number; beats: number; durBeats: number }[],
+  slots: { bar: number; unit: number; durUnits: number }[],
   roleOf: Map<string, Role>,
-  bpm: number,
+  timing: { pos: (bar: number, unit: number) => number; unitDur: number },
   rng: Rng,
 ) {
   const ordered = [...selection].sort((a, b) => {
@@ -119,8 +126,8 @@ function addSignatures(
   })
   ordered.forEach((s, i) => {
     const slot = slots[i % slots.length]
-    const start = at(bpm, slot.bar, slot.beats) + jitter(rng, 0.006)
-    const dur = Math.max(0.6, slot.durBeats * BEAT(bpm))
+    const start = Math.max(0, timing.pos(slot.bar, slot.unit) + jitter(rng, 0.006))
+    const dur = Math.max(0.6, slot.durUnits * timing.unitDur)
     const offset = sliceOffset(s, rng, true)
     const gain = 0.85
     score.notes.push({
@@ -537,13 +544,225 @@ function composeAmbient(input: PlanInput, score: Score, rng: Rng) {
 }
 
 /* --------------------------------------------------------------------------
+   Univers 2 — Sega traditionnel (6/8, 126 à la noire, 24 mesures, ≈34 s)
+   Tambour de ravanne, triangle, appel et réponse. Pas de traitement
+   électronique : c'est le caractère acoustique qui distingue ce morceau de
+   l'Electro Sega, à collection identique.
+   -------------------------------------------------------------------------- */
+function composeSegaTrad(input: PlanInput, score: Score, rng: Rng) {
+  const { universe, selection } = input
+  const bpm = universe.bpm
+  const barSec = (6 * 60) / (bpm * 2) // six croches, noire = 126
+  const beat = barSec / 6 // une croche
+  const at8 = (bar: number, eighth: number) => bar * barSec + eighth * beat
+  score.durationS = universe.bars * barSec
+
+  const roleMap = assignRoles(selection)
+  const bass = roleMap.roles.bass[0]
+  const mel = roleMap.roles.melody[0]
+  const perc = roleMap.roles.rhythm
+  const candy = roleMap.roles.earcandy[0]
+  const tex = roleMap.roles.texture[0]
+  score.roles = Object.fromEntries(
+    Object.entries(roleMap.roles).map(([k, v]) => [k, v.map((s) => s.id)]),
+  ) as unknown as Record<Role, string[]>
+  score.adaptations = roleMap.adaptations
+  score.limits = roleMap.limits
+
+  const rootHz = (bar: number) => ROOT_HZ * Math.pow(2, (SEGA_ROOTS[bar] ?? 0) / 12)
+  const roleOf = new Map<string, Role>()
+  if (bass) roleOf.set(bass.id, 'bass')
+  if (mel) roleOf.set(mel.id, 'melody')
+  perc.forEach((p, i) => { if (!roleOf.has(p.id)) roleOf.set(p.id, i === 0 ? 'rhythm' : 'earcandy') })
+  if (candy && !roleOf.has(candy.id)) roleOf.set(candy.id, 'earcandy')
+  if (tex && !roleOf.has(tex.id)) roleOf.set(tex.id, 'texture')
+  for (const s of uncoveredSources(selection, roleMap)) if (!roleOf.has(s.id)) roleOf.set(s.id, 'earcandy')
+
+  const push = (n: Omit<NoteEvent, 'id'> & { id: string }) => score.notes.push(n)
+
+  const tambour = perc[0] ?? bass
+  const triangle = candy ?? perc[1] ?? tambour
+  const second = perc[1] ?? perc[0]
+
+  /* ravanne : cellules 6/8, accents sur les temps forts */
+  if (tambour) {
+    const cells: [number, number][] = [
+      [0, 1], [1.5, 0.55], [3, 0.9], [4.5, 0.6],
+    ]
+    for (let bar = 1; bar < universe.bars - 1; bar++) {
+      for (const [pos, vel] of cells) {
+        const fill = bar % 8 === 7 && pos >= 3
+        if (fill && chance(rng, 0.45)) continue
+        push({
+          id: `tam-${bar}-${pos}`,
+          sourceId: tambour.id,
+          role: 'rhythm',
+          start: at8(bar, pos) + jitter(rng, 0.005),
+          dur: beat * 0.85,
+          rate: tambour.analysis.f0Hz ? rateFor(tambour, 98) : 1,
+          offset: sliceOffset(tambour, rng),
+          gain: 0.72 * vel,
+          attack: 0.002,
+          release: beat * 0.5,
+          kind: 'support',
+          filter: { type: 'lowpass', freq: 2600, q: 0.6 },
+          pan: -0.06,
+          statement: 'tambour ravanne',
+        })
+      }
+    }
+  }
+
+  /* second tambour / réponse, une mesure sur deux */
+  if (second && second.id !== tambour?.id) {
+    for (let bar = 2; bar < universe.bars - 2; bar += 2) {
+      for (const pos of [2.5, 5]) {
+        push({
+          id: `rep-${bar}-${pos}`,
+          sourceId: second.id,
+          role: 'rhythm',
+          start: at8(bar, pos),
+          dur: beat * 0.6,
+          rate: 1,
+          offset: sliceOffset(second, rng),
+          gain: 0.34,
+          attack: 0.002,
+          release: beat * 0.3,
+          kind: 'support',
+          filter: { type: 'bandpass', freq: 1200, q: 1.1 },
+          pan: 0.22,
+          statement: 'réponse',
+        })
+      }
+    }
+  }
+
+  /* triangle : croches, accent sur les temps */
+  if (triangle) {
+    for (let bar = 2; bar < universe.bars - 2; bar++) {
+      for (let e = 0; e < 6; e++) {
+        const accent = e === 0 || e === 3 ? 1 : e % 2 === 0 ? 0.55 : 0.32
+        push({
+          id: `tri-${bar}-${e}`,
+          sourceId: triangle.id,
+          role: 'earcandy',
+          start: at8(bar, e) + jitter(rng, 0.004),
+          dur: beat * 0.5,
+          rate: 1.18,
+          offset: sliceOffset(triangle, rng),
+          gain: 0.16 * accent,
+          attack: 0.001,
+          release: beat * 0.25,
+          kind: 'support',
+          filter: { type: 'highpass', freq: 3400 },
+          pan: e % 2 ? 0.3 : -0.3,
+          statement: 'triangle',
+        })
+      }
+    }
+  }
+
+  /* basse : deux pulsations par mesure + broderie */
+  if (bass) {
+    for (let bar = 0; bar < universe.bars; bar++) {
+      const root = rootHz(bar)
+      const cells: [number, number, number][] = [
+        [0, 0, 0.9], [3, 0, 0.9], [5.5, 12, 0.45],
+      ]
+      for (const [pos, oct, dur] of cells) {
+        if (bar < 2 && pos === 5.5) continue
+        push({
+          id: `b-${bar}-${pos}`,
+          sourceId: bass.id,
+          role: 'bass',
+          start: at8(bar, pos),
+          dur: dur * beat,
+          rate: rateFor(bass, root * Math.pow(2, oct / 12)),
+          offset: sliceOffset(bass, rng),
+          gain: oct ? 0.3 : 0.44,
+          attack: 0.008,
+          release: beat * 0.35,
+          kind: 'support',
+          filter: { type: 'lowpass', freq: 520, q: 0.7 },
+          statement: 'basse',
+        })
+      }
+    }
+  }
+
+  /* mélodie : appel de deux mesures, réponse de deux mesures */
+  if (mel) {
+    const call: [number, number, number][] = [[0, 2, 1], [1, 3, 1], [2.5, 2, 2], [5, 1, 1]]
+    const answer: [number, number, number][] = [[0, 4, 1], [1.5, 3, 1], [3, 2, 2], [5, 0, 1]]
+    for (let pair = 1; pair < universe.bars / 2 - 1; pair++) {
+      const bar = pair * 2
+      const phrase = pair % 2 === 0 ? call : answer
+      for (const [pos, deg, lenE] of phrase) {
+        const semis = degToSemis(SCALE.pentatonic, deg)
+        const target = rootHz(bar) * 4 * Math.pow(2, semis / 12)
+        push({
+          id: `m-${bar}-${pos}-${deg}`,
+          sourceId: mel.id,
+          role: 'melody',
+          start: at8(bar, pos),
+          dur: lenE * beat * 0.95,
+          rate: rateFor(mel, target),
+          offset: sliceOffset(mel, rng),
+          gain: 0.4,
+          attack: 0.01,
+          release: beat * 0.5,
+          kind: 'support',
+          filter: { type: 'lowpass', freq: 5200, q: 0.5 },
+          pan: jitter(rng, 0.1),
+          send: 0.14,
+          statement: 'chant',
+        })
+      }
+    }
+  }
+
+  /* nappe d'ouverture et de sortie, discrète */
+  if (tex) {
+    for (const [bar, gain] of [[0, 0.22], [universe.bars - 2, 0.24]] as [number, number][]) {
+      push({
+        id: `t-${bar}`,
+        sourceId: tex.id,
+        role: 'texture',
+        start: at8(bar, 0),
+        dur: barSec * 2,
+        rate: 0.9,
+        offset: sliceOffset(tex, rng),
+        gain,
+        attack: barSec * 0.4,
+        release: barSec * 0.7,
+        kind: 'support',
+        granular: { grainMs: 220, density: 5 },
+        filter: { type: 'lowpass', freq: 1800, q: 0.4, sweepTo: 900 },
+        statement: 'nappe',
+      })
+    }
+  }
+}
+
+/* --------------------------------------------------------------------------
    Entry point
    -------------------------------------------------------------------------- */
+export class CompositionRefused extends Error {
+  constructor(public reason: 'no-usable-sound' | 'unavailable-universe', message: string) {
+    super(message)
+  }
+}
+
 export function buildScore(input: PlanInput): Score {
   const { universe } = input
+  if (!universe.available) throw new CompositionRefused('unavailable-universe', `univers ${universe.name} non implémenté`)
+  // Garde-fou : un son sensible ou non musical ne peut jamais entrer dans une
+  // pièce, même si l'état de session a été bricolé.
+  const usable = input.selection.filter((s) => s.sensitive !== true && s.availability !== 'not_musical')
+  if (!usable.length) throw new CompositionRefused('no-usable-sound', 'aucun son utilisable dans la sélection')
   // order-independent: the same collection always yields the same piece, however
   // the visitor happened to click it together
-  const selection = [...input.selection].sort((a, b) => a.id.localeCompare(b.id))
+  const selection = [...usable].sort((a, b) => a.id.localeCompare(b.id))
   const bpm = universe.bpm
   const seed = hashString(universe.id + '|' + selection.map((s) => s.id).sort().join(','))
   const rng = mulberry32(seed)
@@ -570,33 +789,51 @@ export function buildScore(input: PlanInput): Score {
   // the composers must receive the SORTED selection, otherwise role ordering
   // (and therefore the RNG consumption) depends on click order
   const sortedInput: PlanInput = { universe, selection }
-  if (universe.id === 'reveur') composeAmbient(sortedInput, score, rng)
+  if (universe.id === 'sega-trad') composeSegaTrad(sortedInput, score, rng)
+  else if (universe.id === 'ambient-creole') composeAmbient(sortedInput, score, rng)
   else composeElectroSega(sortedInput, score, rng)
 
   // signature slots: spread across the body of the piece, avoiding the first
   // and last bar so nothing is buried in the intro or the fade
-  const slots =
-    universe.id === 'reveur'
-      ? [
-          { bar: 2, beats: 0, durBeats: 4 },
-          { bar: 4, beats: 1, durBeats: 4 },
-          { bar: 6, beats: 0, durBeats: 4 },
-          { bar: 7, beats: 2, durBeats: 4 },
-          { bar: 9, beats: 0, durBeats: 4 },
-          { bar: 10, beats: 2, durBeats: 4 },
-        ]
-      : [
-          { bar: 3, beats: 0, durBeats: 2 },
-          { bar: 5, beats: 2, durBeats: 2 },
-          { bar: 7, beats: 0, durBeats: 2 },
-          { bar: 9, beats: 2, durBeats: 2 },
-          { bar: 11, beats: 0, durBeats: 2 },
-          { bar: 13, beats: 2, durBeats: 2 },
-        ]
+  let timing: { pos: (bar: number, unit: number) => number; unitDur: number }
+  let slots: { bar: number; unit: number; durUnits: number }[]
+  if (universe.id === 'sega-trad') {
+    const barSec = (6 * 60) / (bpm * 2)
+    const eighth = barSec / 6
+    timing = { pos: (bar, unit) => bar * barSec + unit * eighth, unitDur: eighth }
+    slots = [
+      { bar: 3, unit: 0, durUnits: 3 },
+      { bar: 6, unit: 3, durUnits: 3 },
+      { bar: 9, unit: 0, durUnits: 3 },
+      { bar: 12, unit: 3, durUnits: 3 },
+      { bar: 15, unit: 0, durUnits: 3 },
+      { bar: 18, unit: 3, durUnits: 3 },
+    ]
+  } else if (universe.id === 'ambient-creole') {
+    timing = { pos: (bar, unit) => at(bpm, bar, unit), unitDur: BEAT(bpm) }
+    slots = [
+      { bar: 2, unit: 0, durUnits: 4 },
+      { bar: 4, unit: 1, durUnits: 4 },
+      { bar: 6, unit: 0, durUnits: 4 },
+      { bar: 7, unit: 2, durUnits: 4 },
+      { bar: 9, unit: 0, durUnits: 4 },
+      { bar: 10, unit: 2, durUnits: 4 },
+    ]
+  } else {
+    timing = { pos: (bar, unit) => at(bpm, bar, unit), unitDur: BEAT(bpm) }
+    slots = [
+      { bar: 3, unit: 0, durUnits: 2 },
+      { bar: 5, unit: 2, durUnits: 2 },
+      { bar: 7, unit: 0, durUnits: 2 },
+      { bar: 9, unit: 2, durUnits: 2 },
+      { bar: 11, unit: 0, durUnits: 2 },
+      { bar: 13, unit: 2, durUnits: 2 },
+    ]
+  }
 
   const roleOf = new Map<string, Role>()
   for (const [role, ids] of Object.entries(score.roles)) for (const id of ids) if (!roleOf.has(id)) roleOf.set(id, role as Role)
-  addSignatures(score, selection, slots, roleOf, bpm, rng)
+  addSignatures(score, selection, slots, roleOf, timing, rng)
 
   // final structural bookkeeping
   score.notes.sort((a, b) => a.start - b.start)
@@ -604,7 +841,15 @@ export function buildScore(input: PlanInput): Score {
   score.allSourcesRecognizable = selection.every((s) => sigIds.has(s.id))
 
   score.sectionPlan =
-    universe.id === 'reveur'
+    universe.id === 'sega-trad'
+      ? [
+          { name: 'Entrée du tambour', bar0: 0, bar1: 4 },
+          { name: 'Appel', bar0: 4, bar1: 10 },
+          { name: 'Réponse', bar0: 10, bar1: 16 },
+          { name: 'Tous ensemble', bar0: 16, bar1: 21 },
+          { name: 'Sortie', bar0: 21, bar1: 24 },
+        ]
+      : universe.id === 'ambient-creole'
       ? [
           { name: 'Ouverture', bar0: 0, bar1: 2 },
           { name: 'Nappes', bar0: 2, bar1: 6 },

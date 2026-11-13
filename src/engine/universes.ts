@@ -1,67 +1,75 @@
 import type { Universe } from '../audio/types'
 
+/** Les quatre univers du dossier de transmission. La disponibilité vient d'ici,
+ *  jamais d'un écran. Deux sont réellement implémentés dans le prototype. */
 export const UNIVERSES: Universe[] = [
   {
-    id: 'energetique',
+    id: 'electro-sega',
     name: 'Electro Sega',
     emotion: 'Énergétique',
     style: 'Electro Sega',
     glyph: '⚡',
+    icon: 'zigzag',
+    description: 'Basses filtrées, tambour serré, éclats. Le sucre qui bout.',
+    accent: '#E5533D',
+    fill: '#C63E2A',
     available: true,
-    accent: '#E2703A',
     bpm: 112,
     bars: 16,
-    tempoLabel: '112 BPM · 4/4 · 34 s',
-    blurb: 'Tambour, basse pulsée, shaker en 16e. Le sucre qui bout.',
+    tempoLabel: '112 BPM · 4/4 · 36 s',
   },
   {
-    id: 'reveur',
-    name: 'Ambient créole',
-    emotion: 'Rêveur',
-    style: 'Ambient créole',
-    glyph: '🌊',
-    available: true,
-    accent: '#4E8F9B',
-    bpm: 72,
-    bars: 12,
-    tempoLabel: '72 BPM · 4/4 · 40 s',
-    blurb: 'Nappes granulaires, cloches lointaines, souffle. La vapeur des chaudrons.',
-  },
-  {
-    id: 'dansant',
+    id: 'sega-trad',
     name: 'Sega traditionnel',
     emotion: 'Dansant',
     style: 'Sega traditionnel',
-    glyph: '💃',
-    available: false,
-    accent: '#B8577A',
-    bpm: 120,
-    bars: 16,
-    tempoLabel: 'à venir',
-    blurb: 'Ravanne, triangle, voix en réponse. Non implémenté dans cette démo.',
+    glyph: '◉',
+    icon: 'cercles',
+    description: 'Ravanne, triangle, appel et réponse. Le bal du dimanche.',
+    accent: '#E9A23B',
+    fill: '#E9A23B',
+    available: true,
+    bpm: 126,
+    bars: 24,
+    tempoLabel: '6/8 · 126 · 34 s',
   },
   {
-    id: 'detendu',
+    id: 'ambient-creole',
+    name: 'Ambient créole',
+    emotion: 'Rêveur',
+    style: 'Ambient créole',
+    glyph: '≈',
+    icon: 'onde',
+    description: 'Nappes, souffle, cloches lointaines.',
+    accent: '#2A9D9B',
+    fill: '#2A9D9B',
+    available: false,
+    bpm: 72,
+    bars: 12,
+    tempoLabel: 'Bientôt',
+  },
+  {
+    id: 'segazz',
     name: 'Segazz',
     emotion: 'Détendu',
-    style: 'Segazz / Sega Jazz',
-    glyph: '🌙',
+    style: 'Segazz',
+    glyph: '∫',
+    icon: 'courbe',
+    description: 'Accords étendus, swing lent.',
+    accent: '#3F4A9E',
+    fill: '#3F4A9E',
     available: false,
-    accent: '#7A6EA8',
     bpm: 88,
     bars: 16,
-    tempoLabel: 'à venir',
-    blurb: 'Accords étendus, swing lent. Non implémenté dans cette démo.',
+    tempoLabel: 'Bientôt',
   },
 ]
 
-export const getUniverse = (id: string) => UNIVERSES.find((u) => u.id === id)
+export const getUniverse = (id: string | undefined) => UNIVERSES.find((u) => u.id === id)
 
-/** D minor pentatonic + dorian colour, expressed in Hz around D. */
+/** D mineur pentatonique (electro / sega) et dorien (ambient). */
 export const SCALE = {
-  /** semitone offsets from the root, pentatonic minor (sega / electro) */
   pentatonic: [0, 3, 5, 7, 10],
-  /** dorian mode for the ambient universe */
   dorian: [0, 2, 3, 5, 7, 9, 10],
 }
 
@@ -70,8 +78,9 @@ export const ROOT_HZ = 73.42 // D2
 export const semisToRate = (semis: number) => Math.pow(2, semis / 12)
 export const hzToSemis = (hz: number, ref = ROOT_HZ) => 12 * Math.log2(hz / ref)
 
-/** Chord roots for the 16-bar electro sega cycle (bar index → semitones from D). */
+/** Grille harmonique electro sega, 16 mesures (demi-tons depuis D). */
 export const ELECTRO_ROOTS = [0, 0, -4, -2, 0, 5, 7, 7, 0, -4, -2, 0, 0, 0, -4, -2]
-
-/** Bass drone roots for the 12-bar ambient cycle. */
+/** Sega traditionnel : deux accords par cycle, plus statique. */
+export const SEGA_ROOTS = [0, 0, 0, 0, 5, 5, 0, 0, -4, -4, -2, -2, 0, 0, 0, 0, 5, 5, 0, 0, -4, -2, 0, 0]
+/** Ambient. */
 export const AMBIENT_ROOTS = [0, 0, 5, 5, -4, -4, -2, -2, 0, 0, 0, 0]

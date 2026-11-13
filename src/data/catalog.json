@@ -1,74 +1,79 @@
 {
   "version": 1,
-  "generatedAt": "2026-11-13T06:39:26.320Z",
+  "generatedAt": "2026-11-13T09:40:23.054Z",
   "source": "imported",
   "limits": {
-    "minSelected": 4,
-    "maxSelected": 6
+    "minSelected": 1,
+    "maxSelected": 8
   },
-  "sections": [
+  "steps": [
     {
-      "id": "origines",
-      "order": 1,
-      "name": "Origines de l'île",
-      "short": "Origines"
+      "id": 1,
+      "title": "Les origines",
+      "short": "Origines",
+      "sequences": [
+        1
+      ],
+      "summary": "Volcan, forêt, bateaux : l'île avant le sucre."
     },
     {
-      "id": "ages",
-      "order": 2,
-      "name": "Sucre à travers les âges",
-      "short": "Âges"
+      "id": 2,
+      "title": "Le sucre traverse les âges",
+      "short": "Âges du sucre",
+      "sequences": [
+        2
+      ],
+      "summary": "Du geste de la cuillère aux étals du marché."
     },
     {
-      "id": "cheminee",
-      "order": 3,
-      "name": "À l'ombre de la cheminée",
-      "short": "Cheminée"
+      "id": 3,
+      "title": "Les métiers du sucre",
+      "short": "Métiers",
+      "sequences": [
+        3
+      ],
+      "summary": "Cordonnier, forgeron, fondeur, charpentier : les mains de l'atelier."
     },
     {
-      "id": "histoire",
-      "order": 4,
-      "name": "Une histoire façonnée par le sucre",
-      "short": "Histoire"
+      "id": 4,
+      "title": "La mémoire des plantations",
+      "short": "Mémoire",
+      "sequences": [
+        4
+      ],
+      "sensitive": true,
+      "badge": "Écoute contextualisée",
+      "summary": "Fouet, fers, chaînes : ce que le sucre a coûté. Écoute accompagnée, jamais utilisée en musique."
     },
     {
-      "id": "canne",
-      "order": 5,
-      "name": "La canne",
-      "short": "Canne"
+      "id": 5,
+      "title": "La canne",
+      "short": "Canne",
+      "sequences": [
+        5
+      ],
+      "badge": "À confirmer",
+      "summary": "La plante, sa croissance, ses expériences."
     },
     {
-      "id": "canne-au-sucre",
-      "order": 6,
-      "name": "De la canne au sucre",
-      "short": "Transformation"
+      "id": 6,
+      "title": "De la canne au sucre",
+      "short": "Canne → sucre",
+      "sequences": [
+        6
+      ],
+      "summary": "Moulins, charrettes, engrenages : la matière se transforme."
     },
     {
-      "id": "energie",
-      "order": 7,
-      "name": "L'énergie de la canne",
-      "short": "Énergie"
-    },
-    {
-      "id": "jus-au-sucre",
-      "order": 8,
-      "name": "Du jus au sucre",
-      "short": "Jus"
+      "id": 7,
+      "title": "De la bagasse à l'électricité",
+      "short": "Bagasse",
+      "sequences": [
+        7,
+        8
+      ],
+      "summary": "Ce qui reste de la canne fait tourner l'usine."
     }
-  ],
-  "demoSet": [
-    "07_01",
-    "06_03",
-    "06_04",
-    "03_02",
-    "02_03",
-    "08_01",
-    "08_03",
-    "01_03",
-    "01_04",
-    "07_02",
-    "05_02",
-    "03_01"
   ],
   "sounds": [
     {
@@ -93,10 +98,13 @@
         "status": "placeholder"
       },
       "notes": "Volcan déjà synthétisé par morganpurkis ; aucun enregistrement géologique local.",
-      "nature": "Effet créé par la source",
+      "stepId": 1,
+      "title": "Volcan eruption",
+      "history": "Volcan déjà synthétisé par morganpurkis ; aucun enregistrement géologique local.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Effet créé par la source",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -221,6 +229,118 @@
           19.49,
           19.67
         ],
+        "onsetEnergy": [
+          0.1224,
+          0.1285,
+          0.127,
+          0.1363,
+          0.1418,
+          0.1488,
+          0.1437,
+          0.1352,
+          0.1281,
+          0.1202,
+          0.1222,
+          0.1263,
+          0.1526,
+          0.1422,
+          0.1428,
+          0.135,
+          0.1385,
+          0.1375,
+          0.1466,
+          0.1669,
+          0.1706,
+          0.1418,
+          0.139,
+          0.136,
+          0.1117,
+          0.1152,
+          0.1207,
+          0.1125,
+          0.115,
+          0.1393,
+          0.112,
+          0.0877,
+          0.1019,
+          0.1032,
+          0.128,
+          0.1327,
+          0.1179,
+          0.1448,
+          0.1381,
+          0.1409,
+          0.1367,
+          0.1285,
+          0.1046,
+          0.1139,
+          0.1186,
+          0.109,
+          0.0992,
+          0.1246,
+          0.1307,
+          0.094,
+          0.1125,
+          0.1326,
+          0.137,
+          0.1121,
+          0.1174,
+          0.1172,
+          0.1106,
+          0.1178,
+          0.0958,
+          0.1019,
+          0.099,
+          0.0843,
+          0.0856,
+          0.0828,
+          0.0818,
+          0.0987,
+          0.1018,
+          0.0873,
+          0.1028,
+          0.0991,
+          0.096,
+          0.0928,
+          0.1126,
+          0.1002,
+          0.0772,
+          0.121,
+          0.1217,
+          0.128,
+          0.1151,
+          0.1143,
+          0.1251,
+          0.1039,
+          0.1055,
+          0.1249,
+          0.1116,
+          0.0946,
+          0.1123,
+          0.1148,
+          0.1202,
+          0.1155,
+          0.113,
+          0.1184,
+          0.1033,
+          0.0941,
+          0.1074,
+          0.114,
+          0.142,
+          0.1502,
+          0.1121,
+          0.1252,
+          0.1514,
+          0.1601,
+          0.1565,
+          0.1275,
+          0.1275,
+          0.1065,
+          0.1329,
+          0.1373,
+          0.1478,
+          0.1513
+        ],
         "sustainRatio": 1,
         "attackSharpness": 0.15
       }
@@ -245,10 +365,13 @@
         "status": "placeholder"
       },
       "notes": "Ambiance tropicale générique ; espèces et lieu non certifiés pour l’île.",
-      "nature": "Enregistrement monté",
+      "stepId": 1,
+      "title": "Foret tropicale",
+      "history": "Ambiance tropicale générique ; espèces et lieu non certifiés pour l’île.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -274,6 +397,19 @@
           17.64,
           19.56
         ],
+        "onsetEnergy": [
+          0.0555,
+          0.1005,
+          0.1635,
+          0.1703,
+          0.1595,
+          0.1601,
+          0.1624,
+          0.13,
+          0.1138,
+          0.0842,
+          0.1354
+        ],
         "sustainRatio": 0.51,
         "attackSharpness": 0.18
       }
@@ -281,7 +417,7 @@
     {
       "id": "01_03",
       "code": "01_03",
-      "name": "Bateau fendant l’eau",
+      "name": "01_03_Bateau_fendant_eau",
       "file": "audio/01_03.m4a",
       "section": "origines",
       "roles": [
@@ -301,10 +437,13 @@
         "status": "placeholder"
       },
       "notes": "Rames et clapot assemblés pour évoquer le déplacement d’une coque, sans moteur.",
-      "nature": "Création composite",
+      "stepId": 1,
+      "title": "Bateau fendant l’eau",
+      "history": "Rames et clapot assemblés pour évoquer le déplacement d’une coque, sans moteur.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -357,19 +496,54 @@
           19.58,
           19.79
         ],
+        "onsetEnergy": [
+          0.0306,
+          0.0462,
+          0.0374,
+          0.0363,
+          0.0437,
+          0.0396,
+          0.0315,
+          0.019,
+          0.0376,
+          0.0257,
+          0.0328,
+          0.0753,
+          0.0882,
+          0.0296,
+          0.0507,
+          0.0685,
+          0.0364,
+          0.0355,
+          0.0295,
+          0.0804,
+          0.0758,
+          0.0574,
+          0.0521,
+          0.0508,
+          0.051,
+          0.0378,
+          0.0816,
+          0.0834,
+          0.0326,
+          0.0603,
+          0.055,
+          0.0441,
+          0.0315,
+          0.0538,
+          0.029,
+          0.0226,
+          0.0401,
+          0.0143
+        ],
         "sustainRatio": 0.82,
         "attackSharpness": 0.21
-      },
-      "curatedRoles": [
-        "texture",
-        "rhythm"
-      ],
-      "curatedName": "Bateau fendant l’eau"
+      }
     },
     {
       "id": "01_04",
       "code": "01_04",
-      "name": "Voiles qui claquent",
+      "name": "01_04_Voiles_qui_claquent",
       "file": "audio/01_04.m4a",
       "section": "origines",
       "roles": [
@@ -387,10 +561,13 @@
         "status": "placeholder"
       },
       "notes": "Grande toile évoquée par un drapeau ralenti ; ce n’est pas une voile captée.",
-      "nature": "Création composite",
+      "stepId": 1,
+      "title": "Voiles qui claquent",
+      "history": "Grande toile évoquée par un drapeau ralenti ; ce n’est pas une voile captée.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -418,13 +595,24 @@
           16.73,
           17.84
         ],
+        "onsetEnergy": [
+          0.0294,
+          0.0334,
+          0.0492,
+          0.0361,
+          0.0372,
+          0.0305,
+          0.0275,
+          0.0684,
+          0.0617,
+          0.046,
+          0.0611,
+          0.029,
+          0.0278
+        ],
         "sustainRatio": 1,
         "attackSharpness": 0.38
-      },
-      "curatedRoles": [
-        "texture"
-      ],
-      "curatedName": "Voiles qui claquent"
+      }
     },
     {
       "id": "01_05",
@@ -448,10 +636,13 @@
         "status": "placeholder"
       },
       "notes": "Pas chaussés sur sable ; répétition avec raccord.",
-      "nature": "Enregistrement monté",
+      "stepId": 1,
+      "title": "Pas sur sable",
+      "history": "Pas chaussés sur sable ; répétition avec raccord.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -498,6 +689,40 @@
           18.56,
           19.5
         ],
+        "onsetEnergy": [
+          0.019,
+          0.0149,
+          0.0187,
+          0.0125,
+          0.0347,
+          0.0314,
+          0.0273,
+          0.0233,
+          0.019,
+          0.0153,
+          0.0246,
+          0.0207,
+          0.006,
+          0.0112,
+          0.0159,
+          0.0161,
+          0.0066,
+          0.0081,
+          0.019,
+          0.0149,
+          0.0187,
+          0.0125,
+          0.0347,
+          0.0314,
+          0.0273,
+          0.0233,
+          0.019,
+          0.0153,
+          0.0246,
+          0.0207,
+          0.006,
+          0.0112
+        ],
         "sustainRatio": 0.64,
         "attackSharpness": 0.34
       }
@@ -524,10 +749,13 @@
         "status": "placeholder"
       },
       "notes": "Cuillère dans une tasse ; évoque le geste de prendre ou remuer le sucre.",
-      "nature": "Enregistrement monté",
+      "stepId": 2,
+      "title": "Cuillere tasse sucre",
+      "history": "Cuillère dans une tasse ; évoque le geste de prendre ou remuer le sucre.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -560,6 +788,26 @@
           14.94,
           15.57
         ],
+        "onsetEnergy": [
+          0.048,
+          0.0417,
+          0.0534,
+          0.0981,
+          0.0912,
+          0.0452,
+          0.0227,
+          0.0147,
+          0.02,
+          0.0221,
+          0.0229,
+          0.0083,
+          0.0121,
+          0.0096,
+          0.0341,
+          0.0155,
+          0.0293,
+          0.0307
+        ],
         "sustainRatio": 0.09,
         "attackSharpness": 0.89
       }
@@ -586,10 +834,13 @@
         "status": "placeholder"
       },
       "notes": "Bruits de bouche ; évocation de la dégustation, sans mot « miam » prononcé.",
-      "nature": "Enregistrement monté",
+      "stepId": 2,
+      "title": "Degustation",
+      "history": "Bruits de bouche ; évocation de la dégustation, sans mot « miam » prononcé.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -625,6 +876,29 @@
           15.6,
           16.01
         ],
+        "onsetEnergy": [
+          0.0157,
+          0.0127,
+          0.0151,
+          0.0195,
+          0.0106,
+          0.0303,
+          0.0358,
+          0.0157,
+          0.0127,
+          0.0151,
+          0.0195,
+          0.0106,
+          0.0303,
+          0.0358,
+          0.0157,
+          0.0127,
+          0.0151,
+          0.0195,
+          0.0106,
+          0.0303,
+          0.0358
+        ],
         "sustainRatio": 0.15,
         "attackSharpness": 0.86
       }
@@ -632,7 +906,7 @@
     {
       "id": "02_03",
       "code": "02_03",
-      "name": "Couvercle de boîte à sucre",
+      "name": "02_03_Couvercle_boite_sucre",
       "file": "audio/02_03.m4a",
       "section": "ages",
       "roles": [
@@ -652,10 +926,13 @@
         "status": "placeholder"
       },
       "notes": "Couvercle de boîte métallique générique.",
-      "nature": "Enregistrement monté",
+      "stepId": 2,
+      "title": "Couvercle de boîte à sucre",
+      "history": "Couvercle de boîte métallique générique.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -688,14 +965,29 @@
           17.5,
           18.53
         ],
+        "onsetEnergy": [
+          0.0461,
+          0.0164,
+          0.0126,
+          0.0552,
+          0.0518,
+          0.0236,
+          0.0461,
+          0.0164,
+          0.0126,
+          0.0552,
+          0.0518,
+          0.0236,
+          0.0461,
+          0.0164,
+          0.0126,
+          0.0552,
+          0.0518,
+          0.0236
+        ],
         "sustainRatio": 0.13,
         "attackSharpness": 1
-      },
-      "curatedRoles": [
-        "melody",
-        "earcandy"
-      ],
-      "curatedName": "Couvercle de boîte à sucre"
+      }
     },
     {
       "id": "02_04",
@@ -717,10 +1009,13 @@
         "status": "placeholder"
       },
       "notes": "Marché contemporain générique ; ni reconstitution historique ni marché local attesté.",
-      "nature": "Enregistrement monté",
+      "stepId": 2,
+      "title": "Commercants etals",
+      "history": "Marché contemporain générique ; ni reconstitution historique ni marché local attesté.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -735,6 +1030,9 @@
         "onsetRate": 0.05,
         "onsets": [
           0.01
+        ],
+        "onsetEnergy": [
+          0.101
         ],
         "sustainRatio": 1,
         "attackSharpness": 0
@@ -760,10 +1058,13 @@
         "status": "placeholder"
       },
       "notes": "Lecture « bal / causeries » incertaine : proposition de conversations, sans musique de bal.",
-      "nature": "Enregistrement monté",
+      "stepId": 2,
+      "title": "Bal causeries",
+      "history": "Lecture « bal / causeries » incertaine : proposition de conversations, sans musique de bal.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -781,6 +1082,11 @@
           12.71,
           14.39
         ],
+        "onsetEnergy": [
+          0.1386,
+          0.0579,
+          0.068
+        ],
         "sustainRatio": 1,
         "attackSharpness": 0
       }
@@ -788,7 +1094,7 @@
     {
       "id": "03_01",
       "code": "03_01",
-      "name": "Cordonnier",
+      "name": "03_01_Cordonnier",
       "file": "audio/03_01.m4a",
       "section": "cheminee",
       "roles": [
@@ -806,10 +1112,13 @@
         "status": "placeholder"
       },
       "notes": "Petits coups assourdis et frottements : évocation du travail du cuir, pas une captation de cordonnier.",
-      "nature": "Création composite",
+      "stepId": 3,
+      "title": "Cordonnier",
+      "history": "Petits coups assourdis et frottements : évocation du travail du cuir, pas une captation de cordonnier.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -857,18 +1166,49 @@
           19.43,
           19.7
         ],
+        "onsetEnergy": [
+          0.0103,
+          0.0077,
+          0.0124,
+          0.0118,
+          0.0156,
+          0.0174,
+          0.0212,
+          0.0275,
+          0.0256,
+          0.0244,
+          0.0299,
+          0.0298,
+          0.0191,
+          0.0308,
+          0.0095,
+          0.029,
+          0.0288,
+          0.0119,
+          0.0063,
+          0.0132,
+          0.0139,
+          0.0155,
+          0.0173,
+          0.0224,
+          0.0277,
+          0.0261,
+          0.0245,
+          0.0322,
+          0.0301,
+          0.0223,
+          0.0329,
+          0.0293,
+          0.0109
+        ],
         "sustainRatio": 0.39,
         "attackSharpness": 0.76
-      },
-      "curatedRoles": [
-        "earcandy"
-      ],
-      "curatedName": "Cordonnier"
+      }
     },
     {
       "id": "03_02",
       "code": "03_02",
-      "name": "Forgeron",
+      "name": "03_02_Forgeron",
       "file": "audio/03_02.m4a",
       "section": "cheminee",
       "roles": [
@@ -888,10 +1228,13 @@
         "status": "placeholder"
       },
       "notes": "Marteau sur enclume.",
-      "nature": "Enregistrement monté",
+      "stepId": 3,
+      "title": "Forgeron",
+      "history": "Marteau sur enclume.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -934,14 +1277,39 @@
           19.67,
           19.9
         ],
+        "onsetEnergy": [
+          0.0956,
+          0.0921,
+          0.0803,
+          0.0962,
+          0.1024,
+          0.1054,
+          0.0973,
+          0.0895,
+          0.0923,
+          0.0677,
+          0.0827,
+          0.0864,
+          0.0892,
+          0.0851,
+          0.0858,
+          0.0786,
+          0.0897,
+          0.076,
+          0.0975,
+          0.1016,
+          0.0852,
+          0.1007,
+          0.0913,
+          0.112,
+          0.0995,
+          0.0974,
+          0.1214,
+          0.1304
+        ],
         "sustainRatio": 0.63,
         "attackSharpness": 0.32
-      },
-      "curatedRoles": [
-        "melody",
-        "earcandy"
-      ],
-      "curatedName": "Forgeron"
+      }
     },
     {
       "id": "03_03",
@@ -965,10 +1333,13 @@
         "status": "placeholder"
       },
       "notes": "Évocation d’une coulée : foyer, souffle et versement ; aucun métal fondu réellement enregistré.",
-      "nature": "Création composite",
+      "stepId": 3,
+      "title": "Fondeur",
+      "history": "Évocation d’une coulée : foyer, souffle et versement ; aucun métal fondu réellement enregistré.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -994,6 +1365,19 @@
           8.26,
           12.7
         ],
+        "onsetEnergy": [
+          0.0542,
+          0.0375,
+          0.0263,
+          0.0281,
+          0.024,
+          0.0505,
+          0.0424,
+          0.0302,
+          0.0221,
+          0.02,
+          0.0671
+        ],
         "sustainRatio": 1,
         "attackSharpness": 0.27
       }
@@ -1018,10 +1402,13 @@
         "status": "placeholder"
       },
       "notes": "Sciage manuel et marteau, sans outil électrique.",
-      "nature": "Création composite",
+      "stepId": 3,
+      "title": "Charpentier",
+      "history": "Sciage manuel et marteau, sans outil électrique.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1052,6 +1439,24 @@
           18.87,
           19.48
         ],
+        "onsetEnergy": [
+          0.0513,
+          0.0597,
+          0.0197,
+          0.0159,
+          0.0453,
+          0.0426,
+          0.0789,
+          0.0071,
+          0.0101,
+          0.0512,
+          0.0215,
+          0.0179,
+          0.0603,
+          0.0452,
+          0.0418,
+          0.0784
+        ],
         "sustainRatio": 0.5,
         "attackSharpness": 0.13
       }
@@ -1076,10 +1481,13 @@
         "status": "placeholder"
       },
       "notes": "Quatre claquements espacés, sans cri. Crédit obligatoire : Mike Koenig, CC BY 3.0, SoundBible ; montage en 20 s.",
-      "nature": "Enregistrement monté",
+      "stepId": 4,
+      "title": "Fouet",
+      "history": "Quatre claquements espacés, sans cri. Crédit obligatoire : Mike Koenig, CC BY 3.0, SoundBible ; montage en 20 s.",
+      "availability": "not_musical",
       "sensitive": true,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1097,6 +1505,12 @@
           7.34,
           12.95,
           17.64
+        ],
+        "onsetEnergy": [
+          0.0473,
+          0.0473,
+          0.0473,
+          0.0474
         ],
         "sustainRatio": 0.04,
         "attackSharpness": 0.75
@@ -1124,10 +1538,13 @@
         "status": "placeholder"
       },
       "notes": "Lecture « fer » retenue ; chaînes génériques, non objets historiques attestés.",
-      "nature": "Enregistrement monté",
+      "stepId": 4,
+      "title": "Fers chaines",
+      "history": "Lecture « fer » retenue ; chaînes génériques, non objets historiques attestés.",
+      "availability": "not_musical",
       "sensitive": true,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1170,6 +1587,36 @@
           19.32,
           19.42
         ],
+        "onsetEnergy": [
+          0.0235,
+          0.0214,
+          0.0774,
+          0.0297,
+          0.0251,
+          0.0493,
+          0.0451,
+          0.0235,
+          0.0216,
+          0.0772,
+          0.0297,
+          0.0251,
+          0.0493,
+          0.045,
+          0.0235,
+          0.0214,
+          0.0775,
+          0.0297,
+          0.0251,
+          0.0493,
+          0.045,
+          0.0235,
+          0.0214,
+          0.0775,
+          0.0297,
+          0.0251,
+          0.0493,
+          0.045
+        ],
         "sustainRatio": 0.16,
         "attackSharpness": 0.82
       }
@@ -1196,10 +1643,13 @@
         "status": "placeholder"
       },
       "notes": "Coupe de végétaux et feuilles assemblées ; équivalent de bruitage, pas une récolte de canne captée. Réemploi en séquence 6.",
-      "nature": "Création composite",
+      "stepId": 4,
+      "title": "Coupe coupe champ",
+      "history": "Coupe de végétaux et feuilles assemblées ; équivalent de bruitage, pas une récolte de canne captée. Réemploi en séquence 6.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1234,6 +1684,28 @@
           19.28,
           19.56
         ],
+        "onsetEnergy": [
+          0.0154,
+          0.0142,
+          0.0241,
+          0.0195,
+          0.0249,
+          0.0261,
+          0.0155,
+          0.0142,
+          0.0241,
+          0.0196,
+          0.0249,
+          0.026,
+          0.0154,
+          0.0142,
+          0.0241,
+          0.0196,
+          0.0249,
+          0.0261,
+          0.0154,
+          0.0143
+        ],
         "sustainRatio": 0.09,
         "attackSharpness": 0.45
       }
@@ -1260,10 +1732,13 @@
         "status": "placeholder"
       },
       "notes": "Impacts synthétisés et débris végétaux ; évocation d’une pioche dans le sol.",
-      "nature": "Création composite",
+      "stepId": 4,
+      "title": "Pioche",
+      "history": "Impacts synthétisés et débris végétaux ; évocation d’une pioche dans le sol.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1288,6 +1763,19 @@
           14.39,
           16.09,
           17.79
+        ],
+        "onsetEnergy": [
+          0.0695,
+          0.0695,
+          0.0695,
+          0.0671,
+          0.0695,
+          0.0695,
+          0.0695,
+          0.0695,
+          0.0695,
+          0.0695,
+          0.0695
         ],
         "sustainRatio": 0.07,
         "attackSharpness": 1
@@ -1315,10 +1803,13 @@
         "status": "placeholder"
       },
       "notes": "« Ayo » interprété provisoirement comme une interjection. Voix Flite « Ah yo », non chant traditionnel ; prononciation et intention à valider.",
-      "nature": "Maquette vocale synthétique à valider",
+      "stepId": 4,
+      "title": "Ayo MAQUETTE A VALIDER",
+      "history": "« Ayo » interprété provisoirement comme une interjection. Voix Flite « Ah yo », non chant traditionnel ; prononciation et intention à valider.",
+      "availability": "not_musical",
       "sensitive": true,
       "needsValidation": true,
-      "inDemoSet": false,
+      "nature": "Maquette vocale synthétique à valider",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1335,6 +1826,11 @@
           1.22,
           7.22,
           13.22
+        ],
+        "onsetEnergy": [
+          0.2488,
+          0.2488,
+          0.2488
         ],
         "sustainRatio": 0.06,
         "attackSharpness": 0
@@ -1362,10 +1858,13 @@
         "status": "placeholder"
       },
       "notes": "Vent dans les hautes herbes ; aucune identification comme indigo, café ou épices.",
-      "nature": "Enregistrement monté",
+      "stepId": 4,
+      "title": "Vent dans champs",
+      "history": "Vent dans les hautes herbes ; aucune identification comme indigo, café ou épices.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1380,6 +1879,9 @@
         "onsetRate": 0.05,
         "onsets": [
           0.02
+        ],
+        "onsetEnergy": [
+          0.1149
         ],
         "sustainRatio": 1,
         "attackSharpness": 0
@@ -1407,10 +1909,13 @@
         "status": "placeholder"
       },
       "notes": "Interprétation du « SSSSS » manuscrit : souffle sifflant abstrait, sans mot intelligible.",
-      "nature": "Synthèse sonore",
+      "stepId": 4,
+      "title": "Sucre sibilance SSS",
+      "history": "Interprétation du « SSSSS » manuscrit : souffle sifflant abstrait, sans mot intelligible.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Synthèse sonore",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1424,6 +1929,7 @@
         "tonalScore": 0,
         "onsetRate": 0,
         "onsets": [],
+        "onsetEnergy": [],
         "sustainRatio": 1,
         "attackSharpness": 0
       }
@@ -1450,10 +1956,13 @@
         "status": "placeholder"
       },
       "notes": "Lecture « fer qui s’ouvre et se ferme » retenue : serrure et chaînes génériques ; intention à confirmer.",
-      "nature": "Création composite",
+      "stepId": 4,
+      "title": "Fers ouverture fermeture",
+      "history": "Lecture « fer qui s’ouvre et se ferme » retenue : serrure et chaînes génériques ; intention à confirmer.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1504,6 +2013,44 @@
           18.58,
           18.65
         ],
+        "onsetEnergy": [
+          0.028,
+          0.0506,
+          0.046,
+          0.0149,
+          0.0134,
+          0.0569,
+          0.0527,
+          0.028,
+          0.0216,
+          0.0376,
+          0.0521,
+          0.0428,
+          0.013,
+          0.0296,
+          0.0278,
+          0.039,
+          0.0356,
+          0.0135,
+          0.0176,
+          0.0767,
+          0.0552,
+          0.0304,
+          0.0278,
+          0.0271,
+          0.024,
+          0.0303,
+          0.0198,
+          0.014,
+          0.0447,
+          0.061,
+          0.0481,
+          0.0215,
+          0.0411,
+          0.0573,
+          0.0506,
+          0.0459
+        ],
         "sustainRatio": 0.33,
         "attackSharpness": 0.69
       }
@@ -1532,10 +2079,13 @@
         "status": "placeholder"
       },
       "notes": "Résonances métalliques synthétisées ; nom du récipient manuscrit illisible, matière « fer blanc » retenue.",
-      "nature": "Synthèse sonore",
+      "stepId": 4,
+      "title": "Cuillere sur fer blanc",
+      "history": "Résonances métalliques synthétisées ; nom du récipient manuscrit illisible, matière « fer blanc » retenue.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Synthèse sonore",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1585,6 +2135,43 @@
           18.64,
           19.19
         ],
+        "onsetEnergy": [
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779,
+          0.0779
+        ],
         "sustainRatio": 0.3,
         "attackSharpness": 1
       }
@@ -1613,10 +2200,13 @@
         "status": "placeholder"
       },
       "notes": "Crayon sur papier comme substitut à la plume ; pas de clavier moderne.",
-      "nature": "Enregistrement monté",
+      "stepId": 4,
+      "title": "Redaction contrat",
+      "history": "Crayon sur papier comme substitut à la plume ; pas de clavier moderne.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1650,6 +2240,27 @@
           18.93,
           19.88
         ],
+        "onsetEnergy": [
+          0.0191,
+          0.0214,
+          0.0205,
+          0.0466,
+          0.0353,
+          0.0469,
+          0.0266,
+          0.0335,
+          0.0323,
+          0.032,
+          0.0236,
+          0.0398,
+          0.0378,
+          0.0375,
+          0.0438,
+          0.0458,
+          0.0468,
+          0.0223,
+          0.0748
+        ],
         "sustainRatio": 0.63,
         "attackSharpness": 0.32
       }
@@ -1678,10 +2289,13 @@
         "status": "placeholder"
       },
       "notes": "Bruitages humides, pression et papier ; geste de l’empreinte reconstitué, pas capté.",
-      "nature": "Création composite",
+      "stepId": 4,
+      "title": "Doigt encre empreinte",
+      "history": "Bruitages humides, pression et papier ; geste de l’empreinte reconstitué, pas capté.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1707,6 +2321,20 @@
           15.91,
           16.42,
           17.39
+        ],
+        "onsetEnergy": [
+          0.0157,
+          0.0129,
+          0.0152,
+          0.072,
+          0.0159,
+          0.0129,
+          0.0152,
+          0.072,
+          0.016,
+          0.0131,
+          0.0151,
+          0.0721
         ],
         "sustainRatio": 0.03,
         "attackSharpness": 0.75
@@ -1734,10 +2362,13 @@
         "status": "placeholder"
       },
       "notes": "Drapeau générique, sans hymne ni attribution nationale.",
-      "nature": "Enregistrement monté",
+      "stepId": 4,
+      "title": "Drapeau au vent",
+      "history": "Drapeau générique, sans hymne ni attribution nationale.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1786,6 +2417,42 @@
           19.83,
           19.93
         ],
+        "onsetEnergy": [
+          0.0101,
+          0.0288,
+          0.0375,
+          0.0273,
+          0.01,
+          0.0107,
+          0.0092,
+          0.0071,
+          0.0066,
+          0.0333,
+          0.0314,
+          0.0191,
+          0.0208,
+          0.02,
+          0.0295,
+          0.0512,
+          0.0499,
+          0.0456,
+          0.0387,
+          0.0098,
+          0.0142,
+          0.012,
+          0.0162,
+          0.0271,
+          0.0349,
+          0.0413,
+          0.0331,
+          0.012,
+          0.0223,
+          0.0183,
+          0.0082,
+          0.0106,
+          0.0362,
+          0.0493
+        ],
         "sustainRatio": 0.37,
         "attackSharpness": 0.62
       }
@@ -1810,10 +2477,13 @@
         "status": "placeholder"
       },
       "notes": "Trois détonations espacées, sans cris.",
-      "nature": "Enregistrement monté",
+      "stepId": 4,
+      "title": "Canon",
+      "history": "Trois détonations espacées, sans cris.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1830,6 +2500,11 @@
           2.05,
           9.05,
           16.05
+        ],
+        "onsetEnergy": [
+          0.2107,
+          0.2108,
+          0.2107
         ],
         "sustainRatio": 0.13,
         "attackSharpness": 0.67
@@ -1859,10 +2534,13 @@
         "status": "placeholder"
       },
       "notes": "Évocation créée : froissements, craquements et progression. Ce n’est pas le son biologique réel d’une croissance.",
-      "nature": "Création composite",
+      "stepId": 5,
+      "title": "Canne pousse accelere",
+      "history": "Évocation créée : froissements, craquements et progression. Ce n’est pas le son biologique réel d’une croissance.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1895,6 +2573,26 @@
           16.99,
           17.99
         ],
+        "onsetEnergy": [
+          0.0549,
+          0.053,
+          0.0532,
+          0.051,
+          0.0544,
+          0.051,
+          0.0505,
+          0.0517,
+          0.0545,
+          0.0499,
+          0.0501,
+          0.0541,
+          0.0555,
+          0.0568,
+          0.054,
+          0.0535,
+          0.0522,
+          0.0507
+        ],
         "sustainRatio": 0.93,
         "attackSharpness": 1
       }
@@ -1902,7 +2600,7 @@
     {
       "id": "05_02",
       "code": "05_02",
-      "name": "Éprouvette remuée",
+      "name": "05_02_Eprouvette_remuee",
       "file": "audio/05_02.m4a",
       "section": "canne",
       "roles": [
@@ -1922,10 +2620,13 @@
         "status": "placeholder"
       },
       "notes": "Eau agitée et verre ; substitut à une éprouvette cylindrique, sans casse.",
-      "nature": "Création composite",
+      "stepId": 5,
+      "title": "Éprouvette remuée",
+      "history": "Eau agitée et verre ; substitut à une éprouvette cylindrique, sans casse.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -1977,14 +2678,48 @@
           17.02,
           17.15
         ],
+        "onsetEnergy": [
+          0.0985,
+          0.0991,
+          0.0367,
+          0.0337,
+          0.0348,
+          0.0288,
+          0.0976,
+          0.0989,
+          0.0555,
+          0.0384,
+          0.033,
+          0.0361,
+          0.0316,
+          0.0245,
+          0.0934,
+          0.0987,
+          0.0997,
+          0.0546,
+          0.0395,
+          0.0322,
+          0.0286,
+          0.0242,
+          0.098,
+          0.0991,
+          0.0384,
+          0.0327,
+          0.0322,
+          0.029,
+          0.0242,
+          0.0997,
+          0.1004,
+          0.0569,
+          0.0382,
+          0.0324,
+          0.0317,
+          0.0285,
+          0.0242
+        ],
         "sustainRatio": 0.34,
         "attackSharpness": 0.27
-      },
-      "curatedRoles": [
-        "earcandy",
-        "rhythm"
-      ],
-      "curatedName": "Éprouvette remuée"
+      }
     },
     {
       "id": "06_01",
@@ -2008,10 +2743,13 @@
         "status": "placeholder"
       },
       "notes": "Roue de moulin à eau ; pas de moulin sucrier local attesté.",
-      "nature": "Enregistrement monté",
+      "stepId": 6,
+      "title": "Moulin eau",
+      "history": "Roue de moulin à eau ; pas de moulin sucrier local attesté.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2028,6 +2766,11 @@
           1.64,
           3.43,
           9.92
+        ],
+        "onsetEnergy": [
+          0.0725,
+          0.0909,
+          0.0718
         ],
         "sustainRatio": 1,
         "attackSharpness": 0.67
@@ -2055,10 +2798,13 @@
         "status": "placeholder"
       },
       "notes": "Moulin traditionnel néerlandais De Lelie : analogie mécanique, non moulin sucrier.",
-      "nature": "Enregistrement monté",
+      "stepId": 6,
+      "title": "Moulin vent",
+      "history": "Moulin traditionnel néerlandais De Lelie : analogie mécanique, non moulin sucrier.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2126,6 +2872,61 @@
           19.12,
           19.65
         ],
+        "onsetEnergy": [
+          0.0584,
+          0.0653,
+          0.0596,
+          0.0641,
+          0.0779,
+          0.0888,
+          0.0591,
+          0.0691,
+          0.0914,
+          0.0668,
+          0.0512,
+          0.0721,
+          0.0644,
+          0.0866,
+          0.0827,
+          0.0705,
+          0.053,
+          0.0499,
+          0.0925,
+          0.0936,
+          0.0579,
+          0.0518,
+          0.0787,
+          0.0866,
+          0.0911,
+          0.0779,
+          0.0769,
+          0.0633,
+          0.063,
+          0.0605,
+          0.0572,
+          0.0623,
+          0.0731,
+          0.046,
+          0.0775,
+          0.0722,
+          0.0708,
+          0.066,
+          0.0767,
+          0.0752,
+          0.0789,
+          0.0728,
+          0.0462,
+          0.0396,
+          0.0698,
+          0.0545,
+          0.055,
+          0.0459,
+          0.0867,
+          0.08,
+          0.0749,
+          0.0761,
+          0.0849
+        ],
         "sustainRatio": 1,
         "attackSharpness": 0.23
       }
@@ -2133,7 +2934,7 @@
     {
       "id": "06_03",
       "code": "06_03",
-      "name": "Moulin à vapeur",
+      "name": "06_03_Moulin_vapeur",
       "file": "audio/06_03.m4a",
       "section": "canne-au-sucre",
       "roles": [
@@ -2152,10 +2953,13 @@
         "status": "placeholder"
       },
       "notes": "Mécanique de locomotive à vapeur et souffle ; reconstitution d’un entraînement à vapeur.",
-      "nature": "Création composite",
+      "stepId": 6,
+      "title": "Moulin à vapeur",
+      "history": "Mécanique de locomotive à vapeur et souffle ; reconstitution d’un entraînement à vapeur.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2174,19 +2978,20 @@
           11.75,
           13.85
         ],
+        "onsetEnergy": [
+          0.1271,
+          0.1403,
+          0.1289,
+          0.1292
+        ],
         "sustainRatio": 1,
         "attackSharpness": 0
-      },
-      "curatedRoles": [
-        "bass",
-        "texture"
-      ],
-      "curatedName": "Moulin à vapeur"
+      }
     },
     {
       "id": "06_04",
       "code": "06_04",
-      "name": "Charrette à bœufs",
+      "name": "06_04_Charrette_boeufs",
       "file": "audio/06_04.m4a",
       "section": "canne-au-sucre",
       "roles": [
@@ -2204,10 +3009,13 @@
         "status": "placeholder"
       },
       "notes": "Effet de charrette à bœufs, archive sonore de cinéma ; pas une captation réunionnaise ou mauricienne.",
-      "nature": "Enregistrement monté",
+      "stepId": 6,
+      "title": "Charrette à bœufs",
+      "history": "Effet de charrette à bœufs, archive sonore de cinéma ; pas une captation réunionnaise ou mauricienne.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2281,13 +3089,70 @@
           19.23,
           19.3
         ],
+        "onsetEnergy": [
+          0.0935,
+          0.1027,
+          0.0421,
+          0.0511,
+          0.0671,
+          0.0728,
+          0.065,
+          0.0834,
+          0.0999,
+          0.0936,
+          0.0921,
+          0.0993,
+          0.1022,
+          0.1039,
+          0.086,
+          0.1014,
+          0.0761,
+          0.0758,
+          0.0514,
+          0.0893,
+          0.0885,
+          0.1011,
+          0.0963,
+          0.0664,
+          0.0672,
+          0.0892,
+          0.07,
+          0.1346,
+          0.0904,
+          0.0585,
+          0.0873,
+          0.0604,
+          0.0764,
+          0.0649,
+          0.0503,
+          0.0579,
+          0.0941,
+          0.0805,
+          0.0372,
+          0.0872,
+          0.0779,
+          0.061,
+          0.0477,
+          0.0447,
+          0.0709,
+          0.0627,
+          0.0529,
+          0.0664,
+          0.0595,
+          0.0534,
+          0.0528,
+          0.0584,
+          0.047,
+          0.0704,
+          0.1061,
+          0.0574,
+          0.0456,
+          0.055,
+          0.0473
+        ],
         "sustainRatio": 0.95,
         "attackSharpness": 0.44
-      },
-      "curatedRoles": [
-        "rhythm"
-      ],
-      "curatedName": "Charrette à bœufs"
+      }
     },
     {
       "id": "06_05",
@@ -2309,10 +3174,13 @@
         "status": "placeholder"
       },
       "notes": "Moteur de camion générique.",
-      "nature": "Enregistrement monté",
+      "stepId": 6,
+      "title": "Camion",
+      "history": "Moteur de camion générique.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2327,6 +3195,9 @@
         "onsetRate": 0.05,
         "onsets": [
           0.01
+        ],
+        "onsetEnergy": [
+          0.1213
         ],
         "sustainRatio": 1,
         "attackSharpness": 0
@@ -2354,10 +3225,13 @@
         "status": "placeholder"
       },
       "notes": "Mécanisme d’une presse Heidelberg comme substitut d’engrenages industriels.",
-      "nature": "Enregistrement monté",
+      "stepId": 6,
+      "title": "Engrenages",
+      "history": "Mécanisme d’une presse Heidelberg comme substitut d’engrenages industriels.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2374,6 +3248,10 @@
           0.02,
           10.45
         ],
+        "onsetEnergy": [
+          0.0938,
+          0.0989
+        ],
         "sustainRatio": 1,
         "attackSharpness": 0
       }
@@ -2381,7 +3259,7 @@
     {
       "id": "07_01",
       "code": "07_01",
-      "name": "Bagasse écrasée",
+      "name": "07_01_Bagasse_ecrasee",
       "file": "audio/07_01.m4a",
       "section": "energie",
       "roles": [
@@ -2400,10 +3278,13 @@
         "status": "placeholder"
       },
       "notes": "Véritable broyeur de canne combiné à des fibres froissées ; pas une captation isolée de bagasse.",
-      "nature": "Création composite",
+      "stepId": 7,
+      "title": "Bagasse écrasée",
+      "history": "Véritable broyeur de canne combiné à des fibres froissées ; pas une captation isolée de bagasse.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2419,19 +3300,17 @@
         "onsets": [
           0.02
         ],
+        "onsetEnergy": [
+          0.1036
+        ],
         "sustainRatio": 1,
         "attackSharpness": 0
-      },
-      "curatedRoles": [
-        "bass",
-        "texture"
-      ],
-      "curatedName": "Bagasse écrasée"
+      }
     },
     {
       "id": "07_02",
       "code": "07_02",
-      "name": "Électricité",
+      "name": "07_02_Electricite",
       "file": "audio/07_02.m4a",
       "section": "energie",
       "roles": [
@@ -2449,10 +3328,13 @@
         "status": "placeholder"
       },
       "notes": "Bourdonnement de néon ou transformateur ; l’électricité seule n’a pas ce son.",
-      "nature": "Enregistrement monté",
+      "stepId": 7,
+      "title": "Électricité",
+      "history": "Bourdonnement de néon ou transformateur ; l’électricité seule n’a pas ce son.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Enregistrement monté",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2468,19 +3350,17 @@
         "onsets": [
           0.02
         ],
+        "onsetEnergy": [
+          0.1187
+        ],
         "sustainRatio": 1,
         "attackSharpness": 0
-      },
-      "curatedRoles": [
-        "texture",
-        "earcandy"
-      ],
-      "curatedName": "Électricité"
+      }
     },
     {
       "id": "08_01",
       "code": "08_01",
-      "name": "Mélasse",
+      "name": "08_01_Melasse",
       "file": "audio/08_01.m4a",
       "section": "jus-au-sucre",
       "roles": [
@@ -2500,10 +3380,13 @@
         "status": "placeholder"
       },
       "notes": "Bouillonnement ralenti et bulles synthétiques, évocation d’un liquide visqueux ; pas de mélasse captée.",
-      "nature": "Création composite",
+      "stepId": 7,
+      "title": "Mélasse",
+      "history": "Bouillonnement ralenti et bulles synthétiques, évocation d’un liquide visqueux ; pas de mélasse captée.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2604,14 +3487,97 @@
           19.14,
           19.38
         ],
+        "onsetEnergy": [
+          0.0425,
+          0.0472,
+          0.0337,
+          0.0562,
+          0.0692,
+          0.0368,
+          0.0448,
+          0.0364,
+          0.0459,
+          0.0518,
+          0.0535,
+          0.0569,
+          0.0404,
+          0.0663,
+          0.0561,
+          0.0455,
+          0.0233,
+          0.0464,
+          0.0432,
+          0.0526,
+          0.0632,
+          0.0594,
+          0.055,
+          0.0333,
+          0.0324,
+          0.0356,
+          0.052,
+          0.0586,
+          0.0459,
+          0.0373,
+          0.0372,
+          0.0378,
+          0.0467,
+          0.0452,
+          0.0335,
+          0.0521,
+          0.0524,
+          0.0549,
+          0.0591,
+          0.0511,
+          0.0387,
+          0.0552,
+          0.0307,
+          0.058,
+          0.0345,
+          0.0654,
+          0.0662,
+          0.0517,
+          0.0489,
+          0.0538,
+          0.0416,
+          0.0341,
+          0.0525,
+          0.0442,
+          0.0664,
+          0.0669,
+          0.0521,
+          0.0383,
+          0.0529,
+          0.0515,
+          0.0364,
+          0.0519,
+          0.0281,
+          0.0258,
+          0.0445,
+          0.0568,
+          0.0463,
+          0.0399,
+          0.0331,
+          0.0366,
+          0.0671,
+          0.0466,
+          0.0478,
+          0.0593,
+          0.0598,
+          0.0509,
+          0.0494,
+          0.0482,
+          0.044,
+          0.0433,
+          0.0552,
+          0.0538,
+          0.0553,
+          0.0599,
+          0.0361,
+          0.0292
+        ],
         "sustainRatio": 0.91,
         "attackSharpness": 0.48
-      },
-      "curatedRoles": [
-        "rhythm",
-        "bass"
-      ],
-      "curatedName": "Mélasse"
+      }
     },
     {
       "id": "08_02",
@@ -2635,10 +3601,13 @@
         "status": "placeholder"
       },
       "notes": "Versement d’eau et bulles ; substitut acoustique au jus de canne.",
-      "nature": "Création composite",
+      "stepId": 7,
+      "title": "Jus de canne",
+      "history": "Versement d’eau et bulles ; substitut acoustique au jus de canne.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": false,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2690,6 +3659,45 @@
           17.02,
           17.15
         ],
+        "onsetEnergy": [
+          0.1,
+          0.1009,
+          0.038,
+          0.0313,
+          0.0323,
+          0.0289,
+          0.099,
+          0.1004,
+          0.0564,
+          0.0372,
+          0.0313,
+          0.0328,
+          0.0292,
+          0.0245,
+          0.1,
+          0.1007,
+          0.0529,
+          0.037,
+          0.0307,
+          0.0322,
+          0.0296,
+          0.0247,
+          0.0991,
+          0.1001,
+          0.037,
+          0.0307,
+          0.0322,
+          0.0298,
+          0.0259,
+          0.1001,
+          0.101,
+          0.0563,
+          0.0376,
+          0.0309,
+          0.0323,
+          0.0291,
+          0.0246
+        ],
         "sustainRatio": 0.28,
         "attackSharpness": 0.22
       }
@@ -2697,7 +3705,7 @@
     {
       "id": "08_03",
       "code": "08_03",
-      "name": "Chaudière",
+      "name": "08_03_Chaudiere",
       "file": "audio/08_03.m4a",
       "section": "jus-au-sucre",
       "roles": [
@@ -2716,10 +3724,13 @@
         "status": "placeholder"
       },
       "notes": "Vapeur, foyer et ébullition ; évocation d’une chaudière sucrière.",
-      "nature": "Création composite",
+      "stepId": 7,
+      "title": "Chaudière",
+      "history": "Vapeur, foyer et ébullition ; évocation d’une chaudière sucrière.",
+      "availability": "available",
       "sensitive": false,
       "needsValidation": false,
-      "inDemoSet": true,
+      "nature": "Création composite",
       "analysis": {
         "durationS": 20,
         "sampleRate": 32000,
@@ -2737,14 +3748,14 @@
           4.65,
           7.7
         ],
+        "onsetEnergy": [
+          0.0421,
+          0.0381,
+          0.1408
+        ],
         "sustainRatio": 1,
         "attackSharpness": 0
-      },
-      "curatedRoles": [
-        "earcandy",
-        "texture"
-      ],
-      "curatedName": "Chaudière"
+      }
     }
   ]
 }
