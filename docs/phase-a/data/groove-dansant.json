@@ -1,0 +1,403 @@
+{
+  "target": "dansant",
+  "file": "tififi_Dansant_drums.mp3",
+  "assumed_pulse": {
+    "bpm": 77.42,
+    "beat_s": 0.775,
+    "subdivision": 3,
+    "onset_band_hz": [
+      35.0,
+      160.0
+    ],
+    "grid_phase_s": 0.6055,
+    "note": "the pulse is an input hypothesis from analyze-meter.py, not a tracker output"
+  },
+  "onset_count": 811,
+  "beat": {
+    "phase_histogram_pct": [
+      6.8,
+      8.6,
+      9.4,
+      7.0,
+      9.1,
+      8.1,
+      7.6,
+      9.1,
+      8.6,
+      7.5,
+      9.6,
+      8.4
+    ],
+    "bins": "12 bins per beat: 0 = on the beat, 4 = 1/3, 6 = 1/2, 8 = 2/3"
+  },
+  "swing": {
+    "first_offbeat_position": 0.688,
+    "sample_onsets": 438,
+    "straight_is": 0.5,
+    "triplet_is": 0.667,
+    "reading": "triplet swing"
+  },
+  "syncopation": {
+    "onsets": 811,
+    "on_beat_pct": 6.2,
+    "off_beat_pct": 93.8,
+    "note": "off-beat share is a coarse syncopation proxy: it counts position, not accent"
+  },
+  "microtiming": {
+    "median_ms": 66.0,
+    "mean_ms": 64.9,
+    "p90_ms": 117.1,
+    "within_20ms_pct": 16.8,
+    "note": "distance to the nearest line of a grid built from the assumed pulse; a large median means either loose playing or a wrong pulse"
+  },
+  "bars": {
+    "steps_per_bar": 6,
+    "step_ms": 387.0,
+    "bars_analysed": 83,
+    "distinct_patterns": 10,
+    "most_common": [
+      {
+        "pattern": "xxxxxx",
+        "bars": 66
+      },
+      {
+        "pattern": "xxx.xx",
+        "bars": 4
+      },
+      {
+        "pattern": ".xxxxx",
+        "bars": 3
+      }
+    ],
+    "consecutive_similarity_mean": 0.955,
+    "note": "pattern is onset presence only (no accent); similarity is cosine between adjacent bars, so a high value means a looping groove, a low one means variation"
+  },
+  "loudness_by_section_stem": {
+    "sections": [
+      {
+        "label": "1-9",
+        "t_s": 0.0,
+        "seconds": 14.42,
+        "lufs": -21.8,
+        "true_peak_dbfs": -3.4
+      },
+      {
+        "label": "10-12",
+        "t_s": 14.42,
+        "seconds": 4.81,
+        "lufs": -22.1,
+        "true_peak_dbfs": -2.8
+      },
+      {
+        "label": "13-14",
+        "t_s": 19.23,
+        "seconds": 3.2,
+        "lufs": -18.8,
+        "true_peak_dbfs": -2.0
+      },
+      {
+        "label": "15-15",
+        "t_s": 22.43,
+        "seconds": 1.6,
+        "lufs": -16.7,
+        "true_peak_dbfs": -1.4
+      },
+      {
+        "label": "16-16",
+        "t_s": 24.03,
+        "seconds": 1.6,
+        "lufs": -15.7,
+        "true_peak_dbfs": -2.1
+      },
+      {
+        "label": "17-17",
+        "t_s": 25.63,
+        "seconds": 1.6,
+        "lufs": -16.0,
+        "true_peak_dbfs": -1.4
+      },
+      {
+        "label": "18-20",
+        "t_s": 27.24,
+        "seconds": 4.81,
+        "lufs": -16.2,
+        "true_peak_dbfs": -1.7
+      },
+      {
+        "label": "21-22",
+        "t_s": 32.04,
+        "seconds": 3.2,
+        "lufs": -16.2,
+        "true_peak_dbfs": -1.4
+      },
+      {
+        "label": "23-23",
+        "t_s": 35.25,
+        "seconds": 1.6,
+        "lufs": -16.5,
+        "true_peak_dbfs": -2.0
+      },
+      {
+        "label": "24-24",
+        "t_s": 36.85,
+        "seconds": 1.6,
+        "lufs": -16.4,
+        "true_peak_dbfs": -2.3
+      },
+      {
+        "label": "25-25",
+        "t_s": 38.45,
+        "seconds": 1.6,
+        "lufs": -16.5,
+        "true_peak_dbfs": -1.7
+      },
+      {
+        "label": "26-27",
+        "t_s": 40.05,
+        "seconds": 3.2,
+        "lufs": -16.0,
+        "true_peak_dbfs": -1.3
+      },
+      {
+        "label": "28-30",
+        "t_s": 43.26,
+        "seconds": 4.81,
+        "lufs": -16.0,
+        "true_peak_dbfs": -1.2
+      },
+      {
+        "label": "31-32",
+        "t_s": 48.06,
+        "seconds": 3.2,
+        "lufs": -16.3,
+        "true_peak_dbfs": -1.2
+      },
+      {
+        "label": "33-33",
+        "t_s": 51.27,
+        "seconds": 1.6,
+        "lufs": -17.1,
+        "true_peak_dbfs": -1.8
+      },
+      {
+        "label": "34-35",
+        "t_s": 52.87,
+        "seconds": 3.2,
+        "lufs": -16.9,
+        "true_peak_dbfs": -1.3
+      },
+      {
+        "label": "36-48",
+        "t_s": 56.07,
+        "seconds": 20.83,
+        "lufs": -15.6,
+        "true_peak_dbfs": -0.7
+      },
+      {
+        "label": "49-49",
+        "t_s": 76.9,
+        "seconds": 1.6,
+        "lufs": -13.1,
+        "true_peak_dbfs": -0.9
+      },
+      {
+        "label": "50-118",
+        "t_s": 78.5,
+        "seconds": 110.55,
+        "lufs": -13.2,
+        "true_peak_dbfs": -0.0
+      },
+      {
+        "label": "119-119",
+        "t_s": 189.05,
+        "seconds": 1.6,
+        "lufs": -21.3,
+        "true_peak_dbfs": -8.7
+      },
+      {
+        "label": "120-120",
+        "t_s": 190.65,
+        "seconds": 1.6,
+        "lufs": -25.0,
+        "true_peak_dbfs": -11.8
+      },
+      {
+        "label": "121-128",
+        "t_s": 192.26,
+        "seconds": 12.82,
+        "lufs": -33.3,
+        "true_peak_dbfs": -16.4
+      }
+    ],
+    "lufs_range": {
+      "min": -33.3,
+      "max": -13.1,
+      "spread_lu": 20.2
+    },
+    "true_peak_max_dbfs": -0.0
+  },
+  "loudness_by_section_mix": {
+    "sections": [
+      {
+        "label": "1-9",
+        "t_s": 0.0,
+        "seconds": 14.42,
+        "lufs": -13.7,
+        "true_peak_dbfs": -0.2
+      },
+      {
+        "label": "10-12",
+        "t_s": 14.42,
+        "seconds": 4.81,
+        "lufs": -12.2,
+        "true_peak_dbfs": -0.1
+      },
+      {
+        "label": "13-14",
+        "t_s": 19.23,
+        "seconds": 3.2,
+        "lufs": -11.4,
+        "true_peak_dbfs": 0.0
+      },
+      {
+        "label": "15-15",
+        "t_s": 22.43,
+        "seconds": 1.6,
+        "lufs": -12.0,
+        "true_peak_dbfs": 0.1
+      },
+      {
+        "label": "16-16",
+        "t_s": 24.03,
+        "seconds": 1.6,
+        "lufs": -12.2,
+        "true_peak_dbfs": -0.3
+      },
+      {
+        "label": "17-17",
+        "t_s": 25.63,
+        "seconds": 1.6,
+        "lufs": -13.3,
+        "true_peak_dbfs": -0.1
+      },
+      {
+        "label": "18-20",
+        "t_s": 27.24,
+        "seconds": 4.81,
+        "lufs": -11.3,
+        "true_peak_dbfs": 0.0
+      },
+      {
+        "label": "21-22",
+        "t_s": 32.04,
+        "seconds": 3.2,
+        "lufs": -11.0,
+        "true_peak_dbfs": 0.0
+      },
+      {
+        "label": "23-23",
+        "t_s": 35.25,
+        "seconds": 1.6,
+        "lufs": -12.7,
+        "true_peak_dbfs": 0.0
+      },
+      {
+        "label": "24-24",
+        "t_s": 36.85,
+        "seconds": 1.6,
+        "lufs": -10.8,
+        "true_peak_dbfs": -0.0
+      },
+      {
+        "label": "25-25",
+        "t_s": 38.45,
+        "seconds": 1.6,
+        "lufs": -13.2,
+        "true_peak_dbfs": -0.3
+      },
+      {
+        "label": "26-27",
+        "t_s": 40.05,
+        "seconds": 3.2,
+        "lufs": -11.6,
+        "true_peak_dbfs": 0.1
+      },
+      {
+        "label": "28-30",
+        "t_s": 43.26,
+        "seconds": 4.81,
+        "lufs": -11.0,
+        "true_peak_dbfs": 0.1
+      },
+      {
+        "label": "31-32",
+        "t_s": 48.06,
+        "seconds": 3.2,
+        "lufs": -10.8,
+        "true_peak_dbfs": 0.1
+      },
+      {
+        "label": "33-33",
+        "t_s": 51.27,
+        "seconds": 1.6,
+        "lufs": -13.2,
+        "true_peak_dbfs": -0.2
+      },
+      {
+        "label": "34-35",
+        "t_s": 52.87,
+        "seconds": 3.2,
+        "lufs": -9.8,
+        "true_peak_dbfs": 0.0
+      },
+      {
+        "label": "36-48",
+        "t_s": 56.07,
+        "seconds": 20.83,
+        "lufs": -10.0,
+        "true_peak_dbfs": 0.2
+      },
+      {
+        "label": "49-49",
+        "t_s": 76.9,
+        "seconds": 1.6,
+        "lufs": -10.2,
+        "true_peak_dbfs": 0.3
+      },
+      {
+        "label": "50-118",
+        "t_s": 78.5,
+        "seconds": 110.55,
+        "lufs": -9.3,
+        "true_peak_dbfs": 0.6
+      },
+      {
+        "label": "119-119",
+        "t_s": 189.05,
+        "seconds": 1.6,
+        "lufs": -16.3,
+        "true_peak_dbfs": -6.1
+      },
+      {
+        "label": "120-120",
+        "t_s": 190.65,
+        "seconds": 1.6,
+        "lufs": -19.9,
+        "true_peak_dbfs": -10.0
+      },
+      {
+        "label": "121-128",
+        "t_s": 192.26,
+        "seconds": 12.82,
+        "lufs": -27.9,
+        "true_peak_dbfs": -13.7
+      }
+    ],
+    "lufs_range": {
+      "min": -27.9,
+      "max": -9.3,
+      "spread_lu": 18.6
+    },
+    "true_peak_max_dbfs": 0.6
+  }
+}

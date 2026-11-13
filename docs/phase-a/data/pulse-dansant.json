@@ -1,0 +1,159 @@
+{
+  "target": "dansant",
+  "tempogram": {
+    "top_candidates": [
+      {
+        "bpm": 103.36,
+        "relative_strength": 0.439
+      },
+      {
+        "bpm": 99.38,
+        "relative_strength": 0.409
+      },
+      {
+        "bpm": 139.67,
+        "relative_strength": 0.373
+      },
+      {
+        "bpm": 107.67,
+        "relative_strength": 0.372
+      },
+      {
+        "bpm": 147.66,
+        "relative_strength": 0.35
+      },
+      {
+        "bpm": 132.51,
+        "relative_strength": 0.347
+      }
+    ],
+    "method": "mean tempogram of the onset envelope, 55-210 BPM, near-duplicates merged at 3%",
+    "note": "independent of onset times: useful when percussion is continuous and the discrete grid fit has no clear peak"
+  },
+  "file": "tififi_Dansant_drums.mp3",
+  "band_hz": [
+    35.0,
+    160.0
+  ],
+  "onset_count": 811,
+  "onset_rate_per_s": 4.03,
+  "tolerance_ms": 25.0,
+  "method": "grid fit: share of onsets within tolerance of a beat line, best phase per tempo",
+  "peak": {
+    "bpm": 194.75,
+    "concentration": 0.2047,
+    "phase_s": 0.1155,
+    "grid_strength": 0.0677
+  },
+  "top_candidates": [
+    {
+      "bpm": 194.75,
+      "concentration": 0.2047,
+      "phase_s": 0.1155,
+      "grid_strength": 0.0677
+    },
+    {
+      "bpm": 180.0,
+      "concentration": 0.2035,
+      "phase_s": 0.1042,
+      "grid_strength": 0.0659
+    },
+    {
+      "bpm": 197.5,
+      "concentration": 0.1948,
+      "phase_s": 0.2532,
+      "grid_strength": 0.0694
+    },
+    {
+      "bpm": 180.25,
+      "concentration": 0.1948,
+      "phase_s": 0.1456,
+      "grid_strength": 0.0638
+    },
+    {
+      "bpm": 195.5,
+      "concentration": 0.1936,
+      "phase_s": 0.1279,
+      "grid_strength": 0.0751
+    },
+    {
+      "bpm": 198.25,
+      "concentration": 0.1936,
+      "phase_s": 0.29,
+      "grid_strength": 0.0701
+    },
+    {
+      "bpm": 193.25,
+      "concentration": 0.1936,
+      "phase_s": 0.1358,
+      "grid_strength": 0.0669
+    },
+    {
+      "bpm": 198.5,
+      "concentration": 0.1924,
+      "phase_s": 0.1071,
+      "grid_strength": 0.0734
+    },
+    {
+      "bpm": 196.0,
+      "concentration": 0.1911,
+      "phase_s": 0.0446,
+      "grid_strength": 0.0737
+    },
+    {
+      "bpm": 193.75,
+      "concentration": 0.1911,
+      "phase_s": 0.1871,
+      "grid_strength": 0.0725
+    },
+    {
+      "bpm": 186.25,
+      "concentration": 0.1911,
+      "phase_s": 0.1879,
+      "grid_strength": 0.0716
+    },
+    {
+      "bpm": 194.25,
+      "concentration": 0.1911,
+      "phase_s": 0.1802,
+      "grid_strength": 0.0693
+    }
+  ],
+  "octave_check": {
+    "peak": {
+      "bpm": 194.75,
+      "concentration": 0.2047,
+      "phase_s": 0.1155,
+      "grid_strength": 0.0677
+    },
+    "x2": {
+      "bpm": 200.0,
+      "concentration": 0.1825,
+      "phase_s": 0.0375,
+      "grid_strength": 0.07
+    },
+    "x3_2": {
+      "bpm": 200.0,
+      "concentration": 0.1825,
+      "phase_s": 0.0375,
+      "grid_strength": 0.07
+    },
+    "x2_3": {
+      "bpm": 129.75,
+      "concentration": 0.1307,
+      "phase_s": 0.3372,
+      "grid_strength": 0.065
+    },
+    "x3": {
+      "bpm": 200.0,
+      "concentration": 0.1825,
+      "phase_s": 0.0375,
+      "grid_strength": 0.07
+    }
+  },
+  "octave_reading": {
+    "runner_up_concentration": 0.1825,
+    "peak_minus_runner_up": 0.022,
+    "verdict": "weak peak \u2014 tempo family ambiguous"
+  }
+}

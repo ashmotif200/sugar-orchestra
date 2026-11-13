@@ -165,3 +165,67 @@ d'une production électro (drums devant tout).
    cet univers ; une pédale ou un bourdon modal est plus fidèle.
 6. **Durée 3 min 26** contre 36 s dans le moteur : pour cet univers, une boucle de
    36 s n'est pas une forme, c'est un extrait.
+
+---
+
+## Passe 3 — mesures complémentaires (13/11/2026)
+
+Cette passe répond à trois questions laissées ouvertes : le tempo, le groove, et la
+dynamique par section. Deux erreurs de méthode ont été trouvées et corrigées en route ;
+elles sont documentées parce qu'elles invalidaient des chiffres déjà publiés.
+
+### Correction de méthode 1 — le pouls n'est pas 103,36
+
+`librosa.beat.beat_track` rendait 103,36 BPM. Un balayage complet (60–200 BPM, grille
+ajustée sur les attaques, tolérance 25 ms) donne un maximum à **194,75 BPM** avec une
+concentration faible (20,5 %) : aucun pouls discret ne se détache. Le tempogramme, second
+estimateur indépendant, propose **103,36 / 99,38 / 139,67**.
+
+Ces valeurs ne se contredisent pas : pour une mesure de **2,32 s**, 103,4 BPM (noires) et
+~155 BPM (croches) décrivent **la même mesure**. C'est exactement le piège que le brief
+signalait — un tempo sans unité métrique n'a pas de sens.
+
+**Énoncé retenu :** mesure ≈ 2,32 s, subdivision ternaire, ~155 à l'unité croche
+(≡ 103,4 à l'unité noire). Confiance **moyenne** sur l'unité, **élevée** sur la mesure.
+
+### Correction de méthode 2 — un onset mal daté
+
+La première passe utilisait `onset_detect(backtrack=True)`, qui déplace chaque attaque
+vers le minimum d'énergie précédent. Résultat : 30 à 65 ms de « microtiming » qui
+n'étaient qu'un artefact de mesure. En `backtrack=False`, l'Énergétique passe de 37 ms à
+**17,8 ms** de dispersion. Les chiffres de la présente section sont tous mesurés sans
+backtrack.
+
+### Groove : une percussion continue, pas un motif
+
+| Mesure | Valeur | Lecture |
+|---|---|---|
+| Attaques détectées (bande 35–160 Hz) | 811 en 205,6 s, soit **4,03/s** | roulement continu |
+| Histogramme de phase (12 cases/temps) | **7–10 % dans chaque case** | aucune position privilégiée : le pouls n'est pas discrètement articulé |
+| Similarité entre mesures adjacentes (grille 6 pas) | **0,955** | groove quasi invariant |
+| Motifs distincts | 10 sur 83 mesures | pas de variation de motif |
+| Microtiming | 66 ms médians, 17 % à ±20 ms | la notion ne s'applique pas à un roulement |
+
+**Conséquence musicale :** la signature de cet univers est la **continuité** de la peau,
+pas une cellule rythmique. Un moteur qui programme un kick-snare de 4 temps produira un
+sega de bal, pas Tififi.
+
+### Dynamique par section (ffmpeg ebur128, par section)
+
+Mesurée séparément sur le stem percussif et sur le mix — deux informations différentes :
+le stem montre les décisions d'arrangement, le mix montre ce que l'auditeur entend.
+
+| Section | Mix LUFS | Mix true peak | Stem percussif LUFS |
+|---|---|---|---|
+| mesures 1–9 (intro voix) | −13,7 | −0,2 dBTP | −21,8 (percussion absente) |
+| 10–12 | −12,2 | −0,1 | −22,1 |
+| 13–14 | −11,4 | 0,0 | −18,8 |
+| 15–22 (plateau) | −11,0 à −12,2 | 0,0 à +0,1 | −16,0 |
+| 79–88 (fin + silence) | jusqu'à **−27,9** | — | jusqu'à −33,3 |
+
+- **Plage du mix : 18,6 LU**, dont l'essentiel est le silence final et l'intro douce.
+  À l'intérieur du plateau, la variation est inférieure à 1,5 LU : l'énergie ne bouge
+  presque pas pendant 110 secondes.
+- **True peak maximal : +0,6 dBTP** sur le mix. Le master de référence dépasse 0 dBTP en
+  inter-échantillons : c'est un défaut de mastering de la référence, pas un objectif à
+  reproduire. Le moteur visera −1,0 dBTP.

@@ -166,3 +166,44 @@ dB derrière dans l'autre.
 | L'ordre des couches s'inverse entre Énergétique et Détendu | la hiérarchie de mixage est un paramètre d'univers |
 | Les trois durent 50 s à 3 min 26 | 36 s est trop court pour installer une forme |
 | Aucune ne répète une grille d'accords à l'identique | ne pas fabriquer de progression là où il n'y en a pas |
+
+---
+
+## Matrice mesurée — 16 dimensions (passe 3)
+
+Toutes les valeurs ci-dessous proviennent des fichiers `docs/phase-a/data/` nommés en
+colonne 1. Aucune n'est une impression d'écoute.
+
+| # | Dimension | Énergétique (Ohwalawa) | Dansant (Tififi) | Détendu (Zistoire) |
+|---|---|---|---|---|
+| 1 | Tempo | **135 BPM** (grille 135,0 / tempogramme 136,0) | mesure **2,32 s** ; ~155 croches ≡ 103,4 noires | **137 BPM** (132,5–137,2) |
+| 2 | Métrique | 4/4 **ternaire** | **6/8** (hypothèse étayée) | 4/4 **binaire** |
+| 3 | Groove | motifs nets, 22/29 mesures distincts | **roulement continu**, 10/83 motifs | motifs souples, 22/31 distincts |
+| 4 | Swing | **0,688** (triolet) | non mesurable (roulement) | **0,463** (droit) |
+| 5 | Syncopes | 60,6 % hors temps | 93,8 % (non interprétable) | **76,4 %** hors temps |
+| 6 | Percussions | devant, −13,2 LUFS, 8,2 dB au-dessus de la basse | à égalité avec la voix (−14,1), **roulées** | en retrait (−23,0), 3,8 dB sous la basse |
+| 7 | Basse | F1 44,2 Hz, **rare** (199 attaques), entre mesure 14 | **absente** (pas de stem, pas d'instrument) | A1 55,4 Hz, **motrice** (207 attaques), A1→D2 |
+| 8 | Harmonie | **pédale de fa** (0,743) | **aucun centre** (0,368 = bruit) | **si mineur** (0,762), mouvement réel |
+| 9 | Mélodie | voix présente (−24,3) | voix au premier plan (−14,3) | pas de voix ; couche « other » −17,0 |
+| 10 | Structure | 28 mesures, intro → montée → plateau | 88 mesures, **intro a cappella 14 s** → plateau 110 s → silence 12,8 s | 30 mesures, entrées/sorties, creux central |
+| 11 | Variation | similarité 0,78 | **0,955** (quasi invariant) | **0,577** (le plus varié) |
+| 12 | Dynamique | 4,9 LU (intro → plateau), TP −1,6 | **18,6 LU** (± 0 à l'intérieur du plateau), TP **+0,6** | 5,4 LU avec creux à −18,3, TP −1,3 |
+| 13 | Mixage | percussion devant, basse −21,4 | voix ≈ percussion, couche tonale **−30,5** | basse devant, percussion −23,0 |
+| 14 | Densité | 4,73 attaques/s (bande grave) | **4,03/s en continu** | 3,37/s |
+| 15 | Transitions | montée par ajout de couches | entrée du rythme après 11,6 s, rien ensuite | creux, reprises, fin dense |
+| 16 | Évolution | forte au début puis stable | **quasi nulle** après l'intro | continue |
+
+### Ce que la matrice change pour le moteur V2
+
+1. **Le tempo ne suffit pas à distinguer les univers** : Énergétique (135) et Détendu
+   (137) sont à 2 BPM l'un de l'autre et s'opposent musicalement. Ce qui les sépare est
+   la **hiérarchie des couches** (percussion devant vs basse devant).
+2. **La subdivision est un paramètre d'univers** : deux références sur trois sont
+   ternaires, une est binaire. Une grille 4/4 universelle est disqualifiante.
+3. **La densité de motif n'est pas la densité d'attaques** : Dansant a 4,03 attaques/s
+   mais 10 motifs sur 83 mesures — beaucoup de son, très peu de variation.
+4. **Détendu est le seul profil qui exige une basse**, et c'est le seul que le catalogue
+   ne peut pas servir honnêtement aujourd'hui (0/17 sons `bass_capable`).
+5. **La plage dynamique utile est de 5 LU**, pas 19 : les 18,6 LU de Dansant viennent du
+   silence final, pas d'un crescendo. Viser une grande dynamique *musicale* serait une
+   erreur de lecture.

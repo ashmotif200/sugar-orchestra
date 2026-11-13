@@ -1,0 +1,159 @@
+{
+  "target": "energetique",
+  "tempogram": {
+    "top_candidates": [
+      {
+        "bpm": 136.0,
+        "relative_strength": 0.635
+      },
+      {
+        "bpm": 67.12,
+        "relative_strength": 0.53
+      },
+      {
+        "bpm": 129.2,
+        "relative_strength": 0.476
+      },
+      {
+        "bpm": 143.55,
+        "relative_strength": 0.373
+      },
+      {
+        "bpm": 184.57,
+        "relative_strength": 0.367
+      },
+      {
+        "bpm": 191.41,
+        "relative_strength": 0.359
+      }
+    ],
+    "method": "mean tempogram of the onset envelope, 55-210 BPM, near-duplicates merged at 3%",
+    "note": "independent of onset times: useful when percussion is continuous and the discrete grid fit has no clear peak"
+  },
+  "file": "ohwalawa_Energetique_drums.mp3",
+  "band_hz": [
+    35.0,
+    160.0
+  ],
+  "onset_count": 241,
+  "onset_rate_per_s": 4.73,
+  "tolerance_ms": 25.0,
+  "method": "grid fit: share of onsets within tolerance of a beat line, best phase per tempo",
+  "peak": {
+    "bpm": 135.0,
+    "concentration": 0.4191,
+    "phase_s": 0.2407,
+    "grid_strength": 0.0168
+  },
+  "top_candidates": [
+    {
+      "bpm": 135.0,
+      "concentration": 0.4191,
+      "phase_s": 0.2407,
+      "grid_strength": 0.0168
+    },
+    {
+      "bpm": 180.0,
+      "concentration": 0.2739,
+      "phase_s": 0.1319,
+      "grid_strength": 0.0498
+    },
+    {
+      "bpm": 168.75,
+      "concentration": 0.2573,
+      "phase_s": 0.2296,
+      "grid_strength": 0.0941
+    },
+    {
+      "bpm": 134.75,
+      "concentration": 0.2531,
+      "phase_s": 0.1948,
+      "grid_strength": 0.0974
+    },
+    {
+      "bpm": 135.5,
+      "concentration": 0.2448,
+      "phase_s": 0.2952,
+      "grid_strength": 0.1362
+    },
+    {
+      "bpm": 101.25,
+      "concentration": 0.2407,
+      "phase_s": 0.5556,
+      "grid_strength": 0.0178
+    },
+    {
+      "bpm": 185.5,
+      "concentration": 0.2324,
+      "phase_s": 0.1348,
+      "grid_strength": 0.094
+    },
+    {
+      "bpm": 179.75,
+      "concentration": 0.2324,
+      "phase_s": 0.2086,
+      "grid_strength": 0.0599
+    },
+    {
+      "bpm": 135.25,
+      "concentration": 0.2282,
+      "phase_s": 0.2865,
+      "grid_strength": 0.1381
+    },
+    {
+      "bpm": 168.5,
+      "concentration": 0.2199,
+      "phase_s": 0.2003,
+      "grid_strength": 0.1178
+    },
+    {
+      "bpm": 198.75,
+      "concentration": 0.2199,
+      "phase_s": 0.1132,
+      "grid_strength": 0.1158
+    },
+    {
+      "bpm": 180.25,
+      "concentration": 0.2199,
+      "phase_s": 0.2913,
+      "grid_strength": 0.074
+    }
+  ],
+  "octave_check": {
+    "peak": {
+      "bpm": 135.0,
+      "concentration": 0.4191,
+      "phase_s": 0.2407,
+      "grid_strength": 0.0168
+    },
+    "x2": {
+      "bpm": 200.0,
+      "concentration": 0.195,
+      "phase_s": 0.275,
+      "grid_strength": 0.1109
+    },
+    "x3_2": {
+      "bpm": 200.0,
+      "concentration": 0.195,
+      "phase_s": 0.275,
+      "grid_strength": 0.1109
+    },
+    "x2_3": {
+      "bpm": 90.0,
+      "concentration": 0.166,
+      "phase_s": 0.25,
+      "grid_strength": 0.0453
+    },
+    "x3": {
+      "bpm": 200.0,
+      "concentration": 0.195,
+      "phase_s": 0.275,
+      "grid_strength": 0.1109
+    }
+  },
+  "octave_reading": {
+    "runner_up_concentration": 0.195,
+    "peak_minus_runner_up": 0.224,
+    "verdict": "clear peak"
+  }
+}

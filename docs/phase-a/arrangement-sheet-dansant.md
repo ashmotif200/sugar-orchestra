@@ -120,3 +120,35 @@ reproduire la référence.
 - [ ] Le début fait entrer une couche avant le rythme.
 - [ ] Il y a un trou d'une à deux mesures avant la fin.
 - [ ] Ça ne sonne pas comme un sega de bal musette ralenti : le tempo est vif.
+
+---
+
+## Paramètres mesurés utilisables par le moteur (passe 3)
+
+Complète les valeurs estimées plus haut par des mesures ; en cas de conflit, **la mesure
+fait foi**.
+
+| Paramètre | Valeur mesurée | Source |
+|---|---|---|
+| Durée de mesure | **2,32 s** | `reference-dansant.json` |
+| Pulsation | ~155 à l'unité croche (≡ 103,4 noires) — confiance moyenne | `pulse-dansant.json` |
+| Subdivision | ternaire ; 6 pas par mesure | `meter-dansant.json`, `groove-dansant.json` |
+| Densité de percussion | **4,03 attaques/s**, tenue en continu (pas de trou) | idem |
+| Type de frappe | roulement : histogramme de phase plat, 66 ms de dispersion | idem |
+| Variation de motif | **0,955** de similarité entre mesures : programmer très peu de variation | idem |
+| Niveau du plateau (mix) | −11,0 à −12,2 LUFS, stable à ±1,5 LU | `groove-dansant.json` |
+| Niveau de l'intro | −13,7 LUFS (voix seule) | idem |
+| Plafond de sortie | viser **−1,0 dBTP** (la référence atteint +0,6 : à ne pas copier) | idem |
+| Voix vs percussion | à égalité (2 dB d'écart au maximum) | `reference-dansant.json` |
+| Couche tonale | **16,4 dB sous** les deux autres : présence discrète, jamais porteuse | idem |
+
+### Trois conséquences pour l'implémentation
+
+1. Le roulement se programme en **densité** (nombre de frappes par seconde), pas en
+   positions sur une grille : une cellule de 6 pas avec des frappes à chaque pas est
+   déjà un roulement.
+2. La **variation est l'ennemie** de cet univers : introduire des fills toutes les deux
+   mesures le transforme en autre chose. Un changement de couche tous les 8 à 16 mesures
+   suffit.
+3. L'introduction doit **précéder le rythme** : c'est un trait de la référence
+   (14 s a cappella), pas un accident.
