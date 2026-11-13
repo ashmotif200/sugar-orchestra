@@ -145,6 +145,45 @@ vérifie l’authentification, les refus de permission, l’anti-CSRF, le rempla
 audio, le circuit éditorial, l’immuabilité des restrictions, la publication, l’audit et
 la déconnexion. Il n’écrit jamais dans `data/admin` ni dans le bundle visiteur.
 
+## Navigation et persistance — à revérifier après toute modification
+
+L'administration est une SPA à routage par hash. Deux régressions y ont déjà eu lieu ;
+voici comment les détecter en une minute, dans un vrai navigateur, sans outillage.
+
+**1. Navigation sans rechargement.** Sur `#/admin`, dans la console :
+
+```js
+window.__m = Date.now()
+```
+
+Cliquer les huit sections de la barre latérale, puis vérifier :
+
+```js
+performance.getEntriesByType('navigation').length   // doit valoir 1
+window.__m !== undefined                            // doit être true
+```
+
+Une valeur ≥ 2 signifie qu'un chargement de document a eu lieu : ce n'est plus une
+navigation SPA. Un `window.__m` à `undefined` le confirme (le rechargement détruit les
+variables globales).
+
+**2. Persistance de la composition.** Composer une pièce, arriver sur `#/resultat`,
+puis rafraîchir (F5). L'écran doit afficher « Votre création » avec la forme d'onde et
+le bouton Écouter — jamais « Aucune création retrouvée ». Contrôle direct du stockage :
+
+```js
+window.indexedDB.open('sugar-orchestra.compositions')
+```
+
+Les compositions vivent dans IndexedDB, en deux contextes séparés : `visitor` (parcours
+public) et `admin-test` (outils développeur). Rétention : 3 par contexte, 48 Mo au total.
+
+> **Attention au serveur de développement.** `npm run dev` (Vite, port 5180) recharge le
+> document à chaque modification de fichier (HMR). Une composition en mémoire y disparaît
+> à chaque édition : ce n'est pas un bug de l'application, mais cela ressemble exactement
+> à un rechargement. Pour démontrer ou tester, servir le build de production avec
+> `npm run admin:serve` (port 5182).
+
 ## Dépannage
 
 | Symptôme | Cause | Solution |
@@ -154,6 +193,8 @@ la déconnexion. Il n’écrit jamais dans `data/admin` ni dans le bundle visite
 | `EADDRINUSE 5182` | port déjà pris | `SO_PORT=5200 npm run admin:serve` |
 | avertissement `SQLite is an experimental feature` | `node:sqlite` de Node 22 | sans conséquence ; masquable avec `NODE_NO_WARNINGS=1` |
 | connexion refusée après 5 essais | limitation de débit | attendre 15 min |
+| rechargement complet à chaque clic | serveur de développement Vite (HMR, port 5180) | servir le build : `npm run admin:serve` (5182) |
+| « Aucune création retrouvée » après F5 | IndexedDB vidée (navigation privée) ou contexte effacé | composer à nouveau ; vérifier que le stockage local est autorisé |
 | analyse « indisponible » | chaîne librosa absente de l’hôte | installer `/opt/data/tools/sugar-audio` ou ignorer : l’analyse reste marquée invalidée |
 
 ## Ce qui n’est pas implémenté

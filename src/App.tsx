@@ -1,9 +1,12 @@
-import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { audio, catalog, soundById, stepSounds, titleOf } from './audio/service'
 import { t } from './i18n'
 import { useRoute } from './router'
 import { clearSession, emptySession, loadSession, saveSession, type Session } from './session'
 import { getUniverse, UNIVERSES } from './engine/universes'
+import { encodeWav, type RenderReport } from './engine/render'
+import type { Score } from './engine/plan'
+import { clearCompositions, latestComposition, saveComposition } from './storage/compositions'
 import { Button } from './ui/kit'
 import Home from './ui/screens/Home'
 import Parcours from './ui/screens/Parcours'
@@ -64,8 +67,69 @@ export default function App() {
     clearSession()
     setSession(emptySession())
     setPiece(null)
+    void clearCompositions('visitor').catch(() => {})
     navigate({ name: 'home' })
   }
+
+  /**
+   * Enregistre la pièce dans IndexedDB. Le rendu vit en mémoire (AudioBuffer),
+   * donc tout rechargement du document — F5, rechargement HMR du serveur de dev,
+   * retour plus tard sur l'URL — le détruisait. Le WAV est stocké tel quel, ce qui
+   * rend la composition récupérable et téléchargeable sans recalculer.
+   */
+  const persistPiece = useCallback((p: Piece) => {
+    void (async () => {
+      try {
+        const wav = await encodeWav(p.buffer).arrayBuffer()
+        const refs = [...new Set(p.score.notes.map((n) => n.sourceId))].map((id) => ({
+          id, file: soundById(id)?.file ?? null,
+        }))
+        await saveComposition({
+          context: 'visitor',
+          universeId: p.score.universeId,
+          durationS: p.buffer.duration,
+          score: p.score,
+          report: p.report,
+          wav,
+          soundRefs: refs,
+          catalogVersion: (catalog as { version?: number }).version ?? null,
+          seed: p.score.seed ?? null,
+        })
+      } catch {
+        // quota atteint ou navigation privée : la pièce reste utilisable en mémoire
+      }
+    })()
+  }, [])
+
+  /**
+   * Restauration : si l'on arrive sur #/resultat sans pièce en mémoire (F5,
+   * rechargement, lien rouvert), on relit la dernière composition du visiteur.
+   * IndexedDB est asynchrone, d'où l'état « restauration » plutôt qu'un écran
+   * « plus en mémoire » affiché trop tôt.
+   */
+  const restoreTried = useRef(false)
+  const [restoring, setRestoring] = useState(false)
+
+  useEffect(() => {
+    if (route.name !== 'result' || piece || restoreTried.current) return
+    restoreTried.current = true
+    let alive = true
+    setRestoring(true)
+    void (async () => {
+      try {
+        const rec = await latestComposition('visitor')
+        if (!alive || !rec) return
+        const buffer = await audio.decodeWav(rec.wav)
+        if (!alive) return
+        setPiece({ score: rec.score as Score, buffer, report: rec.report as RenderReport })
+      } catch {
+        // IndexedDB indisponible : on laisse l'écran expliquer l'absence de pièce
+      } finally {
+        if (alive) setRestoring(false)
+      }
+    })()
+    return () => { alive = false }
+  }, [route, piece])
 
   const start = () => {
     if (!session.universeId) pickUniverse(UNIVERSES[0].id)
@@ -267,7 +331,7 @@ export default function App() {
             ) : (
               <Composer
                 session={session}
-                onDone={(p) => { setPiece(p); navigate({ name: 'result' }) }}
+                onDone={(p) => { setPiece(p); persistPiece(p); navigate({ name: 'result' }) }}
                 onCancel={() => navigate({ name: 'carnet' })}
               />
             )
@@ -276,6 +340,11 @@ export default function App() {
           {route.name === 'result' && (
             piece ? (
               <Result piece={piece} onRestart={restart} onCarnet={() => navigate({ name: 'carnet' })} />
+            ) : restoring ? (
+              <div className="screen">
+                <h1 className="h1">{t('result.title')}</h1>
+                <p className="sub">{t('result.restoring')}</p>
+              </div>
             ) : (
               <div className="screen">
                 <h1 className="h1">{t('result.title')}</h1>

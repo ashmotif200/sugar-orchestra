@@ -45,6 +45,17 @@ class AudioService {
     return this.ctx
   }
 
+  /**
+   * Décode un WAV déjà rendu (restauration d'une composition depuis IndexedDB).
+   * Ne touche ni au moteur ni aux sons du catalogue : c'est le même
+   * decodeAudioData que pour les samples, appliqué à un fichier produit par nous.
+   */
+  async decodeWav(data: ArrayBuffer): Promise<AudioBuffer> {
+    const ctx = await this.context()
+    // slice(0) : decodeAudioData détache le buffer fourni, on garde l'original intact
+    return await ctx.decodeAudioData(data.slice(0))
+  }
+
   /** Réservé aux gestes utilisateur : échoue franchement si le navigateur refuse. */
   private async runningContext(): Promise<AudioContext> {
     const ctx = await this.context()

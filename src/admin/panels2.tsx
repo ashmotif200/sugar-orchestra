@@ -2,6 +2,11 @@ import { useCallback, useEffect, useMemo, useRef, useState } from 'react'
 import { api, ApiError, fmtDate, type ContentRow, type Me, type SoundRow, type StepRow, type UniverseRow } from './api'
 import { audio, catalog, soundById } from '../audio/service'
 import { buildScore, CompositionRefused, type Score } from '../engine/plan'
+import { encodeWav } from '../engine/render'
+import {
+  listCompositions, removeComposition, saveComposition, storageSummary,
+  type CompositionRecord,
+} from '../storage/compositions'
 import { UNIVERSES } from '../engine/universes'
 import { Card, ErrorLine, Pill, useAsync } from './panels'
 
@@ -12,7 +17,7 @@ export function Content() {
   const [selected, setSelected] = useState<{ soundId: string; locale: string } | null>(null)
   const [statusFilter, setStatusFilter] = useState('')
   const { data, error, busy, reload } = useAsync<{ count: number; content: ContentRow[] }>(
-    () => api.get('/api/content'))
+    () => api.get('/api/content'), [], 'content')
 
   const rows = useMemo(() => {
     const r = data?.content ?? []
@@ -242,7 +247,7 @@ function ContentEditor({ soundId, locale, onClose, onChanged }: {
 
 /* ------------------------------------------------------------------- steps */
 export function Steps() {
-  const { data, error, busy, reload } = useAsync<{ steps: StepRow[] }>(() => api.get('/api/steps'))
+  const { data, error, busy, reload } = useAsync<{ steps: StepRow[] }>(() => api.get('/api/steps'), [], 'steps')
   const [openId, setOpenId] = useState<number | null>(null)
 
   return (
@@ -419,7 +424,7 @@ function StepEditor({ id, onClose, onChanged }: { id: number; onClose: () => voi
 
 /* ------------------------------------------------------------------- music */
 export function Music() {
-  const { data, error, busy, reload } = useAsync<{ universes: UniverseRow[]; note: string }>(() => api.get('/api/music'))
+  const { data, error, busy, reload } = useAsync<{ universes: UniverseRow[]; note: string }>(() => api.get('/api/music'), [], 'music')
   const [editing, setEditing] = useState<Record<string, { name: string; description: string; status: string }>>({})
   const [msg, setMsg] = useState<string | null>(null)
   const [err, setErr] = useState<string | null>(null)
@@ -499,11 +504,13 @@ export function Developer() {
   const [log, setLog] = useState<string[]>([])
   const [rejected, setRejected] = useState<{ id: string; reason: string }[]>([])
   const [render, setRender] = useState<{ url: string; report: Record<string, unknown>; duration: number } | null>(null)
+  const [stored, setStored] = useState<CompositionRecord[]>([])
+  const [storage, setStorage] = useState<{ context: string; count: number; mb: number }[]>([])
   const [busy, setBusy] = useState(false)
   const [err, setErr] = useState<string | null>(null)
   const bufferRef = useRef<AudioBuffer | null>(null)
 
-  const diag = useAsync<Record<string, never>>(() => api.get('/api/system/diagnostics'))
+  const diag = useAsync<Record<string, never>>(() => api.get('/api/system/diagnostics'), [], 'diagnostics')
   const stepSounds = useMemo(() => catalog.sounds.filter((s) => s.stepId === stepId), [stepId])
   const available = useMemo(() => UNIVERSES.filter((u) => u.available), [])
 
@@ -535,6 +542,51 @@ export function Developer() {
     } catch (e) { setErr(e instanceof ApiError ? e.message : 'échec') }
   }
 
+  const refreshStored = useCallback(async () => {
+    try {
+      const [rows, summary] = await Promise.all([listCompositions('admin-test'), storageSummary()])
+      setStored(rows)
+      setStorage(summary)
+    } catch { /* IndexedDB indisponible : la liste reste vide, la composition reste en mémoire */ }
+  }, [])
+
+  useEffect(() => { void refreshStored() }, [refreshStored])
+
+  const restoreStored = async (rec: CompositionRecord) => {
+    try {
+      const buffer = await audio.decodeWav(rec.wav)
+      bufferRef.current = buffer
+      setRender({
+        url: '',
+        report: {
+          restaurée: new Date(rec.createdAt).toLocaleString('fr-FR'),
+          moteur: rec.engineVersion,
+          seed: rec.seed,
+          notes: (rec.report as { noteCount?: number })?.noteCount ?? null,
+          duration: `${rec.durationS.toFixed(2)} s`,
+          score: rec.score,
+        },
+        duration: rec.durationS,
+      })
+      note(`composition restaurée depuis IndexedDB (${rec.id})`)
+    } catch (e) {
+      setErr(`restauration impossible : ${(e as Error).message}`)
+    }
+  }
+
+  const downloadStored = (rec: CompositionRecord) => {
+    const blob = new Blob([rec.wav], { type: 'audio/wav' })
+    const url = URL.createObjectURL(blob)
+    const a = document.createElement('a')
+    a.href = url
+    a.download = `admin-test-${rec.universeId}-${rec.id}.wav`
+    document.body.appendChild(a)
+    a.click()
+    a.remove()
+    setTimeout(() => URL.revokeObjectURL(url), 4000)
+    note('téléchargement du WAV enregistré')
+  }
+
   const compose = async () => {
     setBusy(true); setErr(null); setRender(null)
     try {
@@ -558,6 +610,24 @@ export function Developer() {
         },
         duration: buffer.duration,
       })
+      // composition de test : contexte 'admin-test', jamais visible du parcours public
+      try {
+        const wav = await encodeWav(buffer).arrayBuffer()
+        const refs = [...new Set(score.notes.map((n) => n.sourceId))]
+          .map((sid) => ({ id: sid, file: soundById(sid)?.file ?? null }))
+        await saveComposition({
+          context: 'admin-test',
+          universeId: score.universeId,
+          durationS: buffer.duration,
+          score, report, wav, soundRefs: refs,
+          seed: score.seed ?? null,
+          catalogVersion: (catalog as { version?: number }).version ?? null,
+        })
+        note(`composition enregistrée localement (admin-test) — ${(wav.byteLength / 1048576).toFixed(1)} Mo`)
+      } catch (e) {
+        note(`non enregistrée sur cet appareil : ${(e as Error).message}`)
+      }
+      await refreshStored()
       note(`composition : ${score.notes.length} événements, ${score.signatures.length} signatures, ${buffer.duration.toFixed(2)} s`)
     } catch (e) {
       if (e instanceof CompositionRefused) setErr(`composition refusée par le moteur : ${e.message}`)
@@ -677,6 +747,42 @@ export function Developer() {
         </Card>
       </div>
 
+      <Card title="Compositions de test enregistrées sur cet appareil"
+        actions={<button className="adm-ghost" onClick={() => void refreshStored()}>Actualiser</button>}>
+        <p className="adm-muted adm-small">
+          Stockées dans IndexedDB sous le contexte <span className="adm-mono">admin-test</span> : séparées des
+          créations des visiteurs, qui vivent sous <span className="adm-mono">visitor</span>. Elles survivent à un
+          rafraîchissement et ne sont jamais servies au parcours public. Rétention : 3 par contexte, 48 Mo au total.
+        </p>
+        {stored.length ? (
+          <table className="adm-table">
+            <thead><tr><th>Créée</th><th>Univers</th><th>Durée</th><th>Seed</th><th>Taille</th><th>Moteur</th><th /></tr></thead>
+            <tbody>
+              {stored.map((r) => (
+                <tr key={r.id}>
+                  <td className="adm-small">{new Date(r.createdAt).toLocaleString('fr-FR')}</td>
+                  <td className="adm-mono">{r.universeId}</td>
+                  <td>{r.durationS.toFixed(1)} s</td>
+                  <td className="adm-mono adm-small">{r.seed ?? '—'}</td>
+                  <td className="adm-small">{(r.bytes / 1048576).toFixed(1)} Mo</td>
+                  <td className="adm-small adm-mono">{r.engineVersion}</td>
+                  <td>
+                    <button className="adm-link" onClick={() => void restoreStored(r)}>restaurer</button>{' '}
+                    <button className="adm-link" onClick={() => downloadStored(r)}>télécharger</button>{' '}
+                    <button className="adm-link" onClick={async () => {
+                      await removeComposition(r.id); await refreshStored(); note('composition de test supprimée')
+                    }}>supprimer</button>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : <p className="adm-muted">Aucune composition de test enregistrée pour l’instant.</p>}
+        <p className="adm-muted adm-small">
+          Occupation : {storage.map((s) => `${s.context} ${s.count} × (${s.mb} Mo)`).join(' · ') || '—'}
+        </p>
+      </Card>
+
       <Card title="Journal de la session de test">
         {log.length ? <pre className="adm-pre">{log.join('\n')}</pre> : <p className="adm-muted">Aucune action.</p>}
       </Card>
@@ -693,7 +799,7 @@ export function Developer() {
 /* ------------------------------------------------------------------- users */
 export function Users({ me }: { me: Me | null }) {
   const { data, error, busy, reload } = useAsync<{ users: (Me['user'] & { is_active: number; created_at: string; last_login_at: string | null })[]; roles: string[] }>(
-    () => api.get('/api/users'))
+    () => api.get('/api/users'), [], 'users')
   const [form, setForm] = useState({ email: '', name: '', role: 'viewer', password: '' })
   const [msg, setMsg] = useState<string | null>(null)
   const [err, setErr] = useState<string | null>(null)
@@ -790,11 +896,11 @@ export function Users({ me }: { me: Me | null }) {
 
 /* ---------------------------------------------------------------- settings */
 export function Settings() {
-  const diag = useAsync<Record<string, unknown>>(() => api.get('/api/system/diagnostics'))
+  const diag = useAsync<Record<string, unknown>>(() => api.get('/api/system/diagnostics'), [], 'diagnostics')
   const pubs = useAsync<{ publications: { id: number; created_at: string; created_by: string | null; note: string | null }[] }>(
-    () => api.get('/api/publications'))
+    () => api.get('/api/publications'), [], 'publications')
   const audit = useAsync<{ entries: { at: string; actor_email: string | null; action: string; entity: string | null; entity_id: string | null }[] }>(
-    () => api.get('/api/audit?limit=30'))
+    () => api.get('/api/audit?limit=30'), [], 'audit')
 
   return (
     <>

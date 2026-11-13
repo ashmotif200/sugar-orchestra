@@ -1,6 +1,6 @@
 import { useCallback, useEffect, useMemo, useState } from 'react'
 import { api, ApiError, type Me } from './api'
-import { Dashboard, Sounds } from './panels'
+import { clearAsyncCache, Dashboard, Sounds } from './panels'
 import { Content, Steps, Music, Developer, Users, Settings } from './panels2'
 import './admin.css'
 
@@ -38,6 +38,7 @@ export default function AdminApp({ section, navigate }: { section: string; navig
 
   const logout = async () => {
     try { await api.send('POST', '/api/auth/logout') } catch { /* session already gone */ }
+    clearAsyncCache() // aucune donnée du compte précédent ne doit survivre à la déconnexion
     setMe(null)
     setState('anon')
     navigate('#/admin/login')

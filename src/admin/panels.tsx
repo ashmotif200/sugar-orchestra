@@ -3,19 +3,34 @@ import { api, ApiError, fmtDate, fmtDur, type DashboardData, type SoundDetail, t
 import type { Navigate } from './AdminApp'
 
 /* ------------------------------------------------------------------ shared */
-export function useAsync<T>(fn: () => Promise<T>, deps: unknown[] = []) {
-  const [data, setData] = useState<T | null>(null)
+/**
+ * Cache mémoire par ressource. Sans lui, changer de section démonte le panneau,
+ * et le retour affiche « Chargement… » : à l'écran, cela ressemble à un
+ * rechargement de page. Avec lui, une section revisitée peint immédiatement ses
+ * dernières données puis se rafraîchit en arrière-plan.
+ */
+const asyncCache = new Map<string, unknown>()
+
+export function clearAsyncCache() { asyncCache.clear() }
+
+export function useAsync<T>(fn: () => Promise<T>, deps: unknown[] = [], cacheKey?: string) {
+  const cached = cacheKey ? (asyncCache.get(cacheKey) as T | undefined) : undefined
+  const [data, setData] = useState<T | null>(cached ?? null)
   const [error, setError] = useState<string | null>(null)
-  const [busy, setBusy] = useState(true)
+  const [busy, setBusy] = useState(cached === undefined)
   const fnRef = useRef(fn)
   fnRef.current = fn
   const reload = useCallback(async () => {
     setBusy(true)
     setError(null)
-    try { setData(await fnRef.current()) } catch (e) {
+    try {
+      const result = await fnRef.current()
+      if (cacheKey) asyncCache.set(cacheKey, result)
+      setData(result)
+    } catch (e) {
       setError(e instanceof ApiError ? e.message : (e as Error).message)
     } finally { setBusy(false) }
-  }, [])
+  }, [cacheKey])
   useEffect(() => { void reload() }, [reload, ...deps])
   return { data, error, busy, reload }
 }
@@ -39,7 +54,7 @@ export function ErrorLine({ msg }: { msg: string | null }) {
 
 /* --------------------------------------------------------------- dashboard */
 export function Dashboard({ navigate }: { navigate: Navigate }) {
-  const { data, error, busy, reload } = useAsync<DashboardData>(() => api.get('/api/dashboard'))
+  const { data, error, busy, reload } = useAsync<DashboardData>(() => api.get('/api/dashboard'), [], 'dashboard')
   if (busy && !data) return <p className="adm-muted">Chargement des indicateurs…</p>
   if (error) return <><ErrorLine msg={error} /><button className="adm-ghost" onClick={() => void reload()}>Réessayer</button></>
   if (!data) return null
@@ -136,7 +151,7 @@ export function Sounds() {
   const [openId, setOpenId] = useState<string | null>(null)
 
   const { data, error, busy, reload } = useAsync<{ count: number; sounds: SoundRow[] }>(
-    () => api.get('/api/sounds'), [])
+    () => api.get('/api/sounds'), [], 'sounds')
 
   const rows = useMemo(() => {
     let r = data?.sounds ?? []
@@ -208,7 +223,7 @@ export function Sounds() {
 }
 
 function SoundDetailPanel({ id, onClose, onChanged }: { id: string; onClose: () => void; onChanged: () => void }) {
-  const { data, error, busy, reload } = useAsync<SoundDetail>(() => api.get(`/api/sounds/${id}`), [id])
+  const { data, error, busy, reload } = useAsync<SoundDetail>(() => api.get(`/api/sounds/${id}`), [id], `sounds/${id}`)
   const [busyAction, setBusyAction] = useState<string | null>(null)
   const [note, setNote] = useState<string | null>(null)
   const [actionError, setActionError] = useState<string | null>(null)

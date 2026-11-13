@@ -79,8 +79,9 @@
     "limit": "Limit",
     "signature": "recognisable",
     "duration": "{time} · {bpm} BPM",
-    "gone": "Your piece is no longer in memory: it is rendered on the fly, nothing is stored. Compose it again with the same sounds.",
-    "recompose": "Compose again"
+    "gone": "No saved creation found on this device. Compose your piece from the sounds in your notebook.",
+    "recompose": "Compose again",
+    "restoring": "Retrieving the creation saved on this device…"
   },
   "audio": {
     "loading": "Loading sounds…",

@@ -79,8 +79,9 @@
     "limit": "Limite",
     "signature": "reconnaissable",
     "duration": "{time} · {bpm} BPM",
-    "gone": "Votre pièce n'est plus en mémoire : elle est calculée à chaque fois, rien n'est stocké. Recomposez-la avec les mêmes sons.",
-    "recompose": "Recomposer ma pièce"
+    "gone": "Aucune création retrouvée sur cet appareil. Composez votre pièce avec les sons de votre carnet.",
+    "recompose": "Recomposer ma pièce",
+    "restoring": "On récupère votre création enregistrée sur cet appareil…"
   },
   "audio": {
     "loading": "Chargement des sons…",
