@@ -34,7 +34,7 @@ export function validatePlan(plan) {
   const errors = []
   if (!plan || typeof plan !== 'object') return ['plan absent']
   if (plan.schema !== 2) errors.push('schema doit valoir 2')
-  if (plan.engine !== 'v2') errors.push('engine doit valoir « v2 »')
+  if (!['v2', 'v2.1'].includes(plan.engine)) errors.push('engine doit valoir « v2 » ou « v2.1 »')
   if (!Number.isInteger(plan.seed)) errors.push('seed entier requis')
   if (typeof plan.profileId !== 'string' || !/^[a-z0-9-]{3,40}$/.test(plan.profileId)) errors.push('profileId invalide')
   if (!Number.isInteger(plan.profileVersion) || plan.profileVersion < 1) errors.push('profileVersion invalide')
@@ -50,6 +50,23 @@ export function validatePlan(plan) {
 
   const duration = (plan.bars || 0) * (t.barSeconds || 0)
   if (duration > MAX_RENDER_S) errors.push(`durée ${duration.toFixed(1)} s au-delà de ${MAX_RENDER_S} s`)
+
+  if (plan.engine === 'v2.1') {
+    if (!['museum_only', 'museum_derived', 'hybrid_synth'].includes(plan.mode)) errors.push('mode V2.1 invalide')
+    const bass = plan.bassNotes ?? []
+    if (!Array.isArray(bass)) errors.push('bassNotes doit être une liste')
+    else if (bass.length > 4000) errors.push('trop de notes de basse (max 4000)')
+    else for (const [i, b] of bass.entries()) {
+      if (!finite(b.midi, 24, 60)) { errors.push(`basse ${i}: midi hors 24–60`); break }
+      if (!finite(b.velocity, 0, 1)) { errors.push(`basse ${i}: vélocité hors 0–1`); break }
+      if (!finite(b.durationBeats, 0.05, 16)) { errors.push(`basse ${i}: durée invalide`); break }
+      if (!finite(b.bar, 0, MAX_BARS) || !finite(b.beat, 0, 8) || !finite(b.sub, 0, 8)) {
+        errors.push(`basse ${i}: position invalide`); break
+      }
+    }
+    if (bass.length && !plan.bassSynth) errors.push('bassNotes sans paramètres de synthèse')
+    if (plan.mode !== 'hybrid_synth' && bass.length) errors.push('bassNotes interdites hors mode hybrid_synth')
+  }
 
   if (Array.isArray(plan.notes)) {
     for (const [i, n] of plan.notes.entries()) {
@@ -161,7 +178,56 @@ export function mixPlan(plan, sources) {
       rendered++
     }
   }
-  return { outL, outR, totalFrames, rendered, skipped: [...new Set(skipped)] }
+  // ---- synthèse de basse (mode hybrid_synth uniquement)
+  let bassRendered = 0
+  if (Array.isArray(plan.bassNotes) && plan.bassNotes.length && plan.bassSynth) {
+    const s = plan.bassSynth
+    const amp = (s.harmonics ?? [1, 0.3, 0.15]).map((h) => Math.max(0, Math.min(1, h)))
+    const gain = Math.pow(10, (s.gainDb ?? 0) / 20)
+    const cutoff = Math.max(40, Math.min(2000, s.cutoffHz ?? 300))
+    const lpCoef = 1 - Math.exp((-2 * Math.PI * cutoff) / SAMPLE_RATE)
+    const drive = Math.max(0, Math.min(1, s.drive ?? 0))
+    for (const note of plan.bassNotes) {
+      const freq = 440 * Math.pow(2, (note.midi - 69) / 12)
+      if (!Number.isFinite(freq) || freq < 20 || freq > 400) continue
+      const startS = note.bar * barSeconds + note.beat * beatS + note.sub * (beatS / subdivision)
+      const durS = Math.min(note.durationBeats * beatS, 8)
+      const startFrame = Math.round(startS * SAMPLE_RATE)
+      const durFrames = Math.max(1, Math.round(durS * SAMPLE_RATE))
+      const a = Math.max(0.001, s.attackS ?? 0.01) * SAMPLE_RATE
+      const d = Math.max(0.001, s.decayS ?? 0.2) * SAMPLE_RATE
+      const rel = Math.max(0.001, s.releaseS ?? 0.2) * SAMPLE_RATE
+      const sus = Math.max(0, Math.min(1, s.sustain ?? 0.7))
+      const vel = Math.max(0, Math.min(1, note.velocity ?? 0.8))
+      let lp = 0
+      for (let i = 0; i < durFrames; i++) {
+        const dst = startFrame + i
+        if (dst >= totalFrames) break
+        const t = i / SAMPLE_RATE
+        // enveloppe ADSR
+        let env
+        if (i < a) env = i / a
+        else if (i < a + d) env = 1 - (1 - sus) * ((i - a) / d)
+        else if (i > durFrames - rel) env = Math.max(0, sus * ((durFrames - i) / rel))
+        else env = sus
+        const ph = 2 * Math.PI * freq * t
+        let x = amp[0] * Math.sin(ph)
+          + amp[1] * Math.sin(2 * ph)
+          + amp[2] * Math.sin(3 * ph)
+        lp += lpCoef * (x - lp)
+        x = lp
+        if (drive > 0) x = Math.tanh(x * (1 + drive * 3)) / Math.tanh(1 + drive * 3)
+        // 0,22 et non 0,5 : à 0,5 la basse dominait le mix (mesuré −8 LUFS contre
+        // −15,3 LUFS sans basse sur le même matériau).
+        const v = x * env * vel * gain * 0.22
+        outL[dst] += v
+        outR[dst] += v
+        bassRendered++
+      }
+    }
+  }
+
+  return { outL, outR, totalFrames, rendered, bassRendered, skipped: [...new Set(skipped)] }
 }
 
 /** Réduction de gain si le plafond true peak est dépassé (approx. 4× suréchantillon). */
@@ -375,6 +441,7 @@ async function doRender(plan, timeoutMs) {
     bytes: statSync(wavPath).size,
     verification,
     timing: { decodeMs, mixMs, verifyMs: Date.now() - t0 - decodeMs - mixMs, totalMs: Date.now() - t0 },
+    bass: { notes: plan.bassNotes?.length ?? 0, timbre: plan.bassSynth?.timbre ?? null, frames: mixed.bassRendered ?? 0 },
     gainCorrectionDb: Number(appliedGainDb.toFixed(2)),
     limits: Array.isArray(plan.limits) ? plan.limits : [],
   }
@@ -387,7 +454,13 @@ async function doRender(plan, timeoutMs) {
 
 function pruneRenders() {
   try {
-    const wavs = readdirSync(RENDERS_DIR).filter((f) => f.endsWith('.wav')).sort()
+    // Tri par date de modification, PAS par nom : les identifiants sont aléatoires,
+    // un tri alphabétique supprimait parfois le rendu qui venait d'être écrit.
+    const wavs = readdirSync(RENDERS_DIR)
+      .filter((f) => f.endsWith('.wav'))
+      .map((f) => ({ f, t: statSync(join(RENDERS_DIR, f)).mtimeMs }))
+      .sort((a, b) => a.t - b.t)
+      .map((x) => x.f)
     for (const old of wavs.slice(0, Math.max(0, wavs.length - KEEP_RENDERS))) {
       const base = old.replace(/\.wav$/, '')
       rmSync(join(RENDERS_DIR, old), { force: true })

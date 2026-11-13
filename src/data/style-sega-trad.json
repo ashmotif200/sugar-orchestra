@@ -1,0 +1,997 @@
+{
+  "schema": "v2.0.5/reference-style",
+  "referenceId": "dansant",
+  "universeId": "sega-trad",
+  "label": "Dansant / Sega traditionnel",
+  "referenceTitle": "Tififi",
+  "sources": {
+    "events": "events-dansant.json",
+    "arrangement": "../phase-a/data/arrangement-dansant.json",
+    "groove": "../phase-a/data/groove-dansant.json",
+    "measures": "../phase-a/data/reference-dansant.json",
+    "stem_hashes": {
+      "drums": "b9c48f6def04161a5053a65c90028080e1bed9762abcdae8ab67d80f22fe14a1",
+      "vocals": "0dffedfa64e4ba2cbf279d2883af394b6cfdffe2163ea06438d1e8de9e978fbe",
+      "other": "91a8280aa98b2045e1cb58b00f36cf0a10f3d7f344e6b200f17f39ed204eeb85"
+    }
+  },
+  "time": {
+    "barSeconds": 2.322,
+    "beatsPerBar": 6,
+    "subdivision": 3,
+    "swing": 0.688,
+    "swing_reading": "triplet swing",
+    "microtiming_ms": 66.0,
+    "grid_is_hypothesis": true
+  },
+  "stems": {
+    "drums": {
+      "role_hypothesis": "percussion",
+      "file": "tififi_Dansant_drums.mp3",
+      "sha256": "b9c48f6def04161a5053a65c90028080e1bed9762abcdae8ab67d80f22fe14a1",
+      "duration_s": 205.589,
+      "onset_count": 938,
+      "silence_count": 3,
+      "steps_per_bar": 18
+    },
+    "vocals": {
+      "role_hypothesis": "voice",
+      "file": "tififi_Dansant_vocals.mp3",
+      "sha256": "0dffedfa64e4ba2cbf279d2883af394b6cfdffe2163ea06438d1e8de9e978fbe",
+      "duration_s": 205.589,
+      "onset_count": 555,
+      "silence_count": 15,
+      "steps_per_bar": 18
+    },
+    "other": {
+      "role_hypothesis": "tonal_layer",
+      "file": "tififi_Dansant_other.mp3",
+      "sha256": "91a8280aa98b2045e1cb58b00f36cf0a10f3d7f344e6b200f17f39ed204eeb85",
+      "duration_s": 205.589,
+      "onset_count": 667,
+      "silence_count": 111,
+      "steps_per_bar": 18
+    }
+  },
+  "arrangement": {
+    "barSeconds": 1.6021361815754338,
+    "bars": 128,
+    "sections": [
+      {
+        "kind": "section",
+        "startBar": 1,
+        "endBar": 9,
+        "startS": 0.0,
+        "durationS": 14.42,
+        "activeStems": [
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 10,
+        "endBar": 12,
+        "startS": 14.42,
+        "durationS": 4.81,
+        "activeStems": [
+          "other",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 13,
+        "endBar": 14,
+        "startS": 19.23,
+        "durationS": 3.2,
+        "activeStems": [
+          "drums",
+          "other",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 15,
+        "endBar": 15,
+        "startS": 22.43,
+        "durationS": 1.6,
+        "activeStems": [
+          "drums",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 16,
+        "endBar": 16,
+        "startS": 24.03,
+        "durationS": 1.6,
+        "activeStems": [
+          "drums",
+          "other",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 17,
+        "endBar": 17,
+        "startS": 25.63,
+        "durationS": 1.6,
+        "activeStems": [
+          "drums",
+          "other"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 18,
+        "endBar": 20,
+        "startS": 27.24,
+        "durationS": 4.81,
+        "activeStems": [
+          "drums",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 21,
+        "endBar": 22,
+        "startS": 32.04,
+        "durationS": 3.2,
+        "activeStems": [
+          "drums",
+          "other",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 23,
+        "endBar": 23,
+        "startS": 35.25,
+        "durationS": 1.6,
+        "activeStems": [
+          "drums",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 24,
+        "endBar": 24,
+        "startS": 36.85,
+        "durationS": 1.6,
+        "activeStems": [
+          "drums",
+          "other",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 25,
+        "endBar": 25,
+        "startS": 38.45,
+        "durationS": 1.6,
+        "activeStems": [
+          "drums"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 26,
+        "endBar": 27,
+        "startS": 40.05,
+        "durationS": 3.2,
+        "activeStems": [
+          "drums",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 28,
+        "endBar": 30,
+        "startS": 43.26,
+        "durationS": 4.81,
+        "activeStems": [
+          "drums",
+          "other",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 31,
+        "endBar": 32,
+        "startS": 48.06,
+        "durationS": 3.2,
+        "activeStems": [
+          "drums",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 33,
+        "endBar": 33,
+        "startS": 51.27,
+        "durationS": 1.6,
+        "activeStems": [
+          "drums"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 34,
+        "endBar": 35,
+        "startS": 52.87,
+        "durationS": 3.2,
+        "activeStems": [
+          "drums",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 36,
+        "endBar": 48,
+        "startS": 56.07,
+        "durationS": 20.83,
+        "activeStems": [
+          "drums",
+          "other",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 49,
+        "endBar": 49,
+        "startS": 76.9,
+        "durationS": 1.6,
+        "activeStems": [
+          "drums",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 50,
+        "endBar": 118,
+        "startS": 78.5,
+        "durationS": 110.55,
+        "activeStems": [
+          "drums",
+          "other",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 119,
+        "endBar": 119,
+        "startS": 189.05,
+        "durationS": 1.6,
+        "activeStems": [
+          "other",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 120,
+        "endBar": 120,
+        "startS": 190.65,
+        "durationS": 1.6,
+        "activeStems": [
+          "other"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 121,
+        "endBar": 128,
+        "startS": 192.26,
+        "durationS": 12.82,
+        "activeStems": []
+      }
+    ],
+    "section_count": 22
+  },
+  "rhythm": {
+    "patterns": [
+      {
+        "patternId": "dansant:drums:x.x.xx.x.xx.x.xx.x",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": "x.x.xx.x.xx.x.xx.x",
+        "hits": [
+          0,
+          2,
+          4,
+          5,
+          7,
+          9,
+          10,
+          12,
+          14,
+          15,
+          17
+        ],
+        "density": 0.611,
+        "occurrences": 4,
+        "bars": [
+          5,
+          21,
+          29,
+          32
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "dansant:drums:x.xx.x.xxx.xx.x.xx",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": "x.xx.x.xxx.xx.x.xx",
+        "hits": [
+          0,
+          2,
+          3,
+          5,
+          7,
+          8,
+          9,
+          11,
+          12,
+          14,
+          16,
+          17
+        ],
+        "density": 0.667,
+        "occurrences": 4,
+        "bars": [
+          52,
+          60,
+          62,
+          63
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "dansant:drums:.xx.xx.xx.xx.xx.xx",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": ".xx.xx.xx.xx.xx.xx",
+        "hits": [
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          10,
+          11,
+          13,
+          14,
+          16,
+          17
+        ],
+        "density": 0.667,
+        "occurrences": 4,
+        "bars": [
+          55,
+          56,
+          57,
+          58
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "dansant:drums:.xx.x.xx.x.xx.x.xx",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": ".xx.x.xx.x.xx.x.xx",
+        "hits": [
+          1,
+          2,
+          4,
+          6,
+          7,
+          9,
+          11,
+          12,
+          14,
+          16,
+          17
+        ],
+        "density": 0.611,
+        "occurrences": 2,
+        "bars": [
+          6,
+          30
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "dansant:drums:x.x.xx.x.x.xx.x.xx",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": "x.x.xx.x.x.xx.x.xx",
+        "hits": [
+          0,
+          2,
+          4,
+          5,
+          7,
+          9,
+          11,
+          12,
+          14,
+          16,
+          17
+        ],
+        "density": 0.611,
+        "occurrences": 2,
+        "bars": [
+          8,
+          12
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "dansant:drums:x.xx.xx.xx.xx.xx.x",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": "x.xx.xx.xx.xx.xx.x",
+        "hits": [
+          0,
+          2,
+          3,
+          5,
+          6,
+          8,
+          9,
+          11,
+          12,
+          14,
+          15,
+          17
+        ],
+        "density": 0.667,
+        "occurrences": 2,
+        "bars": [
+          49,
+          50
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "dansant:drums:.xx.xx.xx.xx.xxx.x",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": ".xx.xx.xx.xx.xxx.x",
+        "hits": [
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          10,
+          11,
+          13,
+          14,
+          15,
+          17
+        ],
+        "density": 0.667,
+        "occurrences": 2,
+        "bars": [
+          69,
+          79
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "dansant:drums:.............x.xx.",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": ".............x.xx.",
+        "hits": [
+          13,
+          15,
+          16
+        ],
+        "density": 0.167,
+        "occurrences": 1,
+        "bars": [
+          4
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "dansant:drums:..xx.x.xx.x.xx.x.x",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": "..xx.x.xx.x.xx.x.x",
+        "hits": [
+          2,
+          3,
+          5,
+          7,
+          8,
+          10,
+          12,
+          13,
+          15,
+          17
+        ],
+        "density": 0.556,
+        "occurrences": 1,
+        "bars": [
+          7
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "dansant:drums:.x.x.x.xxx.x.x.x.x",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": ".x.x.x.xxx.x.x.x.x",
+        "hits": [
+          1,
+          3,
+          5,
+          7,
+          8,
+          9,
+          11,
+          13,
+          15,
+          17
+        ],
+        "density": 0.556,
+        "occurrences": 1,
+        "bars": [
+          9
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "dansant:drums:x.x.xx.x.xx.x.x.xx",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": "x.x.xx.x.xx.x.x.xx",
+        "hits": [
+          0,
+          2,
+          4,
+          5,
+          7,
+          9,
+          10,
+          12,
+          14,
+          16,
+          17
+        ],
+        "density": 0.611,
+        "occurrences": 1,
+        "bars": [
+          10
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "dansant:drums:.x.xx.x.xx..xx.x.x",
+        "referenceId": "dansant",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 18,
+        "cell": ".x.xx.x.xx..xx.x.x",
+        "hits": [
+          1,
+          3,
+          4,
+          6,
+          8,
+          9,
+          12,
+          13,
+          15,
+          17
+        ],
+        "density": 0.556,
+        "occurrences": 1,
+        "bars": [
+          11
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      }
+    ],
+    "variations": [
+      {
+        "basePattern": "dansant:drums:x.x.xx.x.xx.x.xx.x",
+        "variantPattern": "dansant:drums:x.x.xx.x.xx.x.x.xx",
+        "addedHits": [
+          16
+        ],
+        "removedHits": [
+          15
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:x.x.xx.x.xx.x.xx.x",
+        "variantPattern": "dansant:drums:x.xx.x.x.xx.x.xx.x",
+        "addedHits": [
+          3
+        ],
+        "removedHits": [
+          4
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:x.x.xx.x.xx.x.xx.x",
+        "variantPattern": "dansant:drums:x.x.xx.xx.x.x.xx.x",
+        "addedHits": [
+          8
+        ],
+        "removedHits": [
+          9
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:x.x.xx.x.xx.x.xx.x",
+        "variantPattern": "dansant:other:x.x.xx.x.xx.x.x..x",
+        "addedHits": [],
+        "removedHits": [
+          15
+        ],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:x.x.xx.x.xx.x.xx.x",
+        "variantPattern": "dansant:other:x.x.xx.x..x...xx.x",
+        "addedHits": [],
+        "removedHits": [
+          9,
+          12
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:x.x.xx.x.xx.x.xx.x",
+        "variantPattern": "dansant:other:x.x..x.x.xx.x.xx.x",
+        "addedHits": [],
+        "removedHits": [
+          4
+        ],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:x.xx.x.xxx.xx.x.xx",
+        "variantPattern": "dansant:drums:x.xx.xx.xx.xx.x.xx",
+        "addedHits": [
+          6
+        ],
+        "removedHits": [
+          7
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:x.xx.x.xxx.xx.x.xx",
+        "variantPattern": "dansant:drums:x.xx.x.xxx.xx.xx.x",
+        "addedHits": [
+          15
+        ],
+        "removedHits": [
+          16
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:x.xx.x.xxx.xx.x.xx",
+        "variantPattern": "dansant:other:x.xx.x..xx..x.x.xx",
+        "addedHits": [],
+        "removedHits": [
+          7,
+          11
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:.xx.xx.xx.xx.xx.xx",
+        "variantPattern": "dansant:drums:.xx.xx.xx.xx.xxx.x",
+        "addedHits": [
+          15
+        ],
+        "removedHits": [
+          16
+        ],
+        "editDistance": 2,
+        "observedBars": 2,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:.xx.xx.xx.xx.xx.xx",
+        "variantPattern": "dansant:drums:x.x.xx.xx.xx.xx.xx",
+        "addedHits": [
+          0
+        ],
+        "removedHits": [
+          1
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "dansant:drums:.xx.xx.xx.xx.xx.xx",
+        "variantPattern": "dansant:drums:.xxx.x.xx.xx.xx.xx",
+        "addedHits": [
+          3
+        ],
+        "removedHits": [
+          4
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      }
+    ],
+    "cells_distinct_by_stem": {
+      "drums": 69,
+      "vocals": 86,
+      "other": 85
+    },
+    "density_by_stem": {
+      "drums": 11.44,
+      "vocals": 6.45,
+      "other": 7.85
+    }
+  },
+  "bass": null,
+  "tonal": {
+    "vocals": {
+      "confirmed": 13,
+      "musically_plausible": 75,
+      "ambiguous": 651
+    },
+    "other": {
+      "confirmed": 3,
+      "musically_plausible": 32,
+      "ambiguous": 794
+    }
+  },
+  "tonal_examples": {
+    "vocals": [
+      {
+        "start_s": 1.892,
+        "end_s": 2.09,
+        "duration_s": 0.209,
+        "pitch_hz": 325.4,
+        "midi_rounded": 64,
+        "cents_stability": 24.1,
+        "voiced_probability": 0.724,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 7.535,
+        "end_s": 7.883,
+        "duration_s": 0.36,
+        "pitch_hz": 315.2,
+        "midi_rounded": 63,
+        "cents_stability": 15.9,
+        "voiced_probability": 0.724,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 23.452,
+        "end_s": 23.847,
+        "duration_s": 0.406,
+        "pitch_hz": 247.3,
+        "midi_rounded": 59,
+        "cents_stability": 19.5,
+        "voiced_probability": 0.713,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 23.859,
+        "end_s": 24.66,
+        "duration_s": 0.813,
+        "pitch_hz": 253.1,
+        "midi_rounded": 59,
+        "cents_stability": 9.9,
+        "voiced_probability": 0.837,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 30.267,
+        "end_s": 30.499,
+        "duration_s": 0.244,
+        "pitch_hz": 311.6,
+        "midi_rounded": 63,
+        "cents_stability": 13.3,
+        "voiced_probability": 0.793,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 39.996,
+        "end_s": 40.217,
+        "duration_s": 0.232,
+        "pitch_hz": 324.5,
+        "midi_rounded": 64,
+        "cents_stability": 18.7,
+        "voiced_probability": 0.812,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      }
+    ],
+    "other": [
+      {
+        "start_s": 28.085,
+        "end_s": 28.224,
+        "duration_s": 0.151,
+        "pitch_hz": 643.3,
+        "midi_rounded": 76,
+        "cents_stability": 12.7,
+        "voiced_probability": 0.793,
+        "confidence": "confirmed",
+        "method": "pyin fmin=70.0 fmax=1600.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 33.286,
+        "end_s": 34.4,
+        "duration_s": 1.126,
+        "pitch_hz": 843.9,
+        "midi_rounded": 80,
+        "cents_stability": 16.0,
+        "voiced_probability": 0.704,
+        "confidence": "confirmed",
+        "method": "pyin fmin=70.0 fmax=1600.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 46.196,
+        "end_s": 46.37,
+        "duration_s": 0.186,
+        "pitch_hz": 883.8,
+        "midi_rounded": 81,
+        "cents_stability": 16.0,
+        "voiced_probability": 0.79,
+        "confidence": "confirmed",
+        "method": "pyin fmin=70.0 fmax=1600.0 sr=22050 hop=256 frame=2048"
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "stemA": "drums",
+      "stemB": "other",
+      "coincidence_within_ms": 40,
+      "onsets_A": 938,
+      "onsets_B": 667,
+      "coincident_onsets": 580,
+      "coincidence_pct_of_A": 61.8,
+      "lift_vs_chance": 2.29,
+      "A_followed_by_B_pct": 68.8,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    },
+    {
+      "stemA": "drums",
+      "stemB": "vocals",
+      "coincidence_within_ms": 40,
+      "onsets_A": 938,
+      "onsets_B": 555,
+      "coincident_onsets": 322,
+      "coincidence_pct_of_A": 34.3,
+      "lift_vs_chance": 1.53,
+      "A_followed_by_B_pct": 56.2,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    },
+    {
+      "stemA": "other",
+      "stemB": "vocals",
+      "coincidence_within_ms": 40,
+      "onsets_A": 667,
+      "onsets_B": 555,
+      "coincident_onsets": 256,
+      "coincidence_pct_of_A": 38.4,
+      "lift_vs_chance": 1.7,
+      "A_followed_by_B_pct": 56.7,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    }
+  ],
+  "harmony": {
+    "key_candidates": [
+      {
+        "key": "G minor",
+        "correlation": 0.368
+      },
+      {
+        "key": "F# minor",
+        "correlation": 0.204
+      },
+      {
+        "key": "G major",
+        "correlation": 0.178
+      }
+    ]
+  },
+  "uncertainties": [
+    "les noms de stems sont des hypothèses de rôle ; aucun instrument n’est confirmé",
+    "les événements sont des attaques détectées, pas des notes jouées",
+    "les interactions sont des corrélations mesurées, pas des intentions",
+    "la grille temporelle est une hypothèse de profil, pas une sortie de tracker",
+    "aucun centre tonal fiable : ne pas générer d’accords"
+  ],
+  "needs_human_validation": [
+    "1445 segments tonals ambigus — transcription à confirmer à l’écoute",
+    "roulement continu : aucune transcription rythmique discrète ne doit être supposée",
+    "aucun stem de basse : comportement de basse non mesurable"
+  ]
+}
