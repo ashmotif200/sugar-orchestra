@@ -6,3 +6,5 @@ assets/originals/
 *.log
 # références musicales fournies (multipistes lourds, hors dépôt)
 assets/references/
+# Super Admin : base, fichiers audio versionnés, publications et credentials
+data/admin/

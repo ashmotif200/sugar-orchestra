@@ -10,6 +10,17 @@ export default defineConfig({
     target: 'es2020',
     assetsInlineLimit: 0,
   },
-  server: { port: 5180, host: '0.0.0.0' },
-  preview: { port: 5181, host: '0.0.0.0' },
+  // The admin API runs on its own loopback-only server (server/admin-server.mjs).
+  // Proxying /api in dev and preview keeps the browser same-origin, so the session
+  // cookie stays SameSite=Strict and no CORS relaxation is needed.
+  server: {
+    port: 5180,
+    host: '0.0.0.0',
+    proxy: { '/api': { target: 'http://127.0.0.1:5182', changeOrigin: false } },
+  },
+  preview: {
+    port: 5181,
+    host: '0.0.0.0',
+    proxy: { '/api': { target: 'http://127.0.0.1:5182', changeOrigin: false } },
+  },
 })

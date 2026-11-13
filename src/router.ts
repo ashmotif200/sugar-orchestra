@@ -7,10 +7,14 @@ export type Route =
   | { name: 'carnet' }
   | { name: 'composer' }
   | { name: 'result' }
+  | { name: 'admin'; section: string }
 
 export function parseHash(hash: string): Route {
   const path = hash.replace(/^#/, '') || '/'
   const seg = path.split('/').filter(Boolean)
+  // Admin lives under #/admin so QR codes and visitor deep links (#/etape/N) keep
+  // working untouched. Unknown sections fall through to the dashboard.
+  if (seg[0] === 'admin') return { name: 'admin', section: seg[1] ?? 'dashboard' }
   if (seg[0] === 'parcours') return { name: 'parcours' }
   if (seg[0] === 'etape') {
     const id = parseInt(seg[1] ?? '', 10)
@@ -29,6 +33,7 @@ export const routeToHash = (r: Route): string => {
     case 'carnet': return '#/carnet'
     case 'composer': return '#/composer'
     case 'result': return '#/resultat'
+    case 'admin': return `#/admin/${r.section}`
     default: return '#/'
   }
 }

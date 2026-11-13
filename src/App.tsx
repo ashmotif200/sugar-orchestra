@@ -1,4 +1,4 @@
-import { useCallback, useEffect, useMemo, useState } from 'react'
+import { lazy, Suspense, useCallback, useEffect, useMemo, useState } from 'react'
 import { audio, catalog, soundById, stepSounds, titleOf } from './audio/service'
 import { t } from './i18n'
 import { useRoute } from './router'
@@ -12,6 +12,11 @@ import Carnet from './ui/screens/Carnet'
 import Composer, { type Piece } from './ui/screens/Composer'
 import Result from './ui/screens/Result'
 import SelfTest from './ui/SelfTest'
+
+// Le Super Admin est chargé à la demande : un visiteur ne télécharge jamais le
+// code d'administration, et la promesse « tout fonctionne hors ligne » du parcours
+// reste intacte.
+const AdminApp = lazy(() => import('./admin/AdminApp'))
 
 export default function App() {
   const selftest = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('selftest')
@@ -93,6 +98,17 @@ export default function App() {
   const universe = getUniverse(session.universeId)
 
   if (selftest) return <SelfTest />
+
+  if (route.name === 'admin') {
+    return (
+      <Suspense fallback={<div className="adm-boot"><p>Chargement de l’administration…</p></div>}>
+        <AdminApp
+          section={route.section}
+          navigate={(hash) => { window.location.hash = hash.startsWith('#') ? hash.slice(1) : hash }}
+        />
+      </Suspense>
+    )
+  }
 
   const rail = (
     <nav className="rail" aria-label={t('parcours.title')}>
