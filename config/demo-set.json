@@ -1,0 +1,111 @@
+{
+  "_doc": "Sélection de démonstration Sugar Orchestra. 12 sons sur les 40 du catalogue. Les 28 autres restent au catalogue source avec leurs crédits ; ils ne sont simplement pas collectables dans cette démo. La séquence 4 « Une histoire façonnée par le sucre » (fouet, fers, chaînes, maquette Ayo) est volontairement exclue : elle exige une contextualisation et une validation muséales avant tout usage musical.",
+  "_rolesNote": "Rôles proposés après écoute des mesures (f0, centroïde, attaques, sustain). Ils restent à confirmer à l'oreille — le brief est explicite : les mesures spectrales ne prouvent pas la musicalité.",
+  "codes": [
+    {
+      "code": "07_01",
+      "roles": [
+        "bass",
+        "texture"
+      ],
+      "why": "grondement grave (f0 51 Hz) : socle de la basse",
+      "name": "Bagasse écrasée"
+    },
+    {
+      "code": "06_03",
+      "roles": [
+        "bass",
+        "texture"
+      ],
+      "why": "souffle bas du moulin à vapeur (f0 45 Hz), second choix de basse",
+      "name": "Moulin à vapeur"
+    },
+    {
+      "code": "06_04",
+      "roles": [
+        "rhythm"
+      ],
+      "why": "charrette à bœufs : 2,95 attaques/s, matière rythmique la plus franche du catalogue",
+      "name": "Charrette à bœufs"
+    },
+    {
+      "code": "03_02",
+      "roles": [
+        "melody",
+        "earcandy"
+      ],
+      "why": "forgeron : frappes métalliques tonales (tonalité 0,84), meilleure source mélodique",
+      "name": "Forgeron"
+    },
+    {
+      "code": "02_03",
+      "roles": [
+        "melody",
+        "earcandy"
+      ],
+      "why": "couvercle de boîte à sucre : résonance nette (f0 251 Hz, tonalité 0,65)",
+      "name": "Couvercle de boîte à sucre"
+    },
+    {
+      "code": "08_01",
+      "roles": [
+        "rhythm",
+        "bass"
+      ],
+      "why": "mélasse : 4,3 attaques/s et tonale, utile en groove et en basse",
+      "name": "Mélasse"
+    },
+    {
+      "code": "08_03",
+      "roles": [
+        "earcandy",
+        "texture"
+      ],
+      "why": "chaudière : souffle aigu continu (centroïde 8 kHz)",
+      "name": "Chaudière"
+    },
+    {
+      "code": "01_03",
+      "roles": [
+        "texture",
+        "rhythm"
+      ],
+      "why": "bateau fendant l'eau : clapot continu avec 1,9 attaques/s",
+      "name": "Bateau fendant l’eau"
+    },
+    {
+      "code": "01_04",
+      "roles": [
+        "texture"
+      ],
+      "why": "voiles qui claquent : nappe tenue (sustain 1,0)",
+      "name": "Voiles qui claquent"
+    },
+    {
+      "code": "07_02",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "why": "électricité : nappe tenue, centroïde 2,5 kHz, très malléable en granulaire",
+      "name": "Électricité"
+    },
+    {
+      "code": "05_02",
+      "roles": [
+        "earcandy",
+        "rhythm"
+      ],
+      "why": "éprouvette remuée : verre, 1,85 attaques/s, éclats aigus",
+      "name": "Éprouvette remuée"
+    },
+    {
+      "code": "03_01",
+      "roles": [
+        "earcandy"
+      ],
+      "why": "cordonnier : frappes claires très aiguës (centroïde 6,1 kHz)",
+      "name": "Cordonnier"
+    }
+  ]
+}

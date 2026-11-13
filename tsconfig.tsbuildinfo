@@ -1,0 +1,1 @@
+{"root":["./src/App.tsx","./src/main.tsx","./src/audio/service.ts","./src/audio/types.ts","./src/engine/plan.ts","./src/engine/render.ts","./src/engine/rng.ts","./src/engine/roles.ts","./src/engine/universes.ts","./src/ui/SelfTest.tsx"],"version":"5.9.3"}

@@ -1,0 +1,6 @@
+node_modules/
+dist/
+# WAV du musée : conservés sur disque (49 Mo), hors dépôt ; le zip source reste la référence
+assets/originals/
+# artefacts de diagnostic
+*.log

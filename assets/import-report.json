@@ -1,0 +1,640 @@
+{
+  "generatedAt": "2026-11-13T06:38:57.489Z",
+  "zip": "Sons_sucre_40_pistes_20s.zip",
+  "inventory": "Inventaire.csv",
+  "counts": {
+    "rows": 40,
+    "matched": 40,
+    "missingFiles": 0,
+    "duplicates": 0,
+    "unmappedColumns": 1,
+    "demoSet": 12,
+    "sensitive": 3,
+    "needsValidation": 1
+  },
+  "missingFiles": [],
+  "duplicateCodes": [],
+  "unmatchedSections": [],
+  "unmatchedColumns": [
+    "duree"
+  ],
+  "codes": [
+    {
+      "code": "01_01",
+      "file": "Sons_20_secondes/01_01_Volcan_eruption.wav",
+      "section": "origines",
+      "roles": [
+        "rhythm",
+        "texture"
+      ],
+      "f0": null,
+      "onsetRate": 5.5,
+      "centroid": 113
+    },
+    {
+      "code": "01_02",
+      "file": "Sons_20_secondes/01_02_Foret_tropicale.wav",
+      "section": "origines",
+      "roles": [
+        "earcandy"
+      ],
+      "f0": 132.5,
+      "onsetRate": 0.55,
+      "centroid": 3458
+    },
+    {
+      "code": "01_03",
+      "file": "Sons_20_secondes/01_03_Bateau_fendant_eau.wav",
+      "section": "origines",
+      "roles": [
+        "texture",
+        "rhythm",
+        "earcandy"
+      ],
+      "f0": 489.8,
+      "onsetRate": 1.9,
+      "centroid": 4065
+    },
+    {
+      "code": "01_04",
+      "file": "Sons_20_secondes/01_04_Voiles_qui_claquent.wav",
+      "section": "origines",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "f0": null,
+      "onsetRate": 0.65,
+      "centroid": 5016
+    },
+    {
+      "code": "01_05",
+      "file": "Sons_20_secondes/01_05_Pas_sur_sable.wav",
+      "section": "origines",
+      "roles": [
+        "rhythm",
+        "earcandy"
+      ],
+      "f0": null,
+      "onsetRate": 1.6,
+      "centroid": 2794
+    },
+    {
+      "code": "02_01",
+      "file": "Sons_20_secondes/02_01_Cuillere_tasse_sucre.wav",
+      "section": "ages",
+      "roles": [
+        "earcandy",
+        "rhythm"
+      ],
+      "f0": 284.9,
+      "onsetRate": 0.9,
+      "centroid": 9051
+    },
+    {
+      "code": "02_02",
+      "file": "Sons_20_secondes/02_02_Degustation.wav",
+      "section": "ages",
+      "roles": [
+        "earcandy",
+        "rhythm"
+      ],
+      "f0": 158,
+      "onsetRate": 1.05,
+      "centroid": 3053
+    },
+    {
+      "code": "02_03",
+      "file": "Sons_20_secondes/02_03_Couvercle_boite_sucre.wav",
+      "section": "ages",
+      "roles": [
+        "earcandy",
+        "rhythm",
+        "melody"
+      ],
+      "f0": 250.9,
+      "onsetRate": 0.9,
+      "centroid": 3636
+    },
+    {
+      "code": "02_04",
+      "file": "Sons_20_secondes/02_04_Commercants_etals.wav",
+      "section": "ages",
+      "roles": [
+        "texture"
+      ],
+      "f0": 146,
+      "onsetRate": 0.05,
+      "centroid": 2281
+    },
+    {
+      "code": "02_05",
+      "file": "Sons_20_secondes/02_05_Bal_causeries.wav",
+      "section": "ages",
+      "roles": [
+        "texture"
+      ],
+      "f0": 155.9,
+      "onsetRate": 0.15,
+      "centroid": 1703
+    },
+    {
+      "code": "03_01",
+      "file": "Sons_20_secondes/03_01_Cordonnier.wav",
+      "section": "cheminee",
+      "roles": [
+        "earcandy",
+        "rhythm"
+      ],
+      "f0": 715.4,
+      "onsetRate": 1.65,
+      "centroid": 6104
+    },
+    {
+      "code": "03_02",
+      "file": "Sons_20_secondes/03_02_Forgeron.wav",
+      "section": "cheminee",
+      "roles": [
+        "melody",
+        "earcandy",
+        "rhythm"
+      ],
+      "f0": 363,
+      "onsetRate": 1.4,
+      "centroid": 4257
+    },
+    {
+      "code": "03_03",
+      "file": "Sons_20_secondes/03_03_Fondeur.wav",
+      "section": "cheminee",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "f0": 709.3,
+      "onsetRate": 0.55,
+      "centroid": 8067
+    },
+    {
+      "code": "03_04",
+      "file": "Sons_20_secondes/03_04_Charpentier.wav",
+      "section": "cheminee",
+      "roles": [
+        "earcandy"
+      ],
+      "f0": 211.4,
+      "onsetRate": 0.8,
+      "centroid": 3534
+    },
+    {
+      "code": "04_01",
+      "file": "Sons_20_secondes/04_01_Fouet.wav",
+      "section": "histoire",
+      "roles": [
+        "earcandy"
+      ],
+      "f0": null,
+      "onsetRate": 0.2,
+      "centroid": 1736
+    },
+    {
+      "code": "04_02",
+      "file": "Sons_20_secondes/04_02_Fers_chaines.wav",
+      "section": "histoire",
+      "roles": [
+        "earcandy",
+        "rhythm"
+      ],
+      "f0": 364.1,
+      "onsetRate": 1.4,
+      "centroid": 9023
+    },
+    {
+      "code": "04_03",
+      "file": "Sons_20_secondes/04_03_Coupe_coupe_champ.wav",
+      "section": "histoire",
+      "roles": [
+        "earcandy",
+        "rhythm"
+      ],
+      "f0": 376.8,
+      "onsetRate": 1,
+      "centroid": 4550
+    },
+    {
+      "code": "04_04",
+      "file": "Sons_20_secondes/04_04_Pioche.wav",
+      "section": "histoire",
+      "roles": [
+        "melody",
+        "earcandy"
+      ],
+      "f0": 519.9,
+      "onsetRate": 0.55,
+      "centroid": 5685
+    },
+    {
+      "code": "04_05",
+      "file": "Sons_20_secondes/04_05_Ayo_MAQUETTE_A_VALIDER.wav",
+      "section": "histoire",
+      "roles": [
+        "melody",
+        "bass"
+      ],
+      "f0": 173.9,
+      "onsetRate": 0.15,
+      "centroid": 786
+    },
+    {
+      "code": "04_06",
+      "file": "Sons_20_secondes/04_06_Vent_dans_champs.wav",
+      "section": "histoire",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "f0": null,
+      "onsetRate": 0.05,
+      "centroid": 5296
+    },
+    {
+      "code": "04_07",
+      "file": "Sons_20_secondes/04_07_Sucre_sibilance_SSS.wav",
+      "section": "histoire",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "f0": null,
+      "onsetRate": 0,
+      "centroid": 7367
+    },
+    {
+      "code": "04_08",
+      "file": "Sons_20_secondes/04_08_Fers_ouverture_fermeture.wav",
+      "section": "histoire",
+      "roles": [
+        "earcandy",
+        "rhythm"
+      ],
+      "f0": 193.6,
+      "onsetRate": 1.8,
+      "centroid": 4230
+    },
+    {
+      "code": "04_09",
+      "file": "Sons_20_secondes/04_09_Cuillere_sur_fer_blanc.wav",
+      "section": "histoire",
+      "roles": [
+        "melody",
+        "rhythm",
+        "earcandy"
+      ],
+      "f0": 379.8,
+      "onsetRate": 1.75,
+      "centroid": 1575
+    },
+    {
+      "code": "04_10",
+      "file": "Sons_20_secondes/04_10_Redaction_contrat.wav",
+      "section": "histoire",
+      "roles": [
+        "earcandy",
+        "texture",
+        "rhythm"
+      ],
+      "f0": 387.6,
+      "onsetRate": 0.95,
+      "centroid": 5510
+    },
+    {
+      "code": "04_11",
+      "file": "Sons_20_secondes/04_11_Doigt_encre_empreinte.wav",
+      "section": "histoire",
+      "roles": [
+        "earcandy",
+        "bass",
+        "melody"
+      ],
+      "f0": 159.7,
+      "onsetRate": 0.6,
+      "centroid": 5441
+    },
+    {
+      "code": "04_12",
+      "file": "Sons_20_secondes/04_12_Drapeau_au_vent.wav",
+      "section": "histoire",
+      "roles": [
+        "earcandy",
+        "rhythm"
+      ],
+      "f0": 96.5,
+      "onsetRate": 1.7,
+      "centroid": 3403
+    },
+    {
+      "code": "04_13",
+      "file": "Sons_20_secondes/04_13_Canon.wav",
+      "section": "histoire",
+      "roles": [
+        "earcandy"
+      ],
+      "f0": 166.1,
+      "onsetRate": 0.15,
+      "centroid": 1900
+    },
+    {
+      "code": "05_01",
+      "file": "Sons_20_secondes/05_01_Canne_pousse_accelere.wav",
+      "section": "canne",
+      "roles": [
+        "texture",
+        "rhythm",
+        "earcandy"
+      ],
+      "f0": 399.2,
+      "onsetRate": 0.9,
+      "centroid": 5322
+    },
+    {
+      "code": "05_02",
+      "file": "Sons_20_secondes/05_02_Eprouvette_remuee.wav",
+      "section": "canne",
+      "roles": [
+        "earcandy",
+        "rhythm",
+        "melody"
+      ],
+      "f0": 344.5,
+      "onsetRate": 1.85,
+      "centroid": 3731
+    },
+    {
+      "code": "06_01",
+      "file": "Sons_20_secondes/06_01_Moulin_eau.wav",
+      "section": "canne-au-sucre",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "f0": 124.4,
+      "onsetRate": 0.15,
+      "centroid": 5059
+    },
+    {
+      "code": "06_02",
+      "file": "Sons_20_secondes/06_02_Moulin_vent.wav",
+      "section": "canne-au-sucre",
+      "roles": [
+        "rhythm",
+        "texture"
+      ],
+      "f0": 97.5,
+      "onsetRate": 2.65,
+      "centroid": 1290
+    },
+    {
+      "code": "06_03",
+      "file": "Sons_20_secondes/06_03_Moulin_vapeur.wav",
+      "section": "canne-au-sucre",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "f0": 45,
+      "onsetRate": 0.2,
+      "centroid": 6202
+    },
+    {
+      "code": "06_04",
+      "file": "Sons_20_secondes/06_04_Charrette_boeufs.wav",
+      "section": "canne-au-sucre",
+      "roles": [
+        "rhythm",
+        "texture"
+      ],
+      "f0": 110.3,
+      "onsetRate": 2.95,
+      "centroid": 1332
+    },
+    {
+      "code": "06_05",
+      "file": "Sons_20_secondes/06_05_Camion.wav",
+      "section": "canne-au-sucre",
+      "roles": [
+        "texture"
+      ],
+      "f0": null,
+      "onsetRate": 0.05,
+      "centroid": 1989
+    },
+    {
+      "code": "06_06",
+      "file": "Sons_20_secondes/06_06_Engrenages.wav",
+      "section": "canne-au-sucre",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "f0": 246.7,
+      "onsetRate": 0.1,
+      "centroid": 3577
+    },
+    {
+      "code": "07_01",
+      "file": "Sons_20_secondes/07_01_Bagasse_ecrasee.wav",
+      "section": "energie",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "f0": 51.2,
+      "onsetRate": 0.05,
+      "centroid": 3829
+    },
+    {
+      "code": "07_02",
+      "file": "Sons_20_secondes/07_02_Electricite.wav",
+      "section": "energie",
+      "roles": [
+        "texture"
+      ],
+      "f0": null,
+      "onsetRate": 0.05,
+      "centroid": 2461
+    },
+    {
+      "code": "08_01",
+      "file": "Sons_20_secondes/08_01_Melasse.wav",
+      "section": "jus-au-sucre",
+      "roles": [
+        "rhythm",
+        "texture",
+        "melody"
+      ],
+      "f0": 188.4,
+      "onsetRate": 4.3,
+      "centroid": 612
+    },
+    {
+      "code": "08_02",
+      "file": "Sons_20_secondes/08_02_Jus_de_canne.wav",
+      "section": "jus-au-sucre",
+      "roles": [
+        "earcandy",
+        "rhythm"
+      ],
+      "f0": 306.1,
+      "onsetRate": 1.85,
+      "centroid": 4006
+    },
+    {
+      "code": "08_03",
+      "file": "Sons_20_secondes/08_03_Chaudiere.wav",
+      "section": "jus-au-sucre",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "f0": null,
+      "onsetRate": 0.15,
+      "centroid": 8043
+    }
+  ],
+  "warnings": [],
+  "errors": [],
+  "demoSource": "config/demo-set.json",
+  "demoSet": [
+    {
+      "code": "07_01",
+      "name": "Bagasse écrasée",
+      "section": "energie",
+      "roles": [
+        "bass",
+        "texture"
+      ],
+      "f0": 51.2
+    },
+    {
+      "code": "06_03",
+      "name": "Moulin à vapeur",
+      "section": "canne-au-sucre",
+      "roles": [
+        "bass",
+        "texture"
+      ],
+      "f0": 45
+    },
+    {
+      "code": "06_04",
+      "name": "Charrette à bœufs",
+      "section": "canne-au-sucre",
+      "roles": [
+        "rhythm"
+      ],
+      "f0": 110.3
+    },
+    {
+      "code": "03_02",
+      "name": "Forgeron",
+      "section": "cheminee",
+      "roles": [
+        "melody",
+        "earcandy"
+      ],
+      "f0": 363
+    },
+    {
+      "code": "02_03",
+      "name": "Couvercle de boîte à sucre",
+      "section": "ages",
+      "roles": [
+        "melody",
+        "earcandy"
+      ],
+      "f0": 250.9
+    },
+    {
+      "code": "08_01",
+      "name": "Mélasse",
+      "section": "jus-au-sucre",
+      "roles": [
+        "rhythm",
+        "bass"
+      ],
+      "f0": 188.4
+    },
+    {
+      "code": "08_03",
+      "name": "Chaudière",
+      "section": "jus-au-sucre",
+      "roles": [
+        "earcandy",
+        "texture"
+      ],
+      "f0": null
+    },
+    {
+      "code": "01_03",
+      "name": "Bateau fendant l’eau",
+      "section": "origines",
+      "roles": [
+        "texture",
+        "rhythm"
+      ],
+      "f0": 489.8
+    },
+    {
+      "code": "01_04",
+      "name": "Voiles qui claquent",
+      "section": "origines",
+      "roles": [
+        "texture"
+      ],
+      "f0": null
+    },
+    {
+      "code": "07_02",
+      "name": "Électricité",
+      "section": "energie",
+      "roles": [
+        "texture",
+        "earcandy"
+      ],
+      "f0": null
+    },
+    {
+      "code": "05_02",
+      "name": "Éprouvette remuée",
+      "section": "canne",
+      "roles": [
+        "earcandy",
+        "rhythm"
+      ],
+      "f0": 344.5
+    },
+    {
+      "code": "03_01",
+      "name": "Cordonnier",
+      "section": "cheminee",
+      "roles": [
+        "earcandy"
+      ],
+      "f0": 715.4
+    }
+  ],
+  "sensitiveCodes": [
+    {
+      "code": "04_01",
+      "name": "04_01_Fouet"
+    },
+    {
+      "code": "04_02",
+      "name": "04_02_Fers_chaines"
+    },
+    {
+      "code": "04_05",
+      "name": "04_05_Ayo_MAQUETTE_A_VALIDER"
+    }
+  ]
+}
