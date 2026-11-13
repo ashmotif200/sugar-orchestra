@@ -12,7 +12,9 @@ const usable = () => catalog.sounds.filter((s) => isMusicallyUsable(s))
 
 function buildCases(): Case[] {
   const all = usable()
-  const withRole = (r: string) => all.filter((s) => s.roles.includes(r as never))
+  // `roles` peut être absent du catalogue publié : sans ce garde-fou, ce code
+  // s'exécute à l'import du module et fait échouer le montage de toute l'application.
+  const withRole = (r: string) => all.filter((s) => (s.roles ?? []).includes(r as never))
   const diverse: string[] = []
   for (const role of ['bass', 'melody', 'rhythm', 'earcandy', 'texture']) {
     const pick = withRole(role).find((s) => !diverse.includes(s.id))

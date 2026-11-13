@@ -136,7 +136,7 @@ export default function Step({
           <article className="fiche" aria-live="polite">
             <h2 className="h2">
               {editorialFor(open.id)?.title ?? titleOf(open)}
-              {editorialFor(open.id)?.title && (
+              {editorialFor(open.id)?.title && editorialFor(open.id)!.title !== titleOf(open) && (
                 <span className="fiche-catalogue-name"> · {titleOf(open)}</span>
               )}
             </h2>
@@ -179,9 +179,11 @@ export default function Step({
               <details className="fiche-story" key={`story-${editorialTick}`}>
                 <summary>{t('step.discoverStory')}</summary>
                 <div className="fiche-text">
-                  {(editorialFor(open.id)?.story ?? open.history ?? '').split('\n').map((line, i) => (
-                    <p key={i}>{line}</p>
-                  ))}
+                  {(editorialFor(open.id)?.story ?? open.history ?? '')
+                    .split('\n')
+                    .map((line) => line.trim())
+                    .filter((line) => line.length > 0)
+                    .map((line, i) => <p key={i}>{line}</p>)}
                 </div>
               </details>
             )}

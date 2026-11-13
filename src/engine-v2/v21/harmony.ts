@@ -92,6 +92,17 @@ export interface BassSynthParams {
 }
 
 /**
+ * Version de la politique de gain de basse.
+ *
+ * v1 (V2.1.0) : gains −1/−2/−3 dB → mesuré par `scripts/v2/analyze-layers.mjs`,
+ *   la basse sortait 12,2 dB au-dessus de la couche de samples sur Énergétique et
+ *   8,3 dB sur Détendu : elle menait le mix au lieu de le soutenir.
+ * v2 (V2.1.1) : gains abaissés de 6 dB, pour que le mix reste au niveau de la
+ *   couche de samples et que la basse soutienne sans dominer.
+ */
+export const GAIN_POLICY_VERSION = 2
+
+/**
  * Paramètres de synthèse par timbre. Ce sont des choix de conception, pas des
  * mesures : la référence ne fournit aucun timbre de basse synthétique.
  */
@@ -99,17 +110,17 @@ export const BASS_TIMBRES: Record<BassTimbre, BassSynthParams> = {
   sub: {
     timbre: 'sub', harmonics: [1, 0.12, 0.05],
     attackS: 0.08, decayS: 0.4, sustain: 0.85, releaseS: 0.6,
-    cutoffHz: 180, drive: 0.05, gainDb: -3,
+    cutoffHz: 180, drive: 0.05, gainDb: -9,
   },
   warm: {
     timbre: 'warm', harmonics: [1, 0.32, 0.14],
     attackS: 0.03, decayS: 0.25, sustain: 0.7, releaseS: 0.25,
-    cutoffHz: 420, drive: 0.18, gainDb: -2,
+    cutoffHz: 420, drive: 0.18, gainDb: -8,
   },
   percussive: {
     timbre: 'percussive', harmonics: [1, 0.45, 0.22],
     attackS: 0.004, decayS: 0.09, sustain: 0.18, releaseS: 0.09,
-    cutoffHz: 700, drive: 0.3, gainDb: -1,
+    cutoffHz: 700, drive: 0.3, gainDb: -7,
   },
 }
 

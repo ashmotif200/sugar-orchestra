@@ -349,7 +349,10 @@ async function doRender(plan, timeoutMs) {
     if (p) paths.set(id, p)
     else missing.push(id)
   }
-  if (!paths.size) {
+  // un plan peut ne contenir QUE de la basse synthétique (mesure de couche) :
+  // dans ce cas l'absence de sources n'est pas une erreur
+  const hasSynthOnly = !paths.size && (plan.bassNotes?.length ?? 0) > 0
+  if (!paths.size && !hasSynthOnly) {
     throw Object.assign(new Error('aucune source résoluble pour ce plan'), { status: 422, detail: missing })
   }
 

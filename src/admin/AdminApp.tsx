@@ -3,6 +3,7 @@ import { api, ApiError, type Me } from './api'
 import { clearAsyncCache, Dashboard, Sounds } from './panels'
 import { Content, Steps, Music, Developer, Users, Settings } from './panels2'
 import Lab from './lab'
+import Lab21 from './lab21'
 import './admin.css'
 
 export type Navigate = (hash: string) => void
@@ -15,6 +16,7 @@ const SECTIONS = [
   { id: 'music', label: 'Studio musical', glyph: '∫', perm: 'music.read' },
   { id: 'developer', label: 'Outils développeur', glyph: '⌘', perm: 'dev.use' },
   { id: 'lab', label: 'Laboratoire V1/V2', glyph: '⇄', perm: 'dev.use' },
+  { id: 'lab21', label: 'Laboratoire V2.1', glyph: '◆', perm: 'dev.use' },
   { id: 'users', label: 'Comptes & rôles', glyph: '☗', perm: 'users.read' },
   { id: 'settings', label: 'Système', glyph: '⚙', perm: 'system.read' },
 ] as const
@@ -109,6 +111,7 @@ export default function AdminApp({ section, navigate }: { section: string; navig
         {active === 'music' && <Music />}
         {active === 'developer' && <Developer />}
         {active === 'lab' && <Lab />}
+        {active === 'lab21' && <Lab21 />}
         {active === 'users' && <Users me={me} />}
         {active === 'settings' && <Settings />}
       </main>

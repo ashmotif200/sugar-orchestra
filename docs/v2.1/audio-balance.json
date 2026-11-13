@@ -1,0 +1,118 @@
+{
+  "generatedAt": "2026-11-13T15:41:14.766Z",
+  "engine": "v2.1.0",
+  "method": "trois rendus par univers (samples / basse / mix), mesures ffmpeg sur les fichiers produits",
+  "note": "les LUFS de couches ne s’additionnent pas : les écarts sont mesurés, pas calculés",
+  "universes": [
+    {
+      "universeId": "electro-sega",
+      "reference": "Ohwalawa (51,06 s, −11,7 LUFS, 135 BPM, 4/4 ternaire)",
+      "seed": 20261121,
+      "bars": 20,
+      "durationS": 35.56,
+      "layers": {
+        "samples": {
+          "lufs": -25.7,
+          "truePeak": -1.1,
+          "peak": -1.2
+        },
+        "bass": {
+          "lufs": -13.5,
+          "truePeak": -1,
+          "peak": -1,
+          "notes": 49,
+          "timbre": "percussive"
+        },
+        "mix": {
+          "lufs": -23.5,
+          "truePeak": -1.1,
+          "peak": -1.2,
+          "events": 135
+        }
+      },
+      "deltaLufsMixVsSamples": 2.2,
+      "bassGainDb": -7
+    },
+    {
+      "universeId": "sega-trad",
+      "reference": "Tififi (205,59 s, −10,1 LUFS, mesure 2,32 s, 6/8, percussion roulée)",
+      "seed": 20261122,
+      "bars": 17,
+      "durationS": 39.47,
+      "layers": {
+        "samples": {
+          "lufs": -26.7,
+          "truePeak": -1.1,
+          "peak": -1.2
+        },
+        "bass": null,
+        "mix": {
+          "lufs": -26.7,
+          "truePeak": -1.1,
+          "peak": -1.2,
+          "events": 218
+        }
+      },
+      "deltaLufsMixVsSamples": 0,
+      "bassGainDb": null
+    },
+    {
+      "universeId": "segazz",
+      "reference": "Zistoire (54,47 s, −14,5 LUFS, 137 BPM, 4/4 binaire, si mineur)",
+      "seed": 20261123,
+      "bars": 21,
+      "durationS": 36.79,
+      "layers": {
+        "samples": {
+          "lufs": -15.1,
+          "truePeak": -1.1,
+          "peak": -1.5
+        },
+        "bass": {
+          "lufs": -6.8,
+          "truePeak": -1,
+          "peak": -1,
+          "notes": 51,
+          "timbre": "warm"
+        },
+        "mix": {
+          "lufs": -12.2,
+          "truePeak": -1.1,
+          "peak": -1.4,
+          "events": 94
+        }
+      },
+      "deltaLufsMixVsSamples": 2.9,
+      "bassGainDb": -8
+    },
+    {
+      "universeId": "ambient-creole",
+      "reference": null,
+      "seed": 20261124,
+      "bars": 11,
+      "durationS": 44,
+      "layers": {
+        "samples": {
+          "lufs": -15.8,
+          "truePeak": -1,
+          "peak": -1
+        },
+        "bass": {
+          "lufs": -4.5,
+          "truePeak": -1,
+          "peak": -1,
+          "notes": 7,
+          "timbre": "sub"
+        },
+        "mix": {
+          "lufs": -14.9,
+          "truePeak": -1.1,
+          "peak": -1.2,
+          "events": 15
+        }
+      },
+      "deltaLufsMixVsSamples": 0.9,
+      "bassGainDb": -9
+    }
+  ]
+}

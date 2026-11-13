@@ -65,8 +65,11 @@ writeFileSync(join(backupDir, 'APPLIED.json'), JSON.stringify({
 
 // trace de la publication appliquée : c'est ce que lit /api/public/content pour
 // distinguer « publiée » de « appliquée au bundle visiteur »
+// settings.updated_at est NOT NULL sans valeur par défaut : l'omettre faisait
+// échouer l'application avec « constraint failed »
 d.prepare("DELETE FROM settings WHERE key='applied_publication'").run()
-d.prepare("INSERT INTO settings (key, value) VALUES ('applied_publication', ?)").run(String(pub.id))
+d.prepare("INSERT INTO settings (key, value, updated_at) VALUES ('applied_publication', ?, ?)")
+  .run(String(pub.id), new Date().toISOString())
 
 d.prepare(`INSERT INTO audit_log (at, actor_id, actor_email, action, entity, entity_id, detail)
            VALUES (?,?,?,?,?,?,?)`)

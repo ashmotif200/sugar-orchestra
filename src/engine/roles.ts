@@ -33,7 +33,8 @@ export function assignRoles(sounds: Sound[]): RoleAssignment {
   const used = new Set<string>()
 
   for (const role of ROLES) {
-    let list = sounds.filter((s) => s.roles.includes(role))
+    // même garde-fou : un son du catalogue peut ne pas porter `roles`
+    let list = sounds.filter((s) => (s.roles ?? []).includes(role))
     if (role === 'bass' || role === 'melody') list = list.filter((s) => s.analysis.f0Hz !== null)
     list = [...list].sort(role === 'rhythm' ? byOnset : role === 'earcandy' ? byCentroid : role === 'texture' ? bySustain : byF0)
     assignments[role] = list

@@ -134,16 +134,25 @@ export async function handleApi(req, res, url) {
     try {
       const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
       const applied = (d.prepare("SELECT value FROM settings WHERE key='applied_publication'").get()?.value ?? null)
-      items = (manifest.catalog?.sounds ?? [])
+      // catalog.json porte .sounds à la racine (manifest.json porte .catalog)
+      const pending = (manifest.sounds ?? [])
         .filter((s) => s.title || s.shortDesc || s.history)
         .map((s) => ({
           soundId: s.id, title: s.title ?? null, shortDesc: s.shortDesc ?? null,
           story: s.history ?? null, pedagogy: s.pedagogy ?? null, sources: s.sources ?? null,
         }))
+      const isApplied = String(applied) === String(pub.id)
       return json(res, 200, {
-        applied: String(applied) === String(pub.id),
-        publicationId: pub.id, publishedAt: pub.created_at, locale, items,
-        note: 'contenu issu de la dernière publication ; crédits et licences restent ceux du catalogue',
+        applied: isApplied,
+        publicationId: pub.id, publishedAt: pub.created_at, locale,
+        // le visiteur ne consomme que ce qui est APPLIQUÉ ; une publication qui
+        // n'est pas encore appliquée reste invisible pour lui, et visible pour
+        // l'administration via pendingItems
+        items: isApplied ? pending : [],
+        pendingItems: pending.length,
+        note: isApplied
+          ? 'contenu appliqué au bundle visiteur ; crédits et licences restent ceux du catalogue'
+          : 'publication non appliquée : le visiteur utilise les titres du catalogue',
       })
     } catch (e) {
       return json(res, 200, { applied: false, publicationId: pub.id, locale, items: [],
@@ -719,6 +728,25 @@ export async function handleApi(req, res, url) {
       applied: false,
       note: 'snapshot écrit dans data/admin/publications ; la version visiteur n’est pas modifiée '
         + 'tant que `npm run admin:apply` n’est pas exécuté' })
+  }
+  if (path === '/api/publication/status' && method === 'GET') {
+    require('content.read')
+    const d = db()
+    const latest = d.prepare('SELECT id, created_at FROM publications ORDER BY id DESC LIMIT 1').get() ?? null
+    const appliedRaw = d.prepare("SELECT value FROM settings WHERE key='applied_publication'").get()?.value ?? null
+    const applied = appliedRaw ? Number(appliedRaw) : null
+    const publishedContent = d.prepare("SELECT COUNT(*) n FROM content WHERE status='published'").get().n
+    const draftContent = d.prepare("SELECT COUNT(*) n FROM content WHERE status<>'published'").get().n
+    return json(res, 200, {
+      latestPublication: latest, appliedPublication: applied,
+      // le visiteur ne voit que `applied` : une publication plus récente que
+      // l'application signifie que la fiche est publiée mais pas encore visible
+      inSync: !!latest && applied === latest.id,
+      publishedContent, draftContent,
+      note: !latest ? 'aucune publication' : applied === latest.id
+        ? 'la dernière publication est appliquée au bundle visiteur'
+        : `publication ${latest.id} publiée mais NON appliquée (dernière appliquée : ${applied ?? 'aucune'})`,
+    })
   }
   if (path === '/api/publications' && method === 'GET') {
     require('content.read')
