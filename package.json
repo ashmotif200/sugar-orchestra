@@ -17,7 +17,9 @@
     "admin:provision": "node scripts/admin/provision.mjs",
     "admin:backup": "node scripts/admin/backup.mjs",
     "admin:apply": "node scripts/admin/apply-publication.mjs",
-    "admin:test": "node tests/admin/api.test.mjs"
+    "admin:test": "node tests/admin/api.test.mjs",
+    "v2:demo": "node scripts/v2/make-demos.mjs",
+    "v2:test": "node tests/v2/engine.test.mjs"
   },
   "dependencies": {
     "react": "^18.3.1",

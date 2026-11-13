@@ -4,6 +4,7 @@ import { t } from './i18n'
 import { useRoute } from './router'
 import { clearSession, emptySession, loadSession, purgeLegacyKey, saveSession, type Session } from './session'
 import { getUniverse, UNIVERSES } from './engine/universes'
+import { isMusicallyUsable } from './engine/policy'
 import { encodeWav, type RenderReport } from './engine/render'
 import type { Score } from './engine/plan'
 import { clearCompositions, latestComposition, saveComposition } from './storage/compositions'
@@ -50,7 +51,8 @@ export default function App() {
 
   const toggle = useCallback((id: string) => {
     const sound = soundById(id)
-    if (sound && (sound.sensitive || sound.availability === 'not_musical')) return // jamais en musique
+    // politique musicale v2 : la sélection est libre, seule l'absence de fichier bloque
+    if (sound && !isMusicallyUsable(sound)) return
     setSession((s) => {
       const has = s.selected.includes(id)
       if (has) return { ...s, selected: s.selected.filter((x) => x !== id) }

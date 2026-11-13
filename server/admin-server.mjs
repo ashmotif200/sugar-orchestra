@@ -112,6 +112,15 @@ server.listen(PORT, HOST, () => {
   }
 })
 
+// Filet de sécurité : une erreur asynchrone non captée ne doit pas arrêter le
+// service audio (elle est journalisée, la requête concernée échoue déjà).
+process.on('unhandledRejection', (reason) => {
+  console.error('[admin] unhandled rejection (service maintenu):', reason?.message ?? reason)
+})
+process.on('uncaughtException', (err) => {
+  console.error('[admin] uncaught exception (service maintenu):', err?.message ?? err)
+})
+
 for (const sig of ['SIGINT', 'SIGTERM']) {
   process.on(sig, () => { server.close(() => process.exit(0)) })
 }

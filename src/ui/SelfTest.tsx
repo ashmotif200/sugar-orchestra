@@ -1,13 +1,14 @@
 import { useEffect, useRef, useState } from 'react'
 import { audio, catalog, soundById } from '../audio/service'
 import type { Sound } from '../audio/types'
+import { isMusicallyUsable } from '../engine/policy'
 import { UNIVERSES, getUniverse } from '../engine/universes'
 import { buildScore } from '../engine/plan'
 import { renderScore } from '../engine/render'
 
 type Case = { name: string; universeId: string; ids: string[] }
 
-const usable = () => catalog.sounds.filter((s) => s.availability !== 'not_musical' && !s.sensitive)
+const usable = () => catalog.sounds.filter((s) => isMusicallyUsable(s))
 
 function buildCases(): Case[] {
   const all = usable()

@@ -244,6 +244,22 @@
   box-shadow: -30px 0 60px rgba(20, 28, 23, 0.25);
 }
 
+.adm-lab-sounds { display: flex; flex-wrap: wrap; gap: 0.3rem; }
+.adm-lab-sound {
+  font: inherit; font-size: 0.74rem; cursor: pointer;
+  border: 1px solid rgba(30, 43, 34, 0.18); background: #fff; color: inherit;
+  border-radius: 7px; padding: 0.25rem 0.4rem;
+}
+.adm-lab-sound.is-on { background: var(--cane, #2f6b4f); border-color: var(--cane, #2f6b4f); color: #fff; }
+.adm-rate {
+  font: inherit; font-size: 0.72rem; width: 1.6rem; height: 1.6rem;
+  margin-right: 0.15rem; cursor: pointer; border-radius: 6px;
+  border: 1px solid rgba(30, 43, 34, 0.2); background: #fff; color: inherit;
+}
+.adm-rate.is-on { background: var(--amber, #e9a23b); border-color: var(--amber, #e9a23b); font-weight: 700; }
+.adm-details { margin-top: 0.5rem; font-size: 0.78rem; }
+.adm-details summary { cursor: pointer; color: var(--cane, #2f6b4f); }
+
 @media (max-width: 820px) {
   .adm { grid-template-columns: 1fr; }
   .adm-side { position: static; height: auto; flex-direction: row; flex-wrap: wrap; align-items: center; }

@@ -2,6 +2,7 @@ import type { Role, Sound, Universe } from '../audio/types'
 import { assignRoles, uncoveredSources, type Adaptation } from './roles'
 import { mulberry32, hashString, type Rng, pick, jitter, chance } from './rng'
 import { SCALE, ROOT_HZ, ELECTRO_ROOTS, AMBIENT_ROOTS, SEGA_ROOTS, semisToRate } from './universes'
+import { isMusicallyUsable } from './policy'
 
 export interface FilterSpec {
   type: BiquadFilterType
@@ -758,7 +759,9 @@ export function buildScore(input: PlanInput): Score {
   if (!universe.available) throw new CompositionRefused('unavailable-universe', `univers ${universe.name} non implémenté`)
   // Garde-fou : un son sensible ou non musical ne peut jamais entrer dans une
   // pièce, même si l'état de session a été bricolé.
-  const usable = input.selection.filter((s) => s.sensitive !== true && s.availability !== 'not_musical')
+  // Politique musicale v2 : seule l'absence de fichier audio exclut un son.
+  // `sensitive` et `not_musical` restent des métadonnées, plus des interdits.
+  const usable = input.selection.filter((s) => isMusicallyUsable(s))
   if (!usable.length) throw new CompositionRefused('no-usable-sound', 'aucun son utilisable dans la sélection')
   // order-independent: the same collection always yields the same piece, however
   // the visitor happened to click it together

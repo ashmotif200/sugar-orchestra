@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { audio, catalog, peaks, stepSounds, titleOf } from '../../audio/service'
 import { t } from '../../i18n'
+import { editorialNotes, isMusicallyUsable } from '../../engine/policy'
 import { Badge, Button, EmptyState, ErrorBox, PlayIcon, Spinner, Waveform, fmtTime } from '../kit'
 import type { Session } from '../../session'
 import type { Sound } from '../../audio/types'
@@ -90,7 +91,8 @@ export default function Step({
       <div className="step-split">
         <ul className="rows step-list">
           {sounds.map((s) => {
-            const locked = s.availability === 'not_musical' || s.sensitive
+            // politique v2 : plus de cadenas musical ; seule l'absence de fichier bloque
+            const locked = !isMusicallyUsable(s)
             const inMusic = session.selected.includes(s.id)
             const seen = session.discovered.includes(s.id)
             return (
@@ -168,7 +170,11 @@ export default function Step({
               <span className="label">{t('step.credits')}</span> {open.credits}
             </p>
 
-            {open.availability === 'not_musical' || open.sensitive ? (
+            {editorialNotes(open).label && (
+              <p className="note note-history">ℹ️ {editorialNotes(open).label}</p>
+            )}
+
+            {!isMusicallyUsable(open) ? (
               <p className="locked-note">🔒 {t('step.historyOnly')}</p>
             ) : (
               <Button

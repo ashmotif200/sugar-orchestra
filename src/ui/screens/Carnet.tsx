@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { audio, peaks, soundById, titleOf } from '../../audio/service'
 import { t } from '../../i18n'
+import { isMusicallyUsable } from '../../engine/policy'
 import { Badge, Button, EmptyState, PlayIcon, Tabs, Waveform, fmtTime } from '../kit'
 import type { Session } from '../../session'
 
@@ -48,7 +49,7 @@ export default function Carnet({
           {items.map((s) => {
             if (!s) return null
             const inMusic = session.selected.includes(s.id)
-            const locked = s.availability === 'not_musical' || s.sensitive
+            const locked = !isMusicallyUsable(s)
             const buf = audio.get(s.id)
             return (
               <li key={s.id} className="row">

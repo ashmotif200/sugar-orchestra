@@ -7,12 +7,15 @@ import { readdir } from 'node:fs/promises'
 import { extname, join, normalize, resolve } from 'node:path'
 import { spawn } from 'node:child_process'
 import { db, audit, nowIso, sha256, FILES_DIR, PUB_DIR, ROOT, writeJsonAtomic } from './db.mjs'
+import { renderPlan, renderPath, renderMetaPath, SAMPLE_RATE, MAX_NOTES, MAX_BARS } from './v2-render.mjs'
 import {
   can, createSession, destroySession, userFromToken, verifyPassword, loginBlocked,
   recordFailure, clearFailures, createUser, ROLES, PERMISSION_LIST, PERMISSIONS,
 } from './auth.mjs'
 
 const SESSION_COOKIE = 'so_admin'
+/** limitation de débit par IP pour le rendu V2 public */
+const renderHits = new Map()
 const MAX_JSON = 1 << 20          // 1 MiB
 const MAX_AUDIO = 25 << 20        // 25 MiB
 const ALLOWED_AUDIO = {
@@ -108,6 +111,58 @@ export async function handleApi(req, res, url) {
   // health is the only unauthenticated read
   if (path === '/api/health' && method === 'GET') {
     return json(res, 200, { ok: true, service: 'sugar-orchestra-admin', time: nowIso() })
+  }
+
+  /* ------------------------------------------------- moteur V2 (public) */
+  // Ces routes servent le parcours visiteur : elles ne demandent pas de session,
+  // mais valident strictement le plan et ne résolvent jamais un chemin fourni par
+  // le client. Limitation de débit par IP.
+  if (path === '/api/v2/health' && method === 'GET') {
+    return json(res, 200, {
+      ok: true, engine: 'v2', sampleRate: SAMPLE_RATE,
+      limits: { maxNotes: MAX_NOTES, maxBars: MAX_BARS, truePeakDb: -1 },
+      renderer: 'server (mélangeur Float32 + ffmpeg pour le décodage et la vérification)',
+    })
+  }
+
+  if (path === '/api/v2/render' && method === 'POST') {
+    if (req.headers['x-so-admin'] !== '1') return json(res, 403, { error: 'en-tête anti-CSRF manquant' })
+    const ip = req.socket.remoteAddress ?? 'unknown'
+    const now = Date.now()
+    const hits = (renderHits.get(ip) ?? []).filter((t) => now - t < 60000)
+    if (hits.length >= 10) return json(res, 429, { error: 'trop de rendus demandés, réessayez dans une minute' })
+    hits.push(now)
+    renderHits.set(ip, hits)
+
+    const body = await readJson(req)
+    const plan = body?.plan
+    const started = Date.now()
+    try {
+      const meta = await renderPlan(plan)
+      audit(null, 'v2.render', 'plan', meta.id, {
+        profileId: plan?.profileId, seed: plan?.seed, bars: plan?.bars,
+        notes: plan?.notes?.length, totalMs: meta.timing.totalMs,
+      })
+      return json(res, 201, { ...meta, url: `/api/v2/render/${meta.id}` })
+    } catch (e) {
+      const status = e.status ?? 500
+      return json(res, status, {
+        error: e.message, detail: e.detail ?? null, elapsedMs: Date.now() - started,
+      })
+    }
+  }
+
+  const v2Match = path.match(/^\/api\/v2\/render\/([a-f0-9]{24})(\/meta)?$/)
+  if (v2Match && method === 'GET') {
+    const [, id, metaSuffix] = v2Match
+    if (metaSuffix) {
+      const p = renderMetaPath(id)
+      if (!p || !existsSync(p)) return notFound('rendu introuvable')
+      return json(res, 200, JSON.parse(readFileSync(p, 'utf8')))
+    }
+    const file = renderPath(id)
+    if (!file || !existsSync(file)) return notFound('rendu introuvable')
+    return streamFile(req, res, file)
   }
 
   if (path === '/api/auth/login' && method === 'POST') {
@@ -641,13 +696,14 @@ export async function handleApi(req, res, url) {
     const u = d.prepare('SELECT * FROM universes WHERE id=?').get(universeId ?? '')
     if (!u) notFound('univers introuvable')
     const ids = Array.isArray(soundIds) ? soundIds : []
-    const rows = ids.map((id) => d.prepare('SELECT id, name, sensitive, availability, status FROM sounds WHERE id=?').get(id))
+    const rows = ids.map((id) => d.prepare('SELECT id, name, sensitive, availability, status, file FROM sounds WHERE id=?').get(id))
     const rejected = []
     const accepted = []
     for (const [i, r] of rows.entries()) {
       if (!r) { rejected.push({ id: ids[i], reason: 'inconnu' }); continue }
-      if (r.sensitive) { rejected.push({ id: r.id, reason: 'sensible — interdit à la composition' }); continue }
-      if (r.availability === 'not_musical') { rejected.push({ id: r.id, reason: 'not_musical' }); continue }
+      // Politique musicale v2 : plus d'exclusion liée à la sensibilité historique.
+      // Seul motif restant : absence de fichier audio exploitable.
+      if (!r.file) { rejected.push({ id: r.id, reason: 'aucun fichier audio' }); continue }
       accepted.push(r.id)
     }
     return json(res, 200, { universe: { id: u.id, name: u.name, params: JSON.parse(u.params_json ?? '{}'),

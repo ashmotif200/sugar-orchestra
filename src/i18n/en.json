@@ -29,7 +29,7 @@
     "add": "Add to my music",
     "added": "In my music",
     "remove": "Remove",
-    "historyOnly": "Story only — not used in music",
+    "historyOnly": "Audio file unavailable — cannot be used in music",
     "tbc": "To be confirmed",
     "sensitive": "Contextual listening: this sound documents a painful history. It is never used in your music.",
     "noteLabel": "Recording note",
@@ -37,7 +37,8 @@
     "empty": "No sound in this step yet.",
     "next": "Next step",
     "back": "All steps",
-    "notYet": "Not listened yet"
+    "notYet": "Not listened yet",
+    "historyNote": "Historical note: this sensitive sound remains usable in music (project owner decision, 13 Nov 2026)."
   },
   "carnet": {
     "title": "My notebook",

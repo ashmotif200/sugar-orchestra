@@ -29,7 +29,7 @@
     "add": "Ajouter à ma musique",
     "added": "Dans ma musique",
     "remove": "Retirer",
-    "historyOnly": "Histoire seulement — non utilisé en musique",
+    "historyOnly": "Fichier audio indisponible — non utilisable en musique",
     "tbc": "À confirmer",
     "sensitive": "Écoute contextualisée : ce son documente une histoire douloureuse. Il n'est jamais utilisé dans votre musique.",
     "noteLabel": "Note d'enregistrement",
@@ -37,7 +37,8 @@
     "empty": "Aucun son dans cette étape pour le moment.",
     "next": "Étape suivante",
     "back": "Toutes les étapes",
-    "notYet": "Pas encore écouté"
+    "notYet": "Pas encore écouté",
+    "historyNote": "Information historique : ce son sensible reste utilisable en musique (décision du propriétaire, 13/11/2026)."
   },
   "carnet": {
     "title": "Mon carnet",

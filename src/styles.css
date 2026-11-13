@@ -215,6 +215,9 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .fiche-text { display: grid; gap: 4px; font-size: .9rem; color: var(--ink); }
 .credits { display: grid; gap: 2px; font-size: .7rem; color: var(--mut); line-height: 1.45; word-break: break-word; }
 .locked-note { font-size: .82rem; color: var(--mut); background: var(--paper-2); border-radius: var(--r-sm); padding: 10px 12px; }
+/* note informative (politique musicale v2) : une information, pas un cadenas */
+.note-history { font-size: .78rem; color: #6b5a3a; background: rgba(233, 162, 59, .12);
+  border-left: 3px solid var(--amber, #e9a23b); padding: 8px 10px; border-radius: 0 var(--r-sm) var(--r-sm) 0; margin: 6px 0 10px; }
 .step-nav { display: flex; justify-content: flex-end; }
 
 @media (max-width: 899px) {

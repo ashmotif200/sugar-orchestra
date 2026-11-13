@@ -1,0 +1,742 @@
+{
+  "source": "corpus-analysis.json + sound-selection-v2.csv (RETENU only)",
+  "generated_by": "scripts/phase-a/build-capability-matrix.py",
+  "selected_count": 17,
+  "sounds": [
+    {
+      "id": "01_01",
+      "name": "01_01_Volcan_eruption",
+      "pdf_title": "Volcan eruption",
+      "step_id": 1,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 1.0,
+        "percussive": 0.01,
+        "melodic": 0.0,
+        "harmonic": 0.0,
+        "low": 1.0,
+        "textural": 0.0,
+        "atmospheric": 0.0
+      },
+      "best_roles": [
+        "rhythmic",
+        "low"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "narrative_sound_event"
+      ],
+      "pitch_reliability": {
+        "periodicity": -0.05,
+        "voiced_ratio": 0.8,
+        "median_hz": 40.0,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "plausible",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients"
+        ]
+      }
+    },
+    {
+      "id": "01_02",
+      "name": "01_02_Foret_tropicale",
+      "pdf_title": "Foret tropicale",
+      "step_id": 1,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.22,
+        "percussive": 0.2,
+        "melodic": 0.17,
+        "harmonic": 0.24,
+        "low": 0.1,
+        "textural": 0.0,
+        "atmospheric": 1.0
+      },
+      "best_roles": [
+        "atmospheric"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "narrative_sound_event"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.48,
+        "voiced_ratio": 0.3,
+        "median_hz": 884.4,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "01_03",
+      "name": "01_03_Bateau_fendant_eau",
+      "pdf_title": "Bateau fendant l’eau",
+      "step_id": 1,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.86,
+        "percussive": 0.96,
+        "melodic": 0.08,
+        "harmonic": 0.11,
+        "low": 0.02,
+        "textural": 0.02,
+        "atmospheric": 0.94
+      },
+      "best_roles": [
+        "percussive",
+        "atmospheric",
+        "rhythmic"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "percussion"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.23,
+        "voiced_ratio": 0.17,
+        "median_hz": 859.2,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "02_01",
+      "name": "02_01_Cuillere_tasse_sucre",
+      "pdf_title": "Cuillere tasse sucre",
+      "step_id": 2,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.24,
+        "percussive": 0.34,
+        "melodic": 0.23,
+        "harmonic": 0.33,
+        "low": 0.01,
+        "textural": 0.02,
+        "atmospheric": 1.0
+      },
+      "best_roles": [
+        "atmospheric",
+        "percussive",
+        "harmonic"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "atmosphere"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.66,
+        "voiced_ratio": 0.23,
+        "median_hz": 485.0,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "02_04",
+      "name": "02_04_Commercants_etals",
+      "pdf_title": "Commercants etals",
+      "step_id": 2,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.77,
+        "percussive": 0.81,
+        "melodic": 0.29,
+        "harmonic": 0.82,
+        "low": 0.18,
+        "textural": 0.0,
+        "atmospheric": 0.46
+      },
+      "best_roles": [
+        "harmonic",
+        "percussive",
+        "rhythmic"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "rhythmic_texture"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.82,
+        "voiced_ratio": 0.03,
+        "median_hz": 374.0,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "03_04",
+      "name": "03_04_Charpentier",
+      "pdf_title": "Charpentier",
+      "step_id": 3,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.69,
+        "percussive": 0.94,
+        "melodic": 0.04,
+        "harmonic": 0.06,
+        "low": 0.08,
+        "textural": 0.01,
+        "atmospheric": 0.92
+      },
+      "best_roles": [
+        "percussive",
+        "atmospheric",
+        "rhythmic"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "percussion"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.12,
+        "voiced_ratio": 0.08,
+        "median_hz": 40.9,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "04_02",
+      "name": "04_02_Fers_chaines",
+      "pdf_title": "Fers chaines",
+      "step_id": 4,
+      "sensitive": true,
+      "potential": {
+        "rhythmic": 0.88,
+        "percussive": 1.0,
+        "melodic": 0.21,
+        "harmonic": 0.3,
+        "low": 0.02,
+        "textural": 0.04,
+        "atmospheric": 1.0
+      },
+      "best_roles": [],
+      "roles_withheld_reason": "restriction éditoriale : aucun rôle de composition attribué",
+      "role_hypotheses": [
+        "percussion",
+        "atmosphere"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.59,
+        "voiced_ratio": 0.53,
+        "median_hz": 937.0,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "04_03",
+      "name": "04_03_Coupe_coupe_champ",
+      "pdf_title": "Coupe coupe champ",
+      "step_id": 6,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.97,
+        "percussive": 1.0,
+        "melodic": 0.19,
+        "harmonic": 0.27,
+        "low": 0.06,
+        "textural": 0.03,
+        "atmospheric": 0.89
+      },
+      "best_roles": [
+        "percussive",
+        "rhythmic",
+        "atmospheric"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "percussion",
+        "atmosphere"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.54,
+        "voiced_ratio": 0.09,
+        "median_hz": 825.2,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "04_07",
+      "name": "04_07_Sucre_sibilance_SSS",
+      "pdf_title": "Sucre sibilance SSS",
+      "step_id": 6,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.0,
+        "percussive": 0.15,
+        "melodic": 0.01,
+        "harmonic": 0.02,
+        "low": 0.0,
+        "textural": 0.51,
+        "atmospheric": 1.0
+      },
+      "best_roles": [
+        "atmospheric",
+        "textural"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "narrative_sound_event"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.04,
+        "voiced_ratio": 0.11,
+        "median_hz": 41.2,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "safe",
+        "pitch_shift": "not applicable",
+        "granular": "good",
+        "low_derivation": "unlikely",
+        "notes": [
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "04_09",
+      "name": "04_09_Cuillere_sur_fer_blanc",
+      "pdf_title": "Cuillere sur fer blanc",
+      "step_id": 4,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.45,
+        "percussive": 0.19,
+        "melodic": 1.0,
+        "harmonic": 0.43,
+        "low": 0.04,
+        "textural": 0.0,
+        "atmospheric": 0.66
+      },
+      "best_roles": [
+        "melodic",
+        "atmospheric",
+        "rhythmic"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "percussion",
+        "melodic"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.86,
+        "voiced_ratio": 0.79,
+        "median_hz": 722.5,
+        "credible_pitch": true,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "safe",
+        "granular": "poor",
+        "low_derivation": "plausible",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "articulated material: grains duplicate transients"
+        ]
+      }
+    },
+    {
+      "id": "05_01",
+      "name": "05_01_Canne_pousse_accelere",
+      "pdf_title": "Canne pousse accelere",
+      "step_id": 5,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.11,
+        "percussive": 0.27,
+        "melodic": 0.27,
+        "harmonic": 0.39,
+        "low": 0.07,
+        "textural": 0.04,
+        "atmospheric": 1.0
+      },
+      "best_roles": [
+        "atmospheric",
+        "harmonic"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "atmosphere"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.77,
+        "voiced_ratio": 0.16,
+        "median_hz": 687.9,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "06_04",
+      "name": "06_04_Charrette_boeufs",
+      "pdf_title": "Charrette à bœufs",
+      "step_id": 6,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.95,
+        "percussive": 0.88,
+        "melodic": 0.11,
+        "harmonic": 0.16,
+        "low": 0.59,
+        "textural": 0.0,
+        "atmospheric": 0.42
+      },
+      "best_roles": [
+        "rhythmic",
+        "percussive",
+        "low"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "percussion"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.32,
+        "voiced_ratio": 0.44,
+        "median_hz": 111.8,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "06_06",
+      "name": "06_06_Engrenages",
+      "pdf_title": "Engrenages",
+      "step_id": 6,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.32,
+        "percussive": 0.82,
+        "melodic": 0.02,
+        "harmonic": 0.02,
+        "low": 0.2,
+        "textural": 0.01,
+        "atmospheric": 0.63
+      },
+      "best_roles": [
+        "percussive",
+        "atmospheric",
+        "rhythmic"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "transition"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.04,
+        "voiced_ratio": 0.04,
+        "median_hz": 42.3,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "07_01",
+      "name": "07_01_Bagasse_ecrasee",
+      "pdf_title": "Bagasse écrasée",
+      "step_id": 7,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.34,
+        "percussive": 0.84,
+        "melodic": 0.04,
+        "harmonic": 0.06,
+        "low": 0.18,
+        "textural": 0.01,
+        "atmospheric": 0.87
+      },
+      "best_roles": [
+        "atmospheric",
+        "percussive",
+        "rhythmic"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "transition"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.12,
+        "voiced_ratio": 0.14,
+        "median_hz": 43.6,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "07_02",
+      "name": "07_02_Electricite",
+      "pdf_title": "Électricité",
+      "step_id": 7,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 1.0,
+        "percussive": 0.02,
+        "melodic": 1.0,
+        "harmonic": 0.79,
+        "low": 0.29,
+        "textural": 0.0,
+        "atmospheric": 0.54
+      },
+      "best_roles": [
+        "rhythmic",
+        "melodic",
+        "harmonic"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "narrative_sound_event"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.79,
+        "voiced_ratio": 1.0,
+        "median_hz": 100.2,
+        "credible_pitch": true,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "safe",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "08_02",
+      "name": "08_02_Jus_de_canne",
+      "pdf_title": "Jus de canne",
+      "step_id": 6,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 1.0,
+        "percussive": 0.97,
+        "melodic": 0.2,
+        "harmonic": 0.29,
+        "low": 0.03,
+        "textural": 0.02,
+        "atmospheric": 1.0
+      },
+      "best_roles": [
+        "rhythmic",
+        "atmospheric",
+        "percussive"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "percussion",
+        "atmosphere"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.57,
+        "voiced_ratio": 0.21,
+        "median_hz": 403.2,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    },
+    {
+      "id": "08_03",
+      "name": "08_03_Chaudiere",
+      "pdf_title": "Chaudière",
+      "step_id": 6,
+      "sensitive": false,
+      "potential": {
+        "rhythmic": 0.17,
+        "percussive": 0.12,
+        "melodic": 0.01,
+        "harmonic": 0.01,
+        "low": 0.01,
+        "textural": 0.06,
+        "atmospheric": 1.0
+      },
+      "best_roles": [
+        "atmospheric"
+      ],
+      "roles_withheld_reason": null,
+      "role_hypotheses": [
+        "atmosphere"
+      ],
+      "pitch_reliability": {
+        "periodicity": 0.03,
+        "voiced_ratio": 0.02,
+        "median_hz": 40.0,
+        "credible_pitch": false,
+        "bass_capable": false
+      },
+      "transform_fitness": {
+        "time_stretch": "risky",
+        "pitch_shift": "not applicable",
+        "granular": "poor",
+        "low_derivation": "unlikely",
+        "notes": [
+          "dense transients: time-stretch smears attacks, prefer slicing",
+          "no credible pitch: pitch-shift colours the sound, it will not tune it",
+          "articulated material: grains duplicate transients",
+          "spectrum centred high: a derived bass would be a new sound, not the visitor’s"
+        ]
+      }
+    }
+  ]
+}
