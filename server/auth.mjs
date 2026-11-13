@@ -127,7 +127,10 @@ export function clearFailures(key) { attempts.delete(key) }
 export function createUser({ email, name, password, role }) {
   if (!ROLES.includes(role)) throw new Error(`rôle inconnu: ${role}`)
   if (!email || !/^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(email)) throw new Error('email invalide')
-  if (!password || password.length < 12) throw new Error('mot de passe trop court (min 12)')
+  // Décision propriétaire (V2.1.1) : minimum 8 caractères, pas d'exigence de
+  // majuscule/chiffre/spécial, espaces et phrases de passe acceptés.
+  if (!password || password.length < 8) throw new Error('mot de passe trop court (minimum 8 caractères)')
+  if (password.length > 256) throw new Error('mot de passe trop long (maximum 256 caractères)')
   const exists = db().prepare('SELECT 1 AS x FROM users WHERE email = ?').get(email)
   if (exists) throw new Error('un utilisateur avec cet email existe déjà')
   const { hash, salt } = hashPassword(password)

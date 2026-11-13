@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { audio, catalog, peaks, stepSounds, titleOf } from '../../audio/service'
 import { t } from '../../i18n'
 import { editorialNotes, isMusicallyUsable } from '../../engine/policy'
+import { editorialFor, loadEditorial } from '../../data/editorial'
 import { Badge, Button, EmptyState, ErrorBox, PlayIcon, Spinner, Waveform, fmtTime } from '../kit'
 import type { Session } from '../../session'
 import type { Sound } from '../../audio/types'
@@ -24,6 +25,13 @@ export default function Step({
   const step = (catalog.steps ?? []).find((s) => s.id === stepId)
   const sounds = useMemo(() => stepSounds(stepId), [stepId])
   const [openId, setOpenId] = useState<string | null>(sounds[0]?.id ?? null)
+  // le contenu éditorial arrive en asynchrone : ce compteur force un rendu une fois chargé
+  const [editorialTick, setEditorialTick] = useState(0)
+  useEffect(() => {
+    let alive = true
+    loadEditorial().then(() => { if (alive) setEditorialTick((n) => n + 1) })
+    return () => { alive = false }
+  }, [])
   const [playing, setPlaying] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
@@ -99,7 +107,7 @@ export default function Step({
               <li key={s.id} className={`row${open?.id === s.id ? ' is-open' : ''}`}>
                 <button className="row-main row-main-btn" onClick={() => select(s)}>
                   <p className="row-title">
-                    {titleOf(s)}
+                    {editorialFor(s.id)?.title ?? titleOf(s)}
                     {seen && <span className="tick" aria-label={t('step.discovered')}> ✓</span>}
                   </p>
                   <div className="row-meta">
@@ -126,7 +134,15 @@ export default function Step({
 
         {open && (
           <article className="fiche" aria-live="polite">
-            <h2 className="h2">{titleOf(open)}</h2>
+            <h2 className="h2">
+              {editorialFor(open.id)?.title ?? titleOf(open)}
+              {editorialFor(open.id)?.title && (
+                <span className="fiche-catalogue-name"> · {titleOf(open)}</span>
+              )}
+            </h2>
+            {editorialFor(open.id)?.shortDesc && (
+              <p className="fiche-short">{editorialFor(open.id)!.shortDesc}</p>
+            )}
             {audio.get(open.id) ? (
               <Waveform
                 peaks={peaks(audio.get(open.id)!, 96)}
@@ -159,11 +175,28 @@ export default function Step({
               <p className="discovered is-muted">◌ {t('step.notYet')}</p>
             )}
 
-            {open.history && (
+            {(editorialFor(open.id)?.story ?? open.history) && (
+              <details className="fiche-story" key={`story-${editorialTick}`}>
+                <summary>{t('step.discoverStory')}</summary>
+                <div className="fiche-text">
+                  {(editorialFor(open.id)?.story ?? open.history ?? '').split('\n').map((line, i) => (
+                    <p key={i}>{line}</p>
+                  ))}
+                </div>
+              </details>
+            )}
+
+            {editorialFor(open.id)?.pedagogy && (
               <div className="fiche-text">
-                <p className="label">{t('step.noteLabel')}</p>
-                <p>{open.history}</p>
+                <p className="label">{t('step.pedagogy')}</p>
+                <p>{editorialFor(open.id)!.pedagogy}</p>
               </div>
+            )}
+
+            {editorialFor(open.id)?.sources && (
+              <p className="credits">
+                <span className="label">{t('step.sources')}</span> {editorialFor(open.id)!.sources}
+              </p>
             )}
 
             <p className="credits">

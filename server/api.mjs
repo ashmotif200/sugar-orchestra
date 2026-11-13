@@ -113,6 +113,44 @@ export async function handleApi(req, res, url) {
     return json(res, 200, { ok: true, service: 'sugar-orchestra-admin', time: nowIso() })
   }
 
+  /* --------------------------------------- contenu éditorial (public) */
+  // Le parcours visiteur ne lisait aucun contenu éditorial : /api/content exige
+  // la permission content.read et n'était appelé que par l'admin. Cette route
+  // publique sert uniquement ce qui a été PUBLIÉ, jamais un brouillon.
+  if (path === '/api/v2/public/content' && method === 'GET') {
+    const locale = url.searchParams.get('locale') ?? 'fr'
+    const d = db()
+    const pub = d.prepare('SELECT id, dir, created_at FROM publications ORDER BY id DESC LIMIT 1').get()
+    if (!pub) {
+      return json(res, 200, {
+        applied: false, publicationId: null, locale, items: [],
+        note: 'aucune publication : le visiteur utilise les titres du catalogue',
+      })
+    }
+    // le catalogue publié est dans catalog.json du snapshot ; manifest.json ne
+    // contient que les compteurs
+    const manifestPath = join(pub.dir, 'catalog.json')
+    let items = []
+    try {
+      const manifest = JSON.parse(readFileSync(manifestPath, 'utf8'))
+      const applied = (d.prepare("SELECT value FROM settings WHERE key='applied_publication'").get()?.value ?? null)
+      items = (manifest.catalog?.sounds ?? [])
+        .filter((s) => s.title || s.shortDesc || s.history)
+        .map((s) => ({
+          soundId: s.id, title: s.title ?? null, shortDesc: s.shortDesc ?? null,
+          story: s.history ?? null, pedagogy: s.pedagogy ?? null, sources: s.sources ?? null,
+        }))
+      return json(res, 200, {
+        applied: String(applied) === String(pub.id),
+        publicationId: pub.id, publishedAt: pub.created_at, locale, items,
+        note: 'contenu issu de la dernière publication ; crédits et licences restent ceux du catalogue',
+      })
+    } catch (e) {
+      return json(res, 200, { applied: false, publicationId: pub.id, locale, items: [],
+        note: `publication illisible : ${e.message}` })
+    }
+  }
+
   /* ------------------------------------------------- moteur V2 (public) */
   // Ces routes servent le parcours visiteur : elles ne demandent pas de session,
   // mais valident strictement le plan et ne résolvent jamais un chemin fourni par
@@ -717,7 +755,7 @@ function buildPublicationManifest(user) {
   const d = db()
   const steps = d.prepare('SELECT * FROM steps ORDER BY display_no').all()
   const links = d.prepare('SELECT * FROM step_sounds ORDER BY step_id, position').all()
-  const sounds = d.prepare(`SELECT s.*, c.title, c.short_desc, c.story,
+  const sounds = d.prepare(`SELECT s.*, c.title, c.short_desc, c.story, c.pedagogy, c.sources,
                                    r.sensitive AS r_sensitive, r.availability AS r_availability
                             FROM sounds s
                             LEFT JOIN content c ON c.sound_id=s.id AND c.locale='fr' AND c.status='published'
@@ -731,7 +769,8 @@ function buildPublicationManifest(user) {
     steps: steps.map((s) => ({ id: s.id, title: s.name_fr, short: s.code, summary: s.description })),
     sounds: sounds.map((s) => ({
       id: s.id, code: s.code, name: s.name, stepId: s.step_id,
-      title: s.title ?? undefined, history: s.story ?? null,
+      title: s.title ?? undefined, shortDesc: s.short_desc ?? null, history: s.story ?? null,
+      pedagogy: s.pedagogy ?? null, sources: s.sources ?? null,
       sensitive: !!s.r_sensitive, availability: s.r_availability ?? s.availability,
       license: s.license, credits: s.credits, file: s.file, version: s.version,
     })),

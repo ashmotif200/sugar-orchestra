@@ -38,7 +38,10 @@
     "next": "Next step",
     "back": "All steps",
     "notYet": "Not listened yet",
-    "historyNote": "Historical note: this sensitive sound remains usable in music (project owner decision, 13 Nov 2026)."
+    "historyNote": "Historical note: this sensitive sound remains usable in music (project owner decision, 13 Nov 2026).",
+    "discoverStory": "Discover its story",
+    "pedagogy": "What it teaches",
+    "sources": "Sources"
   },
   "carnet": {
     "title": "My notebook",

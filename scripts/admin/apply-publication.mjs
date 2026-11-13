@@ -63,6 +63,11 @@ writeFileSync(join(backupDir, 'APPLIED.json'), JSON.stringify({
   catalogVersion: catalog.version, sounds: catalog.sounds?.length,
 }, null, 2))
 
+// trace de la publication appliquée : c'est ce que lit /api/public/content pour
+// distinguer « publiée » de « appliquée au bundle visiteur »
+d.prepare("DELETE FROM settings WHERE key='applied_publication'").run()
+d.prepare("INSERT INTO settings (key, value) VALUES ('applied_publication', ?)").run(String(pub.id))
+
 d.prepare(`INSERT INTO audit_log (at, actor_id, actor_email, action, entity, entity_id, detail)
            VALUES (?,?,?,?,?,?,?)`)
   .run(new Date().toISOString(), null, 'cli', 'publication.apply', 'publication', String(pub.id),

@@ -38,7 +38,10 @@
     "next": "Étape suivante",
     "back": "Toutes les étapes",
     "notYet": "Pas encore écouté",
-    "historyNote": "Information historique : ce son sensible reste utilisable en musique (décision du propriétaire, 13/11/2026)."
+    "historyNote": "Information historique : ce son sensible reste utilisable en musique (décision du propriétaire, 13/11/2026).",
+    "discoverStory": "Découvrir son histoire",
+    "pedagogy": "À apprendre",
+    "sources": "Sources"
   },
   "carnet": {
     "title": "Mon carnet",

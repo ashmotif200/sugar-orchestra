@@ -885,7 +885,7 @@ export function Users({ me }: { me: Me | null }) {
             <input type="password" value={form.password} onChange={(e) => setForm({ ...form, password: e.target.value })} />
           </label>
         </div>
-        <button className="adm-primary" disabled={!form.email || form.password.length < 16} onClick={() => void create()}>
+        <button className="adm-primary" disabled={!form.email || form.password.length < 8} onClick={() => void create()}>
           Créer le compte
         </button>
         <p className="adm-muted adm-small">Le mot de passe n’est jamais renvoyé par l’API ni journalisé.</p>
