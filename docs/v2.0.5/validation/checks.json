@@ -1,0 +1,142 @@
+{
+  "generatedAt": "2026-11-13T12:52:07.211603Z",
+  "passed": 27,
+  "total": 27,
+  "results": [
+    {
+      "check": "energetique:events_within_bounds",
+      "ok": true,
+      "detail": "0 hors bornes"
+    },
+    {
+      "check": "energetique:durations_positive",
+      "ok": true,
+      "detail": "0 dur\u00e9es invalides"
+    },
+    {
+      "check": "energetique:chronology_monotonic",
+      "ok": true,
+      "detail": "0 inversions"
+    },
+    {
+      "check": "energetique:stems_aligned",
+      "ok": true,
+      "detail": "\u00e9cart 0.0000 s"
+    },
+    {
+      "check": "energetique:sections_contiguous",
+      "ok": true,
+      "detail": "7 sections"
+    },
+    {
+      "check": "energetique:sections_cover_reference",
+      "ok": true,
+      "detail": "jusqu\u2019\u00e0 28/28"
+    },
+    {
+      "check": "energetique:has_provenance",
+      "ok": true,
+      "detail": "4 empreintes"
+    },
+    {
+      "check": "energetique:pitches_in_range",
+      "ok": true,
+      "detail": "0 hors 25\u20132000 Hz"
+    },
+    {
+      "check": "dansant:events_within_bounds",
+      "ok": true,
+      "detail": "0 hors bornes"
+    },
+    {
+      "check": "dansant:durations_positive",
+      "ok": true,
+      "detail": "0 dur\u00e9es invalides"
+    },
+    {
+      "check": "dansant:chronology_monotonic",
+      "ok": true,
+      "detail": "0 inversions"
+    },
+    {
+      "check": "dansant:stems_aligned",
+      "ok": true,
+      "detail": "\u00e9cart 0.0000 s"
+    },
+    {
+      "check": "dansant:sections_contiguous",
+      "ok": true,
+      "detail": "22 sections"
+    },
+    {
+      "check": "dansant:sections_cover_reference",
+      "ok": true,
+      "detail": "jusqu\u2019\u00e0 128/128"
+    },
+    {
+      "check": "dansant:has_provenance",
+      "ok": true,
+      "detail": "3 empreintes"
+    },
+    {
+      "check": "dansant:pitches_in_range",
+      "ok": true,
+      "detail": "0 hors 25\u20132000 Hz"
+    },
+    {
+      "check": "detendu:events_within_bounds",
+      "ok": true,
+      "detail": "0 hors bornes"
+    },
+    {
+      "check": "detendu:durations_positive",
+      "ok": true,
+      "detail": "0 dur\u00e9es invalides"
+    },
+    {
+      "check": "detendu:chronology_monotonic",
+      "ok": true,
+      "detail": "0 inversions"
+    },
+    {
+      "check": "detendu:stems_aligned",
+      "ok": true,
+      "detail": "\u00e9cart 0.0000 s"
+    },
+    {
+      "check": "detendu:sections_contiguous",
+      "ok": true,
+      "detail": "7 sections"
+    },
+    {
+      "check": "detendu:sections_cover_reference",
+      "ok": true,
+      "detail": "jusqu\u2019\u00e0 30/30"
+    },
+    {
+      "check": "detendu:has_provenance",
+      "ok": true,
+      "detail": "3 empreintes"
+    },
+    {
+      "check": "detendu:pitches_in_range",
+      "ok": true,
+      "detail": "0 hors 25\u20132000 Hz"
+    },
+    {
+      "check": "energetique:verification_audio",
+      "ok": true,
+      "detail": "energetique-drums-with-click.wav \u00b7 8796 Ko"
+    },
+    {
+      "check": "dansant:verification_audio",
+      "ok": true,
+      "detail": "dansant-drums-with-click.wav \u00b7 35416 Ko"
+    },
+    {
+      "check": "detendu:verification_audio",
+      "ok": true,
+      "detail": "detendu-drums-with-click.wav \u00b7 9383 Ko"
+    }
+  ]
+}

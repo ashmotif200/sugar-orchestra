@@ -1,0 +1,803 @@
+{
+  "schema": "v2.0.5/reference-style",
+  "referenceId": "detendu",
+  "universeId": "segazz",
+  "label": "Détendu / Segazz",
+  "referenceTitle": "Zistoire",
+  "sources": {
+    "events": "events-detendu.json",
+    "arrangement": "../phase-a/data/arrangement-detendu.json",
+    "groove": "../phase-a/data/groove-detendu.json",
+    "measures": "../phase-a/data/reference-detendu.json",
+    "stem_hashes": {
+      "drums": "108b76796d62731bc9e7dd63396c99593ce427c9dae11e41a656cf22ddcc2aba",
+      "bass": "9048caad8b41309f14a02755c59873e29994f3f140fee5fce2901dc92c3aa418",
+      "other": "b3988bdff69836e39b179b02dd677ee8c414512a2618c0c3c1694b45a0f5635a"
+    }
+  },
+  "time": {
+    "barSeconds": 1.752,
+    "beatsPerBar": 4,
+    "subdivision": 2,
+    "swing": 0.463,
+    "swing_reading": "straight",
+    "microtiming_ms": 28.3,
+    "grid_is_hypothesis": true
+  },
+  "stems": {
+    "drums": {
+      "role_hypothesis": "percussion",
+      "file": "zistoire_Detendue_Stems 7-Zistwar-drums.wav",
+      "sha256": "108b76796d62731bc9e7dd63396c99593ce427c9dae11e41a656cf22ddcc2aba",
+      "duration_s": 54.468,
+      "onset_count": 195,
+      "silence_count": 13,
+      "steps_per_bar": 8
+    },
+    "bass": {
+      "role_hypothesis": "bass",
+      "file": "zistoire_Detendue_Stems 8-Zistwar-bass.wav",
+      "sha256": "9048caad8b41309f14a02755c59873e29994f3f140fee5fce2901dc92c3aa418",
+      "duration_s": 54.468,
+      "onset_count": 196,
+      "silence_count": 11,
+      "steps_per_bar": 8
+    },
+    "other": {
+      "role_hypothesis": "tonal_layer",
+      "file": "zistoire_Detendue_Stems 6- Zistwar-other.wav",
+      "sha256": "b3988bdff69836e39b179b02dd677ee8c414512a2618c0c3c1694b45a0f5635a",
+      "duration_s": 54.468,
+      "onset_count": 135,
+      "silence_count": 0,
+      "steps_per_bar": 8
+    }
+  },
+  "arrangement": {
+    "barSeconds": 1.792,
+    "bars": 30,
+    "sections": [
+      {
+        "kind": "section",
+        "startBar": 1,
+        "endBar": 8,
+        "startS": 0.0,
+        "durationS": 14.34,
+        "activeStems": [
+          "drums",
+          "bass",
+          "other"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 9,
+        "endBar": 10,
+        "startS": 14.34,
+        "durationS": 3.58,
+        "activeStems": [
+          "drums",
+          "bass"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 11,
+        "endBar": 13,
+        "startS": 17.92,
+        "durationS": 5.38,
+        "activeStems": [
+          "drums",
+          "bass",
+          "other"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 14,
+        "endBar": 14,
+        "startS": 23.3,
+        "durationS": 1.79,
+        "activeStems": [
+          "drums",
+          "bass"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 15,
+        "endBar": 20,
+        "startS": 25.09,
+        "durationS": 10.75,
+        "activeStems": [
+          "drums",
+          "bass",
+          "other"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 21,
+        "endBar": 21,
+        "startS": 35.84,
+        "durationS": 1.79,
+        "activeStems": [
+          "drums",
+          "bass"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 22,
+        "endBar": 30,
+        "startS": 37.63,
+        "durationS": 16.13,
+        "activeStems": [
+          "drums",
+          "bass",
+          "other"
+        ]
+      }
+    ],
+    "section_count": 7
+  },
+  "rhythm": {
+    "patterns": [
+      {
+        "patternId": "detendu:drums:xxxx.xxx",
+        "referenceId": "detendu",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": "xxxx.xxx",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ],
+        "density": 0.875,
+        "occurrences": 7,
+        "bars": [
+          1,
+          8,
+          14,
+          15,
+          17,
+          20,
+          23
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "detendu:bass:xx.xx.xx",
+        "referenceId": "detendu",
+        "stemId": "bass",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": "xx.xx.xx",
+        "hits": [
+          0,
+          1,
+          3,
+          4,
+          6,
+          7
+        ],
+        "density": 0.75,
+        "occurrences": 4,
+        "bars": [
+          0,
+          8,
+          23,
+          30
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "detendu:drums:.xxxxxxx",
+        "referenceId": "detendu",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": ".xxxxxxx",
+        "hits": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "density": 0.875,
+        "occurrences": 3,
+        "bars": [
+          7,
+          12,
+          19
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "detendu:drums:x.xxxxxx",
+        "referenceId": "detendu",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": "x.xxxxxx",
+        "hits": [
+          0,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "density": 0.875,
+        "occurrences": 3,
+        "bars": [
+          9,
+          18,
+          21
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "detendu:drums:.xxxx.xx",
+        "referenceId": "detendu",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": ".xxxx.xx",
+        "hits": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          7
+        ],
+        "density": 0.75,
+        "occurrences": 3,
+        "bars": [
+          13,
+          16,
+          22
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "detendu:bass:xxx.xx.x",
+        "referenceId": "detendu",
+        "stemId": "bass",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": "xxx.xx.x",
+        "hits": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7
+        ],
+        "density": 0.75,
+        "occurrences": 3,
+        "bars": [
+          9,
+          12,
+          21
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "detendu:drums:.xxxxxx.",
+        "referenceId": "detendu",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": ".xxxxxx.",
+        "hits": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "density": 0.75,
+        "occurrences": 2,
+        "bars": [
+          0,
+          30
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "detendu:bass:xxxxxxx.",
+        "referenceId": "detendu",
+        "stemId": "bass",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": "xxxxxxx.",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "density": 0.875,
+        "occurrences": 2,
+        "bars": [
+          7,
+          13
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "detendu:bass:xx..x.xx",
+        "referenceId": "detendu",
+        "stemId": "bass",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": "xx..x.xx",
+        "hits": [
+          0,
+          1,
+          4,
+          6,
+          7
+        ],
+        "density": 0.625,
+        "occurrences": 2,
+        "bars": [
+          14,
+          17
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "detendu:bass:x.xxx.x.",
+        "referenceId": "detendu",
+        "stemId": "bass",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": "x.xxx.x.",
+        "hits": [
+          0,
+          2,
+          3,
+          4,
+          6
+        ],
+        "density": 0.625,
+        "occurrences": 2,
+        "bars": [
+          16,
+          22
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "detendu:bass:x.x.xx.x",
+        "referenceId": "detendu",
+        "stemId": "bass",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": "x.x.xx.x",
+        "hits": [
+          0,
+          2,
+          4,
+          5,
+          7
+        ],
+        "density": 0.625,
+        "occurrences": 2,
+        "bars": [
+          18,
+          27
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "detendu:drums:xxx.xx..",
+        "referenceId": "detendu",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 8,
+        "cell": "xxx.xx..",
+        "hits": [
+          0,
+          1,
+          2,
+          4,
+          5
+        ],
+        "density": 0.625,
+        "occurrences": 1,
+        "bars": [
+          2
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      }
+    ],
+    "variations": [
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:drums:.xxxxxxx",
+        "addedHits": [
+          4
+        ],
+        "removedHits": [
+          0
+        ],
+        "editDistance": 2,
+        "observedBars": 3,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:drums:x.xxxxxx",
+        "addedHits": [
+          4
+        ],
+        "removedHits": [
+          1
+        ],
+        "editDistance": 2,
+        "observedBars": 3,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:drums:xxxxxxxx",
+        "addedHits": [
+          4
+        ],
+        "removedHits": [],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:drums:xxx.xxxx",
+        "addedHits": [
+          4
+        ],
+        "removedHits": [
+          3
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:drums:.xxx.xxx",
+        "addedHits": [],
+        "removedHits": [
+          0
+        ],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:drums:xxxx.xx.",
+        "addedHits": [],
+        "removedHits": [
+          7
+        ],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:drums:x.xx..xx",
+        "addedHits": [],
+        "removedHits": [
+          1,
+          5
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:drums:x.xx.xxx",
+        "addedHits": [],
+        "removedHits": [
+          1
+        ],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:bass:xxxxxxx.",
+        "addedHits": [
+          4
+        ],
+        "removedHits": [
+          7
+        ],
+        "editDistance": 2,
+        "observedBars": 2,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:bass:xxxxxx.x",
+        "addedHits": [
+          4
+        ],
+        "removedHits": [
+          6
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:bass:xxxx.x.x",
+        "addedHits": [],
+        "removedHits": [
+          6
+        ],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "detendu:drums:xxxx.xxx",
+        "variantPattern": "detendu:bass:x.xx.xxx",
+        "addedHits": [],
+        "removedHits": [
+          1
+        ],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      }
+    ],
+    "cells_distinct_by_stem": {
+      "drums": 18,
+      "bass": 23,
+      "other": 32
+    },
+    "density_by_stem": {
+      "drums": 6.29,
+      "bass": 6.12,
+      "other": 4.22
+    }
+  },
+  "bass": {
+    "onsets": 196,
+    "notes_per_minute": 215.9,
+    "ioi_median_s": 0.232,
+    "ioi_p10_s": 0.174,
+    "ioi_p90_s": 0.453,
+    "duration_median_s": 0.232,
+    "staccato_ratio": 0.07,
+    "step_histogram": {
+      "0": 30,
+      "1": 25,
+      "2": 20,
+      "3": 21,
+      "4": 29,
+      "5": 22,
+      "6": 25,
+      "7": 24
+    },
+    "step_histogram_note": "positions sur 8 pas par mesure ; le pas 0 est le temps fort",
+    "with_drums_within_40ms_pct": 67.9,
+    "silence_s_after_last_note": null,
+    "reliable": [
+      "onsets",
+      "intervals",
+      "articulation",
+      "position_in_bar",
+      "drum coincidence"
+    ],
+    "unreliable": [
+      "absolute pitch (voir tiers de transcription)"
+    ]
+  },
+  "tonal": {
+    "bass": {
+      "confirmed": 4,
+      "musically_plausible": 21,
+      "ambiguous": 122
+    },
+    "other": {
+      "confirmed": 4,
+      "musically_plausible": 9,
+      "ambiguous": 82
+    }
+  },
+  "tonal_examples": {
+    "bass": [
+      {
+        "start_s": 11.471,
+        "end_s": 11.97,
+        "duration_s": 0.511,
+        "pitch_hz": 74.2,
+        "midi_rounded": 38,
+        "cents_stability": 11.6,
+        "voiced_probability": 0.706,
+        "confidence": "confirmed",
+        "method": "pyin fmin=35.0 fmax=320.0 sr=22050 hop=256 frame=4096"
+      },
+      {
+        "start_s": 16.637,
+        "end_s": 17.496,
+        "duration_s": 0.871,
+        "pitch_hz": 73.7,
+        "midi_rounded": 38,
+        "cents_stability": 4.2,
+        "voiced_probability": 0.7,
+        "confidence": "confirmed",
+        "method": "pyin fmin=35.0 fmax=320.0 sr=22050 hop=256 frame=4096"
+      },
+      {
+        "start_s": 17.728,
+        "end_s": 18.158,
+        "duration_s": 0.441,
+        "pitch_hz": 58.9,
+        "midi_rounded": 34,
+        "cents_stability": 11.4,
+        "voiced_probability": 0.822,
+        "confidence": "confirmed",
+        "method": "pyin fmin=35.0 fmax=320.0 sr=22050 hop=256 frame=4096"
+      },
+      {
+        "start_s": 39.648,
+        "end_s": 39.892,
+        "duration_s": 0.255,
+        "pitch_hz": 73.3,
+        "midi_rounded": 38,
+        "cents_stability": 20.4,
+        "voiced_probability": 0.838,
+        "confidence": "confirmed",
+        "method": "pyin fmin=35.0 fmax=320.0 sr=22050 hop=256 frame=4096"
+      }
+    ],
+    "other": [
+      {
+        "start_s": 4.934,
+        "end_s": 5.155,
+        "duration_s": 0.232,
+        "pitch_hz": 412.3,
+        "midi_rounded": 68,
+        "cents_stability": 12.2,
+        "voiced_probability": 0.712,
+        "confidence": "confirmed",
+        "method": "pyin fmin=70.0 fmax=1600.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 5.561,
+        "end_s": 7.558,
+        "duration_s": 2.009,
+        "pitch_hz": 658.3,
+        "midi_rounded": 76,
+        "cents_stability": 3.9,
+        "voiced_probability": 0.707,
+        "confidence": "confirmed",
+        "method": "pyin fmin=70.0 fmax=1600.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 7.593,
+        "end_s": 8.127,
+        "duration_s": 0.546,
+        "pitch_hz": 586.5,
+        "midi_rounded": 74,
+        "cents_stability": 10.3,
+        "voiced_probability": 0.843,
+        "confidence": "confirmed",
+        "method": "pyin fmin=70.0 fmax=1600.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 20.236,
+        "end_s": 21.119,
+        "duration_s": 0.894,
+        "pitch_hz": 550.4,
+        "midi_rounded": 73,
+        "cents_stability": 12.4,
+        "voiced_probability": 0.846,
+        "confidence": "confirmed",
+        "method": "pyin fmin=70.0 fmax=1600.0 sr=22050 hop=256 frame=2048"
+      }
+    ]
+  },
+  "interactions": [
+    {
+      "stemA": "bass",
+      "stemB": "drums",
+      "coincidence_within_ms": 40,
+      "onsets_A": 196,
+      "onsets_B": 195,
+      "coincident_onsets": 133,
+      "coincidence_pct_of_A": 67.9,
+      "lift_vs_chance": 2.37,
+      "A_followed_by_B_pct": 76.0,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    },
+    {
+      "stemA": "bass",
+      "stemB": "other",
+      "coincidence_within_ms": 40,
+      "onsets_A": 196,
+      "onsets_B": 135,
+      "coincident_onsets": 99,
+      "coincidence_pct_of_A": 50.5,
+      "lift_vs_chance": 2.55,
+      "A_followed_by_B_pct": 46.9,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    },
+    {
+      "stemA": "drums",
+      "stemB": "other",
+      "coincidence_within_ms": 40,
+      "onsets_A": 195,
+      "onsets_B": 135,
+      "coincident_onsets": 93,
+      "coincidence_pct_of_A": 47.7,
+      "lift_vs_chance": 2.39,
+      "A_followed_by_B_pct": 47.2,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    }
+  ],
+  "harmony": {
+    "key_candidates": [
+      {
+        "key": "B minor",
+        "correlation": 0.762
+      },
+      {
+        "key": "B major",
+        "correlation": 0.564
+      },
+      {
+        "key": "E minor",
+        "correlation": 0.562
+      }
+    ]
+  },
+  "uncertainties": [
+    "les noms de stems sont des hypothèses de rôle ; aucun instrument n’est confirmé",
+    "les événements sont des attaques détectées, pas des notes jouées",
+    "les interactions sont des corrélations mesurées, pas des intentions",
+    "la grille temporelle est une hypothèse de profil, pas une sortie de tracker"
+  ],
+  "needs_human_validation": [
+    "204 segments tonals ambigus — transcription à confirmer à l’écoute",
+    "hauteur de basse majoritairement ambiguë : utiliser le profil rythmique, pas les notes"
+  ]
+}

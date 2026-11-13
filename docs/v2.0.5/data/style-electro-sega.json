@@ -1,0 +1,849 @@
+{
+  "schema": "v2.0.5/reference-style",
+  "referenceId": "energetique",
+  "universeId": "electro-sega",
+  "label": "Énergétique / Electro Sega",
+  "referenceTitle": "Ohwalawa",
+  "sources": {
+    "events": "events-energetique.json",
+    "arrangement": "../phase-a/data/arrangement-energetique.json",
+    "groove": "../phase-a/data/groove-energetique.json",
+    "measures": "../phase-a/data/reference-energetique.json",
+    "stem_hashes": {
+      "drums": "9046ef0577788ea1531d74e5756cc02cbbbb165001f36a02770b708094d752a2",
+      "bass": "6578be1293b409e434f9a4bca1a0c8fb392cecb686f87ebb252cbc864cbad4dc",
+      "vocals": "1b2a9aeca74bc823353b0b2439c9e88c360165a6ae33c9d97c0c77f6e53a44c8",
+      "percs_and_synths": "8ac8215049ef95ce9d48e212ab7b9423fc54edf642fc63c494575f1ce031ed9e"
+    }
+  },
+  "time": {
+    "barSeconds": 1.778,
+    "beatsPerBar": 4,
+    "subdivision": 3,
+    "swing": 0.688,
+    "swing_reading": "triplet swing",
+    "microtiming_ms": 17.8,
+    "grid_is_hypothesis": true
+  },
+  "stems": {
+    "drums": {
+      "role_hypothesis": "percussion",
+      "file": "ohwalawa_Energetique_drums.mp3",
+      "sha256": "9046ef0577788ea1531d74e5756cc02cbbbb165001f36a02770b708094d752a2",
+      "duration_s": 51.064,
+      "onset_count": 226,
+      "silence_count": 9,
+      "steps_per_bar": 12
+    },
+    "bass": {
+      "role_hypothesis": "bass",
+      "file": "ohwalawa_Energetique_bass.mp3",
+      "sha256": "6578be1293b409e434f9a4bca1a0c8fb392cecb686f87ebb252cbc864cbad4dc",
+      "duration_s": 51.064,
+      "onset_count": 112,
+      "silence_count": 57,
+      "steps_per_bar": 12
+    },
+    "vocals": {
+      "role_hypothesis": "voice",
+      "file": "ohwalawa_Energetique_vocals.mp3",
+      "sha256": "1b2a9aeca74bc823353b0b2439c9e88c360165a6ae33c9d97c0c77f6e53a44c8",
+      "duration_s": 51.064,
+      "onset_count": 136,
+      "silence_count": 71,
+      "steps_per_bar": 12
+    },
+    "percs_and_synths": {
+      "role_hypothesis": "percussion_or_synth",
+      "file": "ohwalawa_Energetique_percs_and_synths.mp3",
+      "sha256": "8ac8215049ef95ce9d48e212ab7b9423fc54edf642fc63c494575f1ce031ed9e",
+      "duration_s": 51.064,
+      "onset_count": 170,
+      "silence_count": 0,
+      "steps_per_bar": 12
+    }
+  },
+  "arrangement": {
+    "barSeconds": 1.771,
+    "bars": 28,
+    "sections": [
+      {
+        "kind": "section",
+        "startBar": 1,
+        "endBar": 1,
+        "startS": 0.0,
+        "durationS": 1.77,
+        "activeStems": [
+          "percs_and_synths",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 2,
+        "endBar": 2,
+        "startS": 1.77,
+        "durationS": 1.77,
+        "activeStems": [
+          "drums",
+          "percs_and_synths",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 3,
+        "endBar": 3,
+        "startS": 3.54,
+        "durationS": 1.77,
+        "activeStems": [
+          "drums",
+          "bass",
+          "percs_and_synths",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 4,
+        "endBar": 5,
+        "startS": 5.31,
+        "durationS": 3.54,
+        "activeStems": [
+          "drums",
+          "percs_and_synths",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 6,
+        "endBar": 6,
+        "startS": 8.86,
+        "durationS": 1.77,
+        "activeStems": [
+          "drums",
+          "percs_and_synths"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 7,
+        "endBar": 13,
+        "startS": 10.63,
+        "durationS": 12.4,
+        "activeStems": [
+          "drums",
+          "percs_and_synths",
+          "vocals"
+        ]
+      },
+      {
+        "kind": "section",
+        "startBar": 14,
+        "endBar": 28,
+        "startS": 23.02,
+        "durationS": 26.56,
+        "activeStems": [
+          "drums",
+          "bass",
+          "percs_and_synths",
+          "vocals"
+        ]
+      }
+    ],
+    "section_count": 7
+  },
+  "rhythm": {
+    "patterns": [
+      {
+        "patternId": "energetique:vocals:x.....x....x",
+        "referenceId": "energetique",
+        "stemId": "vocals",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": "x.....x....x",
+        "hits": [
+          0,
+          6,
+          11
+        ],
+        "density": 0.25,
+        "occurrences": 6,
+        "bars": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "energetique:drums:xxx.xx.xx.x.",
+        "referenceId": "energetique",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": "xxx.xx.xx.x.",
+        "hits": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          10
+        ],
+        "density": 0.667,
+        "occurrences": 4,
+        "bars": [
+          15,
+          16,
+          17,
+          25
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "energetique:vocals:.x.x..xx.x..",
+        "referenceId": "energetique",
+        "stemId": "vocals",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": ".x.x..xx.x..",
+        "hits": [
+          1,
+          3,
+          6,
+          7,
+          9
+        ],
+        "density": 0.417,
+        "occurrences": 4,
+        "bars": [
+          15,
+          17,
+          20,
+          22
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "energetique:vocals:xx.x..xx.x..",
+        "referenceId": "energetique",
+        "stemId": "vocals",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": "xx.x..xx.x..",
+        "hits": [
+          0,
+          1,
+          3,
+          6,
+          7,
+          9
+        ],
+        "density": 0.5,
+        "occurrences": 4,
+        "bars": [
+          16,
+          18,
+          23,
+          24
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "energetique:drums:xxx.xx.x.xx.",
+        "referenceId": "energetique",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": "xxx.xx.x.xx.",
+        "hits": [
+          0,
+          1,
+          2,
+          4,
+          5,
+          7,
+          9,
+          10
+        ],
+        "density": 0.667,
+        "occurrences": 3,
+        "bars": [
+          19,
+          20,
+          27
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "energetique:vocals:x....xx....x",
+        "referenceId": "energetique",
+        "stemId": "vocals",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": "x....xx....x",
+        "hits": [
+          0,
+          5,
+          6,
+          11
+        ],
+        "density": 0.333,
+        "occurrences": 3,
+        "bars": [
+          1,
+          3,
+          4
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "confirmed"
+      },
+      {
+        "patternId": "energetique:drums:.x..x..x..x.",
+        "referenceId": "energetique",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": ".x..x..x..x.",
+        "hits": [
+          1,
+          4,
+          7,
+          10
+        ],
+        "density": 0.333,
+        "occurrences": 2,
+        "bars": [
+          2,
+          11
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "energetique:drums:xxxxxx.xx.x.",
+        "referenceId": "energetique",
+        "stemId": "drums",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": "xxxxxx.xx.x.",
+        "hits": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          10
+        ],
+        "density": 0.75,
+        "occurrences": 2,
+        "bars": [
+          22,
+          23
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "energetique:bass:....x...x...",
+        "referenceId": "energetique",
+        "stemId": "bass",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": "....x...x...",
+        "hits": [
+          4,
+          8
+        ],
+        "density": 0.167,
+        "occurrences": 2,
+        "bars": [
+          8,
+          10
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "energetique:bass:.xx.xx.xx.xx",
+        "referenceId": "energetique",
+        "stemId": "bass",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": ".xx.xx.xx.xx",
+        "hits": [
+          1,
+          2,
+          4,
+          5,
+          7,
+          8,
+          10,
+          11
+        ],
+        "density": 0.667,
+        "occurrences": 2,
+        "bars": [
+          19,
+          24
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "energetique:bass:.xx.xx.xx...",
+        "referenceId": "energetique",
+        "stemId": "bass",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": ".xx.xx.xx...",
+        "hits": [
+          1,
+          2,
+          4,
+          5,
+          7,
+          8
+        ],
+        "density": 0.5,
+        "occurrences": 2,
+        "bars": [
+          22,
+          28
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      },
+      {
+        "patternId": "energetique:vocals:x....xx...x.",
+        "referenceId": "energetique",
+        "stemId": "vocals",
+        "type": "rhythmic_cell",
+        "stepsPerBar": 12,
+        "cell": "x....xx...x.",
+        "hits": [
+          0,
+          5,
+          6,
+          10
+        ],
+        "density": 0.333,
+        "occurrences": 2,
+        "bars": [
+          0,
+          2
+        ],
+        "method": "onsets quantised to the profile grid",
+        "confidence": "observed"
+      }
+    ],
+    "variations": [
+      {
+        "basePattern": "energetique:drums:xxx.xx.xx.x.",
+        "variantPattern": "energetique:drums:xxx.xx.x.xx.",
+        "addedHits": [
+          9
+        ],
+        "removedHits": [
+          8
+        ],
+        "editDistance": 2,
+        "observedBars": 3,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:xxx.xx.xx.x.",
+        "variantPattern": "energetique:drums:xxxxxx.xx.x.",
+        "addedHits": [
+          3
+        ],
+        "removedHits": [],
+        "editDistance": 1,
+        "observedBars": 2,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:xxx.xx.xx.x.",
+        "variantPattern": "energetique:drums:xxx.xx.xxx..",
+        "addedHits": [
+          9
+        ],
+        "removedHits": [
+          10
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:xxx.xx.xx.x.",
+        "variantPattern": "energetique:bass:.xx.xx.xx.xx",
+        "addedHits": [
+          11
+        ],
+        "removedHits": [
+          0
+        ],
+        "editDistance": 2,
+        "observedBars": 2,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:xxx.xx.xx.x.",
+        "variantPattern": "energetique:bass:.xx.xx.xx...",
+        "addedHits": [],
+        "removedHits": [
+          0,
+          10
+        ],
+        "editDistance": 2,
+        "observedBars": 2,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:xxx.xx.xx.x.",
+        "variantPattern": "energetique:bass:.xx.x..xx.x.",
+        "addedHits": [],
+        "removedHits": [
+          0,
+          5
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:xxx.xx.x.xx.",
+        "variantPattern": "energetique:drums:xxxxxx.x.xx.",
+        "addedHits": [
+          3
+        ],
+        "removedHits": [],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:xxx.xx.x.xx.",
+        "variantPattern": "energetique:drums:xx.xxx.x.xx.",
+        "addedHits": [
+          3
+        ],
+        "removedHits": [
+          2
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:xxx.xx.x.xx.",
+        "variantPattern": "energetique:drums:xxx.xx.xxx..",
+        "addedHits": [
+          8
+        ],
+        "removedHits": [
+          10
+        ],
+        "editDistance": 2,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:xxx.xx.x.xx.",
+        "variantPattern": "energetique:drums:xxx.xxxx.xx.",
+        "addedHits": [
+          6
+        ],
+        "removedHits": [],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:.x..x..x..x.",
+        "variantPattern": "energetique:drums:.x..x..xx.x.",
+        "addedHits": [
+          8
+        ],
+        "removedHits": [],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      },
+      {
+        "basePattern": "energetique:drums:.x..x..x..x.",
+        "variantPattern": "energetique:drums:xx..x..x..x.",
+        "addedHits": [
+          0
+        ],
+        "removedHits": [],
+        "editDistance": 1,
+        "observedBars": 1,
+        "confidence": "observed"
+      }
+    ],
+    "cells_distinct_by_stem": {
+      "drums": 22,
+      "bass": 21,
+      "vocals": 15,
+      "percs_and_synths": 28
+    },
+    "density_by_stem": {
+      "drums": 7.79,
+      "bass": 4.67,
+      "vocals": 4.69,
+      "percs_and_synths": 5.86
+    }
+  },
+  "bass": {
+    "onsets": 112,
+    "notes_per_minute": 131.8,
+    "ioi_median_s": 0.36,
+    "ioi_p10_s": 0.046,
+    "ioi_p90_s": 0.731,
+    "duration_median_s": 0.36,
+    "staccato_ratio": 0.24,
+    "step_histogram": {
+      "0": 0,
+      "1": 14,
+      "2": 16,
+      "3": 1,
+      "4": 19,
+      "5": 8,
+      "6": 1,
+      "7": 12,
+      "8": 19,
+      "9": 4,
+      "10": 8,
+      "11": 10
+    },
+    "step_histogram_note": "positions sur 12 pas par mesure ; le pas 0 est le temps fort",
+    "with_drums_within_40ms_pct": 75.0,
+    "silence_s_after_last_note": null,
+    "reliable": [
+      "onsets",
+      "intervals",
+      "articulation",
+      "position_in_bar",
+      "drum coincidence"
+    ],
+    "unreliable": [
+      "absolute pitch (voir tiers de transcription)"
+    ]
+  },
+  "tonal": {
+    "bass": {
+      "confirmed": 2,
+      "musically_plausible": 2,
+      "ambiguous": 114
+    },
+    "vocals": {
+      "confirmed": 17,
+      "musically_plausible": 57,
+      "ambiguous": 90
+    },
+    "percs_and_synths": {
+      "confirmed": 0,
+      "musically_plausible": 0,
+      "ambiguous": 74
+    }
+  },
+  "tonal_examples": {
+    "bass": [
+      {
+        "start_s": 38.255,
+        "end_s": 38.487,
+        "duration_s": 0.244,
+        "pitch_hz": 38.8,
+        "midi_rounded": 27,
+        "cents_stability": 9.5,
+        "voiced_probability": 0.712,
+        "confidence": "confirmed",
+        "method": "pyin fmin=35.0 fmax=320.0 sr=22050 hop=256 frame=4096"
+      },
+      {
+        "start_s": 41.854,
+        "end_s": 42.04,
+        "duration_s": 0.197,
+        "pitch_hz": 39.1,
+        "midi_rounded": 27,
+        "cents_stability": 10.0,
+        "voiced_probability": 0.748,
+        "confidence": "confirmed",
+        "method": "pyin fmin=35.0 fmax=320.0 sr=22050 hop=256 frame=4096"
+      }
+    ],
+    "vocals": [
+      {
+        "start_s": 2.566,
+        "end_s": 2.752,
+        "duration_s": 0.197,
+        "pitch_hz": 175.9,
+        "midi_rounded": 53,
+        "cents_stability": 20.6,
+        "voiced_probability": 0.712,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 4.005,
+        "end_s": 4.168,
+        "duration_s": 0.174,
+        "pitch_hz": 266.6,
+        "midi_rounded": 60,
+        "cents_stability": 10.0,
+        "voiced_probability": 0.884,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 7.512,
+        "end_s": 7.686,
+        "duration_s": 0.186,
+        "pitch_hz": 533.2,
+        "midi_rounded": 72,
+        "cents_stability": 21.1,
+        "voiced_probability": 0.788,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 10.681,
+        "end_s": 10.879,
+        "duration_s": 0.209,
+        "pitch_hz": 175.9,
+        "midi_rounded": 53,
+        "cents_stability": 12.6,
+        "voiced_probability": 0.805,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 11.041,
+        "end_s": 11.308,
+        "duration_s": 0.279,
+        "pitch_hz": 176.9,
+        "midi_rounded": 53,
+        "cents_stability": 7.6,
+        "voiced_probability": 0.766,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      },
+      {
+        "start_s": 11.413,
+        "end_s": 11.714,
+        "duration_s": 0.313,
+        "pitch_hz": 175.9,
+        "midi_rounded": 53,
+        "cents_stability": 23.1,
+        "voiced_probability": 0.701,
+        "confidence": "confirmed",
+        "method": "pyin fmin=90.0 fmax=900.0 sr=22050 hop=256 frame=2048"
+      }
+    ],
+    "percs_and_synths": []
+  },
+  "interactions": [
+    {
+      "stemA": "bass",
+      "stemB": "drums",
+      "coincidence_within_ms": 40,
+      "onsets_A": 112,
+      "onsets_B": 226,
+      "coincident_onsets": 84,
+      "coincidence_pct_of_A": 75.0,
+      "lift_vs_chance": 2.11,
+      "A_followed_by_B_pct": 81.2,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    },
+    {
+      "stemA": "bass",
+      "stemB": "percs_and_synths",
+      "coincidence_within_ms": 40,
+      "onsets_A": 112,
+      "onsets_B": 170,
+      "coincident_onsets": 26,
+      "coincidence_pct_of_A": 23.2,
+      "lift_vs_chance": 0.87,
+      "A_followed_by_B_pct": 50.9,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    },
+    {
+      "stemA": "bass",
+      "stemB": "vocals",
+      "coincidence_within_ms": 40,
+      "onsets_A": 112,
+      "onsets_B": 136,
+      "coincident_onsets": 13,
+      "coincidence_pct_of_A": 11.6,
+      "lift_vs_chance": 0.54,
+      "A_followed_by_B_pct": 77.7,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    },
+    {
+      "stemA": "drums",
+      "stemB": "percs_and_synths",
+      "coincidence_within_ms": 40,
+      "onsets_A": 226,
+      "onsets_B": 170,
+      "coincident_onsets": 52,
+      "coincidence_pct_of_A": 23.0,
+      "lift_vs_chance": 0.86,
+      "A_followed_by_B_pct": 62.8,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    },
+    {
+      "stemA": "drums",
+      "stemB": "vocals",
+      "coincidence_within_ms": 40,
+      "onsets_A": 226,
+      "onsets_B": 136,
+      "coincident_onsets": 20,
+      "coincidence_pct_of_A": 8.8,
+      "lift_vs_chance": 0.41,
+      "A_followed_by_B_pct": 64.6,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    },
+    {
+      "stemA": "percs_and_synths",
+      "stemB": "vocals",
+      "coincidence_within_ms": 40,
+      "onsets_A": 170,
+      "onsets_B": 136,
+      "coincident_onsets": 17,
+      "coincidence_pct_of_A": 10.0,
+      "lift_vs_chance": 0.46,
+      "A_followed_by_B_pct": 54.7,
+      "reading": "corrélation mesurée, pas une intention musicale démontrée"
+    }
+  ],
+  "harmony": {
+    "key_candidates": null
+  },
+  "uncertainties": [
+    "les noms de stems sont des hypothèses de rôle ; aucun instrument n’est confirmé",
+    "les événements sont des attaques détectées, pas des notes jouées",
+    "les interactions sont des corrélations mesurées, pas des intentions",
+    "la grille temporelle est une hypothèse de profil, pas une sortie de tracker"
+  ],
+  "needs_human_validation": [
+    "278 segments tonals ambigus — transcription à confirmer à l’écoute",
+    "hauteur de basse majoritairement ambiguë : utiliser le profil rythmique, pas les notes"
+  ]
+}

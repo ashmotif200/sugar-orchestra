@@ -1,0 +1,32 @@
+{
+  "schema": "v2.0.5/style-index",
+  "universes": [
+    {
+      "universeId": "electro-sega",
+      "referenceId": "energetique",
+      "file": "style-electro-sega.json",
+      "sections": 7,
+      "patterns": 86,
+      "events": 644,
+      "bass_reliable": true
+    },
+    {
+      "universeId": "sega-trad",
+      "referenceId": "dansant",
+      "file": "style-sega-trad.json",
+      "sections": 22,
+      "patterns": 240,
+      "events": 2160,
+      "bass_reliable": false
+    },
+    {
+      "universeId": "segazz",
+      "referenceId": "detendu",
+      "file": "style-segazz.json",
+      "sections": 7,
+      "patterns": 73,
+      "events": 526,
+      "bass_reliable": true
+    }
+  ]
+}
