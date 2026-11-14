@@ -46,10 +46,12 @@ export function useSamplePlayer(seconds = 6) {
   const start = useCallback((sound: Sound, from = 0) => {
     stopLoop()
     setState({ id: sound.id, playing: true, paused: false, position: from, duration: seconds })
-    audio.preview(sound, seconds, () => {
+    // le carnet n'a pas forcément décodé ce son : sans ce chargement, preview()
+    // échoue sur « son non chargé » et le bouton revient aussitôt sur Play
+    audio.ensure([sound.id]).then(() => audio.preview(sound, seconds, () => {
       stopLoop()
       setState({ id: sound.id, playing: false, paused: false, position: 0, duration: seconds })
-    }, from).then(() => {
+    }, from)).then(() => {
       raf.current = requestAnimationFrame(tick)
     }).catch(() => {
       stopLoop()
