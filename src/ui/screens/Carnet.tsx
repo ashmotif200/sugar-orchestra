@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { audio, peaks, soundById, titleOf } from '../../audio/service'
 import { t } from '../../i18n'
 import { posteBySample } from '../../data/postes'
+import { useSamplePlayer } from '../../audio/useSamplePlayer'
 import { demoMode } from '../../data/demo'
 import { isMusicallyUsable } from '../../engine/policy'
 import { Badge, Button, EmptyState, PlayIcon, Tabs, Waveform, fmtTime } from '../kit'
@@ -12,14 +13,13 @@ export default function Carnet({
   onToggle,
   onCompose,
   onParcours,
-  onPreview,
 }: {
   session: Session
   onToggle: (id: string) => void
   onCompose: () => void
   onParcours: () => void
-  onPreview: (id: string) => void
 }) {
+  const player = useSamplePlayer(6)
   const [tab, setTab] = useState<'discovered' | 'selected'>('discovered')
   const [, setAudioTick] = useState(0)
   useEffect(() => audio.subscribe(() => setAudioTick((n) => n + 1)), [])
@@ -55,8 +55,12 @@ export default function Carnet({
             const buf = audio.get(s.id)
             return (
               <li key={s.id} className="row">
-                <button className="row-play" onClick={() => onPreview(s.id)} aria-label={`${t('step.listen')} ${titleOf(s)}`}>
-                  <PlayIcon playing={false} />
+                <button
+                  className="row-play"
+                  onClick={() => player.toggle(s)}
+                  aria-label={`${player.state.playing && player.state.id === s.id ? t('step.stop') : t('step.listen')} ${titleOf(s)}`}
+                >
+                  <PlayIcon playing={player.state.playing && player.state.id === s.id} />
                 </button>
                 <div className="row-main">
                   <p className="row-title">{titleOf(s)}</p>
@@ -64,7 +68,15 @@ export default function Carnet({
                     {locked ? <Badge tone="lock">🔒 {t('step.historyOnly')}</Badge> : <span className="muted">Étape {s.stepId}</span>}
                     {buf && <span className="muted">· {fmtTime(buf.duration)}</span>}
                   </div>
-                  {buf && <Waveform peaks={peaks(buf, 48)} height={26} progress={0} />}
+                  {buf && (
+                    <Waveform
+                      peaks={peaks(buf, 48)}
+                      height={26}
+                      progress={player.state.id === s.id && player.state.duration > 0
+                        ? Math.min(1, player.state.position / player.state.duration)
+                        : 0}
+                    />
+                  )}
                   {/* accès à la fiche du poste : la description peut être complétée
                       plus tard sans que le visiteur ait à rescanner le QR */}
                   {(() => {

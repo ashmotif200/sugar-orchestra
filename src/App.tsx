@@ -367,10 +367,6 @@ export default function App() {
               onToggle={toggle}
               onCompose={() => navigate({ name: 'composer' })}
               onParcours={() => navigate({ name: 'parcours' })}
-              onPreview={(id) => {
-                const s = soundById(id)
-                if (s) void audio.ensure([id]).then(() => audio.preview(s)).catch(() => {})
-              }}
             />
           )}
 

@@ -26,7 +26,8 @@ type Listener = () => void
 class AudioService {
   private ctx: AudioContext | null = null
   private buffers = new Map<string, AudioBuffer>()
-  private audition: { src: AudioBufferSourceNode; gain: GainNode } | null = null
+  private audition: { src: AudioBufferSourceNode; gain: GainNode; soundId: string; startedAt: number; offset: number; dur: number } | null = null
+  private pausedPreview: { soundId: string | null; position: number } | null = null
   private playing: { src: AudioBufferSourceNode; startedAt: number; buffer: AudioBuffer } | null = null
   private listeners = new Set<Listener>()
   private loading = new Set<string>()
@@ -107,7 +108,30 @@ class AudioService {
   isLoading(id: string) { return this.loading.has(id) }
 
   /** Écoute individuelle. Jamais de lecture automatique. */
-  async preview(sound: Sound, seconds = 6, onEnded?: () => void): Promise<void> {
+  /** Position réelle de la préécoute, en secondes (0 si rien ne joue). */
+  auditionInfo(): { soundId: string | null; position: number; duration: number; playing: boolean } {
+    const a = this.audition
+    if (!a || !this.ctx) return { soundId: null, position: 0, duration: 0, playing: false }
+    const elapsed = Math.max(0, this.ctx.currentTime - a.startedAt)
+    return {
+      soundId: a.soundId,
+      position: Math.min(a.dur, a.offset + elapsed),
+      duration: a.dur,
+      playing: true,
+    }
+  }
+
+  /** Met la préécoute en pause en mémorisant la position, sans la perdre. */
+  pausePreview(): number {
+    const info = this.auditionInfo()
+    this.stopPreview()
+    this.pausedPreview = { soundId: info.soundId, position: info.position }
+    return info.position
+  }
+
+  pausedPreviewInfo() { return this.pausedPreview }
+
+  async preview(sound: Sound, seconds = 6, onEnded?: () => void, startAt = 0): Promise<void> {
     const ctx = await this.runningContext()
     const buf = this.buffers.get(sound.id)
     if (!buf) throw new Error('son non chargé')
@@ -119,8 +143,10 @@ class AudioService {
     // Lire `sound.analysis.onsets[0]` sans garde faisait échouer la préécoute
     // avant même le démarrage — le bouton restait donc sur « Écouter ».
     const firstOnset = sound.analysis?.onsets?.[0]
-    const startAt = Number.isFinite(firstOnset) ? Math.min(firstOnset as number, Math.max(0, buf.duration - seconds - 0.2)) : 0
-    const offset = Math.max(0, startAt)
+    const base = startAt > 0
+      ? startAt
+      : Number.isFinite(firstOnset) ? Math.min(firstOnset as number, Math.max(0, buf.duration - seconds - 0.2)) : 0
+    const offset = Math.max(0, Math.min(base, Math.max(0, buf.duration - 0.1)))
     const dur = Math.min(seconds, buf.duration - offset)
     gain.gain.setValueAtTime(0, ctx.currentTime)
     gain.gain.linearRampToValueAtTime(0.9, ctx.currentTime + 0.03)
@@ -129,7 +155,8 @@ class AudioService {
     src.connect(gain)
     gain.connect(ctx.destination)
     src.start(0, offset, dur)
-    this.audition = { src, gain }
+    this.audition = { src, gain, soundId: sound.id, startedAt: ctx.currentTime, offset, dur }
+    this.pausedPreview = null
     this.emit()
     src.onended = () => {
       if (this.audition?.src === src) { this.audition = null; this.emit() }
