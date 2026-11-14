@@ -8,7 +8,7 @@ import { isMusicallyUsable } from './engine/policy'
 import { encodeWav, type RenderReport } from './engine/render'
 import type { Score } from './engine/plan'
 import { clearCompositions, latestComposition, saveComposition } from './storage/compositions'
-import { Button } from './ui/kit'
+import { Button, MascotImage } from './ui/kit'
 import Home from './ui/screens/Home'
 import Parcours from './ui/screens/Parcours'
 import Step from './ui/screens/Step'
@@ -16,6 +16,9 @@ import Carnet from './ui/screens/Carnet'
 import Composer, { type Piece } from './ui/screens/Composer'
 import DemoComposer from './ui/screens/DemoComposer'
 import DemoResult from './ui/screens/DemoResult'
+import Poste from './ui/screens/Poste'
+import Scanner from './ui/Scanner'
+import { resolveQr } from './data/postes'
 import { demoMode } from './data/demo'
 import { ensurePublication, isSoundOpen, isUniverseOpen, usePublication } from './data/publication'
 import Result from './ui/screens/Result'
@@ -38,6 +41,7 @@ export default function App() {
     ),
   )
   const [piece, setPiece] = useState<Piece | null>(null)
+  const [scanning, setScanning] = useState(false)
   // état de publication : pilote la disponibilité des univers et des sons
   usePublication()
   useEffect(() => {
@@ -301,6 +305,44 @@ export default function App() {
             />
           )}
 
+          {route.name === 'poste' && (
+            !session.universeId || !isUniverseOpen(session.universeId) ? (
+              <div className="screen">
+                <h1 className="h1">{t('poste.pendingTitle')}</h1>
+                <p className="sub">{t('poste.pending')}</p>
+                <div className="uni-grid">
+                  {UNIVERSES.filter((u) => isUniverseOpen(u.id)).map((u) => (
+                    <button key={u.id} className="uni-card" onClick={() => pickUniverse(u.id)}>
+                      <MascotImage files={u.mascot?.files} alt={u.mascot?.name ?? u.name} accent={u.accent} glyph={u.glyph} />
+                      <span className="uni-body">
+                        <span className="uni-mascot">{u.mascot?.name ?? u.name}</span>
+                        <span className="uni-emotion">{u.emotion}</span>
+                      </span>
+                    </button>
+                  ))}
+                </div>
+                <div className="row-actions">
+                  <Button variant="ghost" onClick={() => navigate({ name: 'home' })}>{t('demo.backHome')}</Button>
+                </div>
+              </div>
+            ) : (
+              <Poste
+                routeId={route.id}
+                routeKey={route.key}
+                selected={session.selected}
+                onCollect={(id) => { discover(id); toggle(id) }}
+                onCarnet={() => navigate({ name: 'carnet' })}
+                onParcours={() => navigate({ name: 'parcours' })}
+              />
+            )
+          )}
+
+          {(route.name === 'parcours' || route.name === 'step' || route.name === 'carnet') && (
+            <div className="scan-bar">
+              <Button variant="secondary" onClick={() => setScanning(true)}>{t('scan.open')}</Button>
+            </div>
+          )}
+
           {route.name === 'parcours' && (
             <Parcours session={session} onOpen={(id) => navigate({ name: 'step', id })} />
           )}
@@ -407,6 +449,18 @@ export default function App() {
             )
           )}
         </main>
+
+        {scanning && (
+          <Scanner
+            onClose={() => setScanning(false)}
+            onDetected={(payload) => {
+              setScanning(false)
+              const poste = resolveQr(payload)
+              if (!poste) { navigate({ name: 'poste', id: 0, key: payload }); return }
+              navigate({ name: 'poste', id: poste.id, key: poste.qr })
+            }}
+          />
+        )}
 
         {route.name !== 'home' && route.name !== 'result' && route.name !== 'composer' && sideCarnet}
       </div>

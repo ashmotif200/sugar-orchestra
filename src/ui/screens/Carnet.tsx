@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { audio, peaks, soundById, titleOf } from '../../audio/service'
 import { t } from '../../i18n'
+import { posteBySample } from '../../data/postes'
 import { demoMode } from '../../data/demo'
 import { isMusicallyUsable } from '../../engine/policy'
 import { Badge, Button, EmptyState, PlayIcon, Tabs, Waveform, fmtTime } from '../kit'
@@ -64,6 +65,16 @@ export default function Carnet({
                     {buf && <span className="muted">· {fmtTime(buf.duration)}</span>}
                   </div>
                   {buf && <Waveform peaks={peaks(buf, 48)} height={26} progress={0} />}
+                  {/* accès à la fiche du poste : la description peut être complétée
+                      plus tard sans que le visiteur ait à rescanner le QR */}
+                  {(() => {
+                    const poste = posteBySample(s.code)
+                    return poste ? (
+                      <button className="row-link" onClick={() => { window.location.hash = `#/poste/${poste.id}` }}>
+                        {t('poste.openSheet')}
+                      </button>
+                    ) : null
+                  })()}
                 </div>
                 {locked ? (
                   <span className="row-lock" aria-hidden="true">🔒</span>

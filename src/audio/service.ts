@@ -115,7 +115,12 @@ class AudioService {
     const src = ctx.createBufferSource()
     src.buffer = buf
     const gain = ctx.createGain()
-    const offset = Math.min(sound.analysis.onsets[0] ?? 0, Math.max(0, buf.duration - seconds - 0.2))
+    // `analysis` est optionnel : un catalogue réimporté peut ne pas le porter.
+    // Lire `sound.analysis.onsets[0]` sans garde faisait échouer la préécoute
+    // avant même le démarrage — le bouton restait donc sur « Écouter ».
+    const firstOnset = sound.analysis?.onsets?.[0]
+    const startAt = Number.isFinite(firstOnset) ? Math.min(firstOnset as number, Math.max(0, buf.duration - seconds - 0.2)) : 0
+    const offset = Math.max(0, startAt)
     const dur = Math.min(seconds, buf.duration - offset)
     gain.gain.setValueAtTime(0, ctx.currentTime)
     gain.gain.linearRampToValueAtTime(0.9, ctx.currentTime + 0.03)

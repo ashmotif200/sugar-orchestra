@@ -1,0 +1,54 @@
+<!doctype html>
+<html lang="fr"><head><meta charset="utf-8">
+<title>Sugar Orchestra - 8 QR de demonstration</title>
+<style>
+  @page { size: A4; margin: 14mm; }
+  body { font-family: "DM Sans", system-ui, sans-serif; margin: 0; color: #1E2B22; }
+  h1 { font-size: 16pt; margin: 0 0 2mm; }
+  p.lead { font-size: 9pt; color: #555; margin: 0 0 6mm; }
+  .grid { display: grid; grid-template-columns: 1fr 1fr; gap: 8mm; }
+  .poster { margin: 0; text-align: center; border: 1px solid #ddd; border-radius: 4mm; padding: 4mm; break-inside: avoid; }
+  .poster img { width: 62mm; height: 62mm; }
+  figcaption { display: grid; gap: 1mm; margin-top: 2mm; }
+  figcaption b { font-size: 11pt; }
+  figcaption span { font-size: 8.5pt; color: #555; }
+  footer { margin-top: 6mm; font-size: 8pt; color: #777; }
+</style></head><body>
+  <h1>Sugar Orchestra &mdash; postes de démonstration</h1>
+  <p class="lead">Huit postes, huit sons. Scanner avec l'appareil photo du téléphone ou depuis l'application (bouton « Scanner un QR code »).</p>
+  <div class="grid">
+    <figure class="poster">
+      <img src="poste-1.svg" alt="QR du poste 1, Flore et faune">
+      <figcaption><b>Poste 1 &middot; Flore et faune</b><span>01_02</span></figcaption>
+    </figure>
+    <figure class="poster">
+      <img src="poste-2.svg" alt="QR du poste 2, Pas sur le sable">
+      <figcaption><b>Poste 2 &middot; Pas sur le sable</b><span>01_05</span></figcaption>
+    </figure>
+    <figure class="poster">
+      <img src="poste-3.svg" alt="QR du poste 3, Cuillère, tasse et sucre">
+      <figcaption><b>Poste 3 &middot; Cuillère, tasse et sucre</b><span>02_01</span></figcaption>
+    </figure>
+    <figure class="poster">
+      <img src="poste-4.svg" alt="QR du poste 4, Commerçants et étals">
+      <figcaption><b>Poste 4 &middot; Commerçants et étals</b><span>02_04</span></figcaption>
+    </figure>
+    <figure class="poster">
+      <img src="poste-5.svg" alt="QR du poste 5, Le sucre qui crisse">
+      <figcaption><b>Poste 5 &middot; Le sucre qui crisse</b><span>04_07</span></figcaption>
+    </figure>
+    <figure class="poster">
+      <img src="poste-6.svg" alt="QR du poste 6, Lota et cuillère">
+      <figcaption><b>Poste 6 &middot; Lota et cuillère</b><span>04_09</span></figcaption>
+    </figure>
+    <figure class="poster">
+      <img src="poste-7.svg" alt="QR du poste 7, La signature du contrat">
+      <figcaption><b>Poste 7 &middot; La signature du contrat</b><span>04_10</span></figcaption>
+    </figure>
+    <figure class="poster">
+      <img src="poste-8.svg" alt="QR du poste 8, Charrette à bœufs">
+      <figcaption><b>Poste 8 &middot; Charrette à bœufs</b><span>06_04</span></figcaption>
+    </figure>
+  </div>
+  <footer>Base des liens : http://100.88.94.51:5181/ &mdash; généré par scripts/qr/make-posters.mjs</footer>
+</body></html>

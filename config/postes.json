@@ -1,0 +1,14 @@
+{
+  "_doc": "Postes physiques de la démonstration. Un poste = un QR + un sample. Les descriptions historiques seront ajoutées ultérieurement dans `description` (ou via le contenu éditorial de l'administration) : aucune n'est inventée ici. Ne pas confondre avec les sections historiques du musée, qui restent dans le catalogue.",
+  "version": 1,
+  "postes": [
+    { "id": 1, "qr": "poste-1", "sampleCode": "01_02", "title": "Flore et faune", "description": null },
+    { "id": 2, "qr": "poste-2", "sampleCode": "01_05", "title": "Pas sur le sable", "description": null },
+    { "id": 3, "qr": "poste-3", "sampleCode": "02_01", "title": "Cuillère, tasse et sucre", "description": null },
+    { "id": 4, "qr": "poste-4", "sampleCode": "02_04", "title": "Commerçants et étals", "description": null },
+    { "id": 5, "qr": "poste-5", "sampleCode": "04_07", "title": "Le sucre qui crisse", "description": null },
+    { "id": 6, "qr": "poste-6", "sampleCode": "04_09", "title": "Lota et cuillère", "description": null },
+    { "id": 7, "qr": "poste-7", "sampleCode": "04_10", "title": "La signature du contrat", "description": null },
+    { "id": 8, "qr": "poste-8", "sampleCode": "06_04", "title": "Charrette à bœufs", "description": null }
+  ]
+}

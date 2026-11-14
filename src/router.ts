@@ -7,6 +7,7 @@ export type Route =
   | { name: 'carnet' }
   | { name: 'composer' }
   | { name: 'result' }
+  | { name: 'poste'; id: number; key?: string }
   | { name: 'admin'; section: string }
 
 export function parseHash(hash: string): Route {
@@ -19,6 +20,16 @@ export function parseHash(hash: string): Route {
   if (seg[0] === 'etape') {
     const id = parseInt(seg[1] ?? '', 10)
     return Number.isFinite(id) && id >= 1 && id <= 7 ? { name: 'step', id } : { name: 'parcours' }
+  }
+  if (seg[0] === 'poste') {
+    const id = parseInt(seg[1] ?? '', 10)
+    return Number.isFinite(id) ? { name: 'poste', id } : { name: 'home' }
+  }
+  // lien direct encodé dans un QR : #/qr/poste-3
+  if (seg[0] === 'qr') {
+    const raw = seg.slice(1).join('/')
+    const n = /^\d+$/.test(raw) ? Number(raw) : NaN
+    return { name: 'poste', id: Number.isFinite(n) ? n : 0, key: raw }
   }
   if (seg[0] === 'carnet') return { name: 'carnet' }
   if (seg[0] === 'composer') return { name: 'composer' }
@@ -33,6 +44,7 @@ export const routeToHash = (r: Route): string => {
     case 'carnet': return '#/carnet'
     case 'composer': return '#/composer'
     case 'result': return '#/resultat'
+    case 'poste': return `#/poste/${r.id}`
     case 'admin': return `#/admin/${r.section}`
     default: return '#/'
   }

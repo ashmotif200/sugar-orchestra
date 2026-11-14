@@ -120,7 +120,8 @@
     "missingBody": "Le fichier « {file} » doit être déposé dans public/demo/. Aucun substitut n'est utilisé.",
     "noAudioSupport": "Votre navigateur ne lit pas cet audio.",
     "cta": "Découvrir le résultat",
-    "soonNote": "Ce son arrive bientôt : il est visible mais pas encore écoutable ni collectable."
+    "soonNote": "Ce son arrive bientôt : il est visible mais pas encore écoutable ni collectable.",
+    "backHome": "Revenir à l'accueil"
   },
   "nav": {
     "restart": "Recommencer la visite",
@@ -128,5 +129,35 @@
   },
   "common": {
     "cancel": "Annuler"
+  },
+  "poste": {
+    "kicker": "Poste de démonstration",
+    "description": "Histoire du poste",
+    "todo": "Description à venir.",
+    "collected": "Ce son est dans ton carnet.",
+    "notCollected": "Ce son n'est pas encore dans ton carnet.",
+    "inCarnet": "ajouté au carnet",
+    "continue": "Continuer la visite",
+    "playHint": "Appuie sur ▶ pour écouter.",
+    "playing": "Lecture en cours — appuie sur ■ pour arrêter.",
+    "playError": "La lecture n'a pas pu démarrer. Réessaie.",
+    "unknownTitle": "Ce QR code n'est pas reconnu",
+    "unknownBody": "Aucun poste de la démonstration ne correspond. Rien n'a été ajouté.",
+    "backToParcours": "Revenir au parcours",
+    "lockedTitle": "Ce son arrive bientôt.",
+    "lockedBody": "Il n'est pas encore disponible : il n'a pas été ajouté à ton carnet.",
+    "alreadyTitle": "Ce son est déjà dans ton carnet",
+    "pending": "Choisis Martin pour ajouter ce son à ton carnet.",
+    "openSheet": "Voir la fiche",
+    "pendingTitle": "Choisis ta mascotte"
+  },
+  "scan": {
+    "open": "Scanner un QR code",
+    "close": "Fermer le scanner",
+    "insecure": "La caméra n'est accessible qu'en HTTPS. Ouvre l'adresse HTTPS (Tailscale) ou scanne le QR avec l'appareil photo du téléphone.",
+    "httpsHint": "Solution de secours : appareil photo du téléphone, le QR ouvre directement la fiche.",
+    "cameraRefused": "Caméra indisponible",
+    "noDetector": "Lecture de QR non prise en charge par ce navigateur",
+    "useNative": "Utilise l'appareil photo du téléphone : le QR contient un lien vers la fiche."
   }
 }

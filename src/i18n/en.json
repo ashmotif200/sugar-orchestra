@@ -120,7 +120,8 @@
     "missingBody": "The file \"{file}\" must be placed in public/demo/. No substitute is used.",
     "noAudioSupport": "Your browser cannot play this audio.",
     "cta": "Discover the result",
-    "soonNote": "This sound is coming soon: visible, but not yet listenable or collectable."
+    "soonNote": "This sound is coming soon: visible, but not yet listenable or collectable.",
+    "backHome": "Back to home"
   },
   "nav": {
     "restart": "Start over",
@@ -128,5 +129,35 @@
   },
   "common": {
     "cancel": "Cancel"
+  },
+  "poste": {
+    "kicker": "Demo station",
+    "description": "Station story",
+    "todo": "Description coming soon.",
+    "collected": "This sound is in your notebook.",
+    "notCollected": "Not collected yet.",
+    "inCarnet": "added to notebook",
+    "continue": "Continue the visit",
+    "playHint": "Tap to listen.",
+    "playing": "Playing, tap to stop.",
+    "playError": "Playback could not start. Try again.",
+    "unknownTitle": "Unknown QR code",
+    "unknownBody": "No demo station matches. Nothing was added.",
+    "backToParcours": "Back to the trail",
+    "lockedTitle": "This sound is coming soon.",
+    "lockedBody": "Not available yet: it was not added to your notebook.",
+    "alreadyTitle": "Already in your notebook",
+    "pending": "Choose Martin to add this sound to your notebook.",
+    "openSheet": "Open the sheet",
+    "pendingTitle": "Choose your mascot"
+  },
+  "scan": {
+    "open": "Scan a QR code",
+    "close": "Close scanner",
+    "insecure": "Camera access requires HTTPS. Open the HTTPS (Tailscale) address or scan with the phone camera app.",
+    "httpsHint": "Fallback: phone camera, the QR opens the sheet directly.",
+    "cameraRefused": "Camera unavailable",
+    "noDetector": "QR scanning not supported by this browser",
+    "useNative": "Use the phone camera app: the QR contains a link to the sheet."
   }
 }
