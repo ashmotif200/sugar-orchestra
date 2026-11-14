@@ -1,3 +1,4 @@
+import { useState } from 'react'
 import type { ReactNode } from 'react'
 import { t } from '../i18n'
 
@@ -170,3 +171,47 @@ export function UniverseMark({ icon, color }: { icon?: string; color: string }) 
 export const plural = (n: number, one: string, many: string) => `${n} ${n > 1 ? many : one}`
 export const fmtTime = (sec: number) => `${Math.floor(sec / 60)}:${Math.floor(sec % 60).toString().padStart(2, '0')}`
 export const tStep = (id: number) => t('step.label', { id })
+
+/**
+ * Illustration de mascotte. Les fichiers sont servis depuis public/mascots/ :
+ * aucun import statique, donc l'absence d'un fichier ne casse pas le build et
+ * le dépôt d'un PNG suffit à l'afficher. Le ratio 1:1 et `contain` sont posés
+ * en CSS (voir .uni-figure img) : jamais de recadrage ni d'étirement.
+ */
+export function MascotImage({
+  files,
+  alt,
+  accent,
+  glyph,
+}: {
+  files?: string[]
+  alt: string
+  accent: string
+  glyph: string
+}) {
+  const [attempt, setAttempt] = useState(0)
+  const list = files ?? []
+  const failed = attempt >= list.length
+
+  if (!list.length || failed) {
+    return (
+      <span className="uni-figure uni-figure-empty" style={{ borderColor: accent }} aria-hidden="true">
+        <span className="uni-glyph" style={{ color: accent }}>{glyph}</span>
+      </span>
+    )
+  }
+
+  const url = `${import.meta.env.BASE_URL}mascots/${encodeURIComponent(list[attempt])}`
+  return (
+    <span className="uni-figure">
+      <img
+        src={url}
+        alt={alt}
+        width={512}
+        height={512}
+        decoding="async"
+        onError={() => setAttempt((n) => n + 1)}
+      />
+    </span>
+  )
+}

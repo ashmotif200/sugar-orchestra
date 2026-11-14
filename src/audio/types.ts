@@ -84,6 +84,13 @@ export interface Catalog {
   sounds: Sound[]
 }
 
+export interface Mascot {
+  /** Nom affiché de la mascotte (Martin, Mangouste, Dodo, Tortue). */
+  name: string
+  /** Fichiers acceptés dans public/mascots/, dans l'ordre d'essai. */
+  files: string[]
+}
+
 export interface Universe {
   id: 'electro-sega' | 'sega-trad' | 'ambient-creole' | 'segazz'
   icon?: string
@@ -99,4 +106,5 @@ export interface Universe {
   bars: number
   tempoLabel: string
   blurb?: string
+  mascot?: Mascot
 }

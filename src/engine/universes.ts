@@ -5,6 +5,7 @@ import type { Universe } from '../audio/types'
 export const UNIVERSES: Universe[] = [
   {
     id: 'electro-sega',
+    mascot: { name: 'Martin', files: ['martin-rouge.png', 'Martin Rouge.png'] },
     name: 'Electro Sega',
     emotion: 'Énergétique',
     style: 'Electro Sega',
@@ -20,6 +21,7 @@ export const UNIVERSES: Universe[] = [
   },
   {
     id: 'sega-trad',
+    mascot: { name: 'Mangouste', files: ['mangouste-jaune.png', 'Mangouste Jaune.png'] },
     name: 'Sega traditionnel',
     emotion: 'Dansant',
     style: 'Sega traditionnel',
@@ -34,22 +36,8 @@ export const UNIVERSES: Universe[] = [
     tempoLabel: '6/8 · 126 · 34 s',
   },
   {
-    id: 'ambient-creole',
-    name: 'Ambient créole',
-    emotion: 'Rêveur',
-    style: 'Ambient créole',
-    glyph: '≈',
-    icon: 'onde',
-    description: 'Nappes, souffle, cloches lointaines.',
-    accent: '#2A9D9B',
-    fill: '#2A9D9B',
-    available: false,
-    bpm: 72,
-    bars: 12,
-    tempoLabel: 'Bientôt',
-  },
-  {
     id: 'segazz',
+    mascot: { name: 'Dodo', files: ['dodo-vert.png', 'Dodo Vert.png'] },
     name: 'Segazz',
     emotion: 'Détendu',
     style: 'Segazz',
@@ -63,6 +51,23 @@ export const UNIVERSES: Universe[] = [
     bars: 16,
     tempoLabel: 'Bientôt',
   },
+  {
+    id: 'ambient-creole',
+    mascot: { name: 'Tortue', files: ['tortue-bleu.png', 'Tortue bleu.png'] },
+    name: 'Ambient créole',
+    emotion: 'Rêveur',
+    style: 'Ambient créole',
+    glyph: '≈',
+    icon: 'onde',
+    description: 'Nappes, souffle, cloches lointaines.',
+    accent: '#2A9D9B',
+    fill: '#2A9D9B',
+    available: false,
+    bpm: 72,
+    bars: 12,
+    tempoLabel: 'Bientôt',
+  }
+
 ]
 
 export const getUniverse = (id: string | undefined) => UNIVERSES.find((u) => u.id === id)

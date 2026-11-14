@@ -1,6 +1,6 @@
 import { UNIVERSES } from '../../engine/universes'
 import { t } from '../../i18n'
-import { Button, UniverseMark } from '../kit'
+import { Button, MascotImage } from '../kit'
 import type { Universe } from '../../audio/types'
 
 export default function Home({
@@ -33,20 +33,32 @@ export default function Home({
       <div className="uni-grid">
         {UNIVERSES.map((u) => {
           const active = u.id === chosen.id && u.available
+          const mascot = u.mascot
+          const label = mascot
+            ? t('home.cardLabel', { mascot: mascot.name, universe: u.name, emotion: u.emotion })
+            : `${u.name} — ${u.emotion}`
           return (
             <button
               key={u.id}
               className={`uni-card${u.available ? '' : ' is-soon'}${active ? ' is-active' : ''}`}
-              style={u.available ? { background: u.fill ?? u.accent, color: u.id === 'sega-trad' ? 'var(--ink)' : '#fffaf0' } : undefined}
               onClick={() => u.available && onPick(u)}
               disabled={!u.available}
               aria-pressed={active}
-              aria-label={`${u.name} — ${u.emotion}${u.available ? '' : ` (${t('home.soon')})`}`}
+              aria-label={u.available ? label : `${label} (${t('home.soon')})`}
             >
-              <UniverseMark icon={u.icon} color={u.available ? (u.id === 'sega-trad' ? 'var(--ink)' : '#fffaf0') : 'var(--mut)'} />
-              <span className="uni-name">{u.name}</span>
-              <span className="uni-emotion">{u.emotion}</span>
+              <MascotImage
+                files={mascot?.files}
+                alt={label}
+                accent={u.accent}
+                glyph={u.glyph}
+              />
+              <span className="uni-body">
+                {mascot && <span className="uni-mascot">{mascot.name}</span>}
+                <span className="uni-name">{u.name}</span>
+                <span className="uni-emotion">{u.emotion}</span>
+              </span>
               {!u.available && <span className="uni-soon">{t('home.soon')}</span>}
+              {active && <span className="uni-check" aria-hidden="true">✓</span>}
             </button>
           )
         })}

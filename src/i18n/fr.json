@@ -9,7 +9,8 @@
     "cta": "Commencer avec {universe}",
     "soon": "Bientôt",
     "future": "Vous pourrez changer d'univers en cours de route.",
-    "resume": "Reprendre ma visite ({n} sons dans ma musique)"
+    "resume": "Reprendre ma visite ({n} sons dans ma musique)",
+    "cardLabel": "Mascotte {mascot} — {universe} — {emotion}"
   },
   "parcours": {
     "title": "Votre parcours",
