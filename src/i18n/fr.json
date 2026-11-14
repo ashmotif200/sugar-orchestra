@@ -121,7 +121,8 @@
     "noAudioSupport": "Votre navigateur ne lit pas cet audio.",
     "cta": "Découvrir le résultat",
     "soonNote": "Ce son arrive bientôt : il est visible mais pas encore écoutable ni collectable.",
-    "backHome": "Revenir à l'accueil"
+    "backHome": "Revenir à l'accueil",
+    "playError": "La lecture n'a pas pu démarrer sur ce navigateur."
   },
   "nav": {
     "restart": "Recommencer la visite",

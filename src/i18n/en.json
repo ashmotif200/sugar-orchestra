@@ -121,7 +121,8 @@
     "noAudioSupport": "Your browser cannot play this audio.",
     "cta": "Discover the result",
     "soonNote": "This sound is coming soon: visible, but not yet listenable or collectable.",
-    "backHome": "Back to home"
+    "backHome": "Back to home",
+    "playError": "Playback could not start in this browser."
   },
   "nav": {
     "restart": "Start over",

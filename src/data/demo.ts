@@ -7,10 +7,21 @@
  */
 export const demoMode = {
   enabled: true,
-  /** Fichier attendu dans public/demo/ — nom exact fourni par le propriétaire. */
+  /** Fichier original fourni (conservé intact, non modifié). */
   track: 'energetique v1.wav',
+  /**
+   * Version de diffusion AAC-LC : Safari iOS ne décode pas le PCM 24 bits du
+   * WAV fourni. Même mixage, même durée, même niveau — seul le conteneur change.
+   */
+  trackAac: 'energetique-v1.m4a',
   /** Univers auquel ce morceau correspond (Martin — Énergétique / Electro Sega). */
   universeId: 'electro-sega',
 } as const
 
-export const demoTrackUrl = () => `${import.meta.env.BASE_URL}demo/${encodeURIComponent(demoMode.track)}`
+const base = () => import.meta.env.BASE_URL
+
+/** Source principale : AAC dans un conteneur MP4. */
+export const demoTrackUrl = () => `${base()}demo/${encodeURIComponent(demoMode.trackAac)}`
+
+/** Repli : le WAV d'origine, pour les navigateurs qui le décodent. */
+export const demoTrackFallbackUrl = () => `${base()}demo/${encodeURIComponent(demoMode.track)}`

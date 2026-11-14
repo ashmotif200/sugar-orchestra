@@ -1,15 +1,24 @@
-import { useMemo, useRef, useState } from 'react'
+import { useEffect, useMemo, useRef, useState } from 'react'
 import { soundById, titleOf } from '../../audio/service'
 import { getUniverse } from '../../engine/universes'
 import { t } from '../../i18n'
 import { Button } from '../kit'
-import { demoMode, demoTrackUrl } from '../../data/demo'
+import { demoMode, demoTrackUrl, demoTrackFallbackUrl } from '../../data/demo'
 
 /**
- * Résultat de la démonstration : un morceau précomposé, identique pour chaque
- * visiteur. Aucune formulation ne prétend qu'il a été calculé à partir des sons
- * collectés — le texte le dit explicitement.
+ * Résultat de la démonstration.
+ *
+ * Deux sources : AAC-LC (m4a) d'abord, puis le WAV d'origine. Safari iOS ne
+ * décode pas le PCM 24 bits du WAV fourni ; l'AAC est la version de diffusion
+ * (même mixage, même durée, même niveau), le WAV reste disponible pour les
+ * navigateurs qui le préfèrent.
+ *
+ * Les erreurs sont distinguées : un fichier réellement absent (404) n'est pas
+ * une erreur de lecture, et une erreur de lecture ne doit pas être annoncée
+ * comme un fichier manquant.
  */
+type Erreur = 'absent' | 'lecture' | null
+
 export default function DemoResult({
   selected,
   onRestart,
@@ -21,36 +30,55 @@ export default function DemoResult({
 }) {
   const universe = getUniverse(demoMode.universeId)
   const audioEl = useRef<HTMLAudioElement>(null)
-  const [failed, setFailed] = useState(false)
+  const [erreur, setErreur] = useState<Erreur>(null)
   const url = useMemo(() => demoTrackUrl(), [])
+  const fallback = useMemo(() => demoTrackFallbackUrl(), [])
   const sounds = selected.map((id) => soundById(id)).filter(Boolean)
+
+  // Le message « fichier absent » ne doit s'afficher que si le serveur le dit.
+  useEffect(() => {
+    let alive = true
+    fetch(url, { method: 'HEAD' })
+      .then((r) => { if (alive && r.status === 404) setErreur('absent') })
+      .catch(() => { /* réseau coupé : ce n'est pas une absence de fichier */ })
+    return () => { alive = false }
+  }, [url])
+
+  // Libère la ressource quand on quitte l'écran.
+  useEffect(() => () => {
+    const el = audioEl.current
+    if (el) { el.pause(); el.removeAttribute('src'); el.load() }
+  }, [])
 
   return (
     <div className="screen result demo-result">
       <p className="kicker">{universe?.name ?? 'Electro Sega'} · {t('demo.label')}</p>
       <h1 className="h1">{t('demo.resultTitle')}</h1>
-      <p className="lead">{t('demo.resultLead')}</p>
 
       <div className="player">
-        {!failed ? (
+        {erreur !== 'absent' && (
           <audio
             ref={audioEl}
-            src={url}
             controls
             preload="metadata"
             playsInline
             className="demo-audio"
-            onError={() => setFailed(true)}
+            onError={() => setErreur((e) => e ?? 'lecture')}
           >
+            <source src={url} type="audio/mp4" />
+            <source src={fallback} type="audio/wav" />
             {t('demo.noAudioSupport')}
           </audio>
-        ) : (
+        )}
+        {erreur === 'absent' && (
           <div className="hint-loud" role="status">
             <b>{t('demo.missingTitle')}</b>
             <span>{t('demo.missingBody', { file: demoMode.track })}</span>
           </div>
         )}
-        <p className="micro">{t('demo.sameForEveryone')}</p>
+        {erreur === 'lecture' && (
+          <p className="micro" role="status">{t('demo.playError')}</p>
+        )}
       </div>
 
       {sounds.length > 0 && (
@@ -63,7 +91,6 @@ export default function DemoResult({
               </li>
             ))}
           </ul>
-          <p className="micro">{t('demo.collectedNote')}</p>
         </section>
       )}
 
