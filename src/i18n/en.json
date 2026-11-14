@@ -10,7 +10,8 @@
     "soon": "Coming soon",
     "future": "You can change universe later on.",
     "resume": "Resume my visit ({n} sounds in my music)",
-    "cardLabel": "Mascot {mascot} — {universe} — {emotion}"
+    "cardLabel": "Mascot {mascot} — {universe} — {emotion}",
+    "ctaMascot": "Start with {mascot}"
   },
   "parcours": {
     "title": "Your journey",
@@ -86,7 +87,8 @@
     "duration": "{time} · {bpm} BPM",
     "gone": "No saved creation found on this device. Compose your piece from the sounds in your notebook.",
     "recompose": "Compose again",
-    "restoring": "Retrieving the creation saved on this device…"
+    "restoring": "Retrieving the creation saved on this device…",
+    "newVisit": "New visit"
   },
   "audio": {
     "loading": "Loading sounds…",
@@ -101,5 +103,30 @@
   },
   "a11y": {
     "skip": "Skip to content"
+  },
+  "demo": {
+    "kicker": "Demonstration",
+    "preparing": "One moment…",
+    "neutral": "The museum is preparing the listening result.",
+    "phase1": "Opening the track",
+    "phase2": "Preparing the player",
+    "label": "demonstration",
+    "resultTitle": "Discover the musical result",
+    "resultLead": "This track is provided by the museum. It is the same for every visitor of this demonstration.",
+    "sameForEveryone": "Demonstration track — it is not composed from your sounds.",
+    "collected": "The sounds you collected",
+    "collectedNote": "Your selection is kept in your notebook and will feed the composition prototype.",
+    "missingTitle": "Demonstration track not installed",
+    "missingBody": "The file \"{file}\" must be placed in public/demo/. No substitute is used.",
+    "noAudioSupport": "Your browser cannot play this audio.",
+    "cta": "Discover the result",
+    "soonNote": "This sound is coming soon: visible, but not yet listenable or collectable."
+  },
+  "nav": {
+    "restart": "Start over",
+    "restartConfirm": "Start over and clear this session?"
+  },
+  "common": {
+    "cancel": "Cancel"
   }
 }

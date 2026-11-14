@@ -14,6 +14,10 @@ import Parcours from './ui/screens/Parcours'
 import Step from './ui/screens/Step'
 import Carnet from './ui/screens/Carnet'
 import Composer, { type Piece } from './ui/screens/Composer'
+import DemoComposer from './ui/screens/DemoComposer'
+import DemoResult from './ui/screens/DemoResult'
+import { demoMode } from './data/demo'
+import { ensurePublication, isSoundOpen, isUniverseOpen, usePublication } from './data/publication'
 import Result from './ui/screens/Result'
 import SelfTest from './ui/SelfTest'
 
@@ -34,6 +38,20 @@ export default function App() {
     ),
   )
   const [piece, setPiece] = useState<Piece | null>(null)
+  // état de publication : pilote la disponibilité des univers et des sons
+  usePublication()
+  useEffect(() => {
+    void ensurePublication().then(() => {
+      // un son repassé en brouillon ne doit plus pouvoir être utilisé
+      setSession((sess) => {
+        const kept = sess.selected.filter((id) => {
+          const snd = soundById(id)
+          return !!snd && isSoundOpen(snd.code)
+        })
+        return kept.length === sess.selected.length ? sess : { ...sess, selected: kept }
+      })
+    })
+  }, [])
   const [offline, setOffline] = useState(typeof navigator !== 'undefined' ? !navigator.onLine : false)
 
   useEffect(() => { saveSession(session); purgeLegacyKey() }, [session])
@@ -219,7 +237,11 @@ export default function App() {
         </ul>
       )}
       <Button wide disabled={selectedSounds.length === 0} onClick={() => navigate({ name: 'composer' })}>
-        {selectedSounds.length ? t('carnet.compose', { n: selectedSounds.length, s: selectedSounds.length > 1 ? 's' : '' }) : t('carnet.composeZero')}
+        {selectedSounds.length
+          ? demoMode.enabled
+            ? t('demo.cta')
+            : t('carnet.compose', { n: selectedSounds.length, s: selectedSounds.length > 1 ? 's' : '' })
+          : t('carnet.composeZero')}
       </Button>
       {selectedSounds.length === 0 && <p className="micro" style={{ marginTop: 8 }}>{t('carnet.composeEmpty')}</p>}
       <button className="rail-link" onClick={() => navigate({ name: 'carnet' })}>{t('carnet.title')} ›</button>
@@ -246,7 +268,20 @@ export default function App() {
             {t('carnet.title')}
             {selectedSounds.length > 0 && <span className="count">{selectedSounds.length}</span>}
           </button>
-          {universe && <span className="universe-chip" style={{ background: universe.fill ?? universe.accent, color: universe.id === 'sega-trad' ? 'var(--ink)' : '#fffaf0' }}>{universe.name}</span>}
+          {(session.selected.length > 0 || session.discovered.length > 0) && (
+            <button
+              className="navlink navlink-quiet"
+              aria-label={t('nav.restart')}
+              title={t('nav.restart')}
+              onClick={() => {
+                if (window.confirm(t('nav.restartConfirm'))) restart()
+              }}
+            >
+              <span aria-hidden="true">↺</span>
+              <span className="navlabel">{t('nav.restart')}</span>
+            </button>
+          )}
+          {universe && <span className="universe-chip" style={{ background: universe.fill ?? universe.accent, color: universe.id === 'sega-trad' ? 'var(--ink)' : '#fffaf0' }}>{universe.mascot?.name ?? universe.name}</span>}
         </div>
       </header>
 
@@ -307,14 +342,19 @@ export default function App() {
                   <Button variant="secondary" onClick={() => navigate({ name: 'parcours' })}>{t('carnet.goParcours')}</Button>
                 </div>
               </div>
-            ) : !session.universeId || !getUniverse(session.universeId)?.available ? (
+            ) : demoMode.enabled ? (
+              <DemoComposer
+                onDone={() => navigate({ name: 'result' })}
+                onCancel={() => navigate({ name: 'carnet' })}
+              />
+            ) : !session.universeId || !isUniverseOpen(session.universeId) ? (
               <div className="screen">
                 <h1 className="h1">{t('composer.chooseUniverse')}</h1>
                 <p className="sub">
                   {session.selected.length} son{session.selected.length > 1 ? 's' : ''} dans ma musique.
                 </p>
                 <div className="uni-grid">
-                  {UNIVERSES.filter((u) => u.available).map((u) => (
+                  {UNIVERSES.filter((u) => isUniverseOpen(u.id)).map((u) => (
                     <button
                       key={u.id}
                       className="uni-card"
@@ -339,7 +379,15 @@ export default function App() {
             )
           )}
 
-          {route.name === 'result' && (
+          {route.name === 'result' && demoMode.enabled && (
+            <DemoResult
+              selected={session.selected}
+              onRestart={restart}
+              onCarnet={() => navigate({ name: 'carnet' })}
+            />
+          )}
+
+          {route.name === 'result' && !demoMode.enabled && (
             piece ? (
               <Result piece={piece} onRestart={restart} onCarnet={() => navigate({ name: 'carnet' })} />
             ) : restoring ? (

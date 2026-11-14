@@ -1,6 +1,7 @@
 import { useEffect, useMemo, useState } from 'react'
 import { audio, peaks, soundById, titleOf } from '../../audio/service'
 import { t } from '../../i18n'
+import { demoMode } from '../../data/demo'
 import { isMusicallyUsable } from '../../engine/policy'
 import { Badge, Button, EmptyState, PlayIcon, Tabs, Waveform, fmtTime } from '../kit'
 import type { Session } from '../../session'
@@ -86,7 +87,11 @@ export default function Carnet({
 
       <div className="bottom-bar">
         <Button wide disabled={!canCompose} onClick={onCompose}>
-          {canCompose ? t('carnet.compose', { n, s: n > 1 ? 's' : '' }) : t('carnet.composeEmpty')}
+          {canCompose
+            ? demoMode.enabled
+              ? t('demo.cta')
+              : t('carnet.compose', { n, s: n > 1 ? 's' : '' })
+            : t('carnet.composeEmpty')}
         </Button>
       </div>
     </div>

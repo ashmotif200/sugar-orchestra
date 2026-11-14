@@ -2,6 +2,7 @@ import { UNIVERSES } from '../../engine/universes'
 import { t } from '../../i18n'
 import { Button, MascotImage } from '../kit'
 import type { Universe } from '../../audio/types'
+import { isUniverseOpen, usePublication } from '../../data/publication'
 
 export default function Home({
   universeId,
@@ -16,7 +17,11 @@ export default function Home({
   resumeCount: number
   onResume: () => void
 }) {
-  const chosen = UNIVERSES.find((u) => u.id === universeId && u.available) ?? UNIVERSES[0]
+  // dépend de la publication : un univers repassé en brouillon devient
+  // automatiquement « Bientôt » et non sélectionnable
+  usePublication()
+  const open = (u: Universe) => isUniverseOpen(u.id)
+  const chosen = UNIVERSES.find((u) => u.id === universeId && open(u)) ?? UNIVERSES.find(open) ?? UNIVERSES[0]
 
   return (
     <div className="screen home">
@@ -32,32 +37,26 @@ export default function Home({
 
       <div className="uni-grid">
         {UNIVERSES.map((u) => {
-          const active = u.id === chosen.id && u.available
+          const available = open(u)
+          const active = u.id === chosen.id && available
           const mascot = u.mascot
-          const label = mascot
-            ? t('home.cardLabel', { mascot: mascot.name, universe: u.name, emotion: u.emotion })
-            : `${u.name} — ${u.emotion}`
+          const name = mascot?.name ?? u.name
+          const label = t('home.cardLabel', { mascot: name, universe: u.name, emotion: u.emotion })
           return (
             <button
               key={u.id}
-              className={`uni-card${u.available ? '' : ' is-soon'}${active ? ' is-active' : ''}`}
-              onClick={() => u.available && onPick(u)}
-              disabled={!u.available}
+              className={`uni-card${available ? '' : ' is-soon'}${active ? ' is-active' : ''}`}
+              onClick={() => available && onPick(u)}
+              disabled={!available}
               aria-pressed={active}
-              aria-label={u.available ? label : `${label} (${t('home.soon')})`}
+              aria-label={available ? label : `${name} — ${u.emotion} (${t('home.soon')})`}
             >
-              <MascotImage
-                files={mascot?.files}
-                alt={label}
-                accent={u.accent}
-                glyph={u.glyph}
-              />
+              <MascotImage files={mascot?.files} alt={label} accent={u.accent} glyph={u.glyph} />
               <span className="uni-body">
-                {mascot && <span className="uni-mascot">{mascot.name}</span>}
-                <span className="uni-name">{u.name}</span>
+                <span className="uni-mascot">{name}</span>
                 <span className="uni-emotion">{u.emotion}</span>
               </span>
-              {!u.available && <span className="uni-soon">{t('home.soon')}</span>}
+              {!available && <span className="uni-soon">{t('home.soon')}</span>}
               {active && <span className="uni-check" aria-hidden="true">✓</span>}
             </button>
           )
@@ -65,7 +64,9 @@ export default function Home({
       </div>
 
       <div className="home-cta">
-        <Button wide onClick={onStart}>{t('home.cta', { universe: chosen.name })}</Button>
+        <Button wide onClick={onStart} disabled={!open(chosen)}>
+          {t('home.ctaMascot', { mascot: chosen.mascot?.name ?? chosen.name })}
+        </Button>
         <p className="micro">{t('home.future')}</p>
       </div>
     </div>

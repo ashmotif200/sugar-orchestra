@@ -1,0 +1,228 @@
+{
+  "_doc": "Instantané de publication généré par scripts/admin/export-publication.mjs depuis data/admin/sugar.db. Ne pas éditer à la main : relancer le script après un changement de statut dans l'administration.",
+  "generatedAt": "2026-11-14T08:14:18.516Z",
+  "universes": [
+    {
+      "id": "ambient-creole",
+      "status": "draft",
+      "engineImplemented": false
+    },
+    {
+      "id": "electro-sega",
+      "status": "published",
+      "engineImplemented": true
+    },
+    {
+      "id": "sega-trad",
+      "status": "draft",
+      "engineImplemented": true
+    },
+    {
+      "id": "segazz",
+      "status": "published",
+      "engineImplemented": false
+    }
+  ],
+  "sounds": [
+    {
+      "code": "01_01",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "01_02",
+      "status": "published",
+      "availability": "available"
+    },
+    {
+      "code": "01_03",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "01_04",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "01_05",
+      "status": "published",
+      "availability": "available"
+    },
+    {
+      "code": "02_01",
+      "status": "published",
+      "availability": "available"
+    },
+    {
+      "code": "02_02",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "02_03",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "02_04",
+      "status": "published",
+      "availability": "available"
+    },
+    {
+      "code": "02_05",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "03_01",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "03_02",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "03_03",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "03_04",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "04_01",
+      "status": "draft",
+      "availability": "not_musical"
+    },
+    {
+      "code": "04_02",
+      "status": "draft",
+      "availability": "not_musical"
+    },
+    {
+      "code": "04_03",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "04_04",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "04_05",
+      "status": "draft",
+      "availability": "not_musical"
+    },
+    {
+      "code": "04_06",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "04_07",
+      "status": "published",
+      "availability": "available"
+    },
+    {
+      "code": "04_08",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "04_09",
+      "status": "published",
+      "availability": "available"
+    },
+    {
+      "code": "04_10",
+      "status": "published",
+      "availability": "available"
+    },
+    {
+      "code": "04_11",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "04_12",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "04_13",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "05_01",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "05_02",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "06_01",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "06_02",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "06_03",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "06_04",
+      "status": "published",
+      "availability": "available"
+    },
+    {
+      "code": "06_05",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "06_06",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "07_01",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "07_02",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "08_01",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "08_02",
+      "status": "draft",
+      "availability": "available"
+    },
+    {
+      "code": "08_03",
+      "status": "draft",
+      "availability": "available"
+    }
+  ]
+}

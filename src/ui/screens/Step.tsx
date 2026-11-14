@@ -2,6 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { audio, catalog, peaks, stepSounds, titleOf } from '../../audio/service'
 import { t } from '../../i18n'
 import { editorialNotes, isMusicallyUsable } from '../../engine/policy'
+import { isSoundOpen } from '../../data/publication'
 import { editorialFor, loadEditorial } from '../../data/editorial'
 import { Badge, Button, EmptyState, ErrorBox, PlayIcon, Spinner, Waveform, fmtTime } from '../kit'
 import type { Session } from '../../session'
@@ -24,7 +25,11 @@ export default function Step({
 }) {
   const step = (catalog.steps ?? []).find((s) => s.id === stepId)
   const sounds = useMemo(() => stepSounds(stepId), [stepId])
-  const [openId, setOpenId] = useState<string | null>(sounds[0]?.id ?? null)
+  // par défaut on ouvre le premier son publié : ouvrir la fiche d'un son
+  // verrouillé laissait croire qu'il était écoutable alors qu'il ne l'est pas
+  // on n'ouvre aucune fiche d'office : sur téléphone, la fiche masque la liste.
+  // Le visiteur voit d'abord les sons de l'étape, puis ouvre celui qu'il veut.
+  const [openId, setOpenId] = useState<string | null>(null)
   // le contenu éditorial arrive en asynchrone : ce compteur force un rendu une fois chargé
   const [editorialTick, setEditorialTick] = useState(0)
   useEffect(() => {
@@ -36,6 +41,7 @@ export default function Step({
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const open: Sound | undefined = sounds.find((s) => s.id === openId)
+  const openLocked = !!open && !isSoundOpen(open.code)
 
   const ids = useMemo(() => sounds.map((s) => s.id), [sounds])
 
@@ -99,19 +105,27 @@ export default function Step({
       <div className="step-split">
         <ul className="rows step-list">
           {sounds.map((s) => {
-            // politique v2 : plus de cadenas musical ; seule l'absence de fichier bloque
-            const locked = !isMusicallyUsable(s)
+            // politique v2 : plus de cadenas musical ; seule l'absence de fichier bloque.
+            // Démo v0.1 : un son non publié dans l'administration est verrouillé « Bientôt ».
+            const soon = !isSoundOpen(s.code)
+            const locked = soon || !isMusicallyUsable(s)
             const inMusic = session.selected.includes(s.id)
             const seen = session.discovered.includes(s.id)
             return (
               <li key={s.id} className={`row${open?.id === s.id ? ' is-open' : ''}`}>
-                <button className="row-main row-main-btn" onClick={() => select(s)}>
+                <button
+                  className="row-main row-main-btn"
+                  onClick={() => { if (!locked) select(s) }}
+                  disabled={locked}
+                  aria-disabled={locked}
+                >
                   <p className="row-title">
                     {editorialFor(s.id)?.title ?? titleOf(s)}
                     {seen && <span className="tick" aria-label={t('step.discovered')}> ✓</span>}
                   </p>
                   <div className="row-meta">
-                    {locked && <Badge tone="lock">🔒 {t('step.historyOnly')}</Badge>}
+                    {soon && <Badge tone="lock">{t('home.soon')}</Badge>}
+                    {!soon && locked && <Badge tone="lock">🔒 {t('step.historyOnly')}</Badge>}
                     {!locked && s.availability === 'tbc' && <Badge tone="warn">{t('step.tbc')}</Badge>}
                     {inMusic && <Badge tone="ok">{t('step.added')}</Badge>}
                   </div>
@@ -159,6 +173,7 @@ export default function Step({
               <button
                 className="play-disc"
                 onClick={togglePlay}
+                disabled={openLocked}
                 aria-label={`${playing === open.id ? t('step.stop') : t('step.listen')} ${titleOf(open)}`}
               >
                 <PlayIcon playing={playing === open.id} />
@@ -209,7 +224,9 @@ export default function Step({
               <p className="note note-history">ℹ️ {editorialNotes(open).label}</p>
             )}
 
-            {!isMusicallyUsable(open) ? (
+            {openLocked ? (
+              <p className="locked-note">🔒 {t('demo.soonNote')}</p>
+            ) : !isMusicallyUsable(open) ? (
               <p className="locked-note">🔒 {t('step.historyOnly')}</p>
             ) : (
               <Button

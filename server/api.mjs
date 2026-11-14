@@ -117,6 +117,23 @@ export async function handleApi(req, res, url) {
   // Le parcours visiteur ne lisait aucun contenu éditorial : /api/content exige
   // la permission content.read et n'était appelé que par l'admin. Cette route
   // publique sert uniquement ce qui a été PUBLIÉ, jamais un brouillon.
+  // État de publication lu par le parcours visiteur : les univers et les sons
+  // réellement publiés. Même base, même table que l'administration — aucune
+  // seconde liste. Un univers en brouillon ou non implémenté reste indisponible,
+  // et un son non publié ne doit être ni écoutable ni collectable.
+  if (path === '/api/v2/public/catalog-state' && method === 'GET') {
+    const d = db()
+    const universes = d.prepare('SELECT id, name, status, engine_implemented FROM universes ORDER BY id').all()
+    const sounds = d.prepare('SELECT id, code, status, availability FROM sounds ORDER BY code').all()
+    return json(res, 200, {
+      generatedAt: new Date().toISOString(),
+      universes: universes.map((u) => ({
+        id: u.id, status: u.status, engineImplemented: Number(u.engine_implemented) === 1,
+      })),
+      sounds: sounds.map((s) => ({ id: s.id, code: s.code, status: s.status, availability: s.availability })),
+    })
+  }
+
   if (path === '/api/v2/public/content' && method === 'GET') {
     const locale = url.searchParams.get('locale') ?? 'fr'
     const d = db()

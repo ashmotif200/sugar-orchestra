@@ -10,7 +10,8 @@
     "soon": "Bientôt",
     "future": "Vous pourrez changer d'univers en cours de route.",
     "resume": "Reprendre ma visite ({n} sons dans ma musique)",
-    "cardLabel": "Mascotte {mascot} — {universe} — {emotion}"
+    "cardLabel": "Mascotte {mascot} — {universe} — {emotion}",
+    "ctaMascot": "Commencer avec {mascot}"
   },
   "parcours": {
     "title": "Votre parcours",
@@ -86,7 +87,8 @@
     "duration": "{time} · {bpm} BPM",
     "gone": "Aucune création retrouvée sur cet appareil. Composez votre pièce avec les sons de votre carnet.",
     "recompose": "Recomposer ma pièce",
-    "restoring": "On récupère votre création enregistrée sur cet appareil…"
+    "restoring": "On récupère votre création enregistrée sur cet appareil…",
+    "newVisit": "Nouvelle visite"
   },
   "audio": {
     "loading": "Chargement des sons…",
@@ -101,5 +103,30 @@
   },
   "a11y": {
     "skip": "Aller au contenu"
+  },
+  "demo": {
+    "kicker": "Démonstration",
+    "preparing": "Un instant…",
+    "neutral": "Le musée prépare l'écoute du résultat.",
+    "phase1": "Ouverture du morceau",
+    "phase2": "Préparation du lecteur",
+    "label": "démonstration",
+    "resultTitle": "Découvrez le résultat musical",
+    "resultLead": "Le morceau ci-dessous est proposé par le musée. Il est identique pour tous les visiteurs de cette démonstration.",
+    "sameForEveryone": "Morceau de démonstration — il n'est pas composé à partir de vos sons.",
+    "collected": "Les sons que vous avez collectés",
+    "collectedNote": "Votre sélection est conservée dans votre carnet, elle servira au prototype de composition.",
+    "missingTitle": "Morceau de démonstration non installé",
+    "missingBody": "Le fichier « {file} » doit être déposé dans public/demo/. Aucun substitut n'est utilisé.",
+    "noAudioSupport": "Votre navigateur ne lit pas cet audio.",
+    "cta": "Découvrir le résultat",
+    "soonNote": "Ce son arrive bientôt : il est visible mais pas encore écoutable ni collectable."
+  },
+  "nav": {
+    "restart": "Recommencer la visite",
+    "restartConfirm": "Recommencer la visite et effacer cette session ?"
+  },
+  "common": {
+    "cancel": "Annuler"
   }
 }

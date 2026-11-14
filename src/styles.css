@@ -380,3 +380,16 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
   .uni-figure { width: 96px; flex: 0 0 96px; }
   .uni-body { justify-items: start; }
 }
+
+/* ---------- démo : encombrement de la barre ---------- */
+.navlink-quiet { display: inline-flex; align-items: center; gap: 6px; }
+@media (max-width: 600px) {
+  /* « Recommencer la visite » ne doit pas élargir la barre sur téléphone :
+     l'icône reste, le libellé passe en aria-label */
+  .navlabel { display: none; }
+  .topbar-nav { gap: 2px; }
+  /* la marque cède la place aux deux entrées de navigation, qui ne doivent
+     pas se couper sur deux lignes */
+  .brand-text { display: none; }
+  .navlink { white-space: nowrap; font-size: .8rem; padding: 8px 8px; }
+}
