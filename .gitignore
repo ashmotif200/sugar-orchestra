@@ -8,3 +8,6 @@ assets/originals/
 assets/references/
 # Super Admin : base, fichiers audio versionnés, publications et credentials
 data/admin/
+
+# archive catalogue (binaires 60 Mo) — conservée sur disque, manifeste versionné dans docs/catalog/
+data/archive/

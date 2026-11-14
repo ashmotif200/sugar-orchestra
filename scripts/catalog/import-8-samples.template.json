@@ -1,0 +1,93 @@
+{
+  "note": "Remplissez un objet par fichier. Les identifiants 90_01 à 90_08 sont réservés à la démo : ils ne réutilisent aucun identifiant historique (01_01…08_03).",
+  "samples": [
+    {
+      "id": "90_01",
+      "file": "/chemin/vers/fichier_1.wav",
+      "name": "",
+      "stepId": null,
+      "description": "",
+      "source": "",
+      "author": "",
+      "license": "",
+      "sensitive": false
+    },
+    {
+      "id": "90_02",
+      "file": "/chemin/vers/fichier_2.wav",
+      "name": "",
+      "stepId": null,
+      "description": "",
+      "source": "",
+      "author": "",
+      "license": "",
+      "sensitive": false
+    },
+    {
+      "id": "90_03",
+      "file": "/chemin/vers/fichier_3.wav",
+      "name": "",
+      "stepId": null,
+      "description": "",
+      "source": "",
+      "author": "",
+      "license": "",
+      "sensitive": false
+    },
+    {
+      "id": "90_04",
+      "file": "/chemin/vers/fichier_4.wav",
+      "name": "",
+      "stepId": null,
+      "description": "",
+      "source": "",
+      "author": "",
+      "license": "",
+      "sensitive": false
+    },
+    {
+      "id": "90_05",
+      "file": "/chemin/vers/fichier_5.wav",
+      "name": "",
+      "stepId": null,
+      "description": "",
+      "source": "",
+      "author": "",
+      "license": "",
+      "sensitive": false
+    },
+    {
+      "id": "90_06",
+      "file": "/chemin/vers/fichier_6.wav",
+      "name": "",
+      "stepId": null,
+      "description": "",
+      "source": "",
+      "author": "",
+      "license": "",
+      "sensitive": false
+    },
+    {
+      "id": "90_07",
+      "file": "/chemin/vers/fichier_7.wav",
+      "name": "",
+      "stepId": null,
+      "description": "",
+      "source": "",
+      "author": "",
+      "license": "",
+      "sensitive": false
+    },
+    {
+      "id": "90_08",
+      "file": "/chemin/vers/fichier_8.wav",
+      "name": "",
+      "stepId": null,
+      "description": "",
+      "source": "",
+      "author": "",
+      "license": "",
+      "sensitive": false
+    }
+  ]
+}
