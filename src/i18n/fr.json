@@ -158,6 +158,11 @@
     "httpsHint": "Solution de secours : appareil photo du téléphone, le QR ouvre directement la fiche.",
     "cameraRefused": "Caméra indisponible",
     "noDetector": "Lecture de QR non prise en charge par ce navigateur",
-    "useNative": "Utilise l'appareil photo du téléphone : le QR contient un lien vers la fiche."
+    "useNative": "Utilise l'appareil photo du téléphone : le QR contient un lien vers la fiche.",
+    "aim": "Vise le QR code du poste",
+    "cameraError": "La caméra n'a pas démarré",
+    "noCameraApi": "Ce navigateur n'expose pas d'accès caméra",
+    "playFailed": "L'aperçu caméra n'a pas pu démarrer",
+    "noCanvas": "Rendu canvas indisponible"
   }
 }

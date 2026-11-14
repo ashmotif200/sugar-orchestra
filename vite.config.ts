@@ -15,12 +15,15 @@ export default defineConfig({
   // cookie stays SameSite=Strict and no CORS relaxation is needed.
   server: {
     port: 5180,
+    strictPort: true,
     host: '0.0.0.0',
     proxy: { '/api': { target: 'http://127.0.0.1:5182', changeOrigin: false } },
   },
   preview: {
     port: 5181,
+    strictPort: true,
     host: '0.0.0.0',
+    allowedHosts: ['hermes.tail6111a5.ts.net'],
     proxy: { '/api': { target: 'http://127.0.0.1:5182', changeOrigin: false } },
   },
 })

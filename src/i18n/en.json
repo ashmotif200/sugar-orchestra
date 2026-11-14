@@ -158,6 +158,11 @@
     "httpsHint": "Fallback: phone camera, the QR opens the sheet directly.",
     "cameraRefused": "Camera unavailable",
     "noDetector": "QR scanning not supported by this browser",
-    "useNative": "Use the phone camera app: the QR contains a link to the sheet."
+    "useNative": "Use the phone camera app: the QR contains a link to the sheet.",
+    "aim": "Point at the station QR code",
+    "cameraError": "Camera did not start",
+    "noCameraApi": "This browser exposes no camera access",
+    "playFailed": "Camera preview could not start",
+    "noCanvas": "Canvas rendering unavailable"
   }
 }
