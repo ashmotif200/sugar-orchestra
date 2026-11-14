@@ -5,7 +5,7 @@ import type { Universe } from '../audio/types'
 export const UNIVERSES: Universe[] = [
   {
     id: 'electro-sega',
-    mascot: { name: 'Martin', files: ['martin-rouge.png', 'Martin Rouge.png'] },
+    mascot: { name: 'Martin', files: ['Martin Rouge.png', 'martin-rouge.png'] },
     name: 'Electro Sega',
     emotion: 'Énergétique',
     style: 'Electro Sega',
@@ -21,7 +21,7 @@ export const UNIVERSES: Universe[] = [
   },
   {
     id: 'sega-trad',
-    mascot: { name: 'Mangouste', files: ['mangouste-jaune.png', 'Mangouste Jaune.png'] },
+    mascot: { name: 'Mangouste', files: ['Mangouste Jaune.png', 'mangouste-jaune.png'] },
     name: 'Sega traditionnel',
     emotion: 'Dansant',
     style: 'Sega traditionnel',
@@ -37,7 +37,7 @@ export const UNIVERSES: Universe[] = [
   },
   {
     id: 'segazz',
-    mascot: { name: 'Dodo', files: ['dodo-vert.png', 'Dodo Vert.png'] },
+    mascot: { name: 'Dodo', files: ['Dodo Vert.png', 'dodo-vert.png'] },
     name: 'Segazz',
     emotion: 'Détendu',
     style: 'Segazz',
@@ -53,7 +53,7 @@ export const UNIVERSES: Universe[] = [
   },
   {
     id: 'ambient-creole',
-    mascot: { name: 'Tortue', files: ['tortue-bleu.png', 'Tortue bleu.png'] },
+    mascot: { name: 'Tortue', files: ['Tortue bleu.png', 'tortue-bleu.png'] },
     name: 'Ambient créole',
     emotion: 'Rêveur',
     style: 'Ambient créole',

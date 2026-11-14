@@ -145,48 +145,46 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 
 /* ---------- home ---------- */
 .home { gap: 18px; padding-top: 8px; }
-.uni-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 14px; }
+.uni-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; }
 
-/* ---------- cartes univers / mascottes ---------- */
+/* ---------- cartes univers / mascottes (compactes) ---------- */
 .uni-card {
-  position: relative; display: flex; flex-direction: column; gap: 10px;
-  padding: 12px; text-align: left; border-radius: var(--r);
-  border: 1.5px solid var(--line); background: var(--card); color: var(--ink);
+  position: relative; display: flex; flex-direction: column; align-items: center;
+  gap: 8px; padding: 12px 10px 14px; text-align: center;
+  border-radius: var(--r); border: 1.5px solid var(--line);
+  background: var(--card); color: var(--ink);
   transition: transform .12s ease, box-shadow .18s ease, border-color .15s ease;
 }
-.uni-card:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 22px rgba(30, 43, 34, .10); }
-.uni-card.is-active { border-color: var(--ink); box-shadow: 0 0 0 3px var(--paper), 0 0 0 5px var(--ink); }
+.uni-card:hover:not(:disabled) { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(30, 43, 34, .10); }
+.uni-card.is-active { border-color: var(--ink); box-shadow: 0 0 0 3px var(--paper), 0 0 0 4px var(--ink); }
 .uni-card.is-soon { background: transparent; border-style: dashed; border-color: var(--line); color: var(--mut); }
 
-/* L'illustration est l'élément principal. Le ratio 1:1 et `contain` sont
-   imposés ici : une image carrée reste carrée, rien n'est recadré ni étiré. */
+/* L'illustration est plafonnée : elle ne prend jamais la largeur de la carte.
+   ratio 1:1 + contain ⇒ jamais étirée, jamais recadrée, entièrement visible. */
 .uni-figure {
-  display: grid; place-items: center; width: 100%;
-  aspect-ratio: 1 / 1; border-radius: 14px; overflow: hidden; background: transparent;
+  display: grid; place-items: center; width: min(140px, 100%);
+  aspect-ratio: 1 / 1; background: transparent;
 }
 .uni-figure img {
   display: block; width: 100%; height: auto;
   aspect-ratio: 1 / 1; object-fit: contain;
-  /* les visuels fournis sont des carrés arrondis exportés sur fond noir :
-     arrondir le cadre retire cet artefact de coin sans toucher à l'image */
-  border-radius: 14px;
 }
-.uni-figure-empty { border: 1px dashed var(--line); background: transparent; }
-.uni-glyph { font-family: var(--serif); font-size: 2.4rem; line-height: 1; opacity: .75; }
+.uni-figure-empty { border: 1px dashed var(--line); border-radius: 10px; }
+.uni-glyph { font-family: var(--serif); font-size: 1.9rem; line-height: 1; opacity: .7; }
 
-.uni-body { display: grid; gap: 2px; }
-.uni-mascot { font-size: .7rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mut); }
-.uni-name { font-family: var(--serif); font-size: 1.15rem; font-weight: 600; line-height: 1.15; }
-.uni-emotion { font-size: .82rem; color: var(--mut); }
-.uni-card.is-soon .uni-figure img { opacity: .7; filter: saturate(.8); }
+.uni-body { display: grid; gap: 1px; justify-items: center; }
+.uni-mascot { font-size: .64rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase; color: var(--mut); }
+.uni-name { font-family: var(--serif); font-size: 1rem; font-weight: 600; line-height: 1.2; }
+.uni-emotion { font-size: .76rem; color: var(--mut); }
+.uni-card.is-soon .uni-figure img { opacity: .72; filter: saturate(.82); }
 .uni-soon {
-  position: absolute; top: 10px; right: 10px; padding: 3px 8px;
-  font-size: .62rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
+  position: absolute; top: 8px; right: 8px; padding: 2px 7px;
+  font-size: .58rem; font-weight: 700; letter-spacing: .1em; text-transform: uppercase;
   background: var(--paper); color: var(--ink); border: 1px solid var(--line); border-radius: 999px;
 }
 .uni-check {
-  position: absolute; top: 10px; right: 10px; width: 24px; height: 24px; border-radius: 999px;
-  display: grid; place-items: center; font-size: .8rem;
+  position: absolute; top: 8px; right: 8px; width: 20px; height: 20px; border-radius: 999px;
+  display: grid; place-items: center; font-size: .7rem;
   background: var(--ink); color: var(--paper);
 }
 .home-cta { display: grid; gap: 8px; margin-top: 4px; }
@@ -361,15 +359,24 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 .hint-loud { border: 1.5px solid var(--coral); background: #fdf1ee; color: #8c2a18; border-radius: var(--r-sm); padding: 10px 12px; font-size: .82rem; }
 .hint-loud b { display: block; margin-bottom: 2px; }
 
-/* ---------- mascottes : adaptations ---------- */
-@media (min-width: 900px) {
-  .uni-grid { gap: 18px; }
-  .uni-card { padding: 14px; }
-  .uni-name { font-size: 1.25rem; }
+/* ---------- mascottes : mise en page ---------- */
+@media (min-width: 700px) {
+  .uni-grid { gap: 16px; }
+  .uni-card { padding: 14px 12px 16px; }
+  .uni-name { font-size: 1.05rem; }
 }
-@media (max-width: 619px) {
-  /* une colonne : l'illustration reste grande et la cible tactile confortable */
-  .uni-grid { grid-template-columns: 1fr; gap: 12px; }
-  .uni-figure { max-width: 320px; }
-  .uni-body { padding-top: 2px; }
+@media (min-width: 1100px) {
+  /* les quatre univers sur une seule ligne, cartes ~230-250 px.
+     Le sélecteur doit battre `.route-home .screen` (720 px) défini plus haut. */
+  .route-home .screen.home { max-width: 1040px; }
+  .uni-grid { grid-template-columns: repeat(4, minmax(0, 1fr)); gap: 16px; }
+  .uni-card { padding: 16px 12px 18px; }
+  .uni-figure { width: min(148px, 100%); }
+}
+@media (max-width: 359px) {
+  /* en dessous, deux colonnes ne tiennent plus : une seule, pleine largeur */
+  .uni-grid { grid-template-columns: 1fr; }
+  .uni-card { flex-direction: row; align-items: center; text-align: left; gap: 12px; }
+  .uni-figure { width: 96px; flex: 0 0 96px; }
+  .uni-body { justify-items: start; }
 }
