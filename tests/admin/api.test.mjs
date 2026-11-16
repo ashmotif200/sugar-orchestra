@@ -379,7 +379,7 @@ async function main() {
   const skipped = results.filter((x) => x.skipped).length
   const executed = passed + failed
   says(`\n${passed}/${executed} contrôles OK`
-    + (skipped ? ` · ${skipped} ignoré(s) faute de masters audio\n` : '\n'))
+    + (skipped ? ` · ${skipped} ignoré(s) faute de donnée préalable\n` : '\n'))
   for (const s of results.filter((x) => x.skipped)) says(`  SKIP ${s.name} — ${s.detail}\n`)
   CODE = failed === 0 ? 0 : 1
 }
