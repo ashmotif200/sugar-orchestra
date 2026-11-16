@@ -76,8 +76,8 @@ secours, planche A4).
 
 - « La musique est générée à partir de vos sons » — c'est faux dans cette version.
 - « Les quatre univers fonctionnent » — un seul fonctionne.
-- « Le son de Lota est enregistré au musée » — sa provenance est à confirmer
-  (`docs/ASSET-LICENSES.md` § 5.1).
+- « Le son de Lota est un enregistrement du musée » — c'est un enregistrement de
+  Tanguy, et sa licence n'est pas attribuée (`docs/ASSET-LICENSES.md` § 5.1)
 - « Testé sur iPhone » — le parcours et la lecture l'ont été, **le scanner caméra non**.
 
 ## 5. Avant d'ouvrir au public

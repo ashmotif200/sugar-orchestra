@@ -149,8 +149,10 @@ l'anti-CSRF, le remplacement audio, le circuit éditorial, l'immuabilité des
 restrictions, la publication, l'audit et la déconnexion. Il n'écrit ni dans
 `data/admin` ni dans le bundle du visiteur.
 
-**État au 16 novembre 2026 : 55/56.** Le contrôle en échec est antérieur à
-l'archivage ; cause et correctif recommandé dans `docs/DEVELOPMENT.md` § 5.
+**État au 16 novembre 2026 : 56/56.** Le contrôle `visitor_catalog_unchanged_by_publish`,
+longtemps rouge pour une raison étrangère à ce qu'il mesurait, a été réparé — il
+compare désormais l'empreinte du bundle avant et après la publication. Détail dans
+`docs/DEVELOPMENT.md` § 5.
 
 ## 9. Après un changement dans l'administration
 

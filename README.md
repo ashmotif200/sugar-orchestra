@@ -408,7 +408,9 @@ automatisation.
 |---|---|
 | Conception et réalisation | équipe Sugar Orchestra, Muséomix 2026 |
 | Musique | **Martin** — « Énergétique » (morceau final) |
-| Illustrations | quatre mascottes fournies par l'équipe projet (auteur à documenter) |
+| Illustrations | **Noémie** — création et illustration des quatre personnages (Martin, Mangouste, Dodo, Tortue) |
+| Développement | **Ashley** — application, backend d'administration et démonstration |
+| Enregistrement du lota | **Tanguy** — son du poste 6 (`04_09_Lota.wav`) |
 | Sons | bibliothèques CC0 / domaine public (SoundBible, Freesound, BigSoundBank) et synthèses originales du projet — détail fichier par fichier dans [`docs/ASSET-LICENSES.md`](docs/ASSET-LICENSES.md) |
 | Lieu | L'Aventure du Sucre, Pamplemousses, Maurice |
 
@@ -420,7 +422,16 @@ Les crédits complets, son par son, sont dans `src/data/catalog.json` (champ
 - **Code** : voir [`LICENSE`](LICENSE) (MIT).
 - **Ressources audio et illustrations** : licences distinctes, détaillées dans
   [`docs/ASSET-LICENSES.md`](docs/ASSET-LICENSES.md). La licence du code ne couvre
-  **pas** les ressources.
+  **pas** les ressources : c'est écrit en tête du fichier `LICENSE`.
+- **Créations des auteurs** (enregistrement de Tanguy, personnages de Noémie, morceau
+  de Martin) : les auteurs sont identifiés et leur accord pour ce projet est confirmé.
+  **Aucune licence** — MIT, CC0, Creative Commons ou autre — ne leur est attribuée.
+  Les conditions d'une charte juridique Muséomix existent mais ne sont pas encore
+  disponibles ; elles resteront à vérifier. Rien n'est présenté comme définitivement
+  vérifié, et aucune ressource n'a été retirée au motif que cette charte manque.
+- **Samples de bibliothèque** : CC0 ou domaine public vérifié à la source pour six des
+  huit samples (SoundBible, Freesound, BigSoundBank) ; les crédits sont affichés dans
+  l'application, son par son.
 - **Polices** : DM Sans et Fraunces, SIL Open Font License 1.1 — textes de licence
   versionnés dans `src/assets/fonts/`.
 

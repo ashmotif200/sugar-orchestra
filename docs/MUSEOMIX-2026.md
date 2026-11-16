@@ -144,9 +144,23 @@ détail dans `docs/music-engine-v2/` et `docs/strategie/` :
    s'automatise avant qu'un résultat produit manuellement convainque — c'est la méthode
    retenue à la fin du projet.
 
-## 5. Remerciements
+## 5. L'équipe
 
-L'Aventure du Sucre, Pamplemousses, Maurice. L'équipe de médiation du musée. Martin,
-pour le morceau. Les bibliothèques sonores libres qui ont fourni la matière
-(SoundBible, Freesound, BigSoundBank) et leurs auteurs, crédités son par son dans le
-catalogue.
+| | |
+|---|---|
+| **Ashley** | développement informatique et démonstration musicale |
+| **Noémie** | création et illustration des personnages — Martin, Mangouste, Dodo, Tortue |
+| **Tanguy** | enregistrement du son du lota (`04_09_Lota.wav`) |
+| **Martin** | composition du morceau final « Énergétique » |
+
+L'équipe de médiation de **L'Aventure du Sucre** (Pamplemousses, Maurice) a accueilli et
+accompagné le projet.
+
+Auteurs et accords sont identifiés ; les conditions de la charte juridique Muséomix
+restent à vérifier, et aucune licence n'est attribuée aux créations des auteurs. Détail :
+[`ASSET-LICENSES.md`](ASSET-LICENSES.md) § 5.
+
+## 6. Remerciements
+
+Les bibliothèques sonores libres qui ont fourni la matière — SoundBible, Freesound,
+BigSoundBank — et leurs auteurs, crédités son par son dans le catalogue.

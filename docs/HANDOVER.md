@@ -120,11 +120,10 @@ Par ordre de valeur décroissante, avec la raison.
    honnête ; les promettre sans les implémenter ne le serait pas.
 4. **Tester le scanner sur un iPhone physique.** Le décodage a été validé en
    navigateur de bureau uniquement.
-5. **Compléter la chaîne de droits** : trois points ouverts dans
-   `docs/ASSET-LICENSES.md` § 5.
-6. **Corriger un test** : `npm run admin:test` renvoie 55/56 pour une raison
-   antérieure à l'archivage (voir `docs/DEVELOPMENT.md` § 5). Le correctif est
-   d'une dizaine de lignes.
+5. **Compléter la chaîne de droits** : les conditions de la charte juridique
+   Muséomix, encore indisponible, et l'autorisation écrite de diffusion du morceau de
+   Martin. Auteurs et accords sont identifiés — voir `docs/ASSET-LICENSES.md` § 5.
+6. **Attendre la validation iPhone** du parcours et du scan caméra.
 7. **Mode hors-ligne complet** (service worker) si l'usage en musée l'exige : la
    session survit déjà à un rechargement, pas le téléchargement des sons.
 
@@ -241,7 +240,7 @@ exactement, aucun `*.m4a` non publié) et pousse sur `gh-pages`. Voir
 | Démonstration | <https://ashmotif200.github.io/sugar-orchestra/> |
 | Branche principale | `main` |
 | Version historique | étiquette `museomix-2026` → commit `38f8490` (14/11/2026 10:54 UTC) |
-| Tests | types OK · admin 55/56 · V2.0 18/18 · V2.1 22/22 |
+| Tests | types OK · admin 56/56 · V2.0 18/18 · V2.1 22/22 |
 | Sauvegarde indépendante | hors dépôt, manifeste SHA-256 de 1 215 fichiers |
 
 ## 14. Questions fréquentes
@@ -258,9 +257,10 @@ redistribution des 32 autres ne sont pas établis. Voir `docs/ASSET-LICENSES.md`
 Parce que la mascotte (donc l'univers musical) doit être choisie d'abord. C'est
 volontaire, mais c'est une limite d'usage réelle.
 
-**Pourquoi `npm run admin:test` échoue-t-il sur un contrôle ?**
-Il constate un état de données antérieur à l'archivage, pas une régression. Cause et
-correctif dans `docs/DEVELOPMENT.md` § 5.
+**Pourquoi `npm run admin:test` échouait-il sur un contrôle ?**
+Il est réparé : 56/56. Le contrôle d'immobilité du bundle mesurait un champ interne au
+lieu de comparer l'empreinte avant/après publication. Détail dans
+`docs/DEVELOPMENT.md` § 5.
 
 **Où sont les 40 sons du catalogue ?**
 Hors dépôt, dans la sauvegarde indépendante et `data/archive/catalog-40/`. Aucun n'a

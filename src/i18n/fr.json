@@ -11,7 +11,9 @@
     "future": "Vous pourrez changer d'univers en cours de route.",
     "resume": "Reprendre ma visite ({n} sons dans ma musique)",
     "cardLabel": "Mascotte {mascot} — {universe} — {emotion}",
-    "ctaMascot": "Commencer avec {mascot}"
+    "ctaMascot": "Commencer avec {mascot}",
+    "credit": "Personnages : Noémie. Développement : Ashley.",
+    "creditLabel": "Crédits"
   },
   "parcours": {
     "title": "Votre parcours",
@@ -122,7 +124,9 @@
     "cta": "Découvrir le résultat",
     "soonNote": "Ce son arrive bientôt : il est visible mais pas encore écoutable ni collectable.",
     "backHome": "Revenir à l'accueil",
-    "playError": "La lecture n'a pas pu démarrer sur ce navigateur."
+    "playError": "La lecture n'a pas pu démarrer sur ce navigateur.",
+    "credit": "« Énergétique », composé par Martin.",
+    "creditLabel": "Crédit"
   },
   "nav": {
     "restart": "Recommencer la visite",

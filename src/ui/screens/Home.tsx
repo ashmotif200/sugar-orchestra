@@ -68,6 +68,9 @@ export default function Home({
           {t('home.ctaMascot', { mascot: chosen.mascot?.name ?? chosen.name })}
         </Button>
         <p className="micro">{t('home.future')}</p>
+        <p className="credits home-credit">
+          <span className="label">{t('home.creditLabel')}</span> {t('home.credit')}
+        </p>
       </div>
     </div>
   )

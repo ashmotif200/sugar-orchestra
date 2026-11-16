@@ -32,7 +32,8 @@ raccourcissement n'était nécessaire, y compris pour `04_09_Lota.wav`.
 
 **Le lot n'est pas homogène.** `04_09_Lota.wav` est en 48 kHz stéréo quand les sept
 autres sont en 32 kHz mono. C'est un fichier passé par une autre chaîne de
-production ; sa provenance est à documenter (`docs/ASSET-LICENSES.md` § 5.1). Le code
+production. C'est un enregistrement de **Tanguy**, distinct de la synthèse
+`assets/originals/04_09.wav` du catalogue (`docs/ASSET-LICENSES.md` § 5.1). Le code
 n'a jamais supposé l'uniformité du format : les buffers du catalogue portent leurs
 propres caractéristiques.
 

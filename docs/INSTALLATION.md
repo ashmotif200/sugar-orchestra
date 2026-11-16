@@ -100,12 +100,14 @@ Résultats obtenus le 16 novembre 2026 sur une copie propre :
 | Commande | Résultat |
 |---|---|
 | `npm run typecheck` | OK |
-| `npm run admin:test` | **55/56** — un contrôle échoue, voir `docs/DEVELOPMENT.md` § 5 |
+| `npm run admin:test` | **56/56** |
 | `npm run v2:test` | **18/18** |
 | `node tests/v2/v21.test.mjs` | **22/22** |
 
-Le contrôle en échec est **antérieur à l'archivage** et sans effet sur le site : il
-constate un état de données, pas une régression.
+Le contrôle `visitor_catalog_unchanged_by_publish` a échoué du 13 au 16 novembre 2026
+puis a été réparé : il mesure désormais l'empreinte du bundle avant et après l'appel
+de publication, au lieu de déduire l'immobilité d'un champ interne. Détail dans
+`docs/DEVELOPMENT.md` § 5.
 
 ---
 

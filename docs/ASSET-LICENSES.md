@@ -8,8 +8,9 @@ effectivement publiées dans ce dépôt et sur la démonstration GitHub Pages.
 > final `energetique v1.wav` et des quatre mascottes, et l'exclusion de tout le
 > reste du catalogue audio. Ce document ne décide donc pas *ce qui est publié* : il
 > documente, pour chaque ressource publiée, **d'où elle vient et à quelles
-> conditions elle peut être redistribuée**. Deux points restent à confirmer par
-> écrit et sont signalés comme tels (§ 5).
+> conditions elle peut être redistribuée**. Les auteurs sont identifiés et leur
+> accord est confirmé ; les conditions de la charte juridique Muséomix restent, elles,
+> à vérifier (§ 5.2).
 
 ---
 
@@ -27,13 +28,16 @@ documentation).
 | 3 | `02_01.wav` | `02_01` | Cuillère, tasse et sucre | BigSoundBank #411 « Spoon in a mug empty » | Joseph SARDIN | **CC0 1.0** | aucune (courtoisie appréciée) | **autorisée** | page consultée le 16/11/2026 : « CC0 (public domain) » |
 | 4 | `02_04.wav` | `02_04` | Commerçants et étals | BigSoundBank #2728 « Outdoor Market #1 » | Joseph SARDIN | **CC0 1.0** | aucune (courtoisie appréciée) | **autorisée** | page consultée le 16/11/2026 : « CC0 (public domain) » |
 | 5 | `04_07.wav` | `04_07` | Le sucre qui crisse | Synthèse produite pour ce projet | équipe Sugar Orchestra | **œuvre originale du projet** | aucune | **autorisée** | crédit du catalogue : « Synthèse créée pour ce dossier » |
-| 6 | `04_09.wav` | `04_09` | Lota et cuillère | fichier `04_09_Lota.wav` fourni dans `Sons_5s.zip` | **à confirmer** | **à confirmer** | — | **publiée sur décision du propriétaire, provenance à documenter** | voir § 5.1 |
+| 6 | `04_09.wav` | `04_09` | Lota et cuillère | enregistrement du lota, fourni dans `Sons_5s.zip` | **Tanguy** | création de l'auteur — **accord confirmé**, licence non attribuée (§ 5) | mention de l'auteur dans la fiche du son | **autorisée** | accord confirmé par le propriétaire du projet le 16/11/2026 |
 | 7 | `04_10.wav` | `04_10` | La signature du contrat | BigSoundBank #221 « Pencil #1 » | Joseph SARDIN | **CC0 1.0** | aucune (courtoisie appréciée) | **autorisée** | page consultée le 16/11/2026 : « CC0 (public domain) » |
 | 8 | `06_04.wav` | `06_04` | Charrette à bœufs | Freesound #437078 « G52-05-Ox Cart.wav » | craigsmith | **CC0 1.0** | aucune | **autorisée** | page consultée le 16/11/2026 : « copy, modify, distribute … without asking permission » |
 
-**Synthèse** : 7 des 8 samples sont soit en CC0/domaine public vérifié (6), soit une
-œuvre originale du projet (1). Le huitième est publié sur décision du propriétaire,
-sa provenance restant à documenter (§ 5.1).
+**Synthèse** : six samples sont en CC0 ou domaine public vérifié à la source, et les
+deux autres sont des créations dont l'auteur est identifié — une synthèse du projet
+(`04_07`) et un enregistrement de Tanguy (`04_09`). Aucun des huit n'est publié « sur
+une licence supposée » : pour chacun, soit la licence est vérifiée, soit l'auteur est
+nommé et son accord confirmé. Les conditions générales de la charte Muséomix restent à
+vérifier (§ 5.2), et aucune licence n'est attribuée aux créations des auteurs.
 
 ### Précisions utiles
 
@@ -71,16 +75,21 @@ navigateurs qui décodent ce format.
 
 ## 3. Illustrations — mascottes
 
+Création et illustration : **Noémie**. Les quatre personnages — Martin, Mangouste,
+Dodo et Tortue — ont été créés et illustrés par elle pour ce projet.
+
 | Fichier | Personnage | Univers | Auteur | Statut |
 |---|---|---|---|---|
-| `public/mascots/Martin Rouge.png` | Martin | Electro Sega (Énergétique) | non documenté | fourni par l'équipe projet (`mascottes.zip`, 14/11/2026) |
-| `public/mascots/Mangouste Jaune.png` | Mangouste | Sega traditionnel (Dansant) | non documenté | idem |
-| `public/mascots/Dodo Vert.png` | Dodo | Segazz (Détendu) | non documenté | idem |
-| `public/mascots/Tortue bleu.png` | Tortue | Ambient créole (Rêveur) | non documenté | idem |
+| `public/mascots/Martin Rouge.png` | Martin | Electro Sega (Énergétique) | **Noémie** | accord confirmé par le propriétaire du projet |
+| `public/mascots/Mangouste Jaune.png` | Mangouste | Sega traditionnel (Dansant) | **Noémie** | idem |
+| `public/mascots/Dodo Vert.png` | Dodo | Segazz (Détendu) | **Noémie** | idem |
+| `public/mascots/Tortue bleu.png` | Tortue | Ambient créole (Rêveur) | **Noémie** | idem |
 
-Les fichiers sont publiés **tels quels** : ni retouchés, ni recompressés. Le nom de
-l'illustrateur n'est pas documenté dans le dossier du projet ; à compléter avant
-toute réutilisation hors de ce dépôt (voir § 5.3).
+Les fichiers sont publiés **tels quels** : ni retouchés, ni recompressés — ce sont les
+originaux reçus dans `mascottes.zip` le 14 novembre 2026. Aucune licence (Creative
+Commons ou autre) ne leur est attribuée : l'accord de l'auteure est confirmé, les
+conditions de la charte Muséomix restent à vérifier (§ 5.2). Pour toute réutilisation
+hors de ce dépôt, l'accord de Noémie doit être obtenu directement.
 
 ## 4. Polices et bibliothèques
 
@@ -98,41 +107,70 @@ pourquoi les deux `OFL-*.txt` sont versionnés à côté des fontes. Les dépend
 JavaScript ne sont pas versionnées (`node_modules/`) ; leurs licences sont celles
 publiées par leurs paquets respectifs.
 
-## 5. Points à confirmer par écrit
+## 5. Auteurs, accords et points en attente
 
-Ces trois points ne bloquent pas la démonstration — le propriétaire du projet a
-demandé la publication de ces ressources — mais ils doivent être tranchés pour que
-la chaîne de droits soit complète.
+### 5.1 Auteurs identifiés
 
-### 5.1 `04_09_Lota.wav` — provenance
+Les contributions artistiques ont été confirmées par le propriétaire du projet le
+**16 novembre 2026**. Seuls les prénoms sont consignés, par choix.
 
-Le catalogue décrit `04_09` comme « Cuillère sur fer blanc », une **synthèse
-originale** du projet. Le fichier fourni pour la démonstration s'appelle
-`04_09_Lota.wav`, dure 5 s et présente des caractéristiques techniques différentes
-(48 kHz stéréo contre 32 kHz mono) : il ne provient donc **pas** du même fichier
-que `assets/originals/04_09.wav`.
+| Auteur | Contribution | Ressource concernée | Accord |
+|---|---|---|---|
+| **Tanguy** | enregistrement du son du lota | `04_09_Lota.wav` → `public/audio/demo/04_09.wav` | confirmé par le propriétaire du projet |
+| **Noémie** | création et illustration des personnages | les quatre mascottes de `public/mascots/` | confirmé par le propriétaire du projet |
+| **Ashley** | développement informatique et démonstration musicale | l'application dans son ensemble | — (auteur du code, voir `LICENSE`) |
+| **Martin** | composition du morceau final « Énergétique » | `public/demo/energetique v1.wav` | voir § 5.3 |
 
-Deux hypothèses, non tranchées :
+**Ce que cela règle** : la provenance de `04_09_Lota.wav` n'est plus une hypothèse.
+C'est un enregistrement de Tanguy, distinct de la synthèse `assets/originals/04_09.wav`
+du catalogue — ce qui explique enfin l'écart de format (48 kHz stéréo contre 32 kHz
+mono) relevé lors de l'inventaire. L'illustrateur des mascottes est Noémie.
 
-1. enregistrement réalisé ou commandé par l'équipe projet au musée → droits
-   détenus par le projet ;
-2. enregistrement dont la source bibliographique n'a pas été consignée → licence à
-   établir.
+**Ce que cela ne règle pas** : un accord donné n'est pas une licence écrite. Voir
+§ 5.2.
 
-**Action demandée** : indiquer l'origine de `04_09_Lota.wav`. En attendant,
-la ressource est publiée sur la décision du propriétaire, et non sur une licence
-vérifiée.
+### 5.2 Charte juridique Muséomix — **indisponible à ce jour**
 
-### 5.2 Morceau de Martin — autorisation de diffusion en ligne
+Une charte juridique du projet Muséomix **existe**, mais elle n'est pas encore
+disponible. Ses conditions exactes — cession de droits, autorisation de diffusion,
+durée, territoire, mention obligatoire — **restent à vérifier** lorsqu'elle sera
+communicée.
 
-Le morceau est fourni par l'équipe pour la démonstration. La diffusion en ligne
-(GitHub Pages, dépôt public) devrait être confirmée par écrit par l'auteur, même
-si elle est demandée par le propriétaire du projet. Un courriel suffit.
+En attendant, l'état exact est le suivant, et il ne doit pas être présenté autrement :
 
-### 5.3 Illustrateur des mascottes
+- les auteurs sont **identifiés** (§ 5.1) ;
+- leur accord pour l'utilisation de leurs créations dans ce projet a été **confirmé par
+  le propriétaire du projet** ;
+- une charte **existe** et **fixera** probablement les conditions ;
+- ces conditions **n'ont pas été lues** et ne sont donc **pas** connues.
 
-Le nom de l'auteur des quatre illustrations n'est pas documenté. À compléter dans
-le tableau § 3.
+**Ce qui n'est pas fait, volontairement :**
+
+- aucune licence (MIT, CC0, Creative Commons ou autre) n'est attribuée aux créations
+  de Tanguy, Noémie ou Martin. Un accord verbal ou implicite n'est pas une licence, et
+  en inventer une serait fabriquer un fait juridique ;
+- la licence MIT du dépôt (`LICENSE`) couvre **le code source uniquement**. Elle ne
+  s'étend ni aux samples, ni aux mascottes, ni au morceau final — c'est écrit en tête
+  du fichier `LICENSE` ;
+- les ressources déjà publiées **ne sont pas retirées** au motif que la charte manque :
+  aucun problème concret de droits n'a été identifié, et les auteurs ont donné leur
+  accord. Retirer des ressources sur une incertitude documentaire créerait un préjudice
+  réel sans bénéfice ;
+- le statut juridique de ces ressources n'est **pas** présenté comme définitivement
+  vérifié, ni dans ce document, ni dans le README, ni dans l'application.
+
+**Action attendue** : quand la charte sera disponible, relire ses conditions, puis
+mettre à jour ce document et, si elle l'exige, la mention de crédit affichée par
+l'application.
+
+### 5.3 Morceau de Martin — autorisation de diffusion en ligne
+
+Le morceau est fourni par l'équipe pour la démonstration, et sa publication a été
+demandée par le propriétaire du projet. La diffusion en ligne (dépôt public, GitHub
+Pages) devrait être confirmée par écrit par l'auteur lui-même. Un courriel suffit.
+
+Tant que cette confirmation n'existe pas : le morceau reste publié sur la décision du
+propriétaire, et **son statut n'est pas présenté comme une licence vérifiée**.
 
 ## 6. Ce qui n'est pas publié, et pourquoi
 

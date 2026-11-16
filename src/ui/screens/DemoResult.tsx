@@ -79,6 +79,11 @@ export default function DemoResult({
         {erreur === 'lecture' && (
           <p className="micro" role="status">{t('demo.playError')}</p>
         )}
+        {erreur !== 'absent' && (
+          <p className="credits demo-credit">
+            <span className="label">{t('demo.creditLabel')}</span> {t('demo.credit')}
+          </p>
+        )}
       </div>
 
       {sounds.length > 0 && (

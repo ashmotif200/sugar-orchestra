@@ -56,11 +56,17 @@ l'engagisme.
 
 ### 2.3 Les droits des ressources
 
-Trois points ouverts dans `docs/ASSET-LICENSES.md` § 5 : la provenance de
-`04_09_Lota.wav`, l'autorisation écrite de Martin, le nom de l'illustrateur des
-mascottes.
+Auteurs identifiés et accords confirmés par le propriétaire du projet : Tanguy
+(enregistrement du lota), Noémie (personnages), Ashley (développement), Martin
+(musique). Ce qui reste ouvert, dans `docs/ASSET-LICENSES.md` § 5 :
 
-**Décision attendue** : ces confirmations, avant toute réutilisation hors de ce dépôt.
+- les **conditions de la charte juridique Muséomix**, qui existe mais n'est pas encore
+  disponible — aucune licence n'est attribuée en attendant, et rien n'est retiré au
+  motif que la charte manque ;
+- l'**autorisation écrite de Martin** pour la diffusion en ligne du morceau.
+
+**Décision attendue** : lire la charte dès qu'elle sera disponible, puis aligner la
+documentation et, si elle l'exige, les mentions de crédit affichées.
 
 ## 3. Ensuite — travail de développement
 

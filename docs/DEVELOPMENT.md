@@ -59,7 +59,7 @@ dû être un bouton.
 | Suite | Commande | Ce qu'elle couvre | Résultat au 16/11/2026 |
 |---|---|---|---|
 | Types | `npm run typecheck` | tout le TypeScript | OK |
-| API admin | `npm run admin:test` | 56 contrôles : auth, permissions, publication, audit, en-têtes | **55/56** (voir § 5) |
+| API admin | `npm run admin:test` | 56 contrôles : auth, permissions, publication, audit, en-têtes | **56/56** |
 | Moteur V2.0 | `npm run v2:test` | 18 contrôles : déterminisme, invariants de hauteur, rendu, crête | **18/18** |
 | Moteur V2.1 | `node tests/v2/v21.test.mjs` | 22 contrôles : modes, basse, durée, rendu identique | **22/22** |
 | Moteur V1 (navigateur) | `?selftest=1&batch=1` puis `&batch=2` | 8 cas, reconnaissabilité mesurée | à relancer manuellement |
@@ -84,28 +84,44 @@ s'arrêtent en nommant le fichier manquant.
 **`npm run build` ne couvre aucune ligne de Python.** Un build vert ne dit rien de
 ces scripts : il faut lancer leur harnais.
 
-## 5. Échec connu de `npm run admin:test`
+## 5. Un test réparé : `visitor_catalog_unchanged_by_publish`
 
-**55/56, contrôle `visitor_catalog_unchanged_by_publish`.**
+Ce contrôle a échoué du 13 au 16 novembre 2026, puis a été corrigé. Garder la trace
+évite de « re-corriger » dans l'autre sens.
 
-Le contrôle lit `src/data/catalog.json` et refuse que son champ `source` contienne
-`admin publication`. Or ce champ vaut
+**Le symptôme.** `npm run admin:test` renvoyait 55/56. Le contrôle lisait
+`src/data/catalog.json` et refusait que son champ `source` contienne
+`admin publication`. Or ce champ valait
 `"admin publication by admin@sugarorchestra.local"` depuis le commit `b59166d`
-(13 novembre), époque où une publication a été appliquée volontairement au bundle
-pour rendre le contenu éditorial visible.
+(13 novembre), où une publication avait été appliquée volontairement au bundle pour
+rendre le contenu éditorial visible.
 
-- **Ce n'est pas une régression** : l'état est identique dans un clone propre du
-  dépôt, et antérieur à l'archivage.
-- **Ce n'est pas un problème de données** : les 40 sons et les 7 étapes sont
-  conformes ; seul le libellé `source` déclenche le test.
-- **Le test mesure la mauvaise chose** : il veut prouver que *publier ne modifie pas
-  le bundle du visiteur*, mais il le déduit d'un champ global au lieu de comparer
-  l'état avant/après l'appel.
+**Pourquoi c'était un faux négatif.** Ce n'était ni une régression ni un problème de
+données : les 40 sons et les 7 étapes étaient conformes, seul le libellé `source`
+déclenchait le test. Le contrôle voulait prouver que *publier ne modifie pas le
+bundle du visiteur*, mais il le déduisait d'un champ global, tributaire d'une action
+passée sans rapport avec l'appel testé.
 
-Correctif recommandé, non appliqué pendant l'archivage (changer un test n'entre pas
-dans une phase de conservation) : calculer le SHA-256 de `src/data/catalog.json`
-avant `POST /api/publication/publish`, le recalculer après, et comparer. C'est la
-preuve directe, et elle cesse de dépendre d'un champ historique.
+**Le correctif** (commit « Tests: le contrôle d'immobilité du bundle mesure une
+empreinte ») : le test calcule le SHA-256 de `src/data/catalog.json` **avant**
+`POST /api/publication/publish`, le recalcule **après**, et compare. C'est la preuve
+directe, et elle ne dépend plus d'un champ historique.
+
+```js
+const bundleHashBefore = sha256File(bundlePath)
+// … POST /api/publication/publish { confirm: 'PUBLIER' } …
+const bundleHashAfter = sha256File(bundlePath)
+check('visitor_catalog_unchanged_by_publish',
+  bundleAfter.sounds?.length === 40 && bundleHashAfter === bundleHashBefore, …)
+```
+
+**Résultat mesuré** : `56/56 contrôles OK`, avec
+`empreinte c9d2382a → c9d2382a` — le fichier est identique à l'octet près, ce qui est
+exactement la propriété annoncée.
+
+**Leçon** : un test qui échoue pour une raison étrangère à ce qu'il mesure finit par
+être ignoré. Le corriger ne consiste pas à changer sa valeur attendue, mais à mesurer
+directement la propriété visée.
 
 ## 6. Pièges connus
 

@@ -11,7 +11,9 @@
     "future": "You can change universe later on.",
     "resume": "Resume my visit ({n} sounds in my music)",
     "cardLabel": "Mascot {mascot} — {universe} — {emotion}",
-    "ctaMascot": "Start with {mascot}"
+    "ctaMascot": "Start with {mascot}",
+    "credit": "Characters: Noémie. Development: Ashley.",
+    "creditLabel": "Credits"
   },
   "parcours": {
     "title": "Your journey",
@@ -122,7 +124,9 @@
     "cta": "Discover the result",
     "soonNote": "This sound is coming soon: visible, but not yet listenable or collectable.",
     "backHome": "Back to home",
-    "playError": "Playback could not start in this browser."
+    "playError": "Playback could not start in this browser.",
+    "credit": "“Énergétique”, composed by Martin.",
+    "creditLabel": "Credit"
   },
   "nav": {
     "restart": "Start over",
