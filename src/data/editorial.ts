@@ -10,6 +10,8 @@
  * parcours garde les titres du catalogue et les crédits. Aucun champ vide n'est
  * affiché.
  */
+import { staticHosting } from './runtime'
+
 export interface EditorialEntry {
   soundId: string
   title: string | null
@@ -29,6 +31,13 @@ export const editorialState = () => state
 
 export function loadEditorial(locale = 'fr'): Promise<Map<string, EditorialEntry>> {
   if (cache) return Promise.resolve(cache)
+  // Hébergement statique : le contenu éditorial publié n'existe pas. On garde les
+  // titres et crédits du catalogue, sans requête réseau ni message d'erreur.
+  if (staticHosting) {
+    cache = new Map()
+    state = { applied: false, publicationId: null, note: 'hébergement statique — titres du catalogue' }
+    return Promise.resolve(cache)
+  }
   if (inflight) return inflight
   inflight = fetch(`/api/v2/public/content?locale=${locale}`)
     .then((r) => (r.ok ? r.json() : null))

@@ -14,6 +14,7 @@
  * l'administration retire l'univers de la sélection au chargement suivant.
  */
 import snapshot from './publication.json'
+import { staticHosting } from './runtime'
 
 export interface UniverseState {
   id: string
@@ -53,6 +54,9 @@ export const catalogState = (): CatalogState => current
 
 /** Charge l'état live une seule fois ; en cas d'échec on garde l'instantané. */
 export function ensurePublication(): Promise<CatalogState> {
+  // Hébergement statique (GitHub Pages) : aucune API derrière cette origine.
+  // On ne tente pas un appel voué au 404 — l'instantané EST la source.
+  if (staticHosting) return Promise.resolve(current)
   if (inflight) return inflight
   const ctrl = typeof AbortController !== 'undefined' ? new AbortController() : null
   const timer = setTimeout(() => ctrl?.abort(), 3000)

@@ -7,6 +7,7 @@
   "scripts": {
     "dev": "vite --host 0.0.0.0 --port 5180",
     "build": "tsc -b && vite build",
+    "build:pages": "tsc -b && VITE_STATIC_HOSTING=1 vite build",
     "preview": "vite preview --host 0.0.0.0 --port 5181",
     "typecheck": "tsc -b --noEmit",
     "demo": "npm run build && vite preview --host 0.0.0.0 --port 5181",

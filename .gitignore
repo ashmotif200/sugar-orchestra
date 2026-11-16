@@ -1,13 +1,49 @@
+# ---------------------------------------------------------------------------
+# Dépendances et artefacts de construction (reconstructibles)
+# ---------------------------------------------------------------------------
 node_modules/
 dist/
-# WAV du musée : conservés sur disque (49 Mo), hors dépôt ; le zip source reste la référence
-assets/originals/
-# artefacts de diagnostic
-*.log
-# références musicales fournies (multipistes lourds, hors dépôt)
-assets/references/
-# Super Admin : base, fichiers audio versionnés, publications et credentials
+dist-root-owned-*/
+*.tsbuildinfo
+
+# ---------------------------------------------------------------------------
+# Secrets et configuration locale — ne JAMAIS versionner
+# ---------------------------------------------------------------------------
+.env
+.env.local
+.env.*.local
+
+# ---------------------------------------------------------------------------
+# Administration : base SQLite, audio versionné, publications, accès initial
+# ---------------------------------------------------------------------------
 data/admin/
 
-# archive catalogue (binaires 60 Mo) — conservée sur disque, manifeste versionné dans docs/catalog/
+# ---------------------------------------------------------------------------
+# Audio du catalogue NON PUBLIÉ
+#
+# Les 40 « sons du musée » sont des enregistrements de bibliothèque dont les
+# droits de redistribution ne sont pas tous établis (voir docs/ASSET-LICENSES.md).
+# Seuls les huit samples de 5 s de la démonstration et le morceau final sont
+# publiés : ils vivent dans public/audio/demo/ et public/demo/.
+#
+# Les originaux complets, les versions de diffusion 20 s et les pistes de
+# référence sont conservés hors dépôt (sauvegarde indépendante) et peuvent être
+# réintégrés avec `npm run import-assets` — voir docs/AUDIO.md.
+# ---------------------------------------------------------------------------
+public/audio/*.m4a
+assets/originals/
+assets/references/
+assets/backup/*.wav
 data/archive/
+
+# ---------------------------------------------------------------------------
+# Audio de validation V2.0.5 : pistes de clic régénérables + stems de référence
+# (`scripts/v2/build-style-models.py --check` les reconstruit).
+# ---------------------------------------------------------------------------
+docs/v2.0.5/validation/audio/
+
+# ---------------------------------------------------------------------------
+# Divers
+# ---------------------------------------------------------------------------
+*.log
+.DS_Store

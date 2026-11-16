@@ -20,6 +20,7 @@ import Poste from './ui/screens/Poste'
 import Scanner from './ui/Scanner'
 import { resolveQr } from './data/postes'
 import { demoMode } from './data/demo'
+import { staticHosting } from './data/runtime'
 import { ensurePublication, isSoundOpen, isUniverseOpen, usePublication } from './data/publication'
 import Result from './ui/screens/Result'
 import SelfTest from './ui/SelfTest'
@@ -57,6 +58,12 @@ export default function App() {
     })
   }, [])
   const [offline, setOffline] = useState(typeof navigator !== 'undefined' ? !navigator.onLine : false)
+
+  // Hébergement statique : `#/admin` n'a aucun serveur pour l'authentifier.
+  // On ramène le visiteur à l'accueil au lieu de charger le bundle d'administration.
+  useEffect(() => {
+    if (staticHosting && route.name === 'admin') navigate({ name: 'home' })
+  }, [route, navigate])
 
   useEffect(() => { saveSession(session); purgeLegacyKey() }, [session])
   useEffect(() => {
@@ -187,7 +194,7 @@ export default function App() {
 
   if (selftest) return <SelfTest />
 
-  if (route.name === 'admin') {
+  if (route.name === 'admin' && !staticHosting) {
     return (
       <Suspense fallback={<div className="adm-boot"><p>Chargement de l’administration…</p></div>}>
         <AdminApp
@@ -197,6 +204,10 @@ export default function App() {
       </Suspense>
     )
   }
+  // Hébergement statique : aucune administration n'existe derrière le site.
+  // `#/admin` est ramené à l'accueil visiteur (voir l'effet plus haut) ; on ne
+  // rend rien entre-temps pour ne pas flasher d'écran de connexion.
+  if (route.name === 'admin') return null
 
   const rail = (
     <nav className="rail" aria-label={t('parcours.title')}>

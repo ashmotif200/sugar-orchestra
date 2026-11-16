@@ -2,7 +2,7 @@ import { useEffect, useMemo, useState } from 'react'
 import { audio, catalog, peaks, stepSounds, titleOf } from '../../audio/service'
 import { t } from '../../i18n'
 import { editorialNotes, isMusicallyUsable } from '../../engine/policy'
-import { isSoundOpen } from '../../data/publication'
+import { isSoundOpen, usePublication } from '../../data/publication'
 import { editorialFor, loadEditorial } from '../../data/editorial'
 import { Badge, Button, EmptyState, ErrorBox, PlayIcon, Spinner, Waveform, fmtTime } from '../kit'
 import type { Session } from '../../session'
@@ -25,6 +25,8 @@ export default function Step({
 }) {
   const step = (catalog.steps ?? []).find((s) => s.id === stepId)
   const sounds = useMemo(() => stepSounds(stepId), [stepId])
+  // l'état de publication pilote ce qui est réellement téléchargeable
+  const pub = usePublication()
   // par défaut on ouvre le premier son publié : ouvrir la fiche d'un son
   // verrouillé laissait croire qu'il était écoutable alors qu'il ne l'est pas
   // on n'ouvre aucune fiche d'office : sur téléphone, la fiche masque la liste.
@@ -43,7 +45,14 @@ export default function Step({
   const open: Sound | undefined = sounds.find((s) => s.id === openId)
   const openLocked = !!open && !isSoundOpen(open.code)
 
-  const ids = useMemo(() => sounds.map((s) => s.id), [sounds])
+  // Seuls les sons publiés sont réellement téléchargés : un son verrouillé
+  // « Bientôt » n'est pas ouvrable (`disabled`), son audio n'a donc personne à
+  // servir. Sans ce filtre, une étape tire aussi les fichiers des sons en
+  // brouillon — et échoue en 404 quand ils ne sont pas publiés avec le site.
+  const ids = useMemo(
+    () => sounds.filter((s) => isSoundOpen(s.code)).map((s) => s.id),
+    [sounds, pub],
+  )
 
   const load = () => {
     setLoading(true)

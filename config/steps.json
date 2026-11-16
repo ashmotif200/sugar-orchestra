@@ -1,57 +1,64 @@
 {
-  "_doc": "Les 7 étapes du parcours. Titres et libellés repris tels quels de sugar-orchestra-directions.html (direction C). Le rattachement aux séquences de l'Inventaire est une PROPOSITION : 7 et 8 sont réunies dans « Bagasse » parce que le document décrit sept étapes pour huit séquences d'inventaire. À valider par l'équipe projet.",
+  "version": 2,
   "steps": [
     {
       "id": 1,
-      "title": "Les origines",
-      "short": "Origines",
-      "sequences": [1],
-      "summary": "Volcan, forêt, bateaux : l'île avant le sucre."
+      "title": "Les origines : quand Maurice surgit de l'océan",
+      "sounds": [
+        "01_01",
+        "01_02",
+        "01_03"
+      ]
     },
     {
       "id": 2,
-      "title": "Le sucre traverse les âges",
-      "short": "Âges du sucre",
-      "sequences": [2],
-      "summary": "Du geste de la cuillère aux étals du marché."
+      "title": "Le sucre traverse les âges : du commerce à la dégustation",
+      "sounds": [
+        "02_04",
+        "02_01"
+      ]
     },
     {
       "id": 3,
-      "title": "Les métiers du sucre",
-      "short": "Métiers",
-      "sequences": [3],
-      "summary": "Cordonnier, forgeron, fondeur, charpentier : les mains de l'atelier."
+      "title": "Les métiers du sucre : les artisans qui construisent l’industrie",
+      "sounds": [
+        "03_04"
+      ]
     },
     {
       "id": 4,
-      "title": "La mémoire des plantations",
-      "short": "Mémoire",
-      "sequences": [4],
-      "sensitive": true,
-      "badge": "Écoute contextualisée",
-      "summary": "Fouet, fers, chaînes : ce que le sucre a coûté. Écoute accompagnée, jamais utilisée en musique."
+      "title": "La mémoire des plantations : esclavage, engagisme et travail agricole",
+      "sounds": [
+        "04_02",
+        "04_09"
+      ]
     },
     {
       "id": 5,
-      "title": "La canne",
-      "short": "Canne",
-      "sequences": [5],
-      "badge": "À confirmer",
-      "summary": "La plante, sa croissance, ses expériences."
+      "title": "La canne à sucre : une plante qui transforme le paysage",
+      "sounds": [
+        "05_01"
+      ]
     },
     {
       "id": 6,
-      "title": "De la canne au sucre",
-      "short": "Canne → sucre",
-      "sequences": [6],
-      "summary": "Moulins, charrettes, engrenages : la matière se transforme."
+      "title": "De la canne au sucre : le travail de transformation",
+      "sounds": [
+        "04_03",
+        "06_04",
+        "06_06",
+        "08_02",
+        "08_03",
+        "04_07"
+      ]
     },
     {
       "id": 7,
-      "title": "De la bagasse à l'électricité",
-      "short": "Bagasse",
-      "sequences": [7, 8],
-      "summary": "Ce qui reste de la canne fait tourner l'usine."
+      "title": "De la bagasse à l’électricité : une nouvelle énergie pour l’île",
+      "sounds": [
+        "07_01",
+        "07_02"
+      ]
     }
   ]
 }

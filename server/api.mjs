@@ -835,13 +835,26 @@ function buildPublicationManifest(user) {
   }
 }
 
-/** Run the existing analysis toolchain, if present. Never invents a result. */
+/**
+ * Run the existing analysis toolchain, if present. Never invents a result.
+ *
+ * Le chemin n'est pas censé être codé en dur : il dépend de la machine. On le lit
+ * dans `SO_ANALYSIS_HOME` (racine d'une installation du toolchain d'analyse, qui
+ * contient `bin/so` et `renv/analysis/bin/python`). Absent, la route répond
+ * honnêtement que l'outil n'est pas installé sur cet hôte — elle n'invente rien.
+ */
 function runToolchainAnalyse(filePath) {
-  const py = '/opt/data/tools/sugar-audio/renv/analysis/bin/python'
-  const wrapper = '/opt/data/tools/sugar-audio/bin/so'
+  const home = process.env.SO_ANALYSIS_HOME || ''
+  const py = home ? join(home, 'renv', 'analysis', 'bin', 'python') : ''
+  const wrapper = home ? join(home, 'bin', 'so') : ''
   return new Promise((res) => {
-    if (!existsSync(py) || !existsSync(wrapper)) {
-      return res({ ok: false, error: 'toolchain d’analyse absent de cet hôte (/opt/data/tools/sugar-audio)' })
+    if (!home || !existsSync(py) || !existsSync(wrapper)) {
+      return res({
+        ok: false,
+        error: home
+          ? `toolchain d’analyse incomplet dans SO_ANALYSIS_HOME=${home} (attendu : bin/so et renv/analysis/bin/python)`
+          : 'toolchain d’analyse non configuré (définir SO_ANALYSIS_HOME ; voir docs/INSTALLATION.md)',
+      })
     }
     const p = spawn(wrapper, ['analyze', '--no-cache', filePath], { stdio: ['ignore', 'pipe', 'pipe'] })
     let out = ''
