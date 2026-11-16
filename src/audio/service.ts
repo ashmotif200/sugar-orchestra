@@ -1,5 +1,5 @@
 import type { Catalog, Sound } from './types'
-import { applyEnvelope, bufferPeak, makeupFor, previewWindow, PREVIEW_PEAK as PREVIEW_CEILING } from './previewEnvelope'
+import { applyEnvelope, bufferPeak, makeupFor, PREVIEW_PEAK, previewWindow } from './previewEnvelope'
 import catalogJson from '../data/catalog.json'
 import { renderScore, encodeWav, type RenderReport } from '../engine/render'
 import type { Score } from '../engine/plan'
@@ -119,11 +119,6 @@ class AudioService {
     return this.ctx !== null && this.ctx.state === 'running'
   }
 
-  /** État du contexte, pour le diagnostic (jamais utilisé pour décider du parcours). */
-  contextState(): string {
-    return this.ctx ? this.ctx.state : 'absent'
-  }
-
   /** Obtient le contexte sans jamais attendre : sûr dans un gestionnaire de geste. */
   private contextSync(): AudioContext {
     if (!this.ctx) {
@@ -232,7 +227,7 @@ class AudioService {
     // la crête du fichier, plafonnée, sans compression et sans toucher aux fichiers.
     let peak = this.peaks.get(sound.id)
     if (peak === undefined) { peak = bufferPeak(buf); this.peaks.set(sound.id, peak) }
-    applyEnvelope(gain.gain, ctx.currentTime, dur, makeupFor(peak) * PREVIEW_CEILING)
+    applyEnvelope(gain.gain, ctx.currentTime, dur, makeupFor(peak) * PREVIEW_PEAK)
     src.connect(gain)
     gain.connect(ctx.destination)
     src.start(0, offset, dur)
