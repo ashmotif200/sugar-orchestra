@@ -330,12 +330,33 @@ export function seedFromBundle() {
     }
   }
 
+  /**
+   * Univers : nom, ambiance et paramètres sont des constantes du produit, mais
+   * l'ÉTAT DE PUBLICATION ne doit pas être figé ici. Un seed qui contredit
+   * `src/data/publication.json` (l'état que le site embarque réellement) produit
+   * un clone où l'administration et le visiteur ne sont pas d'accord — et où
+   * `export-publication.mjs` change la démonstration par surprise.
+   * On lit donc statut + moteur implémenté dans l'instantané versionné quand il
+   * existe, et on ne retombe sur les valeurs par défaut qu'à défaut de fichier.
+   */
   const universes = [
     ['electro-sega', 'Electro Sega', 'Énergétique', 'published', 1, { bpm: 112, bars: 16 }, 1],
     ['sega-trad', 'Sega traditionnel', 'Dansant', 'published', 1, { bpm: 126, bars: 24 }, 1],
     ['ambient-creole', 'Ambient créole', 'Rêveur', 'draft', 1, { bpm: 72, bars: 12 }, 0],
     ['segazz', 'Segazz', 'Détendu', 'draft', 1, { bpm: 88, bars: 16 }, 0],
   ]
+  const pubPath = join(ROOT, 'src', 'data', 'publication.json')
+  if (existsSync(pubPath)) {
+    try {
+      const pub = JSON.parse(readFileSync(pubPath, 'utf8'))
+      for (const row of universes) {
+        const known = (pub.universes ?? []).find((u) => u.id === row[0])
+        if (!known) continue
+        row[3] = known.status ?? row[3]
+        row[6] = known.engineImplemented ? 1 : 0
+      }
+    } catch { /* instantané illisible : on garde les valeurs par défaut */ }
+  }
   const insU = d.prepare(`INSERT INTO universes
     (id, name, description, status, version, params_json, engine_implemented, updated_at)
     VALUES (?,?,?,?,?,?,?,?)`)
