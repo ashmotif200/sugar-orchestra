@@ -12,7 +12,7 @@ import { spawn } from 'node:child_process'
 import { mkdtempSync, rmSync, writeFileSync, existsSync, readdirSync, readFileSync } from 'node:fs'
 import { tmpdir } from 'node:os'
 import { join } from 'node:path'
-import { randomBytes } from 'node:crypto'
+import { createHash, randomBytes } from 'node:crypto'
 
 const ROOT = process.cwd()
 const tmp = mkdtempSync(join(tmpdir(), 'so-admin-test-'))
@@ -28,6 +28,9 @@ function check(name, ok, detail = '') {
 }
 
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
+
+/** Empreinte d'un fichier : sert à prouver qu'un fichier n'a pas bougé. */
+const sha256File = (path) => createHash('sha256').update(readFileSync(path)).digest('hex')
 
 async function waitReady(timeoutMs = 15000) {
   const t0 = Date.now()
@@ -273,6 +276,13 @@ async function main() {
       'aucun champ sensible')
 
     /* ------------------------------------------------------- publication */
+    // Le bundle du visiteur ne doit pas bouger d'un octet. On mesure donc son
+    // empreinte AVANT l'appel, au lieu de déduire l'immobilité d'un champ interne
+    // (`source`) : ce champ contient légitimement « admin publication … » depuis
+    // qu'une publication a été appliquée au bundle, et le test échouait alors pour
+    // une raison sans rapport avec ce qu'il veut prouver.
+    const bundlePath = join(ROOT, 'src/data/catalog.json')
+    const bundleHashBefore = sha256File(bundlePath)
     r = await authed('/api/publication/preview')
     const prev = await r.json()
     check('publication_preview_counts', prev.manifest?.sounds === 40, JSON.stringify(prev.manifest?.sounds))
@@ -290,9 +300,11 @@ async function main() {
     check('publish_does_not_touch_visitor_bundle', published.applied === false,
       'applied=false, bundle intact')
 
-    const bundle = JSON.parse(readFileSync(join(ROOT, 'src/data/catalog.json'), 'utf8'))
-    check('visitor_catalog_unchanged_by_publish', bundle.sounds?.length === 40 && !bundle.source?.includes('admin publication'),
-      `source=${bundle.source}`)
+    const bundleAfter = JSON.parse(readFileSync(bundlePath, 'utf8'))
+    const bundleHashAfter = sha256File(bundlePath)
+    check('visitor_catalog_unchanged_by_publish',
+      bundleAfter.sounds?.length === 40 && bundleHashAfter === bundleHashBefore,
+      `${bundleAfter.sounds?.length} sons, empreinte ${bundleHashBefore.slice(0, 8)} → ${bundleHashAfter.slice(0, 8)}`)
 
     /* ------------------------------------------------------------ audit */
     r = await authed('/api/audit?limit=50')
