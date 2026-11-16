@@ -27,6 +27,23 @@ function check(name, ok, detail = '') {
   says(`${ok ? 'PASS' : 'FAIL'} ${name}${detail ? '  ' + String(detail).slice(0, 160) : ''}\n`)
 }
 
+/**
+ * Contrôle NON EXÉCUTÉ, faute de donnée préalable.
+ *
+ * Sur un clone du dépôt, `assets/originals/` est absent : les 40 masters audio ne
+ * sont pas publiés (droits non établis). Deux contrôles ne peuvent alors pas
+ * s'exécuter. Un SKIP est compté à part et affiché comme tel — jamais maquillé en
+ * PASS, jamais compté comme un échec du code testé.
+ */
+function skip(name, reason) {
+  results.push({ name, ok: null, skipped: true, detail: reason })
+  says(`SKIP ${name}  ${reason}\n`)
+}
+
+/** Les masters sont-ils présents sur cet hôte ? (hors dépôt par conception) */
+const HAS_MASTERS = existsSync(join(ROOT, 'assets', 'originals'))
+  && readdirSync(join(ROOT, 'assets', 'originals')).some((f) => f.endsWith('.wav'))
+
 const sleep = (ms) => new Promise((r) => setTimeout(r, ms))
 
 /** Empreinte d'un fichier : sert à prouver qu'un fichier n'a pas bougé. */
@@ -203,17 +220,27 @@ async function main() {
     check('original_version_is_kept', detail.versions?.some((v) => v.version === 1),
       'v1 toujours présente')
 
-    r = await authed('/api/sounds/01_01/restore/1', { method: 'POST' })
-    const restored = await r.json()
-    check('restore_creates_new_version', r.status === 201 && restored.version === 3,
-      `v${restored.version} depuis v${restored.restoredFrom}`)
+    if (HAS_MASTERS) {
+      r = await authed('/api/sounds/01_01/restore/1', { method: 'POST' })
+      const restored = await r.json()
+      check('restore_creates_new_version', r.status === 201 && restored.version === 3,
+        `v${restored.version} depuis v${restored.restoredFrom}`)
+    } else {
+      skip('restore_creates_new_version',
+        'assets/originals/ absent : la v1 du catalogue n’a pas de fichier à restaurer')
+    }
 
     const versionsOnDisk = existsSync(join(tmp, 'data', 'files', '01_01'))
       ? readdirSync(join(tmp, 'data', 'files', '01_01')).length : 0
     check('new_audio_versions_stored_on_disk', versionsOnDisk >= 1, `${versionsOnDisk} fichier(s) sous data/admin/files`)
-    check('original_registered_as_v1_with_hash',
-      detail.versions?.some((v) => v.version === 1 && !!v.sha256 && (v.file_path ?? '').includes('assets/originals')),
-      detail.versions?.find((v) => v.version === 1)?.note ?? 'v1 absente')
+    if (HAS_MASTERS) {
+      check('original_registered_as_v1_with_hash',
+        detail.versions?.some((v) => v.version === 1 && !!v.sha256 && (v.file_path ?? '').includes('assets/originals')),
+        detail.versions?.find((v) => v.version === 1)?.note ?? 'v1 absente')
+    } else {
+      skip('original_registered_as_v1_with_hash',
+        'assets/originals/ absent : aucune empreinte de master à enregistrer')
+    }
 
     /* ------------------------------------------------------ content flow */
     r = await authed('/api/content/01_01:fr', { method: 'PATCH',
@@ -339,9 +366,14 @@ async function main() {
     rmSync(tmp, { recursive: true, force: true })
   }
 
-  const passed = results.filter((x) => x.ok).length
-  says(`\n${passed}/${results.length} contrôles OK\n`)
-  CODE = passed === results.length ? 0 : 1
+  const passed = results.filter((x) => x.ok === true).length
+  const failed = results.filter((x) => x.ok === false).length
+  const skipped = results.filter((x) => x.skipped).length
+  const executed = passed + failed
+  says(`\n${passed}/${executed} contrôles OK`
+    + (skipped ? ` · ${skipped} ignoré(s) faute de masters audio\n` : '\n'))
+  for (const s of results.filter((x) => x.skipped)) says(`  SKIP ${s.name} — ${s.detail}\n`)
+  CODE = failed === 0 ? 0 : 1
 }
 
 function makeWav(seconds = 0.5, sr = 32000) {
