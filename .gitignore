@@ -47,3 +47,8 @@ docs/v2.0.5/validation/audio/
 # ---------------------------------------------------------------------------
 *.log
 .DS_Store
+
+# Sortie de compilation V2.1 (régénérée par `tests/v2/v21.test.mjs`,
+# `scripts/v2/make-demos-21.mjs` et `scripts/v2/analyze-layers.mjs`, qui
+# lancent tsc dans ce dossier avant de l'utiliser).
+.v21build/
