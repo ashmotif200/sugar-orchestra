@@ -149,10 +149,11 @@ l'anti-CSRF, le remplacement audio, le circuit éditorial, l'immuabilité des
 restrictions, la publication, l'audit et la déconnexion. Il n'écrit ni dans
 `data/admin` ni dans le bundle du visiteur.
 
-**État au 16 novembre 2026 : 56/56.** Le contrôle `visitor_catalog_unchanged_by_publish`,
-longtemps rouge pour une raison étrangère à ce qu'il mesurait, a été réparé — il
-compare désormais l'empreinte du bundle avant et après la publication. Détail dans
-`docs/DEVELOPMENT.md` § 5.
+**État au 16 novembre 2026 : 56/56** dans l'atelier (masters audio présents).
+Sur un clone du dépôt, deux contrôles sont **ignorés** faute de masters
+(`54/54 + 2 ignorés`, motif affiché) : ils dépendent des fichiers de `assets/originals/`,
+volontairement non publiés. Lancez `npm run build` avant `admin:test` — le serveur sert
+`dist/`. Détail dans `docs/DEVELOPMENT.md` § 4.
 
 ## 9. Après un changement dans l'administration
 

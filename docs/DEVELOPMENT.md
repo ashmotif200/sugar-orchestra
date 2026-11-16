@@ -59,13 +59,30 @@ dû être un bouton.
 | Suite | Commande | Ce qu'elle couvre | Résultat au 16/11/2026 |
 |---|---|---|---|
 | Types | `npm run typecheck` | tout le TypeScript | OK |
-| API admin | `npm run admin:test` | 56 contrôles : auth, permissions, publication, audit, en-têtes | **56/56** |
+| API admin | `npm run build` puis `npm run admin:test` | 56 contrôles : auth, permissions, publication, audit, en-têtes | **56/56** dans l'atelier · **54/54 + 2 ignorés** sur un clone |
 | Moteur V2.0 | `npm run v2:test` | 18 contrôles : déterminisme, invariants de hauteur, rendu, crête | **18/18** |
 | Moteur V2.1 | `node tests/v2/v21.test.mjs` | 22 contrôles : modes, basse, durée, rendu identique | **22/22** |
 | Moteur V1 (navigateur) | `?selftest=1&batch=1` puis `&batch=2` | 8 cas, reconnaissabilité mesurée | à relancer manuellement |
 
 La suite V1 se lance **en deux lots** : un seul onglet sature en mémoire sur huit
 rendus. C'est une contrainte réelle, pas une précaution.
+
+### `admin:test` sur un clone : deux contrôles sont ignorés, et le disent
+
+Le harnais exige deux données préalables :
+
+- **`dist/`** — le serveur d'administration sert le build. Sans lui,
+  `visitor_app_served` et `security_headers_present` ne peuvent pas s'exécuter.
+  D'où : `npm run build` **avant** `npm run admin:test`.
+- **`assets/originals/`** — les 40 masters, volontairement non publiés. Sans eux, la
+  version 1 du catalogue n'a ni fichier ni empreinte, et restaurer cette version n'a
+  rien à copier. `restore_creates_new_version` et `original_registered_as_v1_with_hash`
+  sont alors **ignorés**.
+
+Un contrôle ignoré n'est pas un succès : il est affiché `SKIP`, avec sa raison, et
+compté à part du total (`54/54 contrôles OK · 2 ignoré(s) faute de donnée préalable`).
+Le code de sortie reste 0 tant qu'aucun contrôle n'a réellement échoué. C'est la
+règle : nommer ce qui ne tourne pas, jamais le maquiller en vert.
 
 ### Harnais Python
 

@@ -97,17 +97,16 @@ node tests/v2/v21.test.mjs
 
 Résultats obtenus le 16 novembre 2026 sur une copie propre :
 
-| Commande | Résultat |
-|---|---|
-| `npm run typecheck` | OK |
-| `npm run admin:test` | **56/56** |
-| `npm run v2:test` | **18/18** |
-| `node tests/v2/v21.test.mjs` | **22/22** |
+| Commande | Résultat (atelier, masters présents) | Résultat (clone du dépôt) |
+|---|---|---|
+| `npm run typecheck` | OK | OK |
+| `npm run build` puis `npm run admin:test` | **56/56** | **54/54** + 2 contrôles ignorés (masters absents, motif affiché) |
+| `npm run v2:test` | **18/18** | 18/18 |
+| `node tests/v2/v21.test.mjs` | **22/22** | 22/22 |
 
-Le contrôle `visitor_catalog_unchanged_by_publish` a échoué du 13 au 16 novembre 2026
-puis a été réparé : il mesure désormais l'empreinte du bundle avant et après l'appel
-de publication, au lieu de déduire l'immobilité d'un champ interne. Détail dans
-`docs/DEVELOPMENT.md` § 5.
+`admin:test` a besoin de `dist/` : lancez `npm run build` d'abord. Sur un clone sans
+masters audio, deux contrôles sont **ignorés** — ils ne tournent pas, et le harnais le
+dit au lieu de les compter comme des succès (voir `docs/DEVELOPMENT.md` § 4).
 
 ---
 

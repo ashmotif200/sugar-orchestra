@@ -316,10 +316,16 @@ l'accueil visiteur.
 
 ```bash
 npm run typecheck      # types TypeScript
+npm run build          # requis avant admin:test : le serveur sert dist/
 npm run admin:test     # API d'administration : base jetable, vrai serveur, vraie CLI
 npm run v2:test        # moteur V2.0 : déterminisme, invariants, rendu
 node tests/v2/v21.test.mjs   # moteur V2.1 : 22 contrôles
 ```
+
+Dans l'atelier (masters audio présents) : **56/56**. Sur un clone du dépôt, deux
+contrôles sont **ignorés** — ils dépendent des masters de `assets/originals/`, non
+publiés — et le harnais l'affiche (`54/54 · 2 ignorés`). Un contrôle qui ne peut pas
+tourner est nommé, jamais compté comme un succès.
 
 Et dans le navigateur, la suite d'invariants du moteur V1 — **en deux lots**, un seul
 onglet sature en mémoire sur huit rendus :

@@ -240,7 +240,8 @@ exactement, aucun `*.m4a` non publié) et pousse sur `gh-pages`. Voir
 | Démonstration | <https://ashmotif200.github.io/sugar-orchestra/> |
 | Branche principale | `main` |
 | Version historique | étiquette `museomix-2026` → commit `38f8490` (14/11/2026 10:54 UTC) |
-| Tests | types OK · admin 56/56 · V2.0 18/18 · V2.1 22/22 |
+| Tests | types OK · admin 56/56 (54/54 + 2 ignorés sur un clone) · V2.0 18/18 · V2.1 22/22 |
+| Restauration vérifiée | clone propre depuis GitHub : install, typecheck, build, parcours visiteur, 8 postes, carnet, morceau, 10 sections d'administration |
 | Sauvegarde indépendante | hors dépôt, manifeste SHA-256 de 1 215 fichiers |
 
 ## 14. Questions fréquentes
