@@ -1,5 +1,5 @@
 {
-  "_doc": "Base des liens encodés dans les QR. Modifier cette valeur puis relancer `node scripts/qr/make-posters.mjs` suffit à régénérer les huit codes : aucun code source n'encode d'adresse. À remplir avec l'adresse HTTPS validée avant impression.",
-  "baseUrl": "http://100.88.94.51:5181/",
+  "_doc": "Base des liens encodés dans les QR. Modifier cette valeur puis relancer `node scripts/qr/make-posters.mjs` suffit à régénérer les huit codes : aucun code source n'encode d'adresse. Valeur actuelle : adresse de la démonstration GitHub Pages.",
+  "baseUrl": "https://ashmotif200.github.io/sugar-orchestra/",
   "path": "#/poste/{id}"
 }
