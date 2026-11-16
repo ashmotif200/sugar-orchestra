@@ -9,6 +9,7 @@ export type Route =
   | { name: 'result' }
   | { name: 'poste'; id: number; key?: string }
   | { name: 'admin'; section: string }
+  | { name: 'adminDemo' }
 
 export function parseHash(hash: string): Route {
   const path = hash.replace(/^#/, '') || '/'
@@ -16,6 +17,8 @@ export function parseHash(hash: string): Route {
   // Admin lives under #/admin so QR codes and visitor deep links (#/etape/N) keep
   // working untouched. Unknown sections fall through to the dashboard.
   if (seg[0] === 'admin') return { name: 'admin', section: seg[1] ?? 'dashboard' }
+  // Démonstration statique de l'administration : même contenu, aucune API.
+  if (seg[0] === 'admin-demo') return { name: 'adminDemo' }
   if (seg[0] === 'parcours') return { name: 'parcours' }
   if (seg[0] === 'etape') {
     const id = parseInt(seg[1] ?? '', 10)
@@ -46,6 +49,7 @@ export const routeToHash = (r: Route): string => {
     case 'result': return '#/resultat'
     case 'poste': return `#/poste/${r.id}`
     case 'admin': return `#/admin/${r.section}`
+    case 'adminDemo': return '#/admin-demo'
     default: return '#/'
   }
 }

@@ -144,21 +144,29 @@ détail dans `docs/music-engine-v2/` et `docs/strategie/` :
    s'automatise avant qu'un résultat produit manuellement convainque — c'est la méthode
    retenue à la fin du projet.
 
-## 5. L'équipe
+## 5. L'équipe — Muséomix 2026
 
 | | |
 |---|---|
-| **Ashley** | développement informatique et démonstration musicale |
-| **Noémie** | création et illustration des personnages — Martin, Mangouste, Dodo, Tortue |
-| **Tanguy** | enregistrement du son du lota (`04_09_Lota.wav`) |
+| **Noémie** | personnages et illustrations |
+| **Ashley** | développement et démonstration musicale |
+| **Tanguy** | gestion et coordination |
+| **Tejsree** | contexte historique |
+| **Keisa** | bornes de mapping |
+
+Crédits rattachés à une ressource :
+
+| | |
+|---|---|
+| **Tanguy** | enregistrement du Lota (`04_09_Lota.wav`) |
 | **Martin** | composition du morceau final « Énergétique » |
 
 L'équipe de médiation de **L'Aventure du Sucre** (Pamplemousses, Maurice) a accueilli et
 accompagné le projet.
 
-Auteurs et accords sont identifiés ; les conditions de la charte juridique Muséomix
-restent à vérifier, et aucune licence n'est attribuée aux créations des auteurs. Détail :
-[`ASSET-LICENSES.md`](ASSET-LICENSES.md) § 5.
+Seuls les prénoms sont consignés. Auteurs et accords sont identifiés ; les conditions
+de la charte juridique Muséomix restent à vérifier, et aucune licence n'est attribuée
+aux créations des auteurs. Détail : [`ASSET-LICENSES.md`](ASSET-LICENSES.md) § 5.
 
 ## 6. Remerciements
 

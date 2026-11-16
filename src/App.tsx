@@ -24,14 +24,21 @@ import { staticHosting } from './data/runtime'
 import { ensurePublication, isSoundOpen, isUniverseOpen, usePublication } from './data/publication'
 import Result from './ui/screens/Result'
 import SelfTest from './ui/SelfTest'
+import AudioTest from './ui/AudioTest'
 
 // Le Super Admin est chargé à la demande : un visiteur ne télécharge jamais le
 // code d'administration, et la promesse « tout fonctionne hors ligne » du parcours
 // reste intacte.
 const AdminApp = lazy(() => import('./admin/AdminApp'))
+// Démonstration statique de l'administration : chargée à la demande aussi, pour
+// qu'un visiteur ne télécharge jamais ni son code ni la feuille de style admin.
+const AdminDemo = lazy(() => import('./admin/AdminDemo'))
 
 export default function App() {
   const selftest = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('selftest')
+  // Test de non-régression audio : les huit samples produisent-ils du son à travers
+  // la chaîne de lecture réelle ? (?audiotest=1)
+  const audiotest = typeof window !== 'undefined' && new URLSearchParams(window.location.search).has('audiotest')
   const [route, navigate] = useRoute()
   const [session, setSession] = useState<Session>(() =>
     loadSession(
@@ -193,6 +200,16 @@ export default function App() {
   const universe = getUniverse(session.universeId)
 
   if (selftest) return <SelfTest />
+  if (audiotest) return <AudioTest />
+
+  // Démonstration statique de l'administration : aucun serveur, aucune donnée privée.
+  if (route.name === 'adminDemo') {
+    return (
+      <Suspense fallback={<div className="adm-boot"><p>Chargement de la démonstration…</p></div>}>
+        <AdminDemo onBack={() => navigate({ name: 'home' })} />
+      </Suspense>
+    )
+  }
 
   if (route.name === 'admin' && !staticHosting) {
     return (
@@ -297,6 +314,25 @@ export default function App() {
             </button>
           )}
           {universe && <span className="universe-chip" style={{ background: universe.fill ?? universe.accent, color: universe.id === 'sega-trad' ? 'var(--ink)' : '#fffaf0' }}>{universe.mascot?.name ?? universe.name}</span>}
+          {/*
+            Administration — discret mais identifiable.
+            - sur GitHub Pages (hébergement statique) : ouvre la démonstration
+              statique, en lecture seule, sans serveur ;
+            - derrière le serveur d'administration : ouvre l'outil réel, avec son
+              authentification normale (on ne contourne rien).
+          */}
+          <button
+            className="navlink navlink-quiet navlink-admin"
+            onClick={() => navigate(staticHosting
+              ? { name: 'adminDemo' }
+              : { name: 'admin', section: 'dashboard' })}
+            title={staticHosting
+              ? 'Démonstration statique de l’administration (lecture seule)'
+              : 'Administration — connexion requise'}
+          >
+            <span aria-hidden="true">⚙</span>
+            <span className="navlabel">Administration</span>
+          </button>
         </div>
       </header>
 

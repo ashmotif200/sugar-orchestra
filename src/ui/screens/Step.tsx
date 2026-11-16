@@ -40,6 +40,8 @@ export default function Step({
     return () => { alive = false }
   }, [])
   const [playing, setPlaying] = useState<string | null>(null)
+  /** échec de démarrage de la lecture : affiché, jamais silencieux */
+  const [playbackError, setPlaybackError] = useState<string | null>(null)
   const [loading, setLoading] = useState(true)
   const [error, setError] = useState<string | null>(null)
   const open: Sound | undefined = sounds.find((s) => s.id === openId)
@@ -71,9 +73,16 @@ export default function Step({
   const togglePlay = () => {
     if (!open) return
     if (playing === open.id) { audio.stopPreview(); setPlaying(null); return }
+    setPlaybackError(null)
     setPlaying(open.id)
     onDiscover(open.id)
-    audio.preview(open, 6, () => setPlaying((cur) => (cur === open.id ? null : cur))).catch(() => setPlaying(null))
+    audio.preview(open, 6, () => setPlaying((cur) => (cur === open.id ? null : cur)))
+      .catch((e) => {
+        setPlaying(null)
+        // Ne jamais laisser croire que ça joue : si le navigateur refuse de
+        // démarrer la sortie audio, on le dit au lieu de rendre le bouton muet.
+        setPlaybackError(e instanceof Error && e.message !== 'autoplay-bloque' ? e.message : 'autoplay-bloque')
+      })
   }
 
   const select = (s: Sound) => {
@@ -197,6 +206,12 @@ export default function Step({
               <p className="discovered"><span className="tick">✓</span> {t('step.discovered')}</p>
             ) : (
               <p className="discovered is-muted">◌ {t('step.notYet')}</p>
+            )}
+
+            {playbackError && (
+              <div className="notice notice-lock" role="alert">
+                <b>{t('audio.blockedTitle')}</b> {t('audio.blockedHint')}
+              </div>
             )}
 
             {(editorialFor(open.id)?.story ?? open.history) && (

@@ -395,3 +395,28 @@ ul, ol { margin: 0; padding: 0; list-style: none; }
 }
 
 .row-link { justify-self: start; font-size: .74rem; color: var(--cane); text-decoration: underline; text-underline-offset: 3px; background: none; border: 0; padding: 2px 0; }
+
+/* Lien Administration de la barre du haut : présent, mais volontairement
+   en retrait par rapport à « Votre parcours » et « Mon carnet ». */
+.navlink-admin {
+  opacity: 0.72;
+  font-size: 0.82rem;
+}
+.navlink-admin:hover, .navlink-admin:focus-visible { opacity: 1; }
+
+/* Crédits de l’équipe sur l’accueil : repliés par défaut (discrets),
+   lisibles une fois ouverts, sans alourdir la page. */
+.home-credits { margin-top: 0.9rem; font-size: 0.78rem; text-align: left; }
+.home-credits summary {
+  cursor: pointer; list-style: none; opacity: 0.7;
+  font-size: 0.72rem; letter-spacing: 0.06em; text-transform: uppercase;
+}
+.home-credits summary::-webkit-details-marker { display: none; }
+.home-credits summary::before { content: "▸ "; }
+.home-credits[open] summary::before { content: "▾ "; }
+.home-credits summary:hover { opacity: 1; }
+.home-credits ul { list-style: none; margin: 0.5rem 0 0; padding: 0; }
+.home-credits li { margin: 0.18rem 0; line-height: 1.35; }
+.home-credits .label { opacity: 0.65; }
+.home-credits-resources { border-top: 1px dashed rgba(0,0,0,0.15); padding-top: 0.45rem !important; }
+.home-credits-title { margin: 0.5rem 0 0.2rem; font-weight: 700; font-size: 0.76rem; }

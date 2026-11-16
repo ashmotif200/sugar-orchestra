@@ -3,6 +3,7 @@ import { t } from '../../i18n'
 import { Button, MascotImage } from '../kit'
 import type { Universe } from '../../audio/types'
 import { isUniverseOpen, usePublication } from '../../data/publication'
+import { RESOURCE_CREDITS, TEAM, TEAM_TITLE } from '../../data/credits'
 
 export default function Home({
   universeId,
@@ -68,9 +69,21 @@ export default function Home({
           {t('home.ctaMascot', { mascot: chosen.mascot?.name ?? chosen.name })}
         </Button>
         <p className="micro">{t('home.future')}</p>
-        <p className="credits home-credit">
-          <span className="label">{t('home.creditLabel')}</span> {t('home.credit')}
-        </p>
+        {/* Crédits complets : discrets (repliés), mais présents et lisibles. */}
+        <details className="home-credits">
+          <summary>{t('home.creditLabel')}</summary>
+          <p className="home-credits-title">{TEAM_TITLE}</p>
+          <ul>
+            {TEAM.map((c) => (
+              <li key={c.role}><span className="label">{c.role}</span> {c.name}</li>
+            ))}
+          </ul>
+          <ul className="home-credits-resources">
+            {RESOURCE_CREDITS.map((c) => (
+              <li key={c.role}><span className="label">{c.role}</span> {c.name}</li>
+            ))}
+          </ul>
+        </details>
       </div>
     </div>
   )

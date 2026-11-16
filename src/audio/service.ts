@@ -1,4 +1,5 @@
 import type { Catalog, Sound } from './types'
+import { applyEnvelope, bufferPeak, makeupFor, previewWindow, PREVIEW_PEAK as PREVIEW_CEILING } from './previewEnvelope'
 import catalogJson from '../data/catalog.json'
 import { renderScore, encodeWav, type RenderReport } from '../engine/render'
 import type { Score } from '../engine/plan'
@@ -32,6 +33,10 @@ class AudioService {
   private listeners = new Set<Listener>()
   private loading = new Set<string>()
   private pending = new Map<string, Promise<void>>()
+  /** vrai une fois qu'un buffer muet a ouvert la sortie pendant un geste */
+  private primed = false
+  /** crête mesurée de chaque buffer décodé, pour l'égalisation de préécoute */
+  private peaks = new Map<string, number>()
   loadError: string | null = null
 
   subscribe(fn: Listener) { this.listeners.add(fn); return () => { this.listeners.delete(fn) } }
@@ -47,6 +52,88 @@ class AudioService {
   }
 
   /**
+   * Débloque la sortie audio À L'INTÉRIEUR d'un geste utilisateur.
+   *
+   * Pourquoi c'est nécessaire — et pourquoi ce n'était pas fait :
+   *
+   * `ensure()` (montage d'un écran) crée l'AudioContext sans geste. Le contexte
+   * naît alors `suspended`. Jusqu'ici, la reprise était tentée plus tard, depuis
+   * une chaîne de promesses : `await this.context()` puis `await ctx.resume()`.
+   * Deux awaits suffisent à sortir de l'activation utilisateur sur Safari iOS, et
+   * `resume()` y reste alors sans effet — la promesse ne se résout pas, aucune
+   * erreur n'est levée, et l'application affichait « Arrêter » sans qu'un seul
+   * échantillon soit joué. Chrome de bureau a le même mode d'échec quand la
+   * politique de lecture automatique est stricte.
+   *
+   * La règle est donc : créer/réveiller le contexte de façon SYNCHRONE dans le
+   * geste, sans aucun `await` avant l'appel à `resume()`. Cette méthode ne rend
+   * pas de promesse à attendre — elle agit immédiatement.
+   */
+  unlock(): void {
+    try {
+      if (!this.ctx) {
+        const Ctor = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+        this.ctx = new Ctor({ latencyHint: 'playback' })
+      }
+      if (this.ctx.state !== 'running') void this.ctx.resume().catch(() => {})
+      // Un buffer silencieux d'une trame force certains navigateurs à ouvrir la
+      // sortie pendant le geste. Coût nul, effet mesurable sur iOS.
+      if (this.ctx.state === 'running' && !this.primed) {
+        const src = this.ctx.createBufferSource()
+        src.buffer = this.ctx.createBuffer(1, 1, this.ctx.sampleRate)
+        src.connect(this.ctx.destination)
+        src.start(0)
+        this.primed = true
+      }
+    } catch { /* pas de contexte : l'appel suivant expliquera l'échec */ }
+  }
+
+  /**
+   * Attend que le contexte soit réellement `running`, avec une borne de temps.
+   *
+   * Le point délicat : `resume()` peut **ne jamais se résoudre**. C'était le cas
+   * dans l'environnement de mesure (aucun périphérique de sortie) et c'est le
+   * comportement documenté de Safari iOS quand le contexte n'a pas été débloqué
+   * dans un geste. Attendre `resume()` sans borne laissait donc l'interface
+   * annoncer une lecture qui n'existait pas : bouton sur « Arrêter », aucun
+   * `start()`, aucune erreur, aucun son.
+   *
+   * On ne met donc pas un garde-temps *après* `resume()`, on met `resume()` **en
+   * course** avec lui. Au pire on échoue au bout de 1,5 s avec une erreur
+   * explicite ; jamais on ne ment indéfiniment.
+   */
+  private async runningContext(): Promise<AudioContext> {
+    const ctx = this.contextSync()
+    if (ctx.state !== 'running') {
+      await Promise.race([
+        ctx.resume().catch(() => undefined),
+        new Promise<void>((resolve) => setTimeout(resolve, 1500)),
+      ])
+    }
+    if (ctx.state !== 'running') throw new Error('autoplay-bloque')
+    return ctx
+  }
+
+  /** Le contexte produit-il réellement du son en ce moment ? */
+  isRunning(): boolean {
+    return this.ctx !== null && this.ctx.state === 'running'
+  }
+
+  /** État du contexte, pour le diagnostic (jamais utilisé pour décider du parcours). */
+  contextState(): string {
+    return this.ctx ? this.ctx.state : 'absent'
+  }
+
+  /** Obtient le contexte sans jamais attendre : sûr dans un gestionnaire de geste. */
+  private contextSync(): AudioContext {
+    if (!this.ctx) {
+      const Ctor = window.AudioContext || (window as unknown as { webkitAudioContext: typeof AudioContext }).webkitAudioContext
+      this.ctx = new Ctor({ latencyHint: 'playback' })
+    }
+    return this.ctx
+  }
+
+  /**
    * Décode un WAV déjà rendu (restauration d'une composition depuis IndexedDB).
    * Ne touche ni au moteur ni aux sons du catalogue : c'est le même
    * decodeAudioData que pour les samples, appliqué à un fichier produit par nous.
@@ -55,16 +142,6 @@ class AudioService {
     const ctx = await this.context()
     // slice(0) : decodeAudioData détache le buffer fourni, on garde l'original intact
     return await ctx.decodeAudioData(data.slice(0))
-  }
-
-  /** Réservé aux gestes utilisateur : échoue franchement si le navigateur refuse. */
-  private async runningContext(): Promise<AudioContext> {
-    const ctx = await this.context()
-    if (ctx.state !== 'running') {
-      try { await ctx.resume() } catch { /* vérifié juste après */ }
-    }
-    if (ctx.state !== 'running') throw new Error('autoplay-bloque')
-    return ctx
   }
 
   /**
@@ -132,6 +209,8 @@ class AudioService {
   pausedPreviewInfo() { return this.pausedPreview }
 
   async preview(sound: Sound, seconds = 6, onEnded?: () => void, startAt = 0): Promise<void> {
+    // Déblocage SYNCHRONE, dans le geste de l'utilisateur : aucun await avant.
+    this.unlock()
     const ctx = await this.runningContext()
     const buf = this.buffers.get(sound.id)
     if (!buf) throw new Error('son non chargé')
@@ -142,16 +221,18 @@ class AudioService {
     // `analysis` est optionnel : un catalogue réimporté peut ne pas le porter.
     // Lire `sound.analysis.onsets[0]` sans garde faisait échouer la préécoute
     // avant même le démarrage — le bouton restait donc sur « Écouter ».
-    const firstOnset = sound.analysis?.onsets?.[0]
-    const base = startAt > 0
-      ? startAt
-      : Number.isFinite(firstOnset) ? Math.min(firstOnset as number, Math.max(0, buf.duration - seconds - 0.2)) : 0
-    const offset = Math.max(0, Math.min(base, Math.max(0, buf.duration - 0.1)))
-    const dur = Math.min(seconds, buf.duration - offset)
-    gain.gain.setValueAtTime(0, ctx.currentTime)
-    gain.gain.linearRampToValueAtTime(0.9, ctx.currentTime + 0.03)
-    gain.gain.setValueAtTime(0.9, ctx.currentTime + dur - 0.4)
-    gain.gain.linearRampToValueAtTime(0, ctx.currentTime + dur)
+    // Fenêtre et enveloppe vivent dans `previewEnvelope.ts`, partagées avec le
+    // test de non-régression : ce qui est testé est le code exécuté.
+    const { offset, duration: dur } = previewWindow(
+      buf.duration, seconds, sound.analysis?.onsets?.[0], startAt,
+    )
+    // Les huit samples sont 18 à 23 dB sous le morceau final (crêtes 0,20 à 0,87).
+    // Sans égalisation, quatre d'entre eux sont inaudibles sur un haut-parleur de
+    // téléphone alors que le fichier est valide. Voir `makeupFor` : égalisation par
+    // la crête du fichier, plafonnée, sans compression et sans toucher aux fichiers.
+    let peak = this.peaks.get(sound.id)
+    if (peak === undefined) { peak = bufferPeak(buf); this.peaks.set(sound.id, peak) }
+    applyEnvelope(gain.gain, ctx.currentTime, dur, makeupFor(peak) * PREVIEW_CEILING)
     src.connect(gain)
     gain.connect(ctx.destination)
     src.start(0, offset, dur)
@@ -182,6 +263,7 @@ class AudioService {
   }
 
   async playPiece(buffer: AudioBuffer, onDone?: () => void): Promise<PlayHandle> {
+    this.unlock()
     const ctx = await this.runningContext()
     this.stopPiece()
     const src = ctx.createBufferSource()

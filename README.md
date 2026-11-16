@@ -412,13 +412,20 @@ automatisation.
 
 | | |
 |---|---|
-| Conception et réalisation | équipe Sugar Orchestra, Muséomix 2026 |
-| Musique | **Martin** — « Énergétique » (morceau final) |
-| Illustrations | **Noémie** — création et illustration des quatre personnages (Martin, Mangouste, Dodo, Tortue) |
-| Développement | **Ashley** — application, backend d'administration et démonstration |
-| Enregistrement du lota | **Tanguy** — son du poste 6 (`04_09_Lota.wav`) |
-| Sons | bibliothèques CC0 / domaine public (SoundBible, Freesound, BigSoundBank) et synthèses originales du projet — détail fichier par fichier dans [`docs/ASSET-LICENSES.md`](docs/ASSET-LICENSES.md) |
+| **Équipe Sugar Orchestra — Muséomix 2026** | |
+| Personnages et illustrations | **Noémie** |
+| Développement et démonstration musicale | **Ashley** |
+| Gestion et coordination | **Tanguy** |
+| Contexte historique | **Tejsree** |
+| Bornes de mapping | **Keisa** |
+| Crédits rattachés à une ressource | |
+| Enregistrement du Lota (`04_09_Lota.wav`) | **Tanguy** |
+| Composition du morceau final « Énergétique » | **Martin** |
+| Sons de bibliothèque | SoundBible, Freesound, BigSoundBank — détail fichier par fichier dans [`docs/ASSET-LICENSES.md`](docs/ASSET-LICENSES.md) |
 | Lieu | L'Aventure du Sucre, Pamplemousses, Maurice |
+
+Seuls les prénoms sont consignés, par choix. La liste de référence est
+`src/data/credits.ts` : l'interface, ce README et la documentation y renvoient.
 
 Les crédits complets, son par son, sont dans `src/data/catalog.json` (champ
 `credits`) et affichés dans l'application.

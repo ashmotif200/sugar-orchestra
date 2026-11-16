@@ -120,6 +120,12 @@ Les contributions artistiques ont été confirmées par le propriétaire du proj
 | **Noémie** | création et illustration des personnages | les quatre mascottes de `public/mascots/` | confirmé par le propriétaire du projet |
 | **Ashley** | développement informatique et démonstration musicale | l'application dans son ensemble | — (auteur du code, voir `LICENSE`) |
 | **Martin** | composition du morceau final « Énergétique » | `public/demo/energetique v1.wav` | voir § 5.3 |
+| **Tejsree** | contexte historique | aucun fichier publié (contenu éditorial non rédigé) | — |
+| **Keisa** | bornes de mapping | aucun fichier publié (traçage du parcours) | — |
+
+Tejsree et Keisa figurent dans les crédits de l'équipe, mais n'ont signé aucune des
+ressources publiées dans ce dépôt : ils n'apparaissent donc pas dans les tableaux de
+droits ci-dessus. La liste de référence des crédits est `src/data/credits.ts`.
 
 **Ce que cela règle** : la provenance de `04_09_Lota.wav` n'est plus une hypothèse.
 C'est un enregistrement de Tanguy, distinct de la synthèse `assets/originals/04_09.wav`

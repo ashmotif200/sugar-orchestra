@@ -63,6 +63,18 @@ dû être un bouton.
 | Moteur V2.0 | `npm run v2:test` | 18 contrôles : déterminisme, invariants de hauteur, rendu, crête | **18/18** |
 | Moteur V2.1 | `node tests/v2/v21.test.mjs` | 22 contrôles : modes, basse, durée, rendu identique | **22/22** |
 | Moteur V1 (navigateur) | `?selftest=1&batch=1` puis `&batch=2` | 8 cas, reconnaissabilité mesurée | à relancer manuellement |
+| Audio des 8 samples | `?audiotest=1` | téléchargement, décodage, fenêtre, enveloppe et égalisation réelles, mesures par sample | **8/8** |
+
+### `?audiotest=1` — le test qui répond à « les samples sont muets »
+
+Cette page mesure, pour chacun des huit samples publiés : durée décodée, crête et RMS
+du buffer, puis le signal **rendu à travers la chaîne de lecture de production**
+(`previewWindow`, `applyEnvelope`, `makeupFor` — les fonctions qu'appelle `preview()`).
+Un rendu hors ligne est déterministe, contrairement à une écoute.
+
+Ce qu'il ne prouve pas : que le son sort physiquement de l'appareil (volume système,
+mode silencieux iOS, sortie Bluetooth). Cette vérification reste humaine, et la page
+le dit.
 
 La suite V1 se lance **en deux lots** : un seul onglet sature en mémoire sur huit
 rendus. C'est une contrainte réelle, pas une précaution.
