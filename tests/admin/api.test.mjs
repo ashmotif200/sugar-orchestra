@@ -351,12 +351,20 @@ async function main() {
     check('session_invalid_after_logout', r.status === 401, `HTTP ${r.status}`)
 
     /* ------------------------------------------------- visitor app intact */
-    r = await fetch(`${BASE}/`)
-    const html = await r.text()
-    check('visitor_app_served', r.status === 200 && html.includes('<div id="root"'), 'index.html')
-    const csp = r.headers.get('content-security-policy') ?? ''
-    check('security_headers_present',
-      csp.includes("default-src 'self'") && r.headers.get('x-frame-options') === 'DENY', 'CSP + frame-options')
+    // Le serveur d'administration sert `dist/`. Sur un clone qui n'a pas encore été
+    // construit, la coquille HTML n'existe pas : ces deux contrôles ne peuvent pas
+    // s'exécuter. On l'annonce au lieu de le compter comme un échec.
+    if (existsSync(join(ROOT, 'dist', 'index.html'))) {
+      r = await fetch(`${BASE}/`)
+      const html = await r.text()
+      check('visitor_app_served', r.status === 200 && html.includes('<div id="root"'), 'index.html')
+      const csp = r.headers.get('content-security-policy') ?? ''
+      check('security_headers_present',
+        csp.includes("default-src 'self'") && r.headers.get('x-frame-options') === 'DENY', 'CSP + frame-options')
+    } else {
+      skip('visitor_app_served', 'dist/ absent : lancer `npm run build` avant admin:test')
+      skip('security_headers_present', 'dist/ absent : lancer `npm run build` avant admin:test')
+    }
   } finally {
     server.kill('SIGTERM')
     await sleep(200)
